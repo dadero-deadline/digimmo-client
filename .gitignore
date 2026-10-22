@@ -1,0 +1,11 @@
+dist/
+node_modules/
+*.log
+.env
+.env.*
+*.zip
+*.7z
+.private/
+.DS_Store
+Thumbs.db
+client/development.json

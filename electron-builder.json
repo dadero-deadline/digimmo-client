@@ -1,0 +1,33 @@
+{
+  "appId": "com.dadero.digimmo",
+  "productName": "DigiMMO",
+  "directories": {"output": "dist/installer"},
+  "extraMetadata": {"name": "digimmo-client", "main": "main.js"},
+  "files": [
+    "package.json",
+    {"from": "dist/public/client", "to": ".", "filter": ["main.js", "preload.js", "updater.js", "tweaks.user.js", "icon.png"]}
+  ],
+  "extraResources": [
+    {"from": "dist/public/LICENSE", "to": "LICENSE"},
+    {"from": "dist/public/UPDATES.md", "to": "UPDATES.md"},
+    {"from": "dist/public/SOUND_CREDITS.md", "to": "SOUND_CREDITS.md"},
+    {"from": "dist/public/KEYBOARD.md", "to": "KEYBOARD.md"},
+    {"from": "dist/public/CHANGELOG.md", "to": "CHANGELOG.md"}
+  ],
+  "asar": true,
+  "npmRebuild": false,
+  "win": {"target": [{"target": "nsis", "arch": ["x64"]}], "icon": "client/icon.ico"},
+  "nsis": {
+    "oneClick": false,
+    "perMachine": false,
+    "allowElevation": false,
+    "allowToChangeInstallationDirectory": true,
+    "deleteAppDataOnUninstall": false,
+    "runAfterFinish": false,
+    "installerIcon": "client/icon.ico",
+    "uninstallerIcon": "client/icon.ico",
+    "include": "client/installer.nsh",
+    "artifactName": "DigiMMO-Setup-${version}-${arch}.${ext}"
+  },
+  "publish": [{"provider": "github", "owner": "dadero-deadline", "repo": "digimmo-client", "releaseType": "release"}]
+}

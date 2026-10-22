@@ -1,0 +1,110 @@
+[
+  {
+    "title": "Park ambiences",
+    "author": "Thimras",
+    "license": "CC0 1.0",
+    "source": "https://opengameart.org/content/park-ambiences",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "birds, chirp1, chirp2, chirp3",
+    "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
+  },
+  {
+    "title": "Stream, Water, C.wav",
+    "author": "InspectorJ (www.jshaw.co.uk)",
+    "license": "CC BY 4.0",
+    "source": "https://freesound.org/people/InspectorJ/sounds/339324/",
+    "licenseUrl": "https://creativecommons.org/licenses/by/4.0/",
+    "samples": "stream",
+    "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
+  },
+  {
+    "title": "Flea #2",
+    "author": "Joseph SARDIN",
+    "license": "CC0 1.0",
+    "source": "https://bigsoundbank.com/flea-2-s0131.html",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "town",
+    "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
+  },
+  {
+    "title": "Gulls on the Harbor",
+    "author": "Joseph SARDIN",
+    "license": "CC0 1.0",
+    "source": "https://bigsoundbank.com/gulls-on-the-harbor-s2573.html",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "gull1, gull2",
+    "changes": "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses."
+  },
+  {
+    "title": "Beach: Small Waves",
+    "author": "DenisChardonnet",
+    "license": "CC0 1.0",
+    "source": "https://bigsoundbank.com/beach-small-waves-s0265.html",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "sea, wave1, wave2, wave3, wave4",
+    "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
+  },
+  {
+    "title": "Small dam",
+    "author": "Joseph SARDIN",
+    "license": "CC0 1.0",
+    "source": "https://bigsoundbank.com/small-dam-s0871.html",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "waterfall",
+    "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
+  },
+  {
+    "title": "Feu de cheminee #2",
+    "author": "Joseph SARDIN",
+    "license": "CC0 1.0",
+    "source": "https://lasonotheque.org/feu-de-cheminee-s0031.html",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "fire",
+    "changes": "Long excerpt, mono, filtering, softened crackle transients, volume matching, loop crossfade and Opus encoding. No pitch or speed change."
+  },
+  {
+    "title": "Fountain of a Japanese Temple",
+    "author": "Olivier du Japon",
+    "license": "CC0 1.0",
+    "source": "https://bigsoundbank.com/fountain-of-a-japanese-temple-s0913.html",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "fountain",
+    "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
+  },
+  {
+    "title": "2023-10-03 lake shore ambience.wav",
+    "author": "Mick_",
+    "license": "CC0 1.0",
+    "source": "https://freesound.org/people/Mick_/sounds/705034/",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "lake",
+    "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
+  },
+  {
+    "title": "wind1",
+    "author": "Luke.RUSTLTD",
+    "license": "CC0 1.0",
+    "source": "https://opengameart.org/content/wind1",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "wind",
+    "changes": "Trimmed, looped, volume matched and encoded to mono Opus."
+  },
+  {
+    "title": "Steam boiler sound loop",
+    "author": "bart",
+    "license": "CC0 1.0",
+    "source": "https://opengameart.org/content/steam-boiler-sound-loop",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "machine",
+    "changes": "Trimmed, looped, volume matched and encoded to mono Opus."
+  },
+  {
+    "title": "Crickets",
+    "author": "dklon",
+    "license": "CC BY 3.0",
+    "source": "https://opengameart.org/content/crickets",
+    "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
+    "samples": "crickets",
+    "changes": "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop."
+  }
+]

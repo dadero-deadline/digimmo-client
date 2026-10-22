@@ -1,0 +1,222 @@
+[
+  {
+    "name": "birds",
+    "source": "birds",
+    "duration": 63.8,
+    "loop": true,
+    "peakDB": -7.38,
+    "rmsDB": -25.99,
+    "bytes": 456052,
+    "sha256": "8bf083768be7fd0498b5ed8a3d99820d9e7f0ae15596c3a593c21359098dc930",
+    "changes": "Excerpt from 30s, up to 65s; mono; 250 Hz high-pass and 8500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "chirp1",
+    "source": "birds",
+    "duration": 8.0,
+    "loop": false,
+    "peakDB": -6.81,
+    "rmsDB": -24.99,
+    "bytes": 58875,
+    "sha256": "d933d04d49570ec974e268fb5f55419776527a6cf4f8237d4da36b8e408d2e76",
+    "changes": "Excerpt from 110s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "chirp2",
+    "source": "birds",
+    "duration": 8.0,
+    "loop": false,
+    "peakDB": -6.79,
+    "rmsDB": -24.97,
+    "bytes": 59112,
+    "sha256": "4cd892b5f0c8db6fb110e6eb3812f3a1a55369a55402096ba9a3746bb94690a6",
+    "changes": "Excerpt from 150s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "chirp3",
+    "source": "birds",
+    "duration": 8.0,
+    "loop": false,
+    "peakDB": -7.08,
+    "rmsDB": -27.09,
+    "bytes": 59027,
+    "sha256": "0f7a9c641e81e6303aaada9f27fb08bc9c2b54c5be11e9ca0b2566e226250c1d",
+    "changes": "Excerpt from 190s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "gull1",
+    "source": "harbor",
+    "duration": 8.0,
+    "loop": false,
+    "peakDB": -7.08,
+    "rmsDB": -26.78,
+    "bytes": 58648,
+    "sha256": "965723b03b097d00fdcd45dc29f0567ff4ef722f2f1614bdc2f7747ae2732ce8",
+    "changes": "Excerpt from 20s, up to 8s; mono; 400 Hz high-pass and 7500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "gull2",
+    "source": "harbor",
+    "duration": 8.0,
+    "loop": false,
+    "peakDB": -7.19,
+    "rmsDB": -26.73,
+    "bytes": 58709,
+    "sha256": "1cf20423c9c8d00823479e331fe4ffdcb5d82a0d7d308dff5bd0b5695ac06a64",
+    "changes": "Excerpt from 70s, up to 8s; mono; 400 Hz high-pass and 7500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "town",
+    "source": "market",
+    "duration": 42.8,
+    "loop": true,
+    "peakDB": -8.54,
+    "rmsDB": -27.0,
+    "bytes": 313664,
+    "sha256": "78ff060547f5b532c3730903925f4a94bb3ebd4254635c3f40798c8b34915aa3",
+    "changes": "Excerpt from 2s, up to 44s; mono; 250 Hz high-pass and 2400 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "stream",
+    "source": "stream",
+    "duration": 48.8,
+    "loop": true,
+    "peakDB": -7.04,
+    "rmsDB": -34.07,
+    "bytes": 436122,
+    "sha256": "4967da9fdb0a2d7fad698f8698bc86237447a372a73c16c36ee9f7e1e7c98afe",
+    "changes": "Excerpt from 5s, up to 50s; mono; 120 Hz high-pass and 7500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "sea",
+    "source": "surf",
+    "duration": 48.8,
+    "loop": true,
+    "peakDB": -6.95,
+    "rmsDB": -26.69,
+    "bytes": 346962,
+    "sha256": "7d3a1fe13851f14972bf31f0bcb08ce22311bccda20f76530dd3e0afa11d1d01",
+    "changes": "Excerpt from 3s, up to 50s; mono; 80 Hz high-pass and 4200 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "waterfall",
+    "source": "cascade",
+    "duration": 48.8,
+    "loop": true,
+    "peakDB": -10.45,
+    "rmsDB": -23.99,
+    "bytes": 349414,
+    "sha256": "c00cf89fb694bbe829fefd94404ec9ca66aa5dc9fc870b18195c76207e297882",
+    "changes": "Excerpt from 5s, up to 50s; mono; 80 Hz high-pass and 6500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "wave1",
+    "source": "surf",
+    "duration": 12.0,
+    "loop": false,
+    "peakDB": -7.01,
+    "rmsDB": -26.29,
+    "bytes": 88185,
+    "sha256": "347a5f06692aa724c8079ec331111d8325781d352ff956679912f19606b27bbe",
+    "changes": "Excerpt from 0s, up to 12s; mono; 100 Hz high-pass and 6500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "wave2",
+    "source": "surf",
+    "duration": 14.0,
+    "loop": false,
+    "peakDB": -7.19,
+    "rmsDB": -25.96,
+    "bytes": 102290,
+    "sha256": "6f356ebd9b14d6a898563a35d6c00d3cf5c2d10ee6d9add81460cef36b23721a",
+    "changes": "Excerpt from 12s, up to 14s; mono; 100 Hz high-pass and 6500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "wave3",
+    "source": "surf",
+    "duration": 12.0,
+    "loop": false,
+    "peakDB": -6.94,
+    "rmsDB": -27.38,
+    "bytes": 87544,
+    "sha256": "55c4914307b18a9047de12b4f72dbbab2fc94ce2458af4363df017a9a3c1bd6c",
+    "changes": "Excerpt from 26s, up to 12s; mono; 100 Hz high-pass and 6500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "wave4",
+    "source": "surf",
+    "duration": 14.0,
+    "loop": false,
+    "peakDB": -7.35,
+    "rmsDB": -26.29,
+    "bytes": 101810,
+    "sha256": "c80231ace5ffe0e8c7b4afaa653cfdd50485384695b1cb0d22ed2d3236060f1a",
+    "changes": "Excerpt from 40s, up to 14s; mono; 100 Hz high-pass and 6500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "wind",
+    "source": "retained-wind",
+    "duration": 21.96,
+    "loop": true,
+    "peakDB": -7.83,
+    "rmsDB": -24.88,
+    "bytes": 98892,
+    "sha256": "dd2a1902beebcceabb7201e2cf29ae1bad08309768ea98f3263ed2eaf2237fe1",
+    "changes": "Existing mono Opus excerpt retained byte for byte from test12; previously trimmed, looped and volume matched."
+  },
+  {
+    "name": "machine",
+    "source": "retained-machine",
+    "duration": 16.98,
+    "loop": true,
+    "peakDB": -11.3,
+    "rmsDB": -24.57,
+    "bytes": 78876,
+    "sha256": "d80e2e96270a7af5b89a1e4dc9fa450d9566ec2f7197252dbca272fc6e1980cc",
+    "changes": "Existing mono Opus excerpt retained byte for byte from test12; previously trimmed, looped and volume matched."
+  },
+  {
+    "name": "crickets",
+    "source": "retained-crickets",
+    "duration": 15.48,
+    "loop": true,
+    "peakDB": -6.82,
+    "rmsDB": -27.38,
+    "bytes": 71965,
+    "sha256": "ecfe3b446b10100b68550493fbb026064bbde38b0fa8526d185cbfe1a5cae20a",
+    "changes": "Existing mono Opus excerpt retained byte for byte from test12; previously trimmed, looped and volume matched."
+  },
+  {
+    "name": "fire",
+    "source": "fire-long",
+    "duration": 52.8,
+    "loop": true,
+    "peakDB": -8.38,
+    "rmsDB": -27.99,
+    "bytes": 413998,
+    "sha256": "518db7333fca35ab5e2908b7d40eb13d9cb0f3a2c93cc4145ec324fa4c0de6aa",
+    "changes": "Excerpt from 3s, up to 54s; mono; 90 Hz high-pass and 6500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. Crackle transient compression before level matching: threshold 0.003, ratio 6, attack 0.1 ms, release 80 ms, knee 4, makeup 1."
+  },
+  {
+    "name": "fountain",
+    "source": "fountain",
+    "duration": 50.8,
+    "loop": true,
+    "peakDB": -7.12,
+    "rmsDB": -34.13,
+    "bytes": 434813,
+    "sha256": "1752923c06ab9e404db0c7e4b2f7a05d658cf97c610eef16e7a872dadc4ed2f6",
+    "changes": "Excerpt from 5s, up to 52s; mono; 100 Hz high-pass and 7000 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "lake",
+    "source": "lake",
+    "duration": 60.8,
+    "loop": true,
+    "peakDB": -7.2,
+    "rmsDB": -28.86,
+    "bytes": 442748,
+    "sha256": "04c18f5b3116a595c8b27fa171ead0957f4fed94cbf5e4eac2792b8b295c9451",
+    "changes": "Excerpt from 25s, up to 62s; mono; 90 Hz high-pass and 4200 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  }
+]

@@ -1,0 +1,39 @@
+{
+  "name": "digimmo-client-source",
+  "version": "0.1.0",
+  "private": true,
+  "author": "dadero-deadline",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dadero-deadline/digimmo-client.git"
+  },
+  "license": "MIT",
+  "description": "Unofficial desktop client and browser extension for DigiMMO. Enhanced lighting, shadows, reflections and regional ambience for your journey through the Digital World.",
+  "scripts": {
+    "build": "node scripts/build.cjs public",
+    "build:dev": "node scripts/build.cjs development",
+    "build:icons": "node scripts/build-icons.cjs",
+    "check": "node scripts/verify-build.cjs",
+    "stage:test": "node scripts/build.cjs development --stage-test",
+    "package:windows": "npm run package:installer",
+    "package:extensions": "node scripts/build.cjs public && node scripts/package-release.cjs",
+    "package:release": "npm run build:dev && npm run package:installer && npm run check && npm run check:updater && npm run check:installer && node scripts/package-release.cjs --installer",
+    "package:installer": "node scripts/build.cjs public && electron-builder --config electron-builder.json --win nsis --x64 --publish never",
+    "check:updater": "node --test scripts/updater.test.cjs",
+    "check:installer": "node scripts/verify-installer.cjs"
+  },
+  "dependencies": {
+    "electron-updater": "6.8.9"
+  },
+  "devDependencies": {
+    "electron": "45.0.0",
+    "electron-builder": "26.15.3",
+    "pngjs": "7.0.0",
+    "yazl": "3.3.1"
+  },
+  "overrides": {
+    "@electron/get@3.1.0": {
+      "global-agent": "4.1.3"
+    }
+  }
+}
