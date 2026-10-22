@@ -2,11 +2,11 @@
 const {test}=require('node:test'),assert=require('node:assert/strict'),{EventEmitter}=require('node:events');
 const fs=require('node:fs'),os=require('node:os'),path=require('node:path');
 const {startUpdates,createController,updateMessage}=require('../client/updater');
-function fixture(){
+function fixture(options={}){
   const app=new EventEmitter(),updater=new EventEmitter(),timers=[],cleared=[],notices=[];
   updater.checkForUpdates=async()=>null;
   const timer=(fn,ms)=>{const handle={fn,ms,unref(){}};timers.push(handle);return handle;};
-  const controller=createController({app,updater,notify:v=>notices.push(v),setTimeoutFn:timer,setIntervalFn:timer,clearTimeoutFn:h=>cleared.push(h),clearIntervalFn:h=>cleared.push(h)});
+  const controller=createController({app,updater,notify:v=>notices.push(v),setTimeoutFn:timer,setIntervalFn:timer,clearTimeoutFn:h=>cleared.push(h),clearIntervalFn:h=>cleared.push(h),...options});
   return {app,updater,timers,cleared,notices,controller};
 }
 test('development and unpacked builds never load the updater',()=>{
@@ -62,4 +62,23 @@ test('notification text supports all menu languages',()=>{
   assert.match(updateMessage('en-US').body,/close the client/);
   assert.match(updateMessage('es').body,/cerrar el cliente/);
   assert.match(updateMessage('pt-BR').body,/fechar o cliente/);
+});
+
+test('packaged Windows clients update the folder they were started from',()=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'digimmo-updater-folder-'));
+  fs.writeFileSync(path.join(dir,'app-update.yml'),'provider: github');
+  fs.writeFileSync(path.join(dir,'digimmo-installed'),'zip');
+  const updater=new EventEmitter();
+  updater.checkForUpdates=async()=>null;
+  const game=path.join(dir,'DigiMMO','DigiMMO.exe');
+  const result=startUpdates({app:{isPackaged:true},resourcesPath:dir,platform:'win32',execPath:game,loadUpdater:()=>updater,notify:()=>{}});
+  try{
+    assert.equal(result.enabled,true);
+    assert.equal(updater.installDirectory,path.join(dir,'DigiMMO'));
+    assert.equal(updater.autoInstallOnAppQuit,true);
+  }finally{
+    result.stop();
+    for(const name of ['app-update.yml','digimmo-installed'])fs.unlinkSync(path.join(dir,name));
+    fs.rmdirSync(dir);
+  }
 });

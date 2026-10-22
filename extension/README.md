@@ -4,14 +4,14 @@ Optional lighting, shadows, reflections and regional ambience for [DigiMMO](http
 
 ## Chrome and Edge
 
-1. Extract the Chromium ZIP into a permanent folder.
+1. Extract DigiMMO.zip into a permanent folder.
 2. Open `chrome://extensions` or `edge://extensions` and enable **Developer mode**.
-3. Select **Load unpacked** and choose the folder containing `manifest.json`.
+3. Select **Load unpacked** and choose the extracted `extension` folder containing `manifest.json`.
 4. Reload the game tab and press **F10** for settings.
 
 ## Firefox testing
 
-In Firefox 128 or newer, open `about:debugging#/runtime/this-firefox`, choose **Load Temporary Add-on** and select the Firefox build's manifest. This installation disappears after restarting Firefox. Permanent distribution needs signing; browser validation remains pending.
+The main ZIP contains the Chrome/Edge extension. Developers can generate a separate Firefox test build with `npm run package:extensions`. In Firefox 128 or newer, open `about:debugging#/runtime/this-firefox`, choose **Load Temporary Add-on** and select that build's manifest. This installation disappears after restarting Firefox. Permanent distribution needs signing; browser validation remains pending.
 
 ## Updates and controls
 

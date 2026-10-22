@@ -4,54 +4,28 @@
 
 An unofficial desktop client and browser extension for [DigiMMO](https://play.digimmo.com.br/). Adds optional lighting, shadows, moving treetops, water reflections and regional ambience. Visuals and sound only; no gameplay automation.
 
-## [Download DigiMMO for Windows (.exe)](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/DigiMMO-Setup-0.1.0-x64.exe)
+## [Download DigiMMO.zip](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO.zip)
 
-**Version 0.1 · Windows 64-bit.** Run Setup, then open DigiMMO. Future releases download in the background and install when you close the client. The installer is unsigned.
+1. Download the ZIP.
+2. Extract it to a folder.
+3. Open **DigiMMO.exe** and play.
 
-[Chrome / Edge extension](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/digimmo-extension-0.1.0-chromium.zip) · [Firefox test build](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/digimmo-extension-0.1.0-firefox.zip) · [Userscript](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/digimmo-tweaks-0.1.0.user.js) · [All releases](https://github.com/dadero-deadline/digimmo-client/releases)
+The extracted folder is the game: **DigiMMO.exe** plus its supporting files, with optional `scripts` and `extension` folders beside it.
 
-## Browser installation
+**Windows 64-bit. No installation required.** Client updates download automatically and apply after you close it. Your settings are kept. The EXE is unsigned. [Update details](UPDATES.md) · [Release history](https://github.com/dadero-deadline/digimmo-client/releases)
 
-- **Chrome and Edge:** extract the extension ZIP linked above, enable Developer mode on the extensions page and choose **Load unpacked**. Reload the game tab.
-- **Firefox:** the Firefox download is for temporary testing. Browser validation and signing are still pending.
-- **Userscript:** install the `.user.js` download with a compatible userscript manager.
+## Prefer your browser?
 
-Enable only one copy of the effects. See [browser installation](extension/README.md) and [updates](UPDATES.md) for details.
+- **Chrome or Edge:** enable Developer mode on the browser's extensions page, click **Load unpacked** and select the extracted `extension` folder. Reload the game.
+- **Userscript:** install `scripts/digimmo-tweaks.user.js` with your userscript manager.
 
-## What is included?
-
-All three options use the same effects and sounds. The **client** opens the game in a desktop app. The **extension** loads the effects in your browser. The **userscript** is a single `.user.js` file that a userscript manager loads into the game page; it is an alternative to the extension.
-
-The repository contains the source:
-
-```text
-src/        Shared effects, ambience and lighting data
-client/     Desktop app and automatic updater
-extension/  Browser manifest, icons and installation instructions
-assets/     Audio recordings and artwork
-scripts/    Build and verification tools
-dist/       Generated downloads (created locally, not stored in Git)
-```
-
-An extracted extension download contains:
-
-```text
-manifest.json       Tells the browser to load the effects on DigiMMO
-digimmo-tweaks.js    Complete effects script, including sounds and data
-icons/              Extension icons
-LICENSE             MIT license for the project code
-*.md                Installation, controls, changelog and credits
-```
-
-Load this extracted folder into your browser. The repository's `extension/` folder is a build template; the build adds the complete script from `src/` and `assets/`.
+Both use the same effects as the client. Choose one option. Browser copies need manual updates. [Browser instructions](extension/README.md)
 
 ## Controls
 
 Press **F10** for settings, **Alt+F10** to toggle atmosphere and **Ctrl+F10** to toggle ambience. Settings support English, Español and Português (Brazil). See [all keyboard controls](KEYBOARD.md).
 
 ## Known issues
-
-Known issues in 0.1:
 
 - Reflections can face the wrong way at northern shores. Some houses, igloos and large objects cast incorrect shadows.
 - Tree crowns can split or distort; some trees move too much of the trunk or remain still.
@@ -63,14 +37,22 @@ Report the map, conditions and steps needed to reproduce a problem through [Issu
 
 ## Build from source
 
-Requires Node.js 22.12 or newer and npm. Windows is required for the Setup build.
+<details>
+<summary>Source folders and build instructions</summary>
 
-```sh
-npm ci
-npm run package:release
+The folders above the README contain source code. Use the ZIP download to play.
+
+```text
+src/        Shared effects, ambience and lighting data
+client/     Desktop app and automatic updater
+extension/  Browser extension template
+assets/     Audio recordings and artwork
+scripts/    Build and verification tools
 ```
 
-This builds and checks the client, both extensions and userscript. Uploadable files appear in `dist/releases/<version>/`. Nothing is installed or published by the build. For development and individual targets, see [Contributing](CONTRIBUTING.md).
+Requires Node.js 22.12 or newer, npm and Windows. Run `npm ci`, then `npm run package:release`. Downloads are generated in `dist/releases/<version>/`. The build does not install or publish anything. See [Contributing](CONTRIBUTING.md) for development.
+
+</details>
 
 ## Contribute
 

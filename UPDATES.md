@@ -2,11 +2,15 @@
 
 ## Windows client
 
-Install Setup once. Newer stable releases download in the background and install when you close the client normally. There is no forced restart during play, and your settings remain in the Windows user profile.
+Download DigiMMO.zip, extract it and run DigiMMO.exe. New versions download in the background. Close the client normally to finish the update, then open the same EXE next time. Updates replace files in that folder. Your settings stay in place and play is never interrupted by a forced restart.
 
 The client checks shortly after starting and every four hours. Drafts, prereleases and changes in forks are not offered. Development clients do not use the public update feed.
 
-If a download is interrupted, the current version keeps working and a later check retries. A complete, verified download is cached and can install on exit. After an offline restart, the current version opens normally; the cache is reused after the next successful release check. Windows shutdown defers installation. Recovery from power loss during installation has not been verified; Setup may need to be run again.
+If a download is interrupted, the current version keeps working and a later check retries. Completed downloads are verified and cached. If you start offline, the current version still opens; the cached update is used after the next successful release check. Windows shutdown postpones updates.
+
+Keep the extracted folder somewhere you can write to, such as your Downloads or Games folder. If an update cannot replace the EXE, your current copy stays in place. You can also download a new ZIP and extract it over the old files while the client is closed.
+
+Existing Setup installations continue to receive automatic updates. You do not need to switch them to the ZIP version.
 
 ## Browser extension and userscript
 
@@ -14,4 +18,4 @@ Unpacked extensions require manual updates: replace the extracted files, reload 
 
 ## Downloads
 
-Official downloads are available on [GitHub Releases](https://github.com/dadero-deadline/digimmo-client/releases). The updater verifies downloads against SHA512 hashes. The Windows installer is unsigned. See [release instructions](https://github.com/dadero-deadline/digimmo-client/blob/main/CONTRIBUTING.md#releases) for maintainers.
+The main download is [DigiMMO.zip](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO.zip). Setup files under Releases keep existing installations and extracted folders up to date. The updater verifies downloads against SHA512 hashes. Windows executables are unsigned. See [release instructions](https://github.com/dadero-deadline/digimmo-client/blob/main/CONTRIBUTING.md#releases) for maintainers.

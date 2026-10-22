@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.1.1
+
+- Download one ZIP, extract it and run DigiMMO.exe. No installation required.
+- The ZIP is a normal game folder, with the optional userscript and Chrome/Edge extension beside the EXE.
+- Automatic updates apply after you close the client, including existing Setup installations.
+
 ## 0.1
 
 - [New] Optional lighting, object shadows, moving treetops and water reflections.

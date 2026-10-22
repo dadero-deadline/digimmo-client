@@ -1,15 +1,23 @@
 'use strict';
 const fs=require('node:fs');
 const path=require('node:path');
+const {EventEmitter}=require('node:events');
 
-// The installer marker keeps development and unpacked copies outside the feed.
-function startUpdates({app,development=false,resourcesPath=process.resourcesPath,platform=process.platform,loadUpdater=()=>require('electron-updater').autoUpdater,notify}){
-  if(development||platform!=='win32'||!app.isPackaged||!fs.existsSync(path.join(resourcesPath,'digimmo-installed'))||!fs.existsSync(path.join(resourcesPath,'app-update.yml')))return {enabled:false};
-  try{return createController({app,updater:loadUpdater(),notify});}
+// Packaged Windows copies update in place. Development and unpackaged runs never join the public feed.
+function startUpdates({app,development=false,resourcesPath=process.resourcesPath,platform=process.platform,execPath=process.execPath,loadUpdater=()=>require('electron-updater').autoUpdater,notify}){
+  if(development||platform!=='win32'||!app.isPackaged)return {enabled:false};
+  const config=path.join(resourcesPath,'app-update.yml');
+  if(!fs.existsSync(config)||!fs.existsSync(path.join(resourcesPath,'digimmo-installed')))return {enabled:false};
+  try{
+    const updater=loadUpdater();
+    if(typeof execPath==='string'&&path.isAbsolute(execPath))updater.installDirectory=path.dirname(execPath);
+    return createController({app,updater,notify});
+  }
   catch{return {enabled:false};}
 }
 
 function createController({app,updater,notify=()=>{},setTimeoutFn=setTimeout,setIntervalFn=setInterval,clearTimeoutFn=clearTimeout,clearIntervalFn=clearInterval}){
+  const eventApp = app && typeof app.on === 'function' && typeof app.once === 'function' && typeof app.removeListener === 'function' ? app : new EventEmitter();
   updater.allowPrerelease=false;
   updater.allowDowngrade=false;
   updater.autoDownload=true;
@@ -43,7 +51,7 @@ function createController({app,updater,notify=()=>{},setTimeoutFn=setTimeout,set
   };
   updater.on('error',onError);
   updater.on('update-downloaded',onDownloaded);
-  app.on('browser-window-created',watchWindow);
+  eventApp.on('browser-window-created',watchWindow);
   // Do not compete with initial game loading or force a restart during play.
   const initial=setTimeoutFn(check,20000);
   const interval=setIntervalFn(check,4*60*60*1000);
@@ -51,14 +59,14 @@ function createController({app,updater,notify=()=>{},setTimeoutFn=setTimeout,set
   const stop=()=>{
     stopped=true;
     clearTimeoutFn(initial);clearIntervalFn(interval);
-    app.removeListener('browser-window-created',watchWindow);
-    app.removeListener('before-quit',stop);
+    eventApp.removeListener('browser-window-created',watchWindow);
+    eventApp.removeListener('before-quit',stop);
     for(const window of windows){window.removeListener('query-session-end',suspendInstall);window.removeListener('session-end',suspendInstall);}
     windows.clear();
     updater.removeListener('update-downloaded',onDownloaded);
     // Retain the error listener until process exit: an in-flight download may fail.
   };
-  app.once('before-quit',stop);
+  eventApp.once('before-quit',stop);
   return {enabled:true,check,stop};
 }
 
