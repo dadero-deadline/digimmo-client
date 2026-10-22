@@ -1,17 +1,20 @@
 # DigiMMO Client
 
-<img src="client/icon.png" alt="DigiMMO icon" width="96" height="96">
+<img src="client/icon.png" alt="DigiMMO icon" width="96" height="96" align="right">
 
 An unofficial desktop client and browser extension for [DigiMMO](https://play.digimmo.com.br/). Adds optional lighting, shadows, moving treetops, water reflections and regional ambience. Visuals and sound only; no gameplay automation.
 
-## Download and install
+## [Download DigiMMO for Windows (.exe)](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/DigiMMO-Setup-0.1.0-x64.exe)
 
-Download **version 0.1** from [Releases](https://github.com/dadero-deadline/digimmo-client/releases/tag/v0.1.0).
+**Version 0.1 · Windows 64-bit.** Run Setup, then open DigiMMO. Future releases download in the background and install when you close the client. The installer is unsigned.
 
-- **Windows:** run the [Setup EXE](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/DigiMMO-Setup-0.1.0-x64.exe). Future releases download in the background and install when you close the client. The installer is unsigned.
-- **Chrome and Edge:** extract the [extension ZIP](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/digimmo-extension-0.1.0-chromium.zip), enable Developer mode on the extensions page and choose **Load unpacked**. Reload the game tab.
-- **Firefox:** the [Firefox ZIP](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/digimmo-extension-0.1.0-firefox.zip) is for temporary testing. Browser validation and signing are still pending.
-- **Userscript:** install the [`.user.js` file](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/digimmo-tweaks-0.1.0.user.js) with a compatible userscript manager.
+[Chrome / Edge extension](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/digimmo-extension-0.1.0-chromium.zip) · [Firefox test build](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/digimmo-extension-0.1.0-firefox.zip) · [Userscript](https://github.com/dadero-deadline/digimmo-client/releases/download/v0.1.0/digimmo-tweaks-0.1.0.user.js) · [All releases](https://github.com/dadero-deadline/digimmo-client/releases)
+
+## Browser installation
+
+- **Chrome and Edge:** extract the extension ZIP linked above, enable Developer mode on the extensions page and choose **Load unpacked**. Reload the game tab.
+- **Firefox:** the Firefox download is for temporary testing. Browser validation and signing are still pending.
+- **Userscript:** install the `.user.js` download with a compatible userscript manager.
 
 Enable only one copy of the effects. See [browser installation](extension/README.md) and [updates](UPDATES.md) for details.
 
