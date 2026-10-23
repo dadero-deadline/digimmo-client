@@ -1,6 +1,6 @@
 # Sound credits
 
-Release: 0.1. Source licenses checked on 2026-10-21 and 2026-10-22.
+Source licenses checked on 2026-10-21 through 2026-10-23.
 
 Recordings are embedded in the userscript. Playing them makes no download request. Source pages are provided for attribution. These recordings and the artwork below retain their own terms and are not covered by the project's MIT License.
 
@@ -14,7 +14,7 @@ Recordings are embedded in the userscript. Playing them makes no download reques
 | gull1, gull2 | [Gulls on the Harbor](https://bigsoundbank.com/gulls-on-the-harbor-s2573.html) by Joseph SARDIN | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses. |
 | sea, wave1, wave2, wave3, wave4 | [Beach: Small Waves](https://bigsoundbank.com/beach-small-waves-s0265.html) by DenisChardonnet | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
 | waterfall | [Small dam](https://bigsoundbank.com/small-dam-s0871.html) by Joseph SARDIN | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
-| fire | [Feu de cheminee #2](https://lasonotheque.org/feu-de-cheminee-s0031.html) by Joseph SARDIN | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Long excerpt, mono, filtering, softened crackle transients, volume matching, loop crossfade and Opus encoding. No pitch or speed change. |
+| fire | [Ambiance_Campfire_Loop_Stereo.wav](https://freesound.org/people/Nox_Sound/sounds/558967/) by Nox_Sound | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Mono, 120 Hz low cut, gentle high-frequency filtering, constant volume matching, short loop crossfade and Opus encoding. No compression, pitch or speed change. |
 | fountain | [Fountain of a Japanese Temple](https://bigsoundbank.com/fountain-of-a-japanese-temple-s0913.html) by Olivier du Japon | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
 | lake | [2023-10-03 lake shore ambience.wav](https://freesound.org/people/Mick_/sounds/705034/) by Mick_ | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
 | wind | [wind1](https://opengameart.org/content/wind1) by Luke.RUSTLTD | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Trimmed, looped, volume matched and encoded to mono Opus. |
@@ -23,7 +23,7 @@ Recordings are embedded in the userscript. Playing them makes no download reques
 
 ## Playback
 
-Twenty embedded recordings from twelve credited sources. Fire now uses a longer natural fireplace excerpt. Fountains use a dedicated water recording and grow moderately louder with their footprint. The southern Toy Town pool uses a calm lake recording. All local sources fade with player distance.
+Twenty embedded recordings from twelve credited sources. Fire uses the Nox_Sound campfire loop with a 120 Hz low cut and preserved crackle dynamics. Fountains use a dedicated water recording and grow moderately louder with their footprint. The southern Toy Town pool uses a calm lake recording. All local sources fade with player distance.
 
 Gulls play brief 2.2 second passages, with 90 to 180 seconds of silence. Crickets play 3.2 second passages, with 75 to 150 seconds of silence and one quarter of the previous woodland and village gain. There is no continuous cricket loop. Recorded pitch and speed are unchanged.
 
@@ -31,9 +31,9 @@ Daytime uses birds and market sounds; nighttime removes those layers, lowers reg
 
 ## Exact excerpts and preparation
 
-The JSON manifests under assets/audio/ record source download URLs, source and output SHA256 hashes, durations and exact edits. Freesound provides the stream through its public HQ MP3 preview; the lake also uses its public HQ MP3 preview. Other new source recordings use original WAV downloads.
+The JSON manifests under assets/audio/ record source download URLs, source and output SHA256 hashes, durations and exact edits. Freesound provides the stream, lake and campfire through public HQ MP3 previews. Other new source recordings use original WAV downloads.
 
-New excerpts use constant level matching. Fire also uses documented transient compression to soften sharp crackles. Pitch and speed stay unchanged. Bed boundaries use a circular crossfade. Individual events have short edge fades. Peak and RMS measurements do not count as listening approval.
+New excerpts use constant level matching. Fire uses no dynamic compression. Pitch and speed stay unchanged. Bed boundaries use a circular crossfade. Individual events have short edge fades. Peak and RMS measurements do not count as listening approval.
 
 | Sample | Duration | Preparation |
 |---|---|---|
@@ -54,7 +54,7 @@ New excerpts use constant level matching. Fire also uses documented transient co
 | wind | 21.96 s | Trimmed, looped, volume matched and encoded to mono Opus. |
 | machine | 16.98 s | Trimmed, looped, volume matched and encoded to mono Opus. |
 | crickets | 15.48 s | Trimmed, looped, volume matched and encoded to mono Opus. |
-| fire | 52.80 s | Excerpt from 3s, up to 54s; mono; 90 Hz high-pass and 6500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. Crackle transient compression before level matching: threshold 0.003, ratio 6, attack 0.1 ms, release 80 ms, knee 4, makeup 1. |
+| fire | 12.65 s | Full recording; mono; 120 Hz high-pass and 9000 Hz low-pass; constant gain targeting -28 dBFS RMS with a -7 dBFS peak ceiling; 80 ms circular crossfade; 48 kHz Opus at 64 kbps VBR. No compression, pitch or speed change. |
 | fountain | 50.80 s | Excerpt from 5s, up to 52s; mono; 100 Hz high-pass and 7000 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
 | lake | 60.80 s | Excerpt from 25s, up to 62s; mono; 90 Hz high-pass and 4200 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
 

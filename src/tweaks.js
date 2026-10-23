@@ -98,7 +98,7 @@
   const TRANSLATIONS = {
   "es": {
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
-    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau.": "Iluminación de ventanas en Fog City, faros alineados en los coches orientados al sur y algunas ventanas y agujeros iluminados por la noche en Machine City. La densidad del clima predeterminada es 2x. Las zonas de Network no tienen nubes y la nieve de Holy Peaks se desvanece gradualmente al salir de la meseta norte.",
+    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance.": "Iluminación de ventanas en Fog City, faros alineados en los coches orientados al sur y algunas ventanas y agujeros iluminados por la noche en Machine City. La densidad del clima predeterminada es 2x. Las zonas de Network no tienen nubes y la nieve de Holy Peaks se desvanece gradualmente al salir de la meseta norte. Nueva grabación de hoguera con menos retumbo grave. Las fuentes dejan de oírse a menor distancia.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Reproducción limitada a 2,2 segundos con fundidos y pausas largas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado de volumen y codificado a Opus mono anteriormente. Se reproduce en pasajes de 3,2 segundos con fundidos y pausas largas, sin bucle continuo.",
     "Sound credits": "Créditos de sonido",
@@ -197,12 +197,12 @@
     "Keyboard shortcuts": "Atajos de teclado",
     "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.": "F10 o Ctrl+Shift+O: abrir o cerrar ajustes.\nAlt+F10: activar o desactivar atmósfera y sonidos ambientales.\nCtrl+F10: activar o desactivar solo sonidos ambientales.\nEscape: cerrar ajustes.",
     "Development only: Shift+F10 cycles real time, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Solo desarrollo: Shift+F10 alterna hora real, mañana, mediodía, tarde y noche con una transición de seis segundos. Ctrl+Alt+P muestra los contadores de diagnóstico.",
-    "Long excerpt, mono, filtering, softened crackle transients, volume matching, loop crossfade and Opus encoding. No pitch or speed change.": "Fragmento largo en mono, filtrado, chasquidos suavizados, ajuste de volumen, fundido de bucle y codificación Opus. Sin cambiar tono ni velocidad.",
+    "Mono, 120 Hz low cut, gentle high-frequency filtering, constant volume matching, short loop crossfade and Opus encoding. No compression, pitch or speed change.": "Mono, filtro de corte bajo a 120 Hz, filtrado suave de agudos, ajuste constante de volumen, fundido corto de bucle y codificación Opus. Sin compresión ni cambios de tono o velocidad.",
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado en bucle, ajustado de volumen y codificado en Opus mono."
   },
   "pt": {
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
-    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau.": "Iluminação nas janelas de Fog City, faróis alinhados nos carros voltados para o sul e algumas janelas e buracos iluminados à noite em Machine City. A densidade padrão do clima é 2x. As áreas de Network não têm nuvens, e a neve de Holy Peaks desaparece gradualmente além do planalto norte.",
+    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance.": "Iluminação nas janelas de Fog City, faróis alinhados nos carros voltados para o sul e algumas janelas e buracos iluminados à noite em Machine City. A densidade padrão do clima é 2x. As áreas de Network não têm nuvens, e a neve de Holy Peaks desaparece gradualmente além do planalto norte. Nova gravação de fogueira com menos ruído grave. O som das fontes desaparece a uma distância menor.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Reprodução limitada a 2,2 segundos com transições suaves e pausas longas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado em volume e codificado em Opus mono anteriormente. Reproduzido em trechos de 3,2 segundos com transições suaves e pausas longas, sem repetição contínua.",
     "Sound credits": "Créditos de som",
@@ -301,7 +301,7 @@
     "Keyboard shortcuts": "Atalhos de teclado",
     "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.": "F10 ou Ctrl+Shift+O: abrir ou fechar configurações.\nAlt+F10: ativar ou desativar atmosfera e sons ambientes.\nCtrl+F10: ativar ou desativar apenas sons ambientes.\nEscape: fechar configurações.",
     "Development only: Shift+F10 cycles real time, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Apenas desenvolvimento: Shift+F10 alterna horário real, manhã, meio-dia, entardecer e noite com uma transição de seis segundos. Ctrl+Alt+P mostra contadores de diagnóstico.",
-    "Long excerpt, mono, filtering, softened crackle transients, volume matching, loop crossfade and Opus encoding. No pitch or speed change.": "Trecho longo em mono, filtragem, estalos suavizados, ajuste de volume, transição do loop e codificação Opus. Sem mudar o tom ou a velocidade.",
+    "Mono, 120 Hz low cut, gentle high-frequency filtering, constant volume matching, short loop crossfade and Opus encoding. No compression, pitch or speed change.": "Mono, corte de graves em 120 Hz, filtragem suave de agudos, ajuste constante de volume, transição curta do loop e codificação Opus. Sem compressão nem alteração de tom ou velocidade.",
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado em loop, ajustado em volume e codificado em Opus mono."
   }
 };
@@ -924,7 +924,7 @@
         const height = Math.max(...ys) - Math.min(...ys) + 16;
         const size = Math.min(2, Math.max(width, height) / 32);
         fountains.push({ x: (Math.min(...xs)+Math.max(...xs)+16)/2,
-          y: (Math.min(...ys)+Math.max(...ys)+16)/2, range: 95 + size*45, level: 0.20 + size*0.10 });
+          y: (Math.min(...ys)+Math.max(...ys)+16)/2, range: 48 + size*32, level: 0.20 + size*0.10 });
       }
       return { fountains, lake };
     };
@@ -1919,7 +1919,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau."],
+  ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance."],
   ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
   [
     "0.1",

@@ -54,13 +54,13 @@
     "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
   },
   {
-    "title": "Feu de cheminee #2",
-    "author": "Joseph SARDIN",
+    "title": "Ambiance_Campfire_Loop_Stereo.wav",
+    "author": "Nox_Sound",
     "license": "CC0 1.0",
-    "source": "https://lasonotheque.org/feu-de-cheminee-s0031.html",
+    "source": "https://freesound.org/people/Nox_Sound/sounds/558967/",
     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
     "samples": "fire",
-    "changes": "Long excerpt, mono, filtering, softened crackle transients, volume matching, loop crossfade and Opus encoding. No pitch or speed change."
+    "changes": "Mono, 120 Hz low cut, gentle high-frequency filtering, constant volume matching, short loop crossfade and Opus encoding. No compression, pitch or speed change."
   },
   {
     "title": "Fountain of a Japanese Temple",

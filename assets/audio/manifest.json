@@ -188,14 +188,14 @@
   },
   {
     "name": "fire",
-    "source": "fire-long",
-    "duration": 52.8,
+    "source": "nox-campfire",
+    "duration": 12.6455,
     "loop": true,
-    "peakDB": -8.38,
-    "rmsDB": -27.99,
-    "bytes": 413998,
-    "sha256": "518db7333fca35ab5e2908b7d40eb13d9cb0f3a2c93cc4145ec324fa4c0de6aa",
-    "changes": "Excerpt from 3s, up to 54s; mono; 90 Hz high-pass and 6500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. Crackle transient compression before level matching: threshold 0.003, ratio 6, attack 0.1 ms, release 80 ms, knee 4, makeup 1."
+    "peakDB": -6.9,
+    "rmsDB": -30.25,
+    "bytes": 119894,
+    "sha256": "8723c22d18e77699dc463473c3934ff66257df4dc51f84214f4dc028e077e7fd",
+    "changes": "Full recording; mono; 120 Hz high-pass and 9000 Hz low-pass; constant gain targeting -28 dBFS RMS with a -7 dBFS peak ceiling; 80 ms circular crossfade; 48 kHz Opus at 64 kbps VBR. No compression, pitch or speed change."
   },
   {
     "name": "fountain",

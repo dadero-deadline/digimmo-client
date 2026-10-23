@@ -78,17 +78,17 @@
     "checked": "2026-10-21"
   },
   {
-    "id": "fire-long",
-    "title": "Feu de cheminee #2",
-    "author": "Joseph SARDIN",
-    "source": "https://lasonotheque.org/feu-de-cheminee-s0031.html",
-    "assetUrl": "https://lasonotheque.org/UPLOAD/bwf-fr/0031.wav",
-    "file": "fire-long2.wav",
+    "id": "nox-campfire",
+    "title": "Ambiance_Campfire_Loop_Stereo.wav",
+    "author": "Nox_Sound",
+    "source": "https://freesound.org/people/Nox_Sound/sounds/558967/",
+    "assetUrl": "https://cdn.freesound.org/previews/558/558967_9250976-hq.mp3",
+    "file": "fire-nox.mp3",
     "license": "CC0 1.0",
     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "checked": "2026-10-22",
-    "sha256": "02c65a7841b9617109cefcc59d9a3ae2a805486633f8a4101b588c1458242e91",
-    "downloadFormat": "Original source download"
+    "checked": "2026-10-23",
+    "sha256": "62ee6ffe5dbfa1f8a5bd50cd7cb5d28c7953659e1234847fd47bd0e33c4d7889",
+    "downloadFormat": "Freesound public HQ MP3 preview"
   },
   {
     "id": "fountain",
