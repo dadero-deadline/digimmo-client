@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.4 (unreleased)
+## 0.1.4
 
 - Quieter, shorter bird calls with longer pauses and varied passages. The continuous bird loop has been removed.
 - Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.
