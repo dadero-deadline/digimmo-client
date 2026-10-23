@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.1.3 (unreleased)
+## 0.1.3
 
 - New campfire recording with a gentle low cut; natural crackle dynamics are preserved. Fountains fade out over a shorter distance.
 - Weather defaults to 2x. Network and its dungeon variants have no clouds or cloud shadows. Holy Peaks snow fades naturally beyond the northern plateau.

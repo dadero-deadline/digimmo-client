@@ -10,7 +10,7 @@ New versions download in the background while you play. When an update is ready:
 
 Your login and settings are kept. The game never forces a restart. The client checks about 20 seconds after starting and every four hours.
 
-Version 0.1.2 requests a Windows notification when the download finishes; Windows may not display it. The upcoming 0.1.3 client also keeps an update notice visible inside the game, including after reloading. That notice is not included in 0.1.2.
+Version 0.1.2 requests a Windows notification when the download finishes; Windows may not display it. From 0.1.3 onward, the client also keeps an update notice visible inside the game, including after reloading. When upgrading from 0.1.2 to 0.1.3, only the old Windows notification is available. The in-game notice applies to future updates after 0.1.3 is installed.
 
 ### If the connection drops
 
