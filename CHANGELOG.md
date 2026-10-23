@@ -1,8 +1,14 @@
 # Changelog
 
+## 0.1.2
+
+- Settings and keyboard shortcut help fit inside the menu on smaller windows.
+- Client updates include the browser extension and userscript folders.
+- Smaller ZIP download. Users of the old standalone 0.1.1 EXE should switch to the ZIP once.
+
 ## 0.1.1
 
-- Download one ZIP, extract it and run DigiMMO.exe. No installation required.
+- Download the portable release asset, extract it and run DigiMMO.exe. No installation required. The repo's green Source code ZIP is not the game client.
 - The ZIP is a normal game folder, with the optional userscript and Chrome/Edge extension beside the EXE.
 - Automatic updates apply after you close the client, including existing Setup installations.
 

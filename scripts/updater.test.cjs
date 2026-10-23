@@ -71,7 +71,8 @@ test('packaged Windows clients update the folder they were started from',()=>{
   const updater=new EventEmitter();
   updater.checkForUpdates=async()=>null;
   const game=path.join(dir,'DigiMMO','DigiMMO.exe');
-  const result=startUpdates({app:{isPackaged:true},resourcesPath:dir,platform:'win32',execPath:game,loadUpdater:()=>updater,notify:()=>{}});
+  const app=Object.assign(new EventEmitter(),{isPackaged:true});
+  const result=startUpdates({app,resourcesPath:dir,platform:'win32',execPath:game,loadUpdater:()=>updater,notify:()=>{}});
   try{
     assert.equal(result.enabled,true);
     assert.equal(updater.installDirectory,path.join(dir,'DigiMMO'));

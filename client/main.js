@@ -15,12 +15,9 @@ const stateFile = () => path.join(app.getPath('userData'),'fenster.json');
 const loadState = () => { try { return JSON.parse(fs.readFileSync(stateFile(),'utf8')); } catch { return {}; } };
 const developmentArguments = [];
   // @development-start
-developmentArguments.push('--digimmo-userdata='+app.getPath('userData'));
-try {
-  const local = JSON.parse(fs.readFileSync(path.join(__dirname,'development.json'),'utf8'));
-  if(typeof local.testScript==='string'&&path.isAbsolute(local.testScript))
-    developmentArguments.push('--digimmo-test-script='+local.testScript);
-} catch {}
+// Development loads its freshly built bundle unless a test file is explicitly selected.
+if (process.env.DIGIMMO_DEV_TEST_SCRIPT && path.isAbsolute(process.env.DIGIMMO_DEV_TEST_SCRIPT))
+  developmentArguments.push('--digimmo-test-script='+process.env.DIGIMMO_DEV_TEST_SCRIPT);
   // @development-end
 let mainWindow;
 function createWindow() {

@@ -10,7 +10,7 @@ const root = path.resolve(__dirname, '..');
 const release = require('../package.json');
 const installer = process.argv.includes('--installer');
 const publicDir = path.join(root, 'dist/public');
-const output = path.join(root, 'dist', installer ? 'releases' : 'extensions', release.version);
+const output = installer ? path.resolve(root, '../release', release.version) : path.join(root, 'dist/extensions', release.version);
 
 function files(folder, prefix = '') {
   return fs.readdirSync(folder, { withFileTypes: true }).sort((a, b) => a.name.localeCompare(b.name, 'en')).flatMap(entry => {
@@ -26,7 +26,7 @@ async function archiveEntries(entries, destination) {
   const temporary = destination + '.tmp';
   const writing = pipeline(zip.outputStream, fs.createWriteStream(temporary));
   try {
-    for (const entry of entries) zip.addFile(entry.source, entry.name, {compress:!entry.name.endsWith('.exe')});
+    for (const entry of entries) zip.addFile(entry.source, entry.name);
     zip.end();
     await writing;
     fs.renameSync(temporary, destination);
@@ -44,14 +44,11 @@ async function main() {
   const names = [];
   if (installer) {
     const unpacked=path.join(root,'dist/installer/win-unpacked');
-    const extension=path.join(publicDir,'extension-chromium');
     const marker=path.join(root,'dist/installer/zip-installed');
     fs.writeFileSync(marker,'zip');
     await archiveEntries([
       ...files(unpacked).filter(name=>name.replaceAll('\\','/')!=='resources/digimmo-installed').map(name=>({source:path.join(unpacked,name),name})),
-      {source:marker,name:'resources/digimmo-installed'},
-      {source:path.join(publicDir,'digimmo-tweaks.user.js'),name:'scripts/digimmo-tweaks.user.js'},
-      ...files(extension).map(name=>({source:path.join(extension,name),name:'extension/'+name}))
+      {source:marker,name:'resources/digimmo-installed'}
     ],path.join(output,'DigiMMO.zip'));
     names.push('DigiMMO.zip');
     const setup = `DigiMMO-Setup-${release.version}-x64.exe`;
@@ -74,6 +71,9 @@ async function main() {
     return hash + '  ' + name;
   });
   fs.writeFileSync(path.join(output, 'SHA256SUMS.txt'), sums.join('\n') + '\n');
+  const expected=[...names,'SHA256SUMS.txt'].sort();
+  if(JSON.stringify(fs.readdirSync(output).sort())!==JSON.stringify(expected))
+    throw new Error('Unexpected files in release output; inspect before publishing: '+output);
   console.log(`Prepared ${names.length} files plus SHA256SUMS.txt in ${output}. Nothing uploaded or installed.`);
 }
 

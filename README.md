@@ -6,13 +6,17 @@ An unofficial desktop client and browser extension for [DigiMMO](https://play.di
 
 ## [Download DigiMMO.zip](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO.zip)
 
-1. Download the ZIP.
+Use the release asset **DigiMMO.zip**. The green repository button downloads the source archive, not the game client.
+
+1. Download **DigiMMO.zip**.
 2. Extract it to a folder.
 3. Open **DigiMMO.exe** and play.
 
 The extracted folder is the game: **DigiMMO.exe** plus its supporting files, with optional `scripts` and `extension` folders beside it.
 
-**Windows 64-bit. No installation required.** Client updates download automatically and apply after you close it. Your settings are kept. The EXE is unsigned. [Update details](UPDATES.md) · [Release history](https://github.com/dadero-deadline/digimmo-client/releases)
+**Windows 64-bit. Extract and play.** Client updates download automatically and apply after you close it. Your settings are kept. The EXE is unsigned. [Update details](UPDATES.md) · [Release history](https://github.com/dadero-deadline/digimmo-client/releases)
+
+Using the old standalone `DigiMMO-0.1.1-x64.exe`? Switch to this ZIP once; its experimental updater is no longer supported.
 
 ## Prefer your browser?
 
@@ -31,7 +35,6 @@ Press **F10** for settings, **Alt+F10** to toggle atmosphere and **Ctrl+F10** to
 - Tree crowns can split or distort; some trees move too much of the trunk or remain still.
 - Some light placements and green sludge glow need correction. Cloud exclusions, snow transitions and particle density also need work.
 - Campfire audio needs improvement. Some birds and city voices repeat too often; fountains remain too loud at a distance and water ambience coverage is incomplete.
-- Shortcut hints can overflow the World settings tab.
 
 Report the map, conditions and steps needed to reproduce a problem through [Issues](https://github.com/dadero-deadline/digimmo-client/issues).
 
@@ -50,7 +53,7 @@ assets/     Audio recordings and artwork
 scripts/    Build and verification tools
 ```
 
-Requires Node.js 22.12 or newer, npm and Windows. Run `npm ci`, then `npm run package:release`. Downloads are generated in `dist/releases/<version>/`. The build does not install or publish anything. See [Contributing](CONTRIBUTING.md) for development.
+Requires Node.js 22.12 or newer, npm and Windows. Run `npm ci`, then `npm start` to build and launch the development client from `dist/development/client`. `npm run package:release` produces the five release files in `../release/<version>/`. The build does not install or publish anything. See [Contributing](CONTRIBUTING.md) for development.
 
 </details>
 

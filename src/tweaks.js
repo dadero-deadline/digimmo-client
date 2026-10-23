@@ -97,6 +97,7 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
+    "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Reproducción limitada a 2,2 segundos con fundidos y pausas largas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado de volumen y codificado a Opus mono anteriormente. Se reproduce en pasajes de 3,2 segundos con fundidos y pausas largas, sin bucle continuo.",
     "Sound credits": "Créditos de sonido",
@@ -199,6 +200,7 @@
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado en bucle, ajustado de volumen y codificado en Opus mono."
   },
   "pt": {
+    "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Reprodução limitada a 2,2 segundos com transições suaves e pausas longas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado em volume e codificado em Opus mono anteriormente. Reproduzido em trechos de 3,2 segundos com transições suaves e pausas longas, sem repetição contínua.",
     "Sound credits": "Créditos de som",
@@ -1903,6 +1905,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
+  ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
   [
     "0.1",
     "Soft lighting, object shadows, moving treetops and water reflections. Regional day and night ambience with wildlife, fire, nearby fountains and water. Larger Digimon have wider light, moonlight shadows are softer, and atmosphere starts as soon as the map is ready."
@@ -2083,20 +2086,21 @@
     const css = document.createElement('style');
     css.textContent = `
       #digimmo-panel{position:fixed;inset:4% auto auto 50%;transform:translateX(-50%);width:min(760px,94vw);max-height:90vh;
+        display:flex;flex-direction:column;overflow:hidden;box-sizing:border-box;
         z-index:2147483646;background:#0c1734;color:#eaf1ff;border:3px solid #e8c46b;
         box-shadow:0 0 0 3px #142850,0 0 0 6px #081126,8px 9px 0 #030714;
         font-family:'Courier New',monospace;font-size:13px;image-rendering:pixelated;}
       #digimmo-panel[hidden]{display:none!important}#digimmo-panel *,#digimmo-panel *:before{box-sizing:border-box}
       #digimmo-panel .digimmo-head{display:flex;align-items:center;justify-content:space-between;padding:13px 16px;
-        background:#162d55;border-bottom:3px solid #e8c46b}
+        background:#162d55;border-bottom:3px solid #e8c46b;flex-shrink:0}
       #digimmo-panel h2{font:bold 20px 'Courier New',monospace;letter-spacing:1px;color:#ffe198;margin:0}
       #digimmo-panel button{background:#203a64;color:#ffe198;border:2px solid #8098c0;
         font:inherit;cursor:pointer;padding:7px 12px}
       #digimmo-panel button:hover,#digimmo-panel button:focus-visible{border-color:#ffe198;outline:1px solid #ffe198}
-      #digimmo-panel .digimmo-tabs{display:flex;gap:4px;padding:12px 12px 0;background:#0c1734}
-      #digimmo-panel .digimmo-tabs button{flex:1;font-weight:bold}
+      #digimmo-panel .digimmo-tabs{display:flex;flex-wrap:wrap;flex-shrink:0;gap:4px;padding:12px 12px 0;background:#0c1734}
+      #digimmo-panel .digimmo-tabs button{flex:1;min-width:120px;font-weight:bold}
       #digimmo-panel .digimmo-tabs button[aria-selected=true]{background:#e8c46b;color:#101a32;border-color:#e8c46b}
-      #digimmo-panel .digimmo-content{overflow:auto;max-height:calc(90vh - 176px);padding:10px 14px 20px;scrollbar-color:#dabb69 #142850}
+      #digimmo-panel .digimmo-content{overflow:auto;min-height:0;flex:1 1 auto;padding:10px 14px 20px;scrollbar-color:#dabb69 #142850}
       #digimmo-panel .digimmo-section{border:2px solid #314f7a;background:#102040;margin:12px 0;padding:12px 14px}
       #digimmo-panel details{margin-top:12px;border-top:1px solid #48658b;padding-top:12px}
       #digimmo-panel summary{cursor:pointer;color:#ffe198;padding:4px 0;font-weight:bold}
@@ -2110,8 +2114,13 @@
       #digimmo-panel output{min-width:53px;text-align:right;color:#fce298;font-variant-numeric:tabular-nums}
       #digimmo-panel select{width:100%;padding:5px;background:#172e54;color:#fff;border:2px solid #607eaf;font:inherit}
       #digimmo-panel small{grid-column:1/-1;opacity:.67;font-size:11px}
-      #digimmo-panel .digimmo-foot{display:flex;justify-content:space-between;align-items:center;gap:12px;
-        padding:10px 14px;border-top:2px solid #314f7a;color:#a9bfdd;font-size:11px}
+      #digimmo-panel .digimmo-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;
+        flex-shrink:0;max-height:45vh;overflow:auto;padding:10px 14px;border-top:2px solid #314f7a;color:#a9bfdd;font-size:11px}
+      #digimmo-panel .digimmo-foot details{flex:1 1 280px;min-width:0;max-height:32vh;overflow:auto}
+      #digimmo-panel .digimmo-foot summary,#digimmo-panel .digimmo-foot p{overflow-wrap:anywhere;word-break:break-word}
+      #digimmo-panel .digimmo-foot p{margin:6px 0 0;white-space:pre-line;line-height:1.45}
+      #digimmo-panel .digimmo-foot .digimmo-actions{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:8px;min-width:0;margin-left:auto}
+      #digimmo-panel .digimmo-foot .digimmo-actions button{white-space:nowrap}
       #digimmo-panel .digimmo-foot #digimmo-reload{color:#13203e;background:#ffe198;border-color:#ffe198}
       #digimmo-panel .digimmo-changelog{white-space:pre-wrap;word-break:break-word;line-height:1.6;font:13px/1.6 'Courier New',monospace}
       #digimmo-toast{position:fixed;top:14px;left:50%;transform:translateX(-50%);z-index:2147483647;
@@ -2122,8 +2131,10 @@
         padding:14px;font:13px/1.5 'Courier New',monospace;box-shadow:4px 4px 0 #030819}
       #digimmo-newversion button{margin-top:8px;background:#f5d483;color:#12254a;border:0;padding:8px;cursor:pointer;font:inherit}
       @media(max-width:570px){#digimmo-panel{top:2%;max-height:96vh;font-size:12px}
-        #digimmo-panel .digimmo-content{max-height:calc(96vh - 176px)}
-        #digimmo-panel .digimmo-row{grid-template-columns:1fr 1fr}}
+        #digimmo-panel .digimmo-row{grid-template-columns:1fr 1fr}
+        #digimmo-panel .digimmo-foot{flex-direction:column;flex-wrap:nowrap;align-items:stretch}
+        #digimmo-panel .digimmo-foot details{flex:1 1 auto;min-height:0;max-height:none}
+        #digimmo-panel .digimmo-foot .digimmo-actions{flex-shrink:0;justify-content:flex-start}}
     `;
     document.head.append(css);
     menuRoot = document.createElement('div'); menuRoot.id = 'digimmo-panel'; menuRoot.hidden = true;
@@ -2172,7 +2183,7 @@
       renderTab();
       toast(tr('Settings reset'));
     });
-    const buttons = document.createElement('span'); buttons.style.cssText = 'display:flex;gap:8px';
+    const buttons = document.createElement('span'); buttons.className = 'digimmo-actions';
     buttons.append(resetAll, reload);
     footer.append(keys, buttons); menuRoot.append(footer);
     menuRoot.addEventListener('pointerdown', (e) => e.stopPropagation());

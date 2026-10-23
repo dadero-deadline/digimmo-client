@@ -31,6 +31,12 @@ for(const file of ['LICENSE','UPDATES.md','SOUND_CREDITS.md','KEYBOARD.md','CHAN
 assert.equal(feed.provider,'github');assert.equal(feed.owner,'dadero-deadline');assert.equal(feed.repo,'digimmo-client');
 assert(!feed.token&&!feed.private&&!feed.requestHeaders);
 assert(!fs.existsSync(path.join(resources,'digimmo-installed')),'Unpacked output must remain outside updates');
+assert.deepEqual(fs.readFileSync(path.join(output,'win-unpacked/scripts/digimmo-tweaks.user.js')),fs.readFileSync(path.join(root,'dist/public/digimmo-tweaks.user.js')));
+const extension=path.join(root,'dist/public/extension-chromium');
+for(const entry of fs.readdirSync(extension,{recursive:true})){
+  const source=path.join(extension,entry);
+  if(fs.statSync(source).isFile())assert.deepEqual(fs.readFileSync(path.join(output,'win-unpacked/extension',entry)),fs.readFileSync(source),'Installer must retain browser file: '+entry);
+}
 assert(fs.readFileSync(path.join(root,'client/installer.nsh'),'utf8').includes('$INSTDIR\\resources\\digimmo-installed'));
 const icon=Data.IconFile.from(fs.readFileSync(path.join(root,'client/icon.ico')));
 const iconHash=item=>crypto.createHash('sha256').update(Buffer.from(item.isRaw()?item.bin:item.generate())).digest('hex');

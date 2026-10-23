@@ -2,15 +2,19 @@
 
 ## Windows client
 
-Download DigiMMO.zip, extract it and run DigiMMO.exe. New versions download in the background. Close the client normally to finish the update, then open the same EXE next time. Updates replace files in that folder. Your settings stay in place and play is never interrupted by a forced restart.
+Download [DigiMMO.zip](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO.zip), extract it into its own folder and open DigiMMO.exe. New versions download in the background. When an update is ready, close the client normally and let it finish before opening the same EXE again. Your settings stay in place and the game never forces a restart.
+
+Updates use the standard Windows installer silently in that folder. After the first update, the client also appears in Windows Installed Apps. Keep one active copy. The included `scripts` and `extension` folders are supplied again with each update.
 
 The client checks shortly after starting and every four hours. Drafts, prereleases and changes in forks are not offered. Development clients do not use the public update feed.
 
 If a download is interrupted, the current version keeps working and a later check retries. Completed downloads are verified and cached. If you start offline, the current version still opens; the cached update is used after the next successful release check. Windows shutdown postpones updates.
 
-Keep the extracted folder somewhere you can write to, such as your Downloads or Games folder. If an update cannot replace the EXE, your current copy stays in place. You can also download a new ZIP and extract it over the old files while the client is closed.
+Keep the game in its own writable folder, such as Games/DigiMMO. If an update fails, close the client and extract a fresh ZIP into that folder. Login and game settings are stored separately from the program files.
 
 Existing Setup installations continue to receive automatic updates. You do not need to switch them to the ZIP version.
+
+The old standalone `DigiMMO-0.1.1-x64.exe` used an unfinished updater. Replace it once with the ZIP version. Opening `DigiMMO.exe` inside the extracted folder keeps the existing profile.
 
 ## Browser extension and userscript
 

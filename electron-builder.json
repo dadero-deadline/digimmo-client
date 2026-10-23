@@ -14,6 +14,10 @@
     {"from": "dist/public/KEYBOARD.md", "to": "KEYBOARD.md"},
     {"from": "dist/public/CHANGELOG.md", "to": "CHANGELOG.md"}
   ],
+  "extraFiles": [
+    {"from": "dist/public/digimmo-tweaks.user.js", "to": "scripts/digimmo-tweaks.user.js"},
+    {"from": "dist/public/extension-chromium", "to": "extension"}
+  ],
   "asar": true,
   "npmRebuild": false,
   "win": {"target": [{"target": "nsis", "arch": ["x64"]}], "icon": "client/icon.ico"},
