@@ -3,12 +3,12 @@
     "name": "birds",
     "source": "birds",
     "duration": 63.8,
-    "loop": true,
+    "loop": false,
     "peakDB": -7.38,
     "rmsDB": -25.99,
     "bytes": 456052,
     "sha256": "8bf083768be7fd0498b5ed8a3d99820d9e7f0ae15596c3a593c21359098dc930",
-    "changes": "Excerpt from 30s, up to 65s; mono; 250 Hz high-pass and 8500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+    "changes": "Excerpt from 30s, up to 65s; mono; 250 Hz high-pass and 8500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. Playback uses varied 3.2 second passages with fades and 55 to 110 second pauses; no continuous loop."
   },
   {
     "name": "chirp1",
@@ -19,7 +19,7 @@
     "rmsDB": -24.99,
     "bytes": 58875,
     "sha256": "d933d04d49570ec974e268fb5f55419776527a6cf4f8237d4da36b8e408d2e76",
-    "changes": "Excerpt from 110s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+    "changes": "Excerpt from 110s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. Playback uses varied 3.2 second passages with fades and 55 to 110 second pauses; no continuous loop."
   },
   {
     "name": "chirp2",
@@ -30,7 +30,7 @@
     "rmsDB": -24.97,
     "bytes": 59112,
     "sha256": "4cd892b5f0c8db6fb110e6eb3812f3a1a55369a55402096ba9a3746bb94690a6",
-    "changes": "Excerpt from 150s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+    "changes": "Excerpt from 150s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. Playback uses varied 3.2 second passages with fades and 55 to 110 second pauses; no continuous loop."
   },
   {
     "name": "chirp3",
@@ -41,7 +41,7 @@
     "rmsDB": -27.09,
     "bytes": 59027,
     "sha256": "0f7a9c641e81e6303aaada9f27fb08bc9c2b54c5be11e9ca0b2566e226250c1d",
-    "changes": "Excerpt from 190s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+    "changes": "Excerpt from 190s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. Playback uses varied 3.2 second passages with fades and 55 to 110 second pauses; no continuous loop."
   },
   {
     "name": "gull1",
@@ -67,14 +67,14 @@
   },
   {
     "name": "town",
-    "source": "market",
-    "duration": 42.8,
+    "source": "distant-city",
+    "duration": 68.8,
     "loop": true,
-    "peakDB": -8.54,
-    "rmsDB": -27.0,
-    "bytes": 313664,
-    "sha256": "78ff060547f5b532c3730903925f4a94bb3ebd4254635c3f40798c8b34915aa3",
-    "changes": "Excerpt from 2s, up to 44s; mono; 250 Hz high-pass and 2400 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+    "peakDB": -13.6,
+    "rmsDB": -29.0,
+    "bytes": 481149,
+    "sha256": "de1b73c83d4e4a9490cc1a862636b9ad2eb001feae97a4d26aacea3b869fd689",
+    "changes": "Excerpt from 20s, 70s; mono; 120 Hz high-pass and 3000 Hz low-pass; constant gain targeting -29 dBFS RMS with a -9 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No compression, pitch or speed change."
   },
   {
     "name": "stream",

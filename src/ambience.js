@@ -11,16 +11,16 @@
       for (const light of fxLights) if (light.kind === 'furnace') firePos.push(light);
       const soundProfile = (() => {
         const m = mapText.toLowerCase();
-        const p = { name: 'quiet', wind: 0.045, birds: 0, crickets: 0, machine: 0, town: 0, calls: 0, gulls: isCoast ? 0.20 : 0 };
-        if (isNature) Object.assign(p, { name: 'woodland', wind: 0.07, birds: 0.12, crickets: 0.04, calls: 0.28 });
+        const p = { name: 'quiet', wind: 0.045, crickets: 0, machine: 0, town: 0, calls: 0, gulls: isCoast ? 0.20 : 0 };
+        if (isNature) Object.assign(p, { name: 'woodland', wind: 0.07, crickets: 0.04, calls: 0.14 });
         if (windyMap) p.wind = 0.18;
-        if (/bay|shore|sea(?:\b|_)/.test(m)) Object.assign(p, { name: 'coast', wind: 0.14, birds: 0, crickets: 0.008, calls: 0 });
-        if (/savanna|desert|canyon|dune|mesa/.test(m)) Object.assign(p, { name: 'drylands', wind: 0.22, birds: 0.025, crickets: 0.02, calls: 0.10 });
-        if (/village|toy.?town/.test(m)) Object.assign(p, { name: 'village', wind: 0.05, birds: 0.06, crickets: 0.0225, calls: 0.15, town: 0.10 });
-        if (/odaiba|highton|fog.?city|plaza|street/.test(m)) Object.assign(p, { name: 'city', wind: 0.04, birds: 0.015, crickets: 0, calls: 0, town: 0.17 });
-        if (/factor|factory|fortress|spiral.?city/.test(m)) Object.assign(p, { name: 'industry', wind: 0.035, birds: 0, crickets: 0, calls: 0, machine: 0.16, town: 0 });
-        if (/freeze|snow|ice|holy|summit|glacier/.test(m)) Object.assign(p, { name: 'highlands', wind: 0.24, birds: 0, crickets: 0, calls: 0, town: 0, machine: 0 });
-        if (/network|realm|dream|apocalymon|darkness|keep|castle/.test(m)) Object.assign(p, { name: 'remote', wind: 0.045, birds: 0, crickets: 0, calls: 0, town: 0, machine: 0, gulls: 0 });
+        if (/bay|shore|sea(?:\b|_)/.test(m)) Object.assign(p, { name: 'coast', wind: 0.14, crickets: 0.008, calls: 0 });
+        if (/savanna|desert|canyon|dune|mesa/.test(m)) Object.assign(p, { name: 'drylands', wind: 0.22, crickets: 0.02, calls: 0.08 });
+        if (/village|toy.?town/.test(m)) Object.assign(p, { name: 'village', wind: 0.05, crickets: 0.0225, calls: 0.08, town: 0 });
+        if (/odaiba|highton|fog.?city|plaza|street/.test(m)) Object.assign(p, { name: 'city', wind: 0.05, crickets: 0, calls: 0, town: 0.13 });
+        if (/factor|factory|fortress|spiral.?city/.test(m)) Object.assign(p, { name: 'industry', wind: 0.035, crickets: 0, calls: 0, machine: 0.16, town: 0 });
+        if (/freeze|snow|ice|holy|summit|glacier/.test(m)) Object.assign(p, { name: 'highlands', wind: 0.24, crickets: 0, calls: 0, town: 0, machine: 0 });
+        if (/network|realm|dream|apocalymon|darkness|keep|castle/.test(m)) Object.assign(p, { name: 'remote', wind: 0.045, crickets: 0, calls: 0, town: 0, machine: 0, gulls: 0 });
         return p;
       })();
       const stats = { lights: lights.length, water: water.length, runningWater: runningWater.length,
@@ -49,9 +49,9 @@
         amb.ctx = ctx; amb.nodes = []; amb.voices = new Set(); amb.sv = null;
         amb.samples = ensureSamples(ctx); amb.lastUpdate = -Infinity; amb.lastSample = {};
         amb.nextWave = ctx.currentTime + 3 + Math.random() * 4;
-        amb.nextSampleChirp = ctx.currentTime + 8 + Math.random() * 12;
+        amb.nextBird = ctx.currentTime + 30 + Math.random() * 30;
         amb.nextGull = ctx.currentTime + 45 + Math.random() * 45;
-        amb.nextBird = ctx.currentTime + 12; amb.nextCricket = ctx.currentTime + 35 + Math.random() * 35; amb.nextCrackle = ctx.currentTime;
+        amb.nextCricket = ctx.currentTime + 35 + Math.random() * 35; amb.nextCrackle = ctx.currentTime;
         try {
           const out = ambNode('createGain'); out.gain.value = 0; out.connect(dest); amb.out = out;
           amb.groups = {};
@@ -124,7 +124,7 @@
         src.connect(g); g.connect(p); p.connect(amb.groups[group]); src.start(0, Math.random() * buffer.duration);
         amb.sv[name] = { g, p };
       };
-      const sampleOnce = (name, group, gain, pan, t, location = null, maxDuration = Infinity) => {
+      const sampleOnce = (name, group, gain, pan, t, location = null, maxDuration = Infinity, startOffset = 0) => {
         const buffer = amb.samples.buffers[name];
         if (!buffer || gain <= 0.0005) return 0;
         const v = transient(group);
@@ -132,6 +132,7 @@
           const src = v.node('createBufferSource'); src.buffer = buffer;
           // Keep real voices at their recorded pitch and pace.
           const duration = Math.min(buffer.duration, maxDuration);
+          const offset = Math.max(0, Math.min(startOffset, buffer.duration - duration));
           v.location = location; v.baseGain = gain; v.end = t + duration;
           const me = ownPos();
           const initial = location ? (me ? falloff(Math.hypot(location.x - me.x, location.y - me.y), location.range) *
@@ -144,7 +145,7 @@
           envelope.gain.linearRampToValueAtTime(1, t + Math.min(0.12, duration / 4));
           envelope.gain.setValueAtTime(1, t + Math.max(0.12, duration - 0.4));
           envelope.gain.linearRampToValueAtTime(0, t + duration);
-          src.connect(envelope); envelope.connect(v.g); src.onended = v.release; src.start(t, 0, duration);
+          src.connect(envelope); envelope.connect(v.g); src.onended = v.release; src.start(t, offset, duration);
           return duration;
         } catch (error) { v.release(); throw error; }
       };
@@ -188,7 +189,7 @@
         if (!amb.sv && amb.samples?.ready) {
           amb.sv = {};
           for (const [name, group, needed] of [
-            ['birds', 'birds', P.birds], ['wind', 'wind', P.wind],
+            ['wind', 'wind', P.wind],
             ['machine', 'wind', P.machine], ['town', 'wind', P.town],
             ['waterfall', 'water', waterfallPos.length], ['stream', 'water', streamPos.length],
             ['fountain', 'water', localWater.fountains.length], ['lake', 'water', localWater.lake.length],
@@ -215,10 +216,10 @@
           if (sound.gain > fountain.gain) fountain = sound;
         }
         const nightWind = ({ woodland: 0.65, village: 0.6, city: 0.65, coast: 0.85, drylands: 0.6, highlands: 0.8 })[P.name] ?? 0.8;
-        const windGain = P.wind * (0.7 + 0.3 * gust) * (nightWind + (1 - nightWind) * dayMix);
-        set('wind', windGain); set('birds', P.birds * dayMix);
-        // Market chatter belongs to the day. At night, quiet wind and rare
-        // insects remain; water, fire and indoor machinery stay local.
+        // Cities crossfade daytime traffic into quiet wind at night.
+        const windMix = P.name === 'city' ? 1 - dayMix : nightWind + (1 - nightWind) * dayMix;
+        const windGain = P.wind * (0.7 + 0.3 * gust) * windMix;
+        set('wind', windGain);
         set('machine', P.machine); set('town', P.town * dayMix);
         set('waterfall', 0.62 * fall.gain, fall.pan); set('stream', 0.40 * creek.gain, creek.pan);
         set('fountain', fountain.gain, fountain.pan); set('lake', 0.28 * lake.gain, lake.pan);
@@ -232,24 +233,33 @@
           v.p.pan.setTargetAtTime(Math.max(-0.85, Math.min(0.85, (loc.x - me.x) / loc.range)), t, 0.18);
         }
         const waves = ['wave1', 'wave2', 'wave3', 'wave4'].filter(name => buffers[name]);
-        const calls = ['chirp1', 'chirp2', 'chirp3'].filter(name => buffers[name]);
+        const calls = ['birds', 'chirp1', 'chirp2', 'chirp3'].filter(name => buffers[name]);
         const gulls = ['gull1', 'gull2'].filter(name => buffers[name]);
         const audible = !muted && AMBIENT.volume > 0;
         const play = (kind, names, group, gain, location, pauseMin, pauseSpread, maxDuration = Infinity) => {
           const name = chooseSample(kind, names);
           if (!name) return t + pauseMin;
-          const duration = sampleOnce(name, group, gain, location.pan || 0, t + 0.04, location, maxDuration);
+          const offset = kind === 'bird' ? Math.random() * Math.max(0, buffers[name].duration - maxDuration) : 0;
+          const duration = sampleOnce(name, group, gain, location.pan || 0, t + 0.04, location, maxDuration, offset);
           return t + 0.04 + duration + pauseMin + Math.random() * pauseSpread;
         };
         if (t >= amb.nextWave) {
           amb.nextWave = audible && SETTINGS.ambientWaves > 0 && shore.gain > 0.025 && waves.length
             ? play('wave', waves, 'waves', 0.42, shore, 5, 9) : t + 2;
         }
-        if (t >= amb.nextSampleChirp) {
+        // Birds have one schedule and no continuous bed underneath their calls.
+        if (t >= amb.nextBird) {
           const nearby = treeGroups.filter(tree => Math.hypot(tree.x - me.x, tree.y - me.y) < 160);
           const tree = nearby[(Math.random() * nearby.length) | 0];
-          amb.nextSampleChirp = audible && SETTINGS.ambientBirds > 0 && P.calls > 0 && dayMix > 0.5 && calls.length && tree
-            ? play('bird', calls, 'birds', P.calls, { x: tree.x, y: tree.y, range: 240, daytime: true }, 20, 30) : t + 6;
+          amb.nextBird = t + 6;
+          if (audible && SETTINGS.ambientBirds > 0 && P.calls > 0 && dayMix > 0.5 && tree) {
+            if (calls.length) amb.nextBird = play('bird', calls, 'birds', P.calls,
+              { x: tree.x, y: tree.y, range: 180, daytime: true }, 55, 55, 3.2);
+            else if (amb.samples?.ready) {
+              ambChirp(t + 0.02, Math.max(-0.85, Math.min(0.85, (tree.x - me.x) / 180)));
+              amb.nextBird = t + 55 + Math.random() * 55;
+            }
+          }
         }
         if (t >= amb.nextGull) {
           amb.nextGull = audible && SETTINGS.ambientBirds > 0 && P.gulls > 0 && dayMix > 0.4 && shore.gain > 0.04 && gulls.length
@@ -264,9 +274,6 @@
         amb.water.g.gain.setTargetAtTime(0.035 * missing.gain, t, 0.3); amb.water.p.pan.setTargetAtTime(missing.pan, t, 0.25);
         amb.sea.g.gain.setTargetAtTime(sv.sea ? 0 : 0.018 * shore.gain, t, 0.6);
         amb.sea.p.pan.setTargetAtTime(shore.pan * 0.6, t, 0.25);
-        if (audible && !sv.birds && !calls.length && P.calls > 0 && dayMix > 0.5 && t >= amb.nextBird) {
-          ambChirp(t + 0.02, Math.random() - 0.5); amb.nextBird = t + 20 + Math.random() * 30;
-        }
         if (audible && SETTINGS.ambientCrickets > 0 && P.crickets > 0 && nightMix > 0.5 && t >= amb.nextCricket) {
           if (buffers.crickets) {
             const angle = Math.random() * Math.PI * 2;

@@ -26,17 +26,17 @@
     "checked": "2026-10-21"
   },
   {
-    "id": "market",
-    "title": "Flea #2",
-    "author": "Joseph SARDIN",
+    "title": "AMB-Night,Quiet,DistantTraffic,Lisbon,Portugal",
+    "author": "soundandmelodies",
+    "source": "https://freesound.org/people/soundandmelodies/sounds/776263/",
+    "assetUrl": "https://cdn.freesound.org/previews/776/776263_10924423-hq.mp3",
     "license": "CC0 1.0",
     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
-    "source": "https://bigsoundbank.com/flea-2-s0131.html",
-    "assetUrl": "https://bigsoundbank.com/UPLOAD/bwf-en/0131.wav",
-    "downloadFormat": "Original source download",
-    "file": "market.wav",
-    "sha256": "b508161492294d742ae69ac2a5fb0580426685439cb8b3b3eabd6d5502e7efb1",
-    "checked": "2026-10-21"
+    "checked": "2026-10-23",
+    "sha256": "4387081fef97716e3bfe823461a5907a2364455477bb339adf351aa6a9ae275c",
+    "id": "distant-city",
+    "file": "city-distant.mp3",
+    "downloadFormat": "Freesound public HQ MP3 preview"
   },
   {
     "id": "harbor",

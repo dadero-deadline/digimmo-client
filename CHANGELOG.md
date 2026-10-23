@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.1.4 (unreleased)
+
+- Quieter, shorter bird calls with longer pauses and varied passages. The continuous bird loop has been removed.
+- Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.
+
 ## 0.1.3
 
 - New campfire recording with a gentle low cut; natural crackle dynamics are preserved. Fountains fade out over a shorter distance.

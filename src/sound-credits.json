@@ -6,7 +6,7 @@
     "source": "https://opengameart.org/content/park-ambiences",
     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
     "samples": "birds, chirp1, chirp2, chirp3",
-    "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
+    "changes": "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop."
   },
   {
     "title": "Stream, Water, C.wav",
@@ -18,10 +18,10 @@
     "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."
   },
   {
-    "title": "Flea #2",
-    "author": "Joseph SARDIN",
+    "title": "AMB-Night,Quiet,DistantTraffic,Lisbon,Portugal",
+    "author": "soundandmelodies",
     "license": "CC0 1.0",
-    "source": "https://bigsoundbank.com/flea-2-s0131.html",
+    "source": "https://freesound.org/people/soundandmelodies/sounds/776263/",
     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
     "samples": "town",
     "changes": "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding."

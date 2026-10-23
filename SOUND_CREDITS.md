@@ -8,9 +8,9 @@ Recordings are embedded in the userscript. Playing them makes no download reques
 
 | Samples | Recording and author | License | Changes |
 |---|---|---|---|
-| birds, chirp1, chirp2, chirp3 | [Park ambiences](https://opengameart.org/content/park-ambiences) by Thimras | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
+| birds, chirp1, chirp2, chirp3 | [Park ambiences](https://opengameart.org/content/park-ambiences) by Thimras | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop. |
 | stream | [Stream, Water, C.wav](https://freesound.org/people/InspectorJ/sounds/339324/) by InspectorJ (www.jshaw.co.uk) | [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
-| town | [Flea #2](https://bigsoundbank.com/flea-2-s0131.html) by Joseph SARDIN | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
+| town | [AMB-Night,Quiet,DistantTraffic,Lisbon,Portugal](https://freesound.org/people/soundandmelodies/sounds/776263/) by soundandmelodies | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
 | gull1, gull2 | [Gulls on the Harbor](https://bigsoundbank.com/gulls-on-the-harbor-s2573.html) by Joseph SARDIN | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses. |
 | sea, wave1, wave2, wave3, wave4 | [Beach: Small Waves](https://bigsoundbank.com/beach-small-waves-s0265.html) by DenisChardonnet | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
 | waterfall | [Small dam](https://bigsoundbank.com/small-dam-s0871.html) by Joseph SARDIN | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
@@ -25,13 +25,15 @@ Recordings are embedded in the userscript. Playing them makes no download reques
 
 Twenty embedded recordings from twelve credited sources. Fire uses the Nox_Sound campfire loop with a 120 Hz low cut and preserved crackle dynamics. Fountains use a dedicated water recording and grow moderately louder with their footprint. The southern Toy Town pool uses a calm lake recording. All local sources fade with player distance.
 
+Birds use one schedule of quieter 3.2 second passages near trees, with a 30 to 60 second initial wait and 55 to 110 seconds of silence after each. Recording and excerpt offset vary; no continuous bird bed plays underneath.
+
 Gulls play brief 2.2 second passages, with 90 to 180 seconds of silence. Crickets play 3.2 second passages, with 75 to 150 seconds of silence and one quarter of the previous woodland and village gain. There is no continuous cricket loop. Recorded pitch and speed are unchanged.
 
-Daytime uses birds and market sounds; nighttime removes those layers, lowers regional wind and allows sparse quiet crickets. Fire, fountains and other local water remain audible nearby at either time.
+Cities use distant traffic during the day and quiet wind at night, with a smooth transition between them. Villages retain wind and nature sounds. Birds are daytime only; nighttime lowers regional wind outside cities and allows sparse quiet crickets where appropriate. Fire, fountains and other local water remain audible nearby at either time.
 
 ## Exact excerpts and preparation
 
-The JSON manifests under assets/audio/ record source download URLs, source and output SHA256 hashes, durations and exact edits. Freesound provides the stream, lake and campfire through public HQ MP3 previews. Other new source recordings use original WAV downloads.
+The JSON manifests under assets/audio/ record source download URLs, source and output SHA256 hashes, durations and exact edits. Freesound provides the stream, lake, campfire and city through public HQ MP3 previews. Other new source recordings use original WAV downloads.
 
 New excerpts use constant level matching. Fire uses no dynamic compression. Pitch and speed stay unchanged. Bed boundaries use a circular crossfade. Individual events have short edge fades. Peak and RMS measurements do not count as listening approval.
 
@@ -43,7 +45,7 @@ New excerpts use constant level matching. Fire uses no dynamic compression. Pitc
 | chirp3 | 8.00 s | Excerpt from 190s, up to 8s; mono; 400 Hz high-pass and 9500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
 | gull1 | 8.00 s | Excerpt from 20s, up to 8s; mono; 400 Hz high-pass and 7500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
 | gull2 | 8.00 s | Excerpt from 70s, up to 8s; mono; 400 Hz high-pass and 7500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; short edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
-| town | 42.80 s | Excerpt from 2s, up to 44s; mono; 250 Hz high-pass and 2400 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
+| town | 68.80 s | Excerpt from 20s, 70s; mono; 120 Hz high-pass and 3000 Hz low-pass; constant gain targeting -29 dBFS RMS with a -9 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No compression, pitch or speed change. |
 | stream | 48.80 s | Excerpt from 5s, up to 50s; mono; 120 Hz high-pass and 7500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
 | sea | 48.80 s | Excerpt from 3s, up to 50s; mono; 80 Hz high-pass and 4200 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
 | waterfall | 48.80 s | Excerpt from 5s, up to 50s; mono; 80 Hz high-pass and 6500 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
