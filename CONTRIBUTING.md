@@ -11,7 +11,7 @@ npm ci
 npm start
 ```
 
-The shared source is in `src/`, the Electron wrapper in `client/`, and the browser manifest in `extension/`. `npm start` builds and launches `dist/development/client` with the local Electron dependency. Development loads that bundle and never joins the public update feed. To rebuild during a session, run `npm run build:dev`, then reload with Ctrl+R. Changes to the Electron wrapper need a restart. An absolute `DIGIMMO_DEV_TEST_SCRIPT` path can explicitly select a test script; old AppData scripts and development.json files are not loaded automatically.
+The shared source is in `src/`, the Electron wrapper in `client/`, and the browser manifest in `extension/`. `npm start` builds and launches `dist/development/windows/win-unpacked/DigiMMO.exe`. The normal Windows packager gives development the same name and icon as the public client; the runtime is reused until its version or packaging changes. Development never joins the public update feed. To rebuild during a session, run `npm run build:dev`, then reload with Ctrl+R. Changes to the Electron wrapper need a restart. An absolute `DIGIMMO_DEV_TEST_SCRIPT` path can explicitly select a test script; old AppData scripts and development.json files are not loaded automatically.
 
 Keep public packages in the sibling `release/<version>/` folder, archived builds in `archive/` and private checks in `tests/`. Do not launch old executables from the workspace root or archive. Keep profiles, credentials, game caches and private reports outside Git.
 

@@ -77,6 +77,7 @@ for(const file of ['main.js','preload.js','updater.js']){
   fs.writeFileSync(path.join(out,'client',file),code);
 }
 fs.copyFileSync(path.join(root,'client/icon.png'),path.join(out,'client/icon.png'));
+fs.copyFileSync(path.join(root,'client/icon.ico'),path.join(out,'client/icon.ico'));
 fs.writeFileSync(path.join(out,'client/package.json'),JSON.stringify({name:'digimmo-client',productName:'DigiMMO',version:release.version,description:release.description,license:release.license,main:'main.js',private:true},null,2)+'\n');
 for(const browser of ['chromium','firefox']){
   const folder=path.join(out,'extension-'+browser);
@@ -102,3 +103,12 @@ if(process.argv.includes('--stage-test')){
   fs.writeFileSync(path.join(tests,'digimmo-tweaks-test.user.js'),script);
 }
 console.log(`Built ${version} (${channel}), ${Buffer.byteLength(script)} bytes, ${manifest.length} audio samples. No installation or publication.`);
+// The branded development runtime reads ordinary files, so Ctrl+R sees a rebuild.
+const devApp=path.join(out,'windows/win-unpacked/resources/app');
+if(development && fs.existsSync(path.join(devApp,'main.js'))){
+  for(const file of ['main.js','preload.js','updater.js','tweaks.user.js','icon.png','icon.ico'])
+    fs.copyFileSync(path.join(out,'client',file),path.join(devApp,file));
+  const metadata=JSON.parse(fs.readFileSync(path.join(devApp,'package.json'),'utf8'));
+  metadata.version=release.version;
+  fs.writeFileSync(path.join(devApp,'package.json'),JSON.stringify(metadata,null,2)+'\n');
+}

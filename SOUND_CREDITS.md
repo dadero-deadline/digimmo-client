@@ -61,3 +61,5 @@ New excerpts use constant level matching. Fire also uses documented transient co
 ## Artwork
 
 The official DigiMMO icon was supplied by Jorge through the maintainer for use in this client and extension. The original is preserved in `assets/branding/icon-digimmo.png`; packaged icons retain its artwork and colors at the required sizes. This artwork is separate from the audio licenses above.
+
+The README comparison in `assets/previews/primary-village.webp` is a local Phaser 4.2.1 reconstruction using the published 0.1.2 effects and public DigiMMO map artwork. It is not a live gameplay screenshot. Game artwork belongs to its respective owners and is not covered by this project's MIT License. Full maps and tilesets are not included in this repository.

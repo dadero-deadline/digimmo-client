@@ -98,6 +98,7 @@
   const TRANSLATIONS = {
   "es": {
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
+    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night.": "Iluminación de ventanas en Fog City, faros alineados en los coches orientados al sur y algunas ventanas y agujeros iluminados por la noche en Machine City.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Reproducción limitada a 2,2 segundos con fundidos y pausas largas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado de volumen y codificado a Opus mono anteriormente. Se reproduce en pasajes de 3,2 segundos con fundidos y pausas largas, sin bucle continuo.",
     "Sound credits": "Créditos de sonido",
@@ -201,6 +202,7 @@
   },
   "pt": {
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
+    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night.": "Iluminação nas janelas de Fog City, faróis alinhados nos carros voltados para o sul e algumas janelas e buracos iluminados à noite em Machine City.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Reprodução limitada a 2,2 segundos com transições suaves e pausas longas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado em volume e codificado em Opus mono anteriormente. Reproduzido em trechos de 3,2 segundos com transições suaves e pausas longas, sem repetição contínua.",
     "Sound credits": "Créditos de som",
@@ -1287,6 +1289,7 @@
       // Tile-local aperture masks are generated from reviewed public artwork.
       // One atlas and one viewport render target serve all added light sources.
       const fxStyle = {
+        facadeGlass:[0xbad7ef,0,0.16,0.12], ruinWindow:[0xffcf85,0,0.28,0.16],
         window:[0xffdca0,0,0.32,0.24], violetWindow:[0xb69bea,0,0.28,0.22], stained:[0xd8c7ed,0,0.23,0.20],
         furnace:[0xffac55,0.22,0.36,0.40], candle:[0xffd58c,0.15,0.42,0.30], acid:[0x8fdf57,0.05,0.14,0.18],
         devimon:[0xc74c61,0,0.22,0.24], generator:[0xff645b,0,0.32,0.32], machineSigil:[0xe86d88,0,0.26,0.24],
@@ -1324,13 +1327,22 @@
           if((kind==='altarGold'||kind==='altarCrystal')&&scene.mapId!=='spiral_summit')continue;
           if(kind==='tv'&&!/^(gate_village|primary_village)$/.test(scene.mapId))continue;
           const x=(layer.tilemapLayer?.x||0)+tile.pixelX,y=(layer.tilemapLayer?.y||0)+tile.pixelY;
+          if(kind==='ruinWindow'){
+            // Keep the same few windows lit across reloads. Slabs follow their upper pane.
+            const topY=y-(info.name.startsWith('ocw_slab')?16:0);
+            let hash=Math.imul((x/16)|0,73856093)^Math.imul((topY/16)|0,19349663);
+            hash=Math.imul(hash^(hash>>>16),0x45d9f3b);hash^=hash>>>16;
+            if((hash>>>0)%5!==0)continue;
+          }
           const id=key+':'+x+','+y;if(fxSeen.has(id))continue;fxSeen.add(id);
           let sx=0,sy=0,n=0;
           for(let py=0;py<16;py++){const bits=parseInt(definition[1].slice(py*4,py*4+4),16);for(let px=0;px<16;px++)if(bits>>px&1){sx+=px;sy+=py;n++;}}
-          const cx=n?sx/n:8,cy=n?sy/n:8;
+          const cx=n?sx/n+0.5:8,cy=n?sy/n+0.5:8;
+          const dx=(cx-8)*(tile.flipX?-1:1),dy=(cy-8)*(tile.flipY?-1:1),angle=tile.rotation||0;
+          const lightX=x+8+dx*Math.cos(angle)-dy*Math.sin(angle),lightY=y+8+dx*Math.sin(angle)+dy*Math.cos(angle);
           fxTiles.push({kind,key,x:x+8,y:y+8,flipX:!!tile.flipX,flipY:!!tile.flipY,rotation:tile.rotation||0});
-          if(fxStyle[kind][3]>0)addFxLight(kind,x+cx,y+cy);
-          if(kind==='altarGold'&&info.name.startsWith('throne_'))addFxLight('altarThrone',x+cx,y+cy);
+          if(fxStyle[kind][3]>0)addFxLight(kind,lightX,lightY);
+          if(kind==='altarGold'&&info.name.startsWith('throne_'))addFxLight('altarThrone',lightX,lightY);
         }
       }
       const phonePoints=[];
@@ -1905,6 +1917,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
+  ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night."],
   ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
   [
     "0.1",

@@ -19,7 +19,7 @@ const appPackage=JSON.parse(asar.extractFile(archive,'package.json').toString())
 assert.equal(appPackage.version,release.version);assert.equal(appPackage.main,'main.js');
 assert.equal(appPackage.name,'digimmo-client');assert(!appPackage.devDependencies);
 assert.equal(appPackage.license,release.license);
-for(const file of ['main.js','preload.js','updater.js','tweaks.user.js','icon.png'])
+for(const file of ['main.js','preload.js','updater.js','tweaks.user.js','icon.png','icon.ico'])
   assert.deepEqual(asar.extractFile(archive,file),fs.readFileSync(path.join(root,'dist/public/client',file)));
 assert.equal(JSON.parse(asar.extractFile(archive,path.join('node_modules','electron-updater','package.json'))).version,release.dependencies['electron-updater']);
 const entries=asar.listPackage(archive).map(n=>n.replaceAll('\\','/'));

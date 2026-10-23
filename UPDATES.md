@@ -2,24 +2,37 @@
 
 ## Windows client
 
-Download [DigiMMO.zip](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO.zip), extract it into its own folder and open DigiMMO.exe. New versions download in the background. When an update is ready, close the client normally and let it finish before opening the same EXE again. Your settings stay in place and the game never forces a restart.
+New versions download in the background while you play. When an update is ready:
 
-Updates use the standard Windows installer silently in that folder. After the first update, the client also appears in Windows Installed Apps. Keep one active copy. The included `scripts` and `extension` folders are supplied again with each update.
+1. Close the client normally when you are ready.
+2. Let the update finish.
+3. Open the same **DigiMMO.exe** again.
 
-The client checks shortly after starting and every four hours. Drafts, prereleases and changes in forks are not offered. Development clients do not use the public update feed.
+Your login and settings are kept. The game never forces a restart. The client checks about 20 seconds after starting and every four hours.
 
-If a download is interrupted, the current version keeps working and a later check retries. Completed downloads are verified and cached. If you start offline, the current version still opens; the cached update is used after the next successful release check. Windows shutdown postpones updates.
+Version 0.1.2 requests a Windows notification when the download finishes; Windows may not display it. The upcoming 0.1.3 client also keeps an update notice visible inside the game, including after reloading. That notice is not included in 0.1.2.
 
-Keep the game in its own writable folder, such as Games/DigiMMO. If an update fails, close the client and extract a fresh ZIP into that folder. Login and game settings are stored separately from the program files.
+### If the connection drops
 
-Existing Setup installations continue to receive automatic updates. You do not need to switch them to the ZIP version.
+The current version keeps working. A later check retries an interrupted download. Completed downloads are verified and cached, so they do not need to be downloaded again. Offline startup still opens the current version; a cached update can be used after the next successful release check. Windows shutdown postpones installation.
 
-The old standalone `DigiMMO-0.1.1-x64.exe` used an unfinished updater. Replace it once with the ZIP version. Opening `DigiMMO.exe` inside the extracted folder keeps the existing profile.
+### If an update fails
+
+Close the client, download a fresh [DigiMMO.zip](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO.zip) and extract it into your game folder. Keep one active copy in its own writable folder, such as Games/DigiMMO. Login and settings are stored separately from the program files.
+
+Using the old standalone **DigiMMO-0.1.1-x64.exe**? Switch to the ZIP once. That experimental updater is retired. Existing Setup installations already receive automatic updates and do not need to switch.
 
 ## Browser extension and userscript
 
-Unpacked extensions require manual updates: replace the extracted files, reload the extension, then reload the game. The standalone userscript also needs a manual update. Future store versions can update through their browser stores; no listings exist yet.
+Both need manual updates. For the extension, replace its files, reload it on the browser's extensions page, then reload the game. For a userscript, install the new script through your userscript manager. No browser store version is available yet.
 
-## Downloads
+<details>
+<summary>How client updates work</summary>
 
-The main download is [DigiMMO.zip](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO.zip). Setup files under Releases keep existing installations and extracted folders up to date. The updater verifies downloads against SHA512 hashes. Windows executables are unsigned. See [release instructions](https://github.com/dadero-deadline/digimmo-client/blob/main/CONTRIBUTING.md#releases) for maintainers.
+Updates use the standard Windows installer silently in the game folder. After the first update, the client also appears in Windows Installed Apps. The included `scripts` and `extension` folders are refreshed with it; copies installed separately in a browser are not.
+
+Only newer regular releases from this repository are offered. Drafts, prereleases and forks are excluded. Development clients do not use the public feed. The updater verifies downloads against SHA512 hashes. Windows executables are unsigned.
+
+The main download is DigiMMO.zip. The Setup files under Releases serve automatic updates. See [release instructions](CONTRIBUTING.md#releases) for maintainers.
+
+</details>

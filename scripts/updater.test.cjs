@@ -59,9 +59,11 @@ test('quit releases timers and window listeners',async()=>{
   f.updater.emit('update-downloaded',{version:'0.2.0'});assert.deepEqual(f.notices,[]);
 });
 test('notification text supports all menu languages',()=>{
-  assert.match(updateMessage('en-US').body,/close the client/);
-  assert.match(updateMessage('es').body,/cerrar el cliente/);
-  assert.match(updateMessage('pt-BR').body,/fechar o cliente/);
+  assert.match(updateMessage('en-US','0.1.3').body,/Close the client/);
+  assert.match(updateMessage('es','0.1.3').body,/Cierra el cliente/);
+  assert.match(updateMessage('pt-BR','0.1.3').body,/Feche o cliente/);
+  for(const lang of ['en','es','pt'])assert.match(updateMessage(lang,'0.1.3').title,/DigiMMO 0\.1\.3$/);
+  assert.equal(updateMessage('en','unexpected text').title,'Update ready');
 });
 
 test('packaged Windows clients update the folder they were started from',()=>{

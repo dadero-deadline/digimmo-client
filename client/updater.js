@@ -68,10 +68,11 @@ function createController({app,updater,notify=()=>{},setTimeoutFn=setTimeout,set
   return {enabled:true,check,stop};
 }
 
-function updateMessage(locale='en'){
-  if(locale.startsWith('es'))return {title:'Actualización lista',body:'DigiMMO se actualizará al cerrar el cliente. Puedes seguir jugando.'};
-  if(locale.startsWith('pt'))return {title:'Atualização pronta',body:'O DigiMMO será atualizado quando você fechar o cliente. Você pode continuar jogando.'};
-  return {title:'Update ready',body:'DigiMMO will update when you close the client. You can keep playing.'};
+function updateMessage(locale='en',version=''){
+  const suffix=/^\d+\.\d+\.\d+$/.test(version)?' · DigiMMO '+version:'';
+  if(locale.startsWith('es'))return {title:'Actualización lista'+suffix,body:'Cierra el cliente para instalarla. Espera a que termine y vuelve a abrir DigiMMO. Puedes seguir jugando por ahora.'};
+  if(locale.startsWith('pt'))return {title:'Atualização pronta'+suffix,body:'Feche o cliente para instalar. Espere terminar e abra o DigiMMO novamente. Você pode continuar jogando por enquanto.'};
+  return {title:'Update ready'+suffix,body:'Close the client to install. Let it finish, then reopen DigiMMO. You can keep playing for now.'};
 }
 
 module.exports={startUpdates,createController,updateMessage};
