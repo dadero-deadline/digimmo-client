@@ -18,10 +18,6 @@ Windows 64-bit. Keep the supporting files beside the EXE. Updates download autom
 
 Warm lights at night, foliage in the wind and ambient sounds that change with the area and time of day. Adjust the effects in **F10**, or switch them off at any time.
 
-![Primary Village with atmosphere off on the left and night atmosphere on the right](assets/previews/primary-village.webp)
-
-*Local renderer comparison using the published 0.1.2 effects, public map artwork and Phaser 4.2.1, at the same camera position. This is a reconstructed scene, not a live gameplay screenshot. Game artwork belongs to its respective owners.*
-
 ## Prefer your browser?
 
 The ZIP also includes two optional folders. Choose one:
