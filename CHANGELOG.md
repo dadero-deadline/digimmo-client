@@ -2,6 +2,7 @@
 
 ## 0.1.3 (unreleased)
 
+- Weather defaults to 2x. Network and its dungeon variants have no clouds or cloud shadows. Holy Peaks snow fades naturally beyond the northern plateau.
 - A persistent client notice appears when an update is ready and returns after reloading the game.
 - Window lighting for Fog City's hall and street buildings.
 - South-facing headlights follow the car body. A few windows and broken panes glow at night in Machine City.

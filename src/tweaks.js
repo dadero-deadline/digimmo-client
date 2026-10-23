@@ -23,7 +23,7 @@
   Object.defineProperty(window, '__digimmoTweaks', { value: runtime, configurable: false });
   const STORE_KEY = 'digimmo.client.settings.v1';
   const DEFAULTS = Object.freeze({
-    atmosphere: true, weather: true, weatherDensity: 1,
+    atmosphere: true, weather: true, weatherDensity: 2,
     seasons: true, season: 'auto', fireflies: true,
     dayNight: true, dayMinutes: 0, playerLight: 0.55,
     lights: true, fireEmbers: true, waterSparkles: true,
@@ -98,7 +98,7 @@
   const TRANSLATIONS = {
   "es": {
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
-    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night.": "Iluminación de ventanas en Fog City, faros alineados en los coches orientados al sur y algunas ventanas y agujeros iluminados por la noche en Machine City.",
+    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau.": "Iluminación de ventanas en Fog City, faros alineados en los coches orientados al sur y algunas ventanas y agujeros iluminados por la noche en Machine City. La densidad del clima predeterminada es 2x. Las zonas de Network no tienen nubes y la nieve de Holy Peaks se desvanece gradualmente al salir de la meseta norte.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Reproducción limitada a 2,2 segundos con fundidos y pausas largas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado de volumen y codificado a Opus mono anteriormente. Se reproduce en pasajes de 3,2 segundos con fundidos y pausas largas, sin bucle continuo.",
     "Sound credits": "Créditos de sonido",
@@ -202,7 +202,7 @@
   },
   "pt": {
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
-    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night.": "Iluminação nas janelas de Fog City, faróis alinhados nos carros voltados para o sul e algumas janelas e buracos iluminados à noite em Machine City.",
+    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau.": "Iluminação nas janelas de Fog City, faróis alinhados nos carros voltados para o sul e algumas janelas e buracos iluminados à noite em Machine City. A densidade padrão do clima é 2x. As áreas de Network não têm nuvens, e a neve de Holy Peaks desaparece gradualmente além do planalto norte.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Reprodução limitada a 2,2 segundos com transições suaves e pausas longas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado em volume e codificado em Opus mono anteriormente. Reproduzido em trechos de 3,2 segundos com transições suaves e pausas longas, sem repetição contínua.",
     "Sound credits": "Créditos de som",
@@ -1272,7 +1272,9 @@
       const cloudGfx = own(scene.make.graphics({ add: false }));
       const mapW = tm.widthInPixels, mapH = tm.heightInPixels;
       const cloudList = [];
-      const cloudCount = Math.max(4, Math.min(64, Math.round(mapW * mapH * CLOUDS.density)));
+      // Network and its two dungeon variants have no outdoor sky.
+      const cloudCount = /^network(?:_|$)/i.test(scene.mapId) ? 0
+        : Math.max(4, Math.min(64, Math.round(mapW * mapH * CLOUDS.density)));
       for (let i = 0; i < cloudCount; i++) cloudList.push(makeCloud(mapW, mapH, false, cloudList));
       let lastCloudSec = null;
       let visibleClouds = 0;
@@ -1445,7 +1447,7 @@
         };
         if (restrictedSnow) {
           conf.emitting = false;
-          conf.deathZone = { type: 'onEnter', source: { contains: (x,y) => y >= snowBottom } };
+          // Only emission is restricted. Existing flakes finish their natural fade.
         }
         if (c.accelX) conf.accelerationX = { min: c.accelX[0], max: c.accelX[1] };
         if (c.add) conf.blendMode = ADD;
@@ -1663,7 +1665,7 @@
         stats.cloudsInView = visibleClouds;
         stats.cloudsHiddenByZoom = closeZoom;
 
-        const showClouds = SETTINGS.cloudShadows && s.cloud > 0.005;
+        const showClouds = cloudCount > 0 && SETTINGS.cloudShadows && s.cloud > 0.005;
         cloudShadow.setVisible(showClouds);
         cloudGfx.clear();
         if (showClouds) {
@@ -1917,7 +1919,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night."],
+  ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau."],
   ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
   [
     "0.1",
