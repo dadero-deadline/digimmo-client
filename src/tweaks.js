@@ -104,7 +104,7 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x.",
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x. Las sombras del suelo no oscurecen casas, iglús ni otros objetos. Los reflejos por encima del jugador mantienen los pies hacia la orilla cercana.",
     "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de aves más suaves y cortos, con pausas más largas y fragmentos variados, sin un bucle continuo de aves. El tráfico lejano durante el día sustituye las voces repetitivas del mercado de la ciudad y da paso suavemente a un viento tranquilo por la noche.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Pasajes breves aleatorios con fundidos y pausas largas, sin bucle continuo de aves.",
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
@@ -211,7 +211,7 @@
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado en bucle, ajustado de volumen y codificado en Opus mono."
   },
   "pt": {
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x.",
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x. As sombras do chão não escurecem casas, iglus ou outros objetos. Os reflexos acima do jogador mantêm os pés voltados para a margem mais próxima.",
     "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de pássaros mais suaves e curtos, com pausas maiores e trechos variados, sem um loop contínuo de pássaros. O trânsito distante durante o dia substitui as vozes repetitivas do mercado da cidade e dá lugar suavemente a um vento tranquilo à noite.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Passagens curtas aleatórias com transições suaves e pausas longas, sem loop contínuo de pássaros.",
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
@@ -837,7 +837,8 @@
           if ((isWalls || isAbove) && !noShadow(info.name) && casters.length < 18000) {
             const f = tileFrame(scene, info, t.index);
             if (f) casters.push({ x: t.pixelX, y: t.pixelY,
-              name: info.name, above: isAbove, solid: info.collides, art: shadowArt(info.name), f });
+              name: info.name, above: isAbove, solid: info.collides, art: shadowArt(info.name), f,
+              flipX: !!t.flipX, flipY: !!t.flipY, rotation: t.rotation || 0 });
           }
         }
       }
@@ -1069,6 +1070,9 @@
         objectFoot.set(name, (foot + 1) * 16);
       }
       const shadowParts = [];
+      // The game's ground cache flattens wall artwork into its ground image.
+      // Cut those opaque pixels out of our shadow, without changing game layers.
+      const shadowOccluders = casters.filter(c => !c.above);
       let ownedSlices = 0;
       for (const c of casters) {
         if (!c.f.strips) continue;
@@ -1113,6 +1117,14 @@
           { originX: 0, originY: 0, tint: 0x000000 });
       };
       const SHADOW_SLICES_PER_FRAME = 3000;
+      const eraseShadowOnObject = (target, object, clip = null) => {
+        if (clip && (object.x + 16 < clip.x || object.x > clip.x + clip.w ||
+            object.y + 16 < clip.y || object.y > clip.y + clip.h)) return;
+        target.stamp(object.f.key, object.f.name, object.x + 8, object.y + 8, {
+          rotation: object.rotation, scaleX: object.flipX ? -1 : 1,
+          scaleY: object.flipY ? -1 : 1, blendMode: ERASE,
+        });
+      };
       const hideShadows = () => { if (shadowFront) { shadowFront.setVisible(false); shadowWork.setVisible(false); } };
       const drawShadows = (skyState) => {
         if (!shadowFront) return;
@@ -1124,7 +1136,7 @@
         if (key !== shadowKey && (!shadowJob || shadowJob.key !== key)) {
           // Grounded: every slice first drops to the foot of its column, so the
           // silhouette lies flat on the ground and stretches away from the sun.
-          shadowJob = { key, dx, dy, k: SHADOW_HEIGHT() * 0.3, sink: grounded ? 1.35 : 0.3, grounded, i: 0 };
+          shadowJob = { key, dx, dy, k: SHADOW_HEIGHT() * 0.3, sink: grounded ? 1.35 : 0.3, grounded, i: 0, erase: 0 };
           shadowWork.clear();
         }
         if (shadowJob) {
@@ -1136,6 +1148,7 @@
             if (visibleKey !== firstShadowView) {
               shadowFront.clear();
               for (const part of shadowParts) paintShadow(shadowFront, part, job, view);
+              for (const object of shadowOccluders) eraseShadowOnObject(shadowFront, object, view);
               shadowFront.render(); firstShadowView = visibleKey;
             }
             shadowFront.setVisible(true).setAlpha(opacity);
@@ -1145,9 +1158,15 @@
             const part = shadowParts[j];
             paintShadow(shadowWork, part, job);
           }
-          shadowWork.render();
+          const remaining = SHADOW_SLICES_PER_FRAME - (end - job.i);
           job.i = end;
           if (end >= shadowParts.length) {
+            const eraseEnd = Math.min(shadowOccluders.length, job.erase + remaining);
+            for (let j = job.erase; j < eraseEnd; j++) eraseShadowOnObject(shadowWork, shadowOccluders[j]);
+            job.erase = eraseEnd;
+          }
+          shadowWork.render();
+          if (end >= shadowParts.length && job.erase >= shadowOccluders.length) {
             const shown = shadowWork; shadowWork = shadowFront; shadowFront = shown;
             shadowKey = job.key; shadowJob = null;
             shadowWork.setVisible(false);
@@ -1504,8 +1523,8 @@
         reflRT = own(scene.add.renderTexture(0, 0, 4, 4)).setOrigin(0, 0)
           .setDepth(DEPTH_NIGHT - 2000); // Above late foreground water tiles; masked to water only.
       }
-      // Find the closest shoreline in any direction. The reflection stays
-      // vertically inverted; its body extends into the water from that bank.
+      // Keep the feet at the near shore. On the south bank the head extends
+      // north into the water, so that image must not be vertically inverted.
       const reflectionAnchor = (x, y, width, height) => {
         const reach = 24, cx = Math.floor(x / 16), cy = Math.floor(y / 16);
         let closest = null, best = reach * reach + 1;
@@ -1518,9 +1537,10 @@
         }
         if (!closest) return null;
         const dx = closest.x - x, dy = closest.y - y, length = Math.hypot(dx, dy);
-        if (length <= 2) return { x, y: y + 1 };
+        if (length <= 2) return { x, y: y + 1, flipY: true };
+        const flipY = dy >= -Math.abs(dx);
         return { x: closest.x + dx / length * width * 0.4,
-          y: closest.y + dy / length * height * 0.5 - height * 0.5 };
+          y: closest.y + dy / length * height * 0.5 + (flipY ? -1 : 1) * height * 0.5, flipY };
       };
       let waterMaskPosition = '';
       let lastReflectionFrame = -Infinity;
@@ -1746,7 +1766,7 @@
                 originX: sp.originX ?? 0.5,
                 originY: 1,
                 scaleX: Math.abs(sp.scaleX || 1) * (sp.flipX ? -1 : 1),
-                scaleY: -Math.abs(sp.scaleY || 1),
+                scaleY: Math.abs(sp.scaleY || 1) * (anchor.flipY ? -1 : 1),
                 alpha: REFLECT.alpha, tint: REFLECT.tint,
               });
           }
@@ -1931,7 +1951,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x."],
+  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore."],
   ["0.1.4", "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night."],
   ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance."],
   ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
