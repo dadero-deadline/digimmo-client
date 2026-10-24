@@ -2,6 +2,7 @@
 
 ## 0.2 (unreleased)
 
+- Selected Toy Town windows glow at night. Factory sludge has small green particles instead of a flat glow. TV portals cast soft blue light onto nearby ground.
 - Other trees keep their wood still while foliage, blossoms, fruit and snow move with the crown. Dead trees sway only at their upper tips.
 - Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms bend gently from fixed bases.
 - Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore.
