@@ -2,6 +2,7 @@
 
 ## 0.2 (unreleased)
 
+- Large Native Forest crowns move in three leafy sections while their trunks stay still.
 - Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore.
 - Selected broken windows in Machine City glow across the glass and holes. Stripped car bodies stay dark; ordinary road cars keep their headlights.
 - Piedmon's castle windows glow at night instead of his throne.
