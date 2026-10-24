@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2 (unreleased)
+
+- Selected broken windows in Machine City glow across the glass and holes. Stripped car bodies stay dark; ordinary road cars keep their headlights.
+- Piedmon's castle windows glow at night instead of his throne.
+- Cottage and pagoda lights stay within the windows, without lighting roof edges or facade trim.
+- Cloud density starts at 2x, including existing settings once. Player night light defaults to 1.05x; other saved brightness choices are preserved.
+
 ## 0.1.4
 
 - Quieter, shorter bird calls with longer pauses and varied passages. The continuous bird loop has been removed.

@@ -25,11 +25,11 @@
   const DEFAULTS = Object.freeze({
     atmosphere: true, weather: true, weatherDensity: 2,
     seasons: true, season: 'auto', fireflies: true,
-    dayNight: true, dayMinutes: 0, playerLight: 0.55,
+    dayNight: true, dayMinutes: 0, playerLight: 1.05,
     lights: true, fireEmbers: true, waterSparkles: true,
     objectShadows: true, shadowStyle: 'classic', shadowAlpha: 0.28, shadowHeight: 2.6, moonShadowAlpha: 0.05,
     clouds: true, cloudShadows: true, cloudOpacity: 0.5, cloudShadowOpacity: 0.13,
-    cloudDensity: 1, cloudWind: 1, cloudPlayerClear: 1.1,
+    cloudDensity: 2, cloudWind: 1, cloudPlayerClear: 1.1,
     wind: true, windStrength: 2,
     reflections: true, reflectionOpacity: 0.38, reflectionWobble: 1,
     audioFix: true, audioLatency: 'playback', stepGain: 0.35, stepLowpass: 2500,
@@ -91,12 +91,20 @@
         localStorage.removeItem(previousKey);
       }
     }
+    // Apply the requested cloud baseline once, then preserve subsequent choices.
+    if (!localStorage.getItem('digimmo.client.migrated02')) {
+      SETTINGS.cloudDensity = DEFAULTS.cloudDensity;
+      if (SETTINGS.playerLight === 0.55) SETTINGS.playerLight = DEFAULTS.playerLight;
+      localStorage.setItem(STORE_KEY, JSON.stringify(SETTINGS));
+      localStorage.setItem('digimmo.client.migrated02', '1');
+    }
   } catch {}
 
 
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x.",
     "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de aves más suaves y cortos, con pausas más largas y fragmentos variados, sin un bucle continuo de aves. El tráfico lejano durante el día sustituye las voces repetitivas del mercado de la ciudad y da paso suavemente a un viento tranquilo por la noche.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Pasajes breves aleatorios con fundidos y pausas largas, sin bucle continuo de aves.",
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
@@ -203,6 +211,7 @@
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado en bucle, ajustado de volumen y codificado en Opus mono."
   },
   "pt": {
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x.",
     "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de pássaros mais suaves e curtos, com pausas maiores e trechos variados, sem um loop contínuo de pássaros. O trânsito distante durante o dia substitui as vozes repetitivas do mercado da cidade e dá lugar suavemente a um vento tranquilo à noite.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Passagens curtas aleatórias com transições suaves e pausas longas, sem loop contínuo de pássaros.",
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
@@ -1301,7 +1310,7 @@
         devimon:[0xc74c61,0,0.22,0.24], generator:[0xff645b,0,0.32,0.32], machineSigil:[0xe86d88,0,0.26,0.24],
         summon:[0xb081ef,0.08,0.30,0.26], coral:[0xc5a5f0,0.025,0.095,0.12], pumpkin:[0xffb54d,0.18,0.35,0],
         altarCrystal:[0xb18af0,0.035,0.20,0.22], altarGold:[0xf0c87d,0.015,0.16,0.18],
-        tv:[0x9ed9ff,0.10,0.26,0.28], car:[0xffe4ae,0,0.42,0.26], phone:[0xb5e4ff,0.025,0.12,0.28], altarThrone:[0xb48ae8,0,0.30,0.42],
+        tv:[0x9ed9ff,0.10,0.26,0.28], car:[0xffe4ae,0,0.42,0.26], phone:[0xb5e4ff,0.025,0.12,0.28],
       };
       const fxKey = 'digimmo:apertures16', fxData = EMISSIVE_TILES;
       if (!scene.textures.exists(fxKey)) {
@@ -1348,7 +1357,6 @@
           const lightX=x+8+dx*Math.cos(angle)-dy*Math.sin(angle),lightY=y+8+dx*Math.sin(angle)+dy*Math.cos(angle);
           fxTiles.push({kind,key,x:x+8,y:y+8,flipX:!!tile.flipX,flipY:!!tile.flipY,rotation:tile.rotation||0});
           if(fxStyle[kind][3]>0)addFxLight(kind,lightX,lightY);
-          if(kind==='altarGold'&&info.name.startsWith('throne_'))addFxLight('altarThrone',lightX,lightY);
         }
       }
       const phonePoints=[];
@@ -1923,6 +1931,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
+  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x."],
   ["0.1.4", "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night."],
   ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance."],
   ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
