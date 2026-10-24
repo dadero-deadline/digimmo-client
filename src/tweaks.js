@@ -104,7 +104,7 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x. Las sombras del suelo no oscurecen casas, iglús ni otros objetos. Los reflejos por encima del jugador mantienen los pies hacia la orilla cercana. Las grandes copas de Native Forest se mueven en tres secciones de hojas mientras los troncos permanecen inmóviles. Las copas de Fog City se mueven unidas, incluido el follaje dorado de los ginkgos. La madera de las acacias de la sabana permanece inmóvil. Las palmeras se balancean desde una base fija, con más movimiento hacia la copa. Las copas de los demás árboles mantienen los troncos inmóviles, incluidas las flores, los frutos y el follaje nevado. Los árboles muertos solo se mueven en las puntas superiores. Algunas ventanas de Toy Town brillan por la noche. El lodo de la fábrica emite pequeñas partículas verdes en lugar de un brillo uniforme. Los portales de televisión proyectan una suave luz azul sobre el suelo frente a ellos. La luz de las farolas sigue el cristal en Overdell y Myotismon Keep. Los candelabros y las lámparas de araña iluminan suavemente el suelo bajo sus bases, con llamas brillantes en lugar de metal luminoso.",
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x. Las sombras del suelo no oscurecen casas, iglús ni otros objetos. Los reflejos por encima del jugador mantienen los pies hacia la orilla cercana. Las grandes copas de Native Forest se mueven en tres secciones de hojas mientras los troncos permanecen inmóviles. Las copas de Fog City se mueven unidas, incluido el follaje dorado de los ginkgos. La madera de las acacias de la sabana permanece inmóvil. Las palmeras se balancean desde una base fija, con más movimiento hacia la copa. Las copas de los demás árboles mantienen los troncos inmóviles, incluidas las flores, los frutos y el follaje nevado. Los árboles muertos solo se mueven en las puntas superiores. Algunas ventanas de Toy Town brillan por la noche. El lodo de la fábrica emite pequeñas partículas verdes en lugar de un brillo uniforme. Los portales de televisión proyectan una suave luz azul sobre el suelo frente a ellos. La luz de las farolas sigue el cristal en Overdell y Myotismon Keep. Los candelabros y las lámparas de araña iluminan suavemente el suelo bajo sus bases, con llamas brillantes en lugar de metal luminoso. Primary Village tiene confeti más visible. La densidad del clima también controla las hojas estacionales, que dejan de caer al desactivar el clima. Los proyectiles visibles emiten una pequeña luz de su color por la noche.",
     "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de aves más suaves y cortos, con pausas más largas y fragmentos variados, sin un bucle continuo de aves. El tráfico lejano durante el día sustituye las voces repetitivas del mercado de la ciudad y da paso suavemente a un viento tranquilo por la noche.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Pasajes breves aleatorios con fundidos y pausas largas, sin bucle continuo de aves.",
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
@@ -211,7 +211,7 @@
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado en bucle, ajustado de volumen y codificado en Opus mono."
   },
   "pt": {
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x. As sombras do chão não escurecem casas, iglus ou outros objetos. Os reflexos acima do jogador mantêm os pés voltados para a margem mais próxima. As grandes copas de Native Forest se movem em três partes de folhagem enquanto os troncos permanecem parados. As copas de Fog City se movem juntas, incluindo a folhagem dourada dos ginkgos. A madeira das acácias da savana permanece parada. As palmeiras balançam a partir de uma base fixa, com mais movimento em direção à copa. As copas das outras árvores mantêm os troncos parados, incluindo flores, frutos e folhagem com neve. As árvores mortas se movem apenas nas pontas superiores. Algumas janelas de Toy Town brilham à noite. O lodo da fábrica emite pequenas partículas verdes em vez de um brilho uniforme. Os portais de televisão projetam uma luz azul suave no chão à sua frente. A luz das lanternas acompanha o vidro em Overdell e Myotismon Keep. Candelabros e lustres iluminam suavemente o chão abaixo das bases, com chamas brilhantes em vez de metal luminoso.",
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x. As sombras do chão não escurecem casas, iglus ou outros objetos. Os reflexos acima do jogador mantêm os pés voltados para a margem mais próxima. As grandes copas de Native Forest se movem em três partes de folhagem enquanto os troncos permanecem parados. As copas de Fog City se movem juntas, incluindo a folhagem dourada dos ginkgos. A madeira das acácias da savana permanece parada. As palmeiras balançam a partir de uma base fixa, com mais movimento em direção à copa. As copas das outras árvores mantêm os troncos parados, incluindo flores, frutos e folhagem com neve. As árvores mortas se movem apenas nas pontas superiores. Algumas janelas de Toy Town brilham à noite. O lodo da fábrica emite pequenas partículas verdes em vez de um brilho uniforme. Os portais de televisão projetam uma luz azul suave no chão à sua frente. A luz das lanternas acompanha o vidro em Overdell e Myotismon Keep. Candelabros e lustres iluminam suavemente o chão abaixo das bases, com chamas brilhantes em vez de metal luminoso. Primary Village tem confetes mais visíveis. A densidade do clima também controla as folhas sazonais, que param de cair ao desativar o clima. Projéteis visíveis emitem uma pequena luz da mesma cor à noite.",
     "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de pássaros mais suaves e curtos, com pausas maiores e trechos variados, sem um loop contínuo de pássaros. O trânsito distante durante o dia substitui as vozes repetitivas do mercado da cidade e dá lugar suavemente a um vento tranquilo à noite.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Passagens curtas aleatórias com transições suaves e pausas longas, sem loop contínuo de pássaros.",
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
@@ -517,11 +517,6 @@
     const sinEase = (t) => Math.sin(t * Math.PI);
     const blink = (t) => Math.max(0, Math.sin(t * Math.PI)) * (0.55 + 0.45 * Math.sin(t * 31));
     const WEATHER = [
-      // Village-specific, quiet floating pollen motes. No screen effects or building movement.
-      { name: 'Village motes', test: /primary[\s_-]*village/i, layers: [
-        { cfg: { lifespan: [4500, 8000], speedX: [-4, 5], speedY: [-7, -2],
-          scale: [1, 1], alpha: 0.36, tint: [0xffe8ae, 0xe0f4c3, 0xfff5d6], rate: 410 } },
-      ] },
       { name: 'Sandstorm', test: /savanna|desert|dune|sand(?!box)|canyon|mesa|pyramid/i, layers: [
         { cfg: { lifespan: [5000, 9000], speedX: [6, 16], speedY: [-3, 3], scale: [1, 2], alpha: 0.65, tint: [0xe8d3a0, 0xd9bf86, 0xf3e4bd], rate: 51 } },
       ] },
@@ -548,7 +543,7 @@
       { name: 'Ghost lights', test: /overdell|graveyard|myotismon|chapel|phantom|haunt/i, layers: [
         { lum: true, cfg: { lifespan: [5000, 8000], speedX: [-3, 3], speedY: [-8, -3], scale: [1, 2], alpha: 0.5, tint: [0xc9b6ff, 0xe6dcff], rate: 220, add: true } },
       ] },
-      { name: 'Confetti', test: /toy/i, layers: [
+      { name: 'Confetti', test: /toy|primary[\s_-]*village/i, layers: [
         { cfg: { lifespan: [5000, 8000], speedX: [-6, 6], speedY: [10, 20], accelX: [-10, 10], scale: [2, 2], alpha: 0.9, tint: [0xff5a7a, 0xffd23a, 0x5ac8ff, 0x7aff8a, 0xc87aff], rate: 140 } },
       ] },
       { name: 'City', test: /odaiba|highton|terrace|city|plaza|street/i, layers: [
@@ -1491,6 +1486,34 @@
           if(++count>=128)break;
         }
       };
+      // Read existing visual projectiles only. The game owns their movement and lifetime.
+      const attackLights=new Map(),attackPoint={x:0,y:0};
+      const attackColors={fire:0xff7a2a,water:0x3aa0ff,ice:0xaee8ff,wind:0x7af0c0,
+        thunder:0xffe04a,wood:0x6ad04a,land:0xc8a060,steel:0xc0c8d0,light:0xfff6a0,dark:0xa060ff,neutral:0xffffff};
+      cleanups.push(()=>attackLights.clear());
+      let attackFrame=0;
+      const stampAttackLights=(time,ox,oy)=>{
+        if(!SETTINGS.lights||s.dark<=0){attackLights.clear();return;}
+        const frame=++attackFrame;let checked=0,drawn=0;
+        const stamp=(sp,color,source)=>{
+          if(++checked>96||drawn>=24||!sp||sp.scene!==scene||!sp.active||!sp.visible||sp.alpha<=0||
+              sp.parentContainer||typeof sp.getCenter!=='function'||!sp.willRender?.(cam))return;
+          sp.getCenter(attackPoint);const x=attackPoint.x,y=attackPoint.y;
+          if(!Number.isFinite(x)||!Number.isFinite(y)||x<view.x||y<view.y||x>view.x+view.w||y>view.y+view.h)return;
+          let light=attackLights.get(sp);if(light?.frame===frame)return;
+          if(!light||light.source!==source){light={born:time,frame,source};attackLights.set(sp,light);}else light.frame=frame;
+          const fade=Math.max(0,Math.min(1,(time-light.born)/120));
+          const size=Math.max(Math.abs(sp.displayWidth)||0,Math.abs(sp.displayHeight)||0);
+          const tint=Number.isInteger(color)&&color>=0&&color<=0xffffff?color:0xfff0d8;
+          nightRT.stamp('digimmo:light2',undefined,Math.round(x-ox),Math.round(y-oy),
+            {tint,scale:Math.max(0.22,Math.min(0.55,size/100+0.12)),alpha:0.20*s.dark*Math.min(1,sp.alpha)*fade,blendMode:ADD});
+          drawn++;
+        };
+        for(const p of scene.combat?.projectiles||[]){stamp(p.obj,p.color,p);if(checked>=96||drawn>=24)break;}
+        if(checked<96&&drawn<24)for(const p of scene.combat?.sig?.casts?.values?.()||[]){stamp(p.proj,p.color,p);if(checked>=96||drawn>=24)break;}
+        if(checked<96&&drawn<24)for(const p of scene.telegraphs?.circles||[]){stamp(p.proj?.obj,attackColors[p.skill?.element],p);if(checked>=96||drawn>=24)break;}
+        for(const [sp,light] of attackLights)if(light.frame!==frame)attackLights.delete(sp);
+      };
       // Shared emitters, not one emitter per light. Only on-screen sources emit.
       const detailEmitters=[];
       for(const [kind,points,frequency,tint] of [
@@ -1517,7 +1540,7 @@
           entry.em.emitParticleAt(point.x+(Math.random()-0.5)*12,point.y,1);
         }
       };
-      const hideMapEffects=()=>{fxRT?.setVisible(false);for(const {em} of detailEmitters)em.setVisible(false);};
+      const hideMapEffects=()=>{fxRT?.setVisible(false);attackLights.clear();for(const {em} of detailEmitters)em.setVisible(false);};
 
       const season = seasonNow(), seasonCfg = SEASONS[season];
       const extra = [];
@@ -1564,7 +1587,7 @@
       }
 
       const treesInView = [];
-      if (SETTINGS.seasons && seasonCfg.tree && treeGroups.length) {
+      if (SETTINGS.weather && SETTINGS.seasons && seasonCfg.tree && treeGroups.length) {
         const t = seasonCfg.tree;
         const leaves = own(scene.add.particles(0, 0, 'digimmo:leaf', {
           emitZone: { type: 'random', source: { getRandomPoint: (p) => {
@@ -1580,7 +1603,7 @@
           scale: { min: t.scale[0], max: t.scale[1] },
           alpha: { start: 0, end: 0.72, ease: (k) => Math.min(1, k * 8) * (1 - smooth(0.75, 1, k)) },
           tint: t.tint,
-          frequency: t.rate,
+          frequency: t.rate / SETTINGS.weatherDensity,
           quantity: 1,
         }));
         leaves.setDepth(DEPTH_NIGHT - 500);
@@ -1853,6 +1876,7 @@
 
         updateMapEffects(time,ox,oy,W,H);
         ambUpdate(time);
+        if(!SETTINGS.dayNight||!SETTINGS.lights||s.dark<=0)attackLights.clear();
 
         const needNight = SETTINGS.dayNight && s.color !== 0xffffff && !!ownPos();
         nightRT.setVisible(needNight);
@@ -1899,6 +1923,7 @@
               { tint: 0xfff0d8, scale: PLAYER_LIGHT() * ownSize, alpha: glowAlpha, blendMode: ADD });
           }
           stampMapLights(time,ox,oy);
+          stampAttackLights(time,ox,oy);
           nightRT.render();
         }
       };
@@ -2026,7 +2051,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal."],
+  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night."],
   ["0.1.4", "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night."],
   ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance."],
   ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],

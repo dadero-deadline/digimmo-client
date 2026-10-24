@@ -2,6 +2,8 @@
 
 ## 0.2 (unreleased)
 
+- Visible flying attacks cast a small matching light at night.
+- Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled.
 - Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases; only flame tips glow.
 - Selected Toy Town windows glow at night. Factory sludge has small green particles instead of a flat glow. TV portals cast soft blue light onto nearby ground.
 - Other trees keep their wood still while foliage, blossoms, fruit and snow move with the crown. Dead trees sway only at their upper tips.
