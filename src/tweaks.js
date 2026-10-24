@@ -104,7 +104,7 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x. Las sombras del suelo no oscurecen casas, iglús ni otros objetos. Los reflejos por encima del jugador mantienen los pies hacia la orilla cercana. Las grandes copas de Native Forest se mueven en tres secciones de hojas mientras los troncos permanecen inmóviles. Las copas de Fog City se mueven unidas, incluido el follaje dorado de los ginkgos. La madera de las acacias de la sabana permanece inmóvil. Las palmeras se balancean desde una base fija, con más movimiento hacia la copa.",
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x. Las sombras del suelo no oscurecen casas, iglús ni otros objetos. Los reflejos por encima del jugador mantienen los pies hacia la orilla cercana. Las grandes copas de Native Forest se mueven en tres secciones de hojas mientras los troncos permanecen inmóviles. Las copas de Fog City se mueven unidas, incluido el follaje dorado de los ginkgos. La madera de las acacias de la sabana permanece inmóvil. Las palmeras se balancean desde una base fija, con más movimiento hacia la copa. Las copas de los demás árboles mantienen los troncos inmóviles, incluidas las flores, los frutos y el follaje nevado. Los árboles muertos solo se mueven en las puntas superiores.",
     "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de aves más suaves y cortos, con pausas más largas y fragmentos variados, sin un bucle continuo de aves. El tráfico lejano durante el día sustituye las voces repetitivas del mercado de la ciudad y da paso suavemente a un viento tranquilo por la noche.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Pasajes breves aleatorios con fundidos y pausas largas, sin bucle continuo de aves.",
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
@@ -211,7 +211,7 @@
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado en bucle, ajustado de volumen y codificado en Opus mono."
   },
   "pt": {
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x. As sombras do chão não escurecem casas, iglus ou outros objetos. Os reflexos acima do jogador mantêm os pés voltados para a margem mais próxima. As grandes copas de Native Forest se movem em três partes de folhagem enquanto os troncos permanecem parados. As copas de Fog City se movem juntas, incluindo a folhagem dourada dos ginkgos. A madeira das acácias da savana permanece parada. As palmeiras balançam a partir de uma base fixa, com mais movimento em direção à copa.",
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x. As sombras do chão não escurecem casas, iglus ou outros objetos. Os reflexos acima do jogador mantêm os pés voltados para a margem mais próxima. As grandes copas de Native Forest se movem em três partes de folhagem enquanto os troncos permanecem parados. As copas de Fog City se movem juntas, incluindo a folhagem dourada dos ginkgos. A madeira das acácias da savana permanece parada. As palmeiras balançam a partir de uma base fixa, com mais movimento em direção à copa. As copas das outras árvores mantêm os troncos parados, incluindo flores, frutos e folhagem com neve. As árvores mortas se movem apenas nas pontas superiores.",
     "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de pássaros mais suaves e curtos, com pausas maiores e trechos variados, sem um loop contínuo de pássaros. O trânsito distante durante o dia substitui as vozes repetitivas do mercado da cidade e dá lugar suavemente a um vento tranquilo à noite.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Passagens curtas aleatórias com transições suaves e pausas longas, sem loop contínuo de pássaros.",
     "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
@@ -1175,53 +1175,31 @@
         if (shadowKey) shadowFront.setVisible(true).setAlpha(opacity);
       };
 
-      const nameOfGid = (gid) => { const i = tileInfo(tm, gid); return i ? i.name : ''; };
-      // Individual above# layers are often individual objects. Reject every mixed
-      // structure or rock layer, but allow actual tree tiles such as acacia_0
-      // that do not literally contain the word "canopy".
-      const NON_TREE = /roof|house|building|hut|tent|stone|rock|boulder|wall|fence|gate|door|window|bridge|ground|floor|tower|pillar|lamp|shrub|bush|cactus/i;
-      const TREE_PART = /acacia|tree|palm|pine|oak|willow|leaf|leaves|canopy|crown|foliage|baobab|cherry|birch|fir|branch|trunk/i;
-      // A crown row can share its above# layer with a rock or a roof edge. Such
-      // layers used to stay rigid, so part of a tree stood still while the rest
-      // swayed. Now only the tree tiles move: they are hidden in the original
-      // layer and drawn into a private copy at the same depth, which sways
-      // instead. Cleanup restores the original tiles.
-      const splitTreeTiles = (layer, tiles) => {
-        if (tiles.some(t => t.flipX || t.flipY || t.rotation)) return null;
-        let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
-        for (const t of tiles) {
-          minX = Math.min(minX, t.pixelX); minY = Math.min(minY, t.pixelY);
-          maxX = Math.max(maxX, t.pixelX + t.width); maxY = Math.max(maxY, t.pixelY + t.height);
-        }
-        const frames = tiles.map(t => tileFrame(scene, tileInfo(tm, t.index), t.index));
-        if (frames.some(f => !f) || maxX <= minX || maxY <= minY) return null;
-        const copy = own(scene.add.renderTexture(layer.x + minX, layer.y + minY, maxX - minX, maxY - minY))
-          .setOrigin(0, 0).setDepth(layer.depth).setAlpha(layer.alpha);
-        tiles.forEach((t, i) => copy.stamp(frames[i].key, frames[i].name, t.pixelX - minX, t.pixelY - minY,
-          { originX: 0, originY: 0 }));
-        copy.render();
-        const saved = tiles.map(t => [t, t.visible, t.alpha]);
-        cleanups.push(() => { for (const [t, visible, alpha] of saved) { try { t.visible = visible; t.alpha = alpha; } catch {} } });
-        for (const t of tiles) { t.visible = false; t.alpha = 0; }
-        return copy;
-      };
       const trees = [];
       // Reassemble reviewed crown artwork across above# layers before separating
       // foliage from wood. Small crowns move together; giant crowns have three masses.
       const splitTreeCrowns = () => {
         const layouts = { bigtree: [4,3,3], oldtree: [8,6,3], ztree: [3,3,1], ginkgo: [3,3,1], acacia: [4,2,1],
-          'beach:palm': [2,3,1], 'serverdesert:palm': [3,2,1] };
-        const groups = new Map(), hidden = new Set();
+          'beach:palm': [2,3,1], 'serverdesert:palm': [3,2,1],
+          tree: [2,2,1], dtree: [2,2,1], btree: [2,2,1], pine: [1,1,1],
+          vtree: [2,2,1], vpine: [1,1,1], apple_tree: [2,2,1], pineb: [3,3,1],
+          hpine: [3,2,1], hpine_s: [2,2,1], cherrytree: [2,2,1],
+          deadtree: [2,2,1], gnarled_tree: [2,2,1], blacktree: [2,2,1], twisttree: [2,2,1] };
+        const tipsOnly = new Set(['deadtree','gnarled_tree','blacktree','twisttree']);
+        const coloredCrowns = new Set(['tree','dtree','btree','pine','vtree','vpine','apple_tree','pineb','hpine','hpine_s','cherrytree']);
+        const groups = new Map();
         for (const layer of [...scene.children.list]) {
           if (layer.type !== 'TilemapLayer' || !layer.layer?.name?.startsWith('above#')) continue;
           for (const row of layer.layer.data) for (const tile of row) {
             if (!tile || tile.index <= 0 || tile.flipX || tile.flipY || tile.rotation) continue;
-            const info = tileInfo(tm, tile.index), match = /^(\w+)_(\d+)$/.exec(info?.name || '');
+            const info = tileInfo(tm, tile.index), match = /^(\w+)_(\d+|tl|tr|ml|mr|top)$/.exec(info?.name || '');
             if (!match) continue;
             const shape = layouts[info.ts.name + ':' + match[1]] || (Object.hasOwn(layouts, match[1]) && layouts[match[1]]);
             if (!shape) continue;
             const [cols, rows, count] = shape;
-            const index = Number(match[2]);
+            let index = /^\d+$/.test(match[2]) ? Number(match[2]) : {tl:0,tr:1,ml:2,mr:3,top:0}[match[2]];
+            // The bent Highton pine skips the empty lower-left crown cell.
+            if (match[1] === 'pineb' && index >= 6) index++;
             if (index >= cols * rows) continue;
             const x = layer.x + tile.pixelX - index % cols * 16;
             const y = layer.y + tile.pixelY - Math.floor(index / cols) * 16;
@@ -1236,6 +1214,8 @@
           group.cells.sort((a,b) => a.index - b.index);
           const art = group.family + ':' + group.cells.map(c => c.index + ':' + c.tile.index).join(',');
           const width = group.cols * 16, height = group.rows * 16;
+          const palm = group.family === 'palm', tips = tipsOnly.has(group.family), banded = palm || tips;
+          const colored = coloredCrowns.has(group.family);
           let parts = masks.get(art);
           if (!parts) {
             const canvas = document.createElement('canvas'); canvas.width = width; canvas.height = height;
@@ -1247,7 +1227,7 @@
             }
             const input = ctx.getImageData(0, 0, width, height);
             parts = Array.from({ length: group.count + 1 }, () => ctx.createImageData(width, height));
-            if (group.family === 'palm') parts[0] = input;
+            if (banded) parts[0] = input;
             else {
               const foliage = new Uint8Array(width * height);
               const centres = [[0.46,0.19],[0.20,0.55],[0.78,0.60]].map(([x,y]) => [x * width, y * height]);
@@ -1257,7 +1237,12 @@
                 const leaf = group.family === 'ginkgo'
                   ? r > g * 1.05 && (g > b * 2.5 || (r > 230 && g > 180 && b < 180))
                   : g > r * 1.08 && g > b * (group.count === 1 ? 0.85 : 1.15);
-                if (input.data[k+3] && leaf && (group.count === 1 ||
+                // These reviewed palettes also contain blossoms, fruit and snow.
+                // Keep their brown wood fixed without discarding colored foliage.
+                const wood = r > g * 1.12 && g >= b * 1.1;
+                const fruit = group.family === 'apple_tree' && r > g * 2.5 && b > g * 0.7;
+                const gold = (group.family === 'vtree' || group.family === 'vpine') && r > 220 && g > 180 && b < 100;
+                if (input.data[k+3] && (colored ? !wood || fruit || gold : leaf) && (group.count === 1 ||
                     y < height * 0.85 || Math.abs(x - width / 2) > width * 0.23)) foliage[y * width + x] = 1;
               }
               for (let y = 0; y < height; y++) for (let x = 0; x < width; x++) {
@@ -1266,7 +1251,7 @@
                 let leaves = !!foliage[y * width + x];
                 // Carry the dark outline with its leaves instead of leaving a
                 // stationary pixel fringe behind each moving crown.
-                if (!leaves && Math.max(r,g,b) < 55 && Math.max(r,g,b) - Math.min(r,g,b) < 20) {
+                if (!colored && !leaves && Math.max(r,g,b) < 55 && Math.max(r,g,b) - Math.min(r,g,b) < 20) {
                   for (let dy = -1; dy <= 1 && !leaves; dy++) for (let dx = -1; dx <= 1; dx++) {
                     const nx = x + dx, ny = y + dy;
                     if (nx >= 0 && nx < width && ny >= 0 && ny < height && foliage[ny * width + nx]) { leaves = true; break; }
@@ -1293,10 +1278,10 @@
             if (!section) { section = { cells: [], depth: cell.layer.depth, alpha: cell.layer.alpha }; sections.push(section); }
             section.cells.push(cell);
           }
-          const palm = group.family === 'palm';
-          for (const section of sections) for (const part of palm ? [0] : [group.count, ...Array(group.count).keys()]) {
+          for (const section of sections) for (const part of banded ? [0] : [group.count, ...Array(group.count).keys()]) {
             const textureId = art + '|' + section.cells.map(c => c.index).join(',') + '|' + part;
             let texture = textures.get(textureId);
+            if (texture === null) continue;
             if (!texture) {
               const key = 'digimmo:crown:' + scene.mapId + ':' + textures.size;
               const c = document.createElement('canvas'); c.width=width;c.height=height;c.getContext('2d').putImageData(parts[part],0,0);
@@ -1306,57 +1291,45 @@
                 for (const { index } of section.cells) mask.rect(index % group.cols * 16, Math.floor(index / group.cols) * 16, 16, 16);
                 mask.fill();
               }
+              const pixels = c.getContext('2d').getImageData(0,0,width,height).data;
+              if (!pixels.some((value,index) => index % 4 === 3 && value)) {
+                textures.set(textureId,null); continue;
+              }
               // Reuse identical artwork across placed trees and release it once.
               const images = [];
               cleanups.push(() => { for (const o of images) o.destroy(); if (scene.textures.exists(key)) scene.textures.remove(key); });
               scene.textures.addCanvas(key,c);
               const bands = [];
-              if (palm) {
-                const pixels = c.getContext('2d').getImageData(0,0,width,height).data;
-                for (let y = 0; y < height; y += 4) {
+              if (banded) {
+                for (let y = 0; y < height;) {
+                  const bandHeight = tips && y >= 8 ? height - y : 4;
                   let filled = false;
-                  for (let k = y * width * 4 + 3; k < (y + 4) * width * 4 && !filled; k += 4) filled = !!pixels[k];
+                  for (let k = y * width * 4 + 3; k < (y + bandHeight) * width * 4 && !filled; k += 4) filled = !!pixels[k];
                   if (filled) bands.push(y);
+                  y += bandHeight;
                 }
               }
               texture = { key, images, bands }; textures.set(textureId, texture);
             }
-            for (const row of palm ? texture.bands : [0]) {
+            for (const row of banded ? texture.bands : [0]) {
               const image = own(scene.add.image(group.x,group.y,texture.key)); texture.images.push(image);
               image.setOrigin(0).setDepth(section.depth).setAlpha(section.alpha);
-              if (palm) image.setCrop(0,row,width,4);
+              // A shared seam row keeps diagonal one-pixel twigs connected
+              // when neighboring tip bands differ by one pixel.
+              if (banded) image.setCrop(0,row,width,tips ? (row >= 8 ? height - row : 5) : 4);
               // The lowest palm band meets the unchanged ground-cache trunk.
-              // One shared wave bends higher bands farther, without rotation.
+              // Dead trees only bend at their upper tips; their main branches stay still.
               if (part < group.count) trees.push({ L:image,bx:group.x,by:group.y,ph:phase + part * 2.094,
-                maxStrength:palm ? 2 : 1,bend:palm ? (height - row - 4) / (height - 4) : 1,family:group.family,part:palm ? row : part });
+                maxStrength:palm ? 2 : 1,bend:tips ? Math.max(0,(12 - row) / 12) : palm ? (height - row - 4) / (height - 4) : 1,
+                family:group.family,part:banded ? row : part });
             }
           }
           const saved = group.cells.map(({tile})=>[tile,tile.visible,tile.alpha]);
           cleanups.push(()=>{for(const [t,visible,alpha] of saved){t.visible=visible;t.alpha=alpha;}});
-          for (const {tile} of group.cells) {hidden.add(tile);tile.visible=false;tile.alpha=0;}
+          for (const {tile} of group.cells) {tile.visible=false;tile.alpha=0;}
         }
-        return hidden;
       };
-      const crownTiles = splitTreeCrowns();
-      for (const o of [...scene.children.list]) {
-        if (o.type !== 'TilemapLayer' || !o.layer?.name?.startsWith('above#')) continue;
-        const treeTiles = [];
-        let otherTileCount = 0, tooLarge = false;
-        for (const row of o.layer.data) {
-          for (const tile of row) {
-            if (!tile || tile.index <= 0) continue;
-            if (crownTiles.has(tile)) { otherTileCount++; continue; }
-            const name = nameOfGid(tile.index);
-            if (!NON_TREE.test(name) && TREE_PART.test(name)) treeTiles.push(tile);
-            else otherTileCount++;
-            if (treeTiles.length + otherTileCount > 256) { tooLarge = true; break; }
-          }
-          if (tooLarge) break;
-        }
-        if (tooLarge || !treeTiles.length) continue;
-        const moving = otherTileCount === 0 ? o : splitTreeTiles(o, treeTiles);
-        if (moving) trees.push({ L: moving, bx: moving.x, by: moving.y, ph: Math.random() * 6.283 });
-      }
+      splitTreeCrowns();
       const wl = Math.hypot(CLOUDS.wind[0], CLOUDS.wind[1]) || 1, wdx = CLOUDS.wind[0] / wl, wdy = CLOUDS.wind[1] / wl;
       const swayTrees = (time) => {
         const t = time / 1000;
@@ -2023,7 +1996,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns."],
+  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips."],
   ["0.1.4", "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night."],
   ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance."],
   ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
