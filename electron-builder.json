@@ -41,7 +41,7 @@
     "executableName": "digimmo",
     "syncDesktopName": true,
     "synopsis": "DigiMMO desktop client",
-    "artifactName": "DigiMMO-${version}-${arch}.${ext}"
+    "artifactName": "DigiMMO-${arch}.${ext}"
   },
   "publish": [{"provider": "github", "owner": "dadero-deadline", "repo": "digimmo-client", "releaseType": "release"}]
 }

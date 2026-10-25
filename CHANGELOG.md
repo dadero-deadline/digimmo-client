@@ -1,8 +1,8 @@
 # Changelog
 
-## 0.2.1 (unreleased)
+## 0.2.1
 
-Night details and a calmer soundscape.
+Night details, a calmer soundscape and a Linux client.
 
 - New night lights: the dragon's eye in Machine City, the Factory Town generators (also by day), the Kaiser's Fortress incubators, Sunset Bay's tiki torches and its lighthouse with a turning beam.
 - Hanging pumpkin lamps glow at the pumpkin; Piedmon's castle windows glow more softly.
@@ -11,6 +11,10 @@ Night details and a calmer soundscape.
 - Water, sea and waterfalls are quieter with less rumble; creeks are softly audible from farther away.
 - Savanna acacias sway without gaps in their crowns.
 - Simpler audio settings: the technical compressor controls are gone.
+- Windows, lights and headlights follow the game's redrawn art in Toy Town, Odaiba, Machine City and Fog City.
+- The new Tamers maps get city or nature ambience, matching weather, car headlights and glowing Hypnos towers.
+- Block piles cast one shadow from their base, and narrow pier ends show a reflection again.
+- New Linux client (AppImage) with automatic updates.
 
 ## 0.2
 

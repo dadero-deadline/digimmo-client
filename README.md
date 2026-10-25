@@ -2,7 +2,7 @@
 
 <img src="client/icon.png" alt="DigiMMO icon" width="80" height="80" align="right">
 
-An unofficial client for [DigiMMO](https://play.digimmo.com.br/), with optional lighting, moving treetops, shadows, reflections and regional ambience. Available as a Windows app, browser extension or userscript. Visuals and sound only; no gameplay automation.
+An unofficial client for [DigiMMO](https://play.digimmo.com.br/), with optional lighting, moving treetops, shadows, reflections and regional ambience. Available as a Windows or Linux app, browser extension or userscript. Visuals and sound only; no gameplay automation.
 
 ## [Download for Windows](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO.zip)
 
@@ -12,11 +12,19 @@ An unofficial client for [DigiMMO](https://play.digimmo.com.br/), with optional 
 
 Windows 64-bit. Keep the supporting files beside the EXE. Updates download automatically and install after you close the client; login and settings are kept. The EXE is unsigned.
 
+## [Download for Linux](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO-x86_64.AppImage)
+
+1. Download **DigiMMO-x86_64.AppImage**.
+2. Make it executable: `chmod +x DigiMMO-x86_64.AppImage`, or tick **Allow executing as program** in its properties.
+3. Open it and play.
+
+Linux 64-bit, tested on Ubuntu. No installation needed. Updates download automatically and replace the file after you close the client. The browser folders below are in the Windows ZIP.
+
 [Latest release](https://github.com/dadero-deadline/digimmo-client/releases/latest) · [Update help](UPDATES.md) · [Report a problem](https://github.com/dadero-deadline/digimmo-client/issues/new?template=bug_report.md)
 
 ## What changes?
 
-Warm lights at night, foliage in the wind and ambient sounds that change with the area and time of day. Adjust the effects in **F10**, or switch them off at any time. The atmosphere clock can follow your local computer time, repeat a shorter day or stay at a time you choose. While Discord is open, the Windows client shows DigiMMO as your current game; Discord's activity privacy settings can hide it.
+Warm lights at night, foliage in the wind and ambient sounds that change with the area and time of day. Adjust the effects in **F10**, or switch them off at any time. The atmosphere clock can follow your local computer time, repeat a shorter day or stay at a time you choose. While Discord is open, the desktop client shows DigiMMO as your current game; Discord's activity privacy settings can hide it.
 
 ## Prefer your browser?
 
@@ -59,7 +67,7 @@ assets/     Audio recordings and artwork
 scripts/    Build and verification tools
 ```
 
-Requires Node.js 22.12 or newer, npm and Windows. Run `npm ci`, then `npm start` to build and launch the development EXE. Generated files stay under `dist/`; release packages go to `../release/<version>/`.
+Requires Node.js 22.12 or newer, npm and Windows. Run `npm ci`, then `npm start` to build and launch the development EXE. Generated files stay under `dist/`; release packages go to `../release/<version>/`. The Linux AppImage is built on Linux or WSL with `npm run package:linux`.
 
 Work in your own fork and submit a focused pull request for maintainer review. Only the maintainer merges changes and publishes official releases. See [Contributing](CONTRIBUTING.md) for build and release instructions.
 

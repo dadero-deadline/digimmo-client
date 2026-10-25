@@ -56,6 +56,16 @@ async function main() {
       fs.copyFileSync(path.join(root, 'dist/installer', name), path.join(output, name));
       names.push(name);
     }
+    // The AppImage is built on Linux or WSL (npm run package:linux) and copied to dist/linux.
+    const linux = path.join(root, 'dist/linux'), image = 'DigiMMO-x86_64.AppImage';
+    const feed = fs.readFileSync(path.join(linux, 'latest-linux.yml'), 'utf8');
+    const sha512 = crypto.createHash('sha512').update(fs.readFileSync(path.join(linux, image))).digest('base64');
+    if (!feed.includes(`version: ${release.version}\n`) || !feed.includes(`path: ${image}\n`) || !feed.includes(`sha512: ${sha512}\n`))
+      throw new Error('dist/linux does not hold the AppImage of version ' + release.version);
+    for (const name of [image, 'latest-linux.yml']) {
+      fs.copyFileSync(path.join(linux, name), path.join(output, name));
+      names.push(name);
+    }
   } else {
     for (const browser of ['chromium', 'firefox']) {
       const name = `digimmo-extension-${release.version}-${browser}.zip`;
