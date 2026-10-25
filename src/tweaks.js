@@ -855,11 +855,14 @@
             const darkPost = (info.ts.name === 'graveyard' && info.name === 'lamp_base') ||
               (info.ts.name === 'keep' && info.name === 'lantern_base') ||
               (info.ts.name === 'shrine' && info.name === 'stone_lantern_base') ||
-              (info.ts.name === 'puppetwoods' && info.name === 'hanglamp_base');
+              (info.ts.name === 'puppetwoods' && info.name === 'hanglamp_base') ||
+              (info.ts.name === 'greysea' && info.name === 'camp_lantern_base');
             const bulb = info.ts.name === 'graveyard' && info.name === 'lamp_top' ? [8, 9] :
               info.ts.name === 'keep' && info.name === 'lantern_top' ? [5, 13] :
               info.ts.name === 'shrine' && info.name === 'stone_lantern_top' ? [8, 13] :
-              info.ts.name === 'puppetwoods' && info.name === 'hanglamp_top' ? [9, 16] : null;
+              info.ts.name === 'puppetwoods' && info.name === 'hanglamp_top' ? [9, 16] :
+              // Sea of Darkness lanterns by the phone box: the glass sits low in the top tile.
+              info.ts.name === 'greysea' && info.name === 'camp_lantern_top' ? [7.5, 14] : null;
             // Pre-drawn light pools on the ground are not light sources.
             const def = darkPost || /pool/i.test(info.name) ? null : LIGHTS.find(l => l.test.test(info.name));
             if (def) {
