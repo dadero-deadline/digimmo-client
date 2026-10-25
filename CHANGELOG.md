@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.2.2
+
+Swaying trees in Toy Town and beyond.
+
+- The redrawn cherry and yard trees in Toy Town sway in the wind again.
+- Snowy firs, bamboo and the cherry and zelkova trees in Highton Terrace and Odaiba now sway too; bamboo bends from its base.
+
 ## 0.2.1
 
 Night details, a calmer soundscape and a Linux client.
