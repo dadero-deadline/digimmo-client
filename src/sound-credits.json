@@ -106,5 +106,14 @@
     "licenseUrl": "https://creativecommons.org/licenses/by/3.0/",
     "samples": "crickets",
     "changes": "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop."
+  },
+  {
+    "title": "Unintelligible Radio Chatter",
+    "author": "unfa",
+    "license": "CC0 1.0",
+    "source": "https://freesound.org/people/unfa/sounds/245660/",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "samples": "announcement",
+    "changes": "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change."
   }
 ]

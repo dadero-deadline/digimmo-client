@@ -1,6 +1,6 @@
 # Sound credits
 
-Source licenses checked on 2026-10-21 through 2026-10-23.
+Source licenses checked on 2026-10-21 through 2026-10-25.
 
 Recordings are embedded in the userscript. Playing them makes no download request. Source pages are provided for attribution. These recordings and the artwork below retain their own terms and are not covered by the project's MIT License.
 
@@ -20,10 +20,11 @@ Recordings are embedded in the userscript. Playing them makes no download reques
 | wind | [wind1](https://opengameart.org/content/wind1) by Luke.RUSTLTD | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Trimmed, looped, volume matched and encoded to mono Opus. Regional high-pass and low-pass filters with subtle per-map variation and slow gain changes during playback; no pitch or speed change. |
 | machine | [Steam boiler sound loop](https://opengameart.org/content/steam-boiler-sound-loop) by bart | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Trimmed, looped, volume matched and encoded to mono Opus. |
 | crickets | [Crickets](https://opengameart.org/content/crickets) by dklon | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop. |
+| announcement | [Unintelligible Radio Chatter](https://freesound.org/people/unfa/sounds/245660/) by unfa | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change. |
 
 ## Playback
 
-Twenty embedded recordings from twelve credited sources. Fire uses the Nox_Sound campfire loop with a 120 Hz low cut and preserved crackle dynamics. Fountains use a dedicated water recording and grow moderately louder with their footprint. Placed ponds, lakes and pools use the calm lake recording. Sea ambience follows placed coastal water, including Fog City and Tokyo Bay. Decorative shore trim, lamp pools, tanks, sludge and frozen ground do not create water sounds. All local sources fade with player distance.
+Twenty-one embedded recordings from thirteen credited sources. Fire uses the Nox_Sound campfire loop with a 120 Hz low cut and preserved crackle dynamics. Fountains use a dedicated water recording and grow moderately louder with their footprint. Placed ponds, lakes and pools use the calm lake recording. Sea ambience follows placed coastal water, including Fog City and Tokyo Bay. Decorative shore trim, lamp pools, tanks, sludge and frozen ground do not create water sounds. All local sources fade with player distance.
 
 Birds use one schedule of quieter 3.2 second passages near trees, with a 30 to 60 second initial wait and 55 to 110 seconds of silence after each. Recording and excerpt offset vary; no continuous bird bed plays underneath.
 
@@ -31,9 +32,11 @@ Gulls play brief 2.2 second passages, with 90 to 180 seconds of silence. Cricket
 
 Cities use distant traffic during the day and quiet wind at night, with a smooth transition between them. Villages retain wind and nature sounds. Regional filters give desert wind a deeper sound and icy regions a thinner sound. Filter frequencies and the slow gust envelope vary subtly and consistently by map; the recording and playback speed stay unchanged. Birds are daytime only; nighttime lowers regional wind outside cities and allows sparse quiet crickets where appropriate. Fire, fountains and other local water remain audible nearby at either time.
 
+Server Desert speakers play filtered radio chatter in varied 3.5 to 5 second passages, with 120 to 240 seconds of silence between them and an initial 45 to 90 second wait. One nearby speaker is used at a time; distance and direction follow the player. There is no continuous voice loop. The source already contains deliberately unintelligible processed speech.
+
 ## Exact excerpts and preparation
 
-The JSON manifests under assets/audio/ record source download URLs, source and output SHA256 hashes, durations and exact edits. Freesound provides the stream, lake, campfire and city through public HQ MP3 previews. Other new source recordings use original WAV downloads.
+The JSON manifests under assets/audio/ record source download URLs, source and output SHA256 hashes, durations and exact edits. Freesound provides the stream, lake, campfire, city and radio chatter through public HQ MP3 previews. Other new source recordings use original WAV downloads.
 
 New excerpts use constant level matching. Fire uses no dynamic compression. Pitch and speed stay unchanged. Bed boundaries use a circular crossfade. Individual events have short edge fades. Peak and RMS measurements do not count as listening approval.
 
@@ -59,6 +62,7 @@ New excerpts use constant level matching. Fire uses no dynamic compression. Pitc
 | fire | 12.65 s | Full recording; mono; 120 Hz high-pass and 9000 Hz low-pass; constant gain targeting -28 dBFS RMS with a -7 dBFS peak ceiling; 80 ms circular crossfade; 48 kHz Opus at 64 kbps VBR. No compression, pitch or speed change. |
 | fountain | 50.80 s | Excerpt from 5s, up to 52s; mono; 100 Hz high-pass and 7000 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
 | lake | 60.80 s | Excerpt from 25s, up to 62s; mono; 90 Hz high-pass and 4200 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. |
+| announcement | 40.00 s | Excerpt from 1s, 40s; mono; 200 Hz high-pass and two 900 Hz low-pass filters; constant gain targeting -29 dBFS RMS with a -9 dBFS peak ceiling; 120 ms edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. Playback uses varied 3.5 to 5 second passages with fades and 120 to 240 second pauses near placed speakers in Server Desert. |
 
 ## Artwork
 

@@ -115,5 +115,18 @@
     "checked": "2026-10-22",
     "sha256": "b37260bc8581be7210a1b64e5b0fe87086ad1ddcfdddd97e237106891ee8ca2b",
     "downloadFormat": "Freesound public HQ MP3 preview"
+  },
+  {
+    "id": "announcement",
+    "title": "Unintelligible Radio Chatter",
+    "author": "unfa",
+    "source": "https://freesound.org/people/unfa/sounds/245660/",
+    "assetUrl": "https://cdn.freesound.org/previews/245/245660_1038806-hq.mp3",
+    "file": "announcement.mp3",
+    "license": "CC0 1.0",
+    "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
+    "checked": "2026-10-25",
+    "sha256": "f9e37775c77313992ac2dfa06da8d7a1be4639dd8b413b909c903467064b0f30",
+    "downloadFormat": "Freesound public HQ MP3 preview"
   }
 ]

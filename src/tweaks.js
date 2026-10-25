@@ -25,7 +25,7 @@
   const DEFAULTS = Object.freeze({
     atmosphere: true, weather: true, weatherDensity: 2,
     seasons: true, season: 'auto', fireflies: true,
-    dayNight: true, dayMinutes: 0, playerLight: 1.05,
+    dayNight: true, dayMinutes: 0, timeMode: 'system', fixedTime: 1080, playerLight: 1.05,
     lights: true, fireEmbers: true, waterSparkles: true,
     objectShadows: true, shadowStyle: 'classic', shadowAlpha: 0.28, shadowHeight: 2.6, moonShadowAlpha: 0.05,
     clouds: true, cloudShadows: true, cloudOpacity: 0.5, cloudShadowOpacity: 0.13,
@@ -39,7 +39,7 @@
     ambientWater: 1, ambientWaves: 1,
   });
   const RANGES = {
-    weatherDensity: [0.1, 3], dayMinutes: [0, 240], playerLight: [0, 2],
+    weatherDensity: [0.1, 3], dayMinutes: [0, 240], fixedTime: [0, 1439], playerLight: [0, 2],
     shadowAlpha: [0, 0.75], shadowHeight: [0.5, 5], moonShadowAlpha: [0, 0.5],
     cloudOpacity: [0, 1], cloudShadowOpacity: [0, 0.5], cloudDensity: [0.1, 3],
     cloudWind: [0, 5], cloudPlayerClear: [0, 2], windStrength: [0, 5],
@@ -57,12 +57,14 @@
     if (typeof sample === 'number') {
       if (typeof value !== 'number' || !Number.isFinite(value)) return sample;
       const [lo, hi] = RANGES[key];
-      return Math.max(lo, Math.min(hi, value));
+      const bounded = Math.max(lo, Math.min(hi, value));
+      return key === 'fixedTime' ? Math.round(bounded) : bounded;
     }
     if (key === 'season') return ['auto', 'spring', 'summer', 'autumn', 'winter'].includes(value) ? value : sample;
     if (key === 'uiLanguage') return ['auto', 'en', 'es', 'pt'].includes(value) ? value : sample;
     if (key === 'audioLatency') return ['playback', 'balanced'].includes(value) ? value : sample;
     if (key === 'shadowStyle') return ['classic', 'grounded'].includes(value) ? value : sample;
+    if (key === 'timeMode') return ['system', 'cycle', 'fixed'].includes(value) ? value : sample;
     return sample;
   };
   const store = () => { try { localStorage.setItem(STORE_KEY, JSON.stringify(SETTINGS)); } catch {} };
@@ -80,6 +82,7 @@
         if (k === 'season') value = ({ fruehling: 'spring', sommer: 'summer', herbst: 'autumn' })[value] || value;
         SETTINGS[k] = accepted(k, value);
       }
+      if (!Object.hasOwn(existing, 'timeMode')) SETTINGS.timeMode = SETTINGS.dayMinutes > 0 ? 'cycle' : 'system';
       // Migrate the former default once; retain explicitly different choices.
       if (!localStorage.getItem('digimmo.client.migrated01')) {
         if (existing.moonShadowAlpha === 0.12) SETTINGS.moonShadowAlpha = 0.05;
@@ -205,11 +208,17 @@
     "Soft lighting, object shadows, moving treetops and water reflections. Regional day and night ambience with wildlife, fire, nearby fountains and water. Larger Digimon have wider light, moonlight shadows are softer, and atmosphere starts as soon as the map is ready.": "Iluminación suave, sombras de objetos, copas en movimiento y reflejos en el agua. Ambiente regional de día y de noche con fauna, fuego, agua y fuentes cercanas. Los Digimon grandes tienen una luz más amplia, las sombras lunares son más suaves y la atmósfera aparece cuando el mapa está listo.",
     "Keyboard shortcuts": "Atajos de teclado",
     "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.": "F10 o Ctrl+Shift+O: abrir o cerrar ajustes.\nAlt+F10: activar o desactivar atmósfera y sonidos ambientales.\nCtrl+F10: activar o desactivar solo sonidos ambientales.\nEscape: cerrar ajustes.",
-    "Development only: Shift+F10 cycles real time, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Solo desarrollo: Shift+F10 alterna hora real, mañana, mediodía, tarde y noche con una transición de seis segundos. Ctrl+Alt+P muestra los contadores de diagnóstico.",
+    "Development only: Shift+F10 cycles the selected clock, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Solo desarrollo: Shift+F10 alterna el reloj elegido, mañana, mediodía, tarde y noche con una transición de seis segundos. Ctrl+Alt+P muestra los contadores de diagnóstico.",
     "Mono, 120 Hz low cut, gentle high-frequency filtering, constant volume matching, short loop crossfade and Opus encoding. No compression, pitch or speed change.": "Mono, filtro de corte bajo a 120 Hz, filtrado suave de agudos, ajuste constante de volumen, fundido corto de bucle y codificación Opus. Sin compresión ni cambios de tono o velocidad.",
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado en bucle, ajustado de volumen y codificado en Opus mono.",
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night. Calm water can be heard near ponds and lakes across the maps. Fog City's southern coast has waves. Wind has regional character and subtle map variations, with deeper desert gusts and thinner wind in ice regions.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x. Las sombras del suelo no oscurecen casas, iglús ni otros objetos. Los reflejos por encima del jugador mantienen los pies hacia la orilla cercana. Las grandes copas de Native Forest se mueven en tres secciones de hojas mientras los troncos permanecen inmóviles. Las copas de Fog City se mueven unidas, incluido el follaje dorado de los ginkgos. La madera de las acacias de la sabana permanece inmóvil. Las palmeras se balancean desde una base fija, con más movimiento hacia la copa. Las copas de los demás árboles mantienen los troncos inmóviles, incluidas las flores, los frutos y el follaje nevado. Los árboles muertos solo se mueven en las puntas superiores. Algunas ventanas de Toy Town brillan por la noche. El lodo de la fábrica emite pequeñas partículas verdes en lugar de un brillo uniforme. Los portales de televisión proyectan una suave luz azul sobre el suelo frente a ellos. La luz de las farolas sigue el cristal en Overdell y Myotismon Keep. Los candelabros y las lámparas de araña iluminan suavemente el suelo bajo sus bases, con llamas brillantes en lugar de metal luminoso. Primary Village tiene confeti más visible. La densidad del clima también controla las hojas estacionales, que dejan de caer al desactivar el clima. Los proyectiles visibles emiten una pequeña luz de su color por la noche. Se oye agua tranquila cerca de estanques y lagos en los mapas. La costa sur de Fog City tiene oleaje. El viento varía según la región y el mapa, con ráfagas más graves en el desierto y un viento más fino en las regiones heladas.",
-    "Trimmed, looped, volume matched and encoded to mono Opus. Regional high-pass and low-pass filters with subtle per-map variation and slow gain changes during playback; no pitch or speed change.": "Recortado, preparado en bucle, con volumen ajustado y codificado en Opus mono. Filtros regionales de paso alto y paso bajo con variaciones sutiles por mapa y cambios lentos de volumen durante la reproducción; sin cambios de tono ni velocidad."
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night. Calm water can be heard near ponds and lakes across the maps. Fog City's southern coast has waves. Wind has regional character and subtle map variations, with deeper desert gusts and thinner wind in ice regions. Server Desert speakers occasionally play muffled radio chatter with long pauses. The atmosphere clock can follow your computer, repeat a day or hold a chosen time.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x. Las sombras del suelo no oscurecen casas, iglús ni otros objetos. Los reflejos por encima del jugador mantienen los pies hacia la orilla cercana. Las grandes copas de Native Forest se mueven en tres secciones de hojas mientras los troncos permanecen inmóviles. Las copas de Fog City se mueven unidas, incluido el follaje dorado de los ginkgos. La madera de las acacias de la sabana permanece inmóvil. Las palmeras se balancean desde una base fija, con más movimiento hacia la copa. Las copas de los demás árboles mantienen los troncos inmóviles, incluidas las flores, los frutos y el follaje nevado. Los árboles muertos solo se mueven en las puntas superiores. Algunas ventanas de Toy Town brillan por la noche. El lodo de la fábrica emite pequeñas partículas verdes en lugar de un brillo uniforme. Los portales de televisión proyectan una suave luz azul sobre el suelo frente a ellos. La luz de las farolas sigue el cristal en Overdell y Myotismon Keep. Los candelabros y las lámparas de araña iluminan suavemente el suelo bajo sus bases, con llamas brillantes en lugar de metal luminoso. Primary Village tiene confeti más visible. La densidad del clima también controla las hojas estacionales, que dejan de caer al desactivar el clima. Los proyectiles visibles emiten una pequeña luz de su color por la noche. Se oye agua tranquila cerca de estanques y lagos en los mapas. La costa sur de Fog City tiene oleaje. El viento varía según la región y el mapa, con ráfagas más graves en el desierto y un viento más fino en las regiones heladas. Los altavoces de Server Desert reproducen voces de radio amortiguadas de vez en cuando, con pausas largas. El reloj de la atmósfera puede seguir el equipo, repetir un día o mantener una hora elegida.",
+    "Trimmed, looped, volume matched and encoded to mono Opus. Regional high-pass and low-pass filters with subtle per-map variation and slow gain changes during playback; no pitch or speed change.": "Recortado, preparado en bucle, con volumen ajustado y codificado en Opus mono. Filtros regionales de paso alto y paso bajo con variaciones sutiles por mapa y cambios lentos de volumen durante la reproducción; sin cambios de tono ni velocidad.",
+    "Atmosphere clock": "Reloj de la atmósfera",
+    "Repeating day": "Día en bucle",
+    "Fixed time": "Hora fija",
+    "Day length": "Duración del día",
+    "Real time follows your computer clock. Only affects lighting, shadows and ambience.": "La hora real sigue el reloj del equipo. Solo afecta a la iluminación, las sombras y el ambiente.",
+    "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Fragmento en mono, filtro de graves de 200 Hz y dos filtros de agudos de 900 Hz, ajuste de volumen constante, fundidos y codificación Opus. Pasajes cortos variados cerca de los altavoces de Server Desert con pausas largas; sin cambios de tono ni velocidad."
   },
   "pt": {
     "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de pássaros mais suaves e curtos, com pausas maiores e trechos variados, sem um loop contínuo de pássaros. O trânsito distante durante o dia substitui as vozes repetitivas do mercado da cidade e dá lugar suavemente a um vento tranquilo à noite.",
@@ -313,11 +322,17 @@
     "Soft lighting, object shadows, moving treetops and water reflections. Regional day and night ambience with wildlife, fire, nearby fountains and water. Larger Digimon have wider light, moonlight shadows are softer, and atmosphere starts as soon as the map is ready.": "Iluminação suave, sombras de objetos, copas em movimento e reflexos na água. Ambiente regional de dia e de noite com animais, fogo, água e fontes próximas. Digimon maiores têm uma luz mais ampla, as sombras do luar são mais suaves e a atmosfera aparece assim que o mapa fica pronto.",
     "Keyboard shortcuts": "Atalhos de teclado",
     "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.": "F10 ou Ctrl+Shift+O: abrir ou fechar configurações.\nAlt+F10: ativar ou desativar atmosfera e sons ambientes.\nCtrl+F10: ativar ou desativar apenas sons ambientes.\nEscape: fechar configurações.",
-    "Development only: Shift+F10 cycles real time, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Apenas desenvolvimento: Shift+F10 alterna horário real, manhã, meio-dia, entardecer e noite com uma transição de seis segundos. Ctrl+Alt+P mostra contadores de diagnóstico.",
+    "Development only: Shift+F10 cycles the selected clock, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Apenas desenvolvimento: Shift+F10 alterna o relógio escolhido, manhã, meio-dia, entardecer e noite com uma transição de seis segundos. Ctrl+Alt+P mostra contadores de diagnóstico.",
     "Mono, 120 Hz low cut, gentle high-frequency filtering, constant volume matching, short loop crossfade and Opus encoding. No compression, pitch or speed change.": "Mono, corte de graves em 120 Hz, filtragem suave de agudos, ajuste constante de volume, transição curta do loop e codificação Opus. Sem compressão nem alteração de tom ou velocidade.",
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado em loop, ajustado em volume e codificado em Opus mono.",
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night. Calm water can be heard near ponds and lakes across the maps. Fog City's southern coast has waves. Wind has regional character and subtle map variations, with deeper desert gusts and thinner wind in ice regions.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x. As sombras do chão não escurecem casas, iglus ou outros objetos. Os reflexos acima do jogador mantêm os pés voltados para a margem mais próxima. As grandes copas de Native Forest se movem em três partes de folhagem enquanto os troncos permanecem parados. As copas de Fog City se movem juntas, incluindo a folhagem dourada dos ginkgos. A madeira das acácias da savana permanece parada. As palmeiras balançam a partir de uma base fixa, com mais movimento em direção à copa. As copas das outras árvores mantêm os troncos parados, incluindo flores, frutos e folhagem com neve. As árvores mortas se movem apenas nas pontas superiores. Algumas janelas de Toy Town brilham à noite. O lodo da fábrica emite pequenas partículas verdes em vez de um brilho uniforme. Os portais de televisão projetam uma luz azul suave no chão à sua frente. A luz das lanternas acompanha o vidro em Overdell e Myotismon Keep. Candelabros e lustres iluminam suavemente o chão abaixo das bases, com chamas brilhantes em vez de metal luminoso. Primary Village tem confetes mais visíveis. A densidade do clima também controla as folhas sazonais, que param de cair ao desativar o clima. Projéteis visíveis emitem uma pequena luz da mesma cor à noite. É possível ouvir água calma perto de lagos e lagoas nos mapas. A costa sul de Fog City tem ondas. O vento varia conforme a região e o mapa, com rajadas mais graves no deserto e um vento mais fino nas regiões geladas.",
-    "Trimmed, looped, volume matched and encoded to mono Opus. Regional high-pass and low-pass filters with subtle per-map variation and slow gain changes during playback; no pitch or speed change.": "Recortado, preparado em loop, com volume ajustado e codificado em Opus mono. Filtros regionais de passa-altas e passa-baixas com variações sutis por mapa e mudanças lentas de volume durante a reprodução; sem alterar o tom ou a velocidade."
+    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night. Calm water can be heard near ponds and lakes across the maps. Fog City's southern coast has waves. Wind has regional character and subtle map variations, with deeper desert gusts and thinner wind in ice regions. Server Desert speakers occasionally play muffled radio chatter with long pauses. The atmosphere clock can follow your computer, repeat a day or hold a chosen time.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x. As sombras do chão não escurecem casas, iglus ou outros objetos. Os reflexos acima do jogador mantêm os pés voltados para a margem mais próxima. As grandes copas de Native Forest se movem em três partes de folhagem enquanto os troncos permanecem parados. As copas de Fog City se movem juntas, incluindo a folhagem dourada dos ginkgos. A madeira das acácias da savana permanece parada. As palmeiras balançam a partir de uma base fixa, com mais movimento em direção à copa. As copas das outras árvores mantêm os troncos parados, incluindo flores, frutos e folhagem com neve. As árvores mortas se movem apenas nas pontas superiores. Algumas janelas de Toy Town brilham à noite. O lodo da fábrica emite pequenas partículas verdes em vez de um brilho uniforme. Os portais de televisão projetam uma luz azul suave no chão à sua frente. A luz das lanternas acompanha o vidro em Overdell e Myotismon Keep. Candelabros e lustres iluminam suavemente o chão abaixo das bases, com chamas brilhantes em vez de metal luminoso. Primary Village tem confetes mais visíveis. A densidade do clima também controla as folhas sazonais, que param de cair ao desativar o clima. Projéteis visíveis emitem uma pequena luz da mesma cor à noite. É possível ouvir água calma perto de lagos e lagoas nos mapas. A costa sul de Fog City tem ondas. O vento varia conforme a região e o mapa, com rajadas mais graves no deserto e um vento mais fino nas regiões geladas. Os alto-falantes de Server Desert reproduzem vozes de rádio abafadas ocasionalmente, com pausas longas. O relógio da atmosfera pode seguir o computador, repetir um dia ou manter um horário escolhido.",
+    "Trimmed, looped, volume matched and encoded to mono Opus. Regional high-pass and low-pass filters with subtle per-map variation and slow gain changes during playback; no pitch or speed change.": "Recortado, preparado em loop, com volume ajustado e codificado em Opus mono. Filtros regionais de passa-altas e passa-baixas com variações sutis por mapa e mudanças lentas de volume durante a reprodução; sem alterar o tom ou a velocidade.",
+    "Atmosphere clock": "Relógio da atmosfera",
+    "Repeating day": "Dia em ciclo",
+    "Fixed time": "Horário fixo",
+    "Day length": "Duração do dia",
+    "Real time follows your computer clock. Only affects lighting, shadows and ambience.": "A hora real segue o relógio do computador. Afeta apenas a iluminação, as sombras e o ambiente.",
+    "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Trecho em mono, filtro de graves de 200 Hz e dois filtros de agudos de 900 Hz, ajuste de volume constante, fades e codificação Opus. Trechos curtos e variados perto dos alto-falantes de Server Desert com pausas longas; sem alterar o tom ou a velocidade."
   }
 };
 
@@ -620,7 +635,9 @@
     const rgb = (c) => (Math.round(c[0]) << 16) | (Math.round(c[1]) << 8) | Math.round(c[2]);
 
     const realHour = () => {
-      if (DAY_MINUTES() > 0) return ((Date.now() / 60000) % DAY_MINUTES()) / DAY_MINUTES() * 24;
+      if (SETTINGS.timeMode === 'fixed') return SETTINGS.fixedTime / 60;
+      if (SETTINGS.timeMode === 'cycle' && DAY_MINUTES() > 0)
+        return ((Date.now() / 60000) % DAY_MINUTES()) / DAY_MINUTES() * 24;
       const d = new Date();
       return d.getHours() + d.getMinutes() / 60 + d.getSeconds() / 3600;
     };
@@ -2048,7 +2065,7 @@
       toggleAmbient: () => { SETTINGS.ambientEnabled = !SETTINGS.ambientEnabled; store(); return SETTINGS.ambientEnabled; },
       get ambient() { return SETTINGS.ambientEnabled; }, set ambient(v) { SETTINGS.ambientEnabled = !!v; },
       get enabled() { return enabled; }, set enabled(v) { enabled = !!v; SETTINGS.atmosphere = enabled; },
-      get preview() { return preview; }, set preview(v) { preview = v; },
+      get preview() { return preview; }, set preview(v) { preview = v; anim = null; },
       get built() { return built; },
       diagnostics: () => ({ map: built && built.mapId, stats: built && built.stats,
         ready: !!readyScene, blockedMaps: [...brokenMaps], clouds: built && built.cloudCount,
@@ -2057,7 +2074,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night. Calm water can be heard near ponds and lakes across the maps. Fog City's southern coast has waves. Wind has regional character and subtle map variations, with deeper desert gusts and thinner wind in ice regions."],
+  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night. Calm water can be heard near ponds and lakes across the maps. Fog City's southern coast has waves. Wind has regional character and subtle map variations, with deeper desert gusts and thinner wind in ice regions. Server Desert speakers occasionally play muffled radio chatter with long pauses. The atmosphere clock can follow your computer, repeat a day or hold a chosen time."],
   ["0.1.4", "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night."],
   ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance."],
   ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
@@ -2082,7 +2099,9 @@
     ] },
     { title: 'Sky and lighting', fields: [
       ['dayNight', 'Day and night cycle', 'check'],
-      ['dayMinutes', 'Day length (0 = real time)', 'range', 0, 240, 5, ' min'],
+      ['timeMode', 'Atmosphere clock', 'select', [['system', 'Real time'], ['cycle', 'Repeating day'], ['fixed', 'Fixed time']], 'Real time follows your computer clock. Only affects lighting, shadows and ambience.'],
+      ['dayMinutes', 'Day length', 'range', 5, 240, 5, ' min'],
+      ['fixedTime', 'Time of day', 'time'],
       ['lights', 'Fire and portal lighting', 'check'],
       ['playerLight', 'Player night light', 'range', 0, 2, 0.05, '×'],
       ['fireEmbers', 'Sparks and embers', 'check'],
@@ -2127,7 +2146,7 @@
   const LIVE_FIELDS = new Set(['stepGain', 'ambientEnabled', 'ambientVolume',
     'ambientWind', 'ambientBirds', 'ambientCrickets', 'ambientFire', 'ambientWater', 'ambientWaves']);
   const KEYBOARD_HELP = "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.";
-  const DEVELOPMENT_HELP = "Development only: Shift+F10 cycles real time, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.";
+  const DEVELOPMENT_HELP = "Development only: Shift+F10 cycles the selected clock, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.";
   let menuRoot = null, rebuildTimeout = null, reloadNeeded = false, toastTimer = null;
   let activeTab = 'graphics';
   const toast = (message, ms = 1700) => {
@@ -2144,6 +2163,10 @@
   };
   const updateSetting = (name, value, commit = true) => {
     SETTINGS[name] = accepted(name, value);
+    if (name === 'timeMode' && SETTINGS.timeMode === 'cycle' && SETTINGS.dayMinutes < 5) SETTINGS.dayMinutes = 60;
+    // @development-start
+    if (['timeMode', 'fixedTime', 'dayMinutes'].includes(name)) ATMOS.preview = null;
+    // @development-end
     store();
     if (name === 'uiLanguage' || name === 'uiAdvanced') { if (menuRoot && name === 'uiLanguage') renderTab(); return; }
     if (name === 'atmosphere') {
@@ -2154,9 +2177,10 @@
       const el = document.getElementById('digimmo-reload');
       if (el) el.hidden = false;
     } else if (!LIVE_FIELDS.has(name) && commit) queueRebuild();
+    if ((name === 'timeMode' || name === 'dayNight') && menuRoot) renderTab();
   };
   const MAIN_SETTINGS = new Set(['uiLanguage', 'atmosphere', 'dayNight',
-    'season', 'clouds', 'ambientEnabled', 'ambientVolume']);
+    'timeMode', 'dayMinutes', 'fixedTime', 'season', 'clouds', 'ambientEnabled', 'ambientVolume']);
   const makeFields = (parent, groups) => {
     const main = document.createElement('section'); main.className = 'digimmo-section';
     const title = document.createElement('h3'); title.textContent = tr('Settings'); main.append(title);
@@ -2165,6 +2189,7 @@
     for (const group of groups) {
       for (const field of group.fields) {
         const [key, label, type, a, b, step, suffix, note] = field;
+        if ((key === 'dayMinutes' && SETTINGS.timeMode !== 'cycle') || (key === 'fixedTime' && SETTINGS.timeMode !== 'fixed')) continue;
         const isMain = MAIN_SETTINGS.has(key);
         if (!isMain && !SETTINGS.uiAdvanced) continue;
         const row = document.createElement('label'); row.className = 'digimmo-row';
@@ -2172,6 +2197,7 @@
         const control = document.createElement('span'); control.className = 'digimmo-control';
         const input = document.createElement(type === 'select' ? 'select' : 'input');
         input.id = 'digimmo-' + key;
+        if (['timeMode', 'dayMinutes', 'fixedTime'].includes(key)) input.disabled = !SETTINGS.dayNight;
         if (type === 'check') { input.type = 'checkbox'; input.checked = SETTINGS[key]; }
         if (type === 'range') {
           input.type = 'range'; input.min = a; input.max = b; input.step = step; input.value = SETTINGS[key];
@@ -2179,6 +2205,15 @@
           input.addEventListener('input', () => { out.textContent = input.value + (suffix || ''); updateSetting(key, Number(input.value), false); });
           input.addEventListener('change', () => updateSetting(key, Number(input.value), true));
           control.append(input, out);
+        } else if (type === 'time') {
+          const formatted = () => String(Math.floor(SETTINGS[key] / 60)).padStart(2, '0') + ':' + String(SETTINGS[key] % 60).padStart(2, '0');
+          input.type = 'time'; input.step = 60; input.value = formatted();
+          input.addEventListener('change', () => {
+            if (!/^\d{2}:\d{2}$/.test(input.value)) { input.value = formatted(); return; }
+            const [hours, minutes] = input.value.split(':').map(Number);
+            updateSetting(key, hours * 60 + minutes);
+          });
+          control.append(input);
         } else if (type === 'select') {
           for (const [value, desc] of a) {
             const option = document.createElement('option'); option.value = value; option.textContent = tr(desc); input.append(option);
@@ -2268,6 +2303,7 @@
       #digimmo-panel input[type=range]{width:100%;min-width:75px;accent-color:#e8c46b;cursor:pointer}
       #digimmo-panel output{min-width:53px;text-align:right;color:#fce298;font-variant-numeric:tabular-nums}
       #digimmo-panel select{width:100%;padding:5px;background:#172e54;color:#fff;border:2px solid #607eaf;font:inherit}
+      #digimmo-panel input[type=time]{width:100%;padding:5px;background:#172e54;color:#fff;border:2px solid #607eaf;font:inherit;color-scheme:dark}
       #digimmo-panel small{grid-column:1/-1;opacity:.67;font-size:11px}
       #digimmo-panel .digimmo-foot{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-start;gap:12px;
         flex-shrink:0;max-height:45vh;overflow:auto;padding:10px 14px;border-top:2px solid #314f7a;color:#a9bfdd;font-size:11px}
@@ -2361,7 +2397,7 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startUI, { once: true });
   else startUI();
 
-  const NAMES = { null: 'Real time', 6.4: 'Morning', 12: 'Noon', 19.3: 'Evening', 23: 'Night' };
+  const NAMES = { null: 'Atmosphere clock', 6.4: 'Morning', 12: 'Noon', 19.3: 'Evening', 23: 'Night' };
   window.addEventListener('keydown', (e) => {
     const focused = e.target;
     const typing = focused && (focused.tagName === 'INPUT' && focused.type !== 'checkbox' && focused.type !== 'range'

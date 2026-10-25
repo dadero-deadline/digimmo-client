@@ -2,6 +2,8 @@
 
 ## 0.2 (unreleased)
 
+- Choose real time, a repeating day or a fixed atmosphere time in F10.
+- Server Desert speakers occasionally play muffled radio chatter with long pauses.
 - Nearby ponds and lakes have gentle water sounds. Waves reach the southern Fog City coast.
 - Wind varies subtly by map, with deeper desert gusts and thinner wind in ice regions. Cities retain daytime traffic and nighttime wind.
 - Visible flying attacks cast a small matching light at night.

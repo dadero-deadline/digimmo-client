@@ -14,7 +14,7 @@ The F10 shortcuts are ignored while typing outside the settings menu. When multi
 
 ## Development builds only
 
-- Shift+F10: cycle real local time, morning (06:24), noon (12:00), evening (19:18), night (23:00), then real local time again. Each preview transition lasts six seconds. It changes only the added atmosphere, is not saved, and does not change the game's clock.
+- Shift+F10: cycle the selected atmosphere clock, morning (06:24), noon (12:00), evening (19:18), night (23:00), then the selected clock again. Each preview transition lasts six seconds. It changes only the added atmosphere, is not saved, and does not change the game's clock.
 - Ctrl+Alt+P: show or hide read-only map, rendering and audio counters. It does not change effects.
 - Ctrl+Shift+I: Electron developer tools in the development client only.
 

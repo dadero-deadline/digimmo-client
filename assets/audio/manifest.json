@@ -218,5 +218,16 @@
     "bytes": 442748,
     "sha256": "04c18f5b3116a595c8b27fa171ead0957f4fed94cbf5e4eac2792b8b295c9451",
     "changes": "Excerpt from 25s, up to 62s; mono; 90 Hz high-pass and 4200 Hz low-pass; constant RMS gain with -7 dBFS peak ceiling; 1.2s circular crossfade; 48 kHz Opus at 64 kbps VBR. No pitch or speed change."
+  },
+  {
+    "name": "announcement",
+    "source": "announcement",
+    "duration": 40.0,
+    "loop": false,
+    "peakDB": -8.88,
+    "rmsDB": -37.73,
+    "bytes": 436273,
+    "sha256": "6a8303d6f3045bf616cb50357562c602c8145181928ae3b34fa367490084d35d",
+    "changes": "Excerpt from 1s, 40s; mono; 200 Hz high-pass and two 900 Hz low-pass filters; constant gain targeting -29 dBFS RMS with a -9 dBFS peak ceiling; 120 ms edge fades; 48 kHz Opus at 64 kbps VBR. No pitch or speed change. Playback uses varied 3.5 to 5 second passages with fades and 120 to 240 second pauses near placed speakers in Server Desert."
   }
 ]

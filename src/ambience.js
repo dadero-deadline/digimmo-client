@@ -6,6 +6,9 @@
       const isCoast = shorelineWater.length >= 12;
       const windyMap = weather.some(w => /Sandstorm|Snow|Sea spray/.test(w.name));
       const windPhase = Math.random() * 100;
+      const speakerPos = mapText.split(' ')[0] === 'server_desert'
+        ? [...new Map(casters.filter(c => !c.above && c.name === 'speaker_base')
+          .map(c => [c.x + ',' + c.y, { x: c.x + 8, y: c.y - 8 }])).values()] : [];
       const firePos = lights.filter(l => /campfire|bonfire|brazier/i.test(l.def.test.source));
       // Furnace masks identify real fire apertures; no sound for unlit metal.
       for (const light of fxLights) if (light.kind === 'furnace') firePos.push(light);
@@ -64,6 +67,8 @@
         amb.nextBird = ctx.currentTime + 30 + Math.random() * 30;
         amb.nextGull = ctx.currentTime + 45 + Math.random() * 45;
         amb.nextCricket = ctx.currentTime + 35 + Math.random() * 35; amb.nextCrackle = ctx.currentTime;
+        amb.nextAnnouncement = ctx.currentTime + 45 + Math.random() * 45;
+        amb.lastAnnouncementOffset = -Infinity;
         try {
           const out = ambNode('createGain'); out.gain.value = 0; out.connect(dest); amb.out = out;
           amb.groups = {};
@@ -257,7 +262,14 @@
         const play = (kind, names, group, gain, location, pauseMin, pauseSpread, maxDuration = Infinity) => {
           const name = chooseSample(kind, names);
           if (!name) return t + pauseMin;
-          const offset = kind === 'bird' ? Math.random() * Math.max(0, buffers[name].duration - maxDuration) : 0;
+          const available = Math.max(0, buffers[name].duration - maxDuration);
+          let offset = kind === 'bird' || kind === 'announcement' ? Math.random() * available : 0;
+          if (kind === 'announcement') {
+            // Consecutive passages must not repeat the same part of the recording.
+            if (available > maxDuration * 2 && Math.abs(offset - amb.lastAnnouncementOffset) < maxDuration)
+              offset = (offset + available / 2) % available;
+            amb.lastAnnouncementOffset = offset;
+          }
           const duration = sampleOnce(name, group, gain, location.pan || 0, t + 0.04, location, maxDuration, offset);
           return t + 0.04 + duration + pauseMin + Math.random() * pauseSpread;
         };
@@ -282,6 +294,11 @@
         if (t >= amb.nextGull) {
           amb.nextGull = audible && SETTINGS.ambientBirds > 0 && P.gulls > 0 && dayMix > 0.4 && shore.gain > 0.04 && gulls.length
             ? play('gull', gulls, 'birds', P.gulls * 0.7, { ...shore, daytime: true }, 90, 90, 2.2) : t + 10;
+        }
+        if (speakerPos.length && t >= amb.nextAnnouncement) {
+          const speaker = nearestSound(speakerPos, me, 320);
+          amb.nextAnnouncement = audible && SETTINGS.ambientWind > 0 && speaker.gain > 0.015 && buffers.announcement
+            ? play('announcement', ['announcement'], 'wind', 0.65, speaker, 120, 120, 3.5 + Math.random() * 1.5) : t + 15;
         }
         // Per-source fallback: a missing stream must not silence it just because
         // the waterfall decoded. No synthesized detail is added over recordings.
