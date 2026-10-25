@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; img-src 'self'; style-src 'unsafe-inline'; script-src 'unsafe-inline'">
+<title>DigiMMO</title>
+<style>
+  :root { --bg: #0b1030; --panel: rgba(255, 255, 255, 0.05); --line: #2a3570; --text: #e8ecff; --muted: #9aa6d6; --gold: #f5c542; --gold-dark: #b8860b; --ok: #5ee08a; --warn: #f5c542; --down: #ff6b6b; }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body { background: radial-gradient(1200px 600px at 15% -10%, #1f2a6b 0%, transparent 60%), radial-gradient(900px 500px at 110% 110%, #2b1f5e 0%, transparent 55%), var(--bg);
+    color: var(--text); font: 15px/1.45 "Segoe UI", system-ui, sans-serif; user-select: none; overflow: hidden; }
+  .launcher { display: grid; grid-template-rows: auto 1fr auto; height: 100%; padding: 22px 26px 20px; gap: 18px; }
+  header { display: flex; align-items: center; gap: 16px; }
+  header img { width: 64px; height: 64px; image-rendering: pixelated; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.5)); }
+  h1 { margin: 0; font-size: 30px; letter-spacing: 2px; text-shadow: 0 3px 0 #000a; }
+  .sub { margin: 2px 0 0; color: var(--muted); font-size: 13px; }
+  .status { margin-left: auto; display: flex; align-items: center; gap: 8px; padding: 7px 12px; border: 2px solid var(--line); border-radius: 6px; background: var(--panel); font-size: 13px; }
+  .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--muted); box-shadow: 0 0 8px currentColor; }
+  .status.ok .dot { background: var(--ok); color: var(--ok); }
+  .status.warn .dot { background: var(--warn); color: var(--warn); }
+  .status.down .dot { background: var(--down); color: var(--down); }
+  .content { display: grid; grid-template-columns: 1fr 240px; gap: 18px; min-height: 0; }
+  .panel { background: var(--panel); border: 2px solid var(--line); border-radius: 8px; }
+  .news { padding: 16px 18px; overflow-y: auto; min-height: 0; scrollbar-width: thin; scrollbar-color: #3a4890 transparent; }
+  h2 { margin: 0 0 10px; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--muted); }
+  .hint { margin: 0; color: var(--muted); }
+  .release { padding: 12px 0; border-top: 1px solid var(--line); }
+  .release:first-of-type { border-top: 0; padding-top: 2px; }
+  .date { display: inline-block; padding: 1px 7px; border-radius: 4px; background: var(--gold); color: #1a1400; font-size: 12px; font-weight: 700; }
+  .nth { margin-left: 8px; color: var(--muted); font-size: 12px; }
+  .topic { margin: 10px 0 2px; font-weight: 600; }
+  .release p { margin: 6px 0 0; color: #cfd6f7; }
+  .release ul { margin: 4px 0 0; padding-left: 18px; color: #cfd6f7; }
+  .release li { margin: 3px 0; }
+  .side { display: flex; flex-direction: column; gap: 18px; min-height: 0; }
+  .stat { padding: 18px; text-align: center; }
+  .big { font-size: 46px; font-weight: 800; line-height: 1; color: var(--gold); text-shadow: 0 3px 0 #000a; }
+  .label { margin-top: 6px; color: var(--muted); font-size: 13px; }
+  .client { padding: 14px 16px; }
+  .client p { margin: 0; font-size: 14px; }
+  .update { margin-top: 8px !important; color: var(--gold); font-size: 13px !important; }
+  button { cursor: pointer; font: inherit; }
+  .ghost { padding: 8px 12px; border: 2px solid var(--line); border-radius: 6px; background: rgba(255, 255, 255, 0.04); color: var(--text); }
+  .ghost:hover, .ghost:focus-visible { border-color: var(--gold); outline: none; }
+  .client .ghost { margin-top: 12px; width: 100%; text-align: left; font-size: 13px; }
+  footer { display: flex; align-items: center; gap: 10px; }
+  .play { margin-left: auto; min-width: 220px; padding: 14px 36px; border: 0; border-radius: 6px; background: var(--gold); color: #1a1400;
+    font: 800 20px/1 "Segoe UI", system-ui, sans-serif; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 5px 0 var(--gold-dark), 0 8px 18px rgba(0, 0, 0, 0.45); }
+  .play:hover, .play:focus-visible { filter: brightness(1.08); outline: none; }
+  .play:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--gold-dark), 0 4px 10px rgba(0, 0, 0, 0.45); }
+  .play:disabled { cursor: progress; filter: saturate(0.6) brightness(0.85); transform: none; }
+  @media (max-width: 820px) { .content { grid-template-columns: 1fr; } .side { flex-direction: row; } .side > * { flex: 1; } }
+</style>
+</head>
+<body>
+<main class="launcher">
+  <header>
+    <img src="icon.png" alt="">
+    <div>
+      <h1>DigiMMO</h1>
+      <p class="sub" id="subtitle"></p>
+    </div>
+    <div class="status" id="status"><span class="dot"></span><span id="statusText"></span></div>
+  </header>
+  <section class="content">
+    <article class="panel news">
+      <h2 id="newsTitle"></h2>
+      <div id="news"><p class="hint" id="newsHint"></p></div>
+    </article>
+    <aside class="side">
+      <div class="panel stat">
+        <div class="big" id="online">–</div>
+        <div class="label" id="onlineLabel"></div>
+      </div>
+      <div class="panel client">
+        <h2 id="clientTitle"></h2>
+        <p id="clientNote"></p>
+        <p class="update" id="update" hidden></p>
+        <button class="ghost" data-link="client" id="linkClient"></button>
+      </div>
+    </aside>
+  </section>
+  <footer>
+    <button class="ghost" data-link="website" id="linkWebsite"></button>
+    <button class="ghost" data-link="wiki" id="linkWiki"></button>
+    <button class="ghost" data-link="discord" id="linkDiscord"></button>
+    <button class="play" id="play"></button>
+  </footer>
+</main>
+<script>
+  const TEXT = {
+    en: { subtitle: 'Unofficial desktop client', news: 'Game updates', loading: 'Loading game updates', failed: 'Game updates could not be loaded.',
+      nth: n => 'Update ' + n, online: 'players online', client: 'Client', clientAll: 'All client changes',
+      play: 'Play', starting: 'Starting', ok: 'Server online', warn: 'Maintenance', down: 'Server unreachable', checking: 'Checking server',
+      website: 'Website', wiki: 'Wiki', discord: 'Discord', update: 'Update ready: it installs after you close the client.' },
+    es: { subtitle: 'Cliente de escritorio no oficial', news: 'Novedades del juego', loading: 'Cargando las novedades del juego', failed: 'No se pudieron cargar las novedades del juego.',
+      nth: n => 'Actualización ' + n, online: 'jugadores en línea', client: 'Cliente', clientAll: 'Todos los cambios del cliente',
+      play: 'Jugar', starting: 'Iniciando', ok: 'Servidor en línea', warn: 'Mantenimiento', down: 'Servidor no disponible', checking: 'Comprobando el servidor',
+      website: 'Sitio web', wiki: 'Wiki', discord: 'Discord', update: 'Actualización lista: se instala al cerrar el cliente.' },
+    pt: { subtitle: 'Cliente de desktop não oficial', news: 'Novidades do jogo', loading: 'Carregando as novidades do jogo', failed: 'Não foi possível carregar as novidades do jogo.',
+      nth: n => 'Atualização ' + n, online: 'jogadores online', client: 'Cliente', clientAll: 'Todas as mudanças do cliente',
+      play: 'Jogar', starting: 'Iniciando', ok: 'Servidor online', warn: 'Manutenção', down: 'Servidor indisponível', checking: 'Verificando o servidor',
+      website: 'Site', wiki: 'Wiki', discord: 'Discord', update: 'Atualização pronta: ela é instalada quando você fechar o cliente.' },
+  };
+  let lang = 'en', t = TEXT.en;
+  const $ = id => document.getElementById(id);
+  const make = (tag, className, text) => { const el = document.createElement(tag); if (className) el.className = className; if (text != null) el.textContent = text; return el; };
+  const setStatus = (kind, online) => {
+    $('status').className = 'status ' + kind;
+    $('statusText').textContent = t[kind];
+    $('online').textContent = Number.isFinite(online) ? online.toLocaleString(lang) : '–';
+  };
+  const refresh = async () => {
+    const s = await window.launcher.status().catch(() => null);
+    if (!s || !s.reachable) setStatus('down', null);
+    else setStatus(s.maintenance || !s.ok ? 'warn' : 'ok', s.online);
+  };
+  const showUpdate = notice => { if (!notice) return; $('update').textContent = t.update; $('update').hidden = false; };
+  // Patch notes arrive as plain text blocks and are only ever inserted as text.
+  const renderNews = releases => {
+    const box = $('news');
+    if (!Array.isArray(releases) || !releases.length) { $('newsHint').textContent = t.failed; return; }
+    const date = new Intl.DateTimeFormat(lang, { day: 'numeric', month: 'long', year: 'numeric', timeZone: 'UTC' });
+    box.replaceChildren();
+    for (const release of releases) {
+      const item = make('div', 'release');
+      item.append(make('span', 'date', date.format(new Date(release.date + 'T12:00:00Z'))));
+      if (release.ofDay > 0) item.append(make('span', 'nth', t.nth(release.ofDay)));
+      for (const block of release.blocks) {
+        if (block.kind === 'topic') item.append(make('div', 'topic', block.text));
+        else if (block.kind === 'text') item.append(make('p', '', block.text));
+        else if (block.items.length) {
+          const list = make('ul');
+          for (const text of block.items) list.append(make('li', '', text));
+          item.append(list);
+        }
+      }
+      box.append(item);
+    }
+  };
+  (async () => {
+    const info = await window.launcher.info();
+    const preferred = info.language || info.locale;
+    lang = /^es/i.test(preferred) ? 'es' : /^pt/i.test(preferred) ? 'pt' : 'en';
+    t = TEXT[lang];
+    document.documentElement.lang = lang;
+    $('subtitle').textContent = t.subtitle;
+    $('newsTitle').textContent = t.news;
+    $('newsHint').textContent = t.loading;
+    $('onlineLabel').textContent = t.online;
+    $('clientTitle').textContent = t.client + ' v' + info.version;
+    if (info.client) {
+      const lines = String(info.client[lang] || info.client.en).split('\n');
+      $('clientNote').textContent = lines[0];
+      $('clientNote').title = lines.slice(1).join('\n');
+    }
+    $('play').textContent = t.play;
+    for (const [id, key] of [['linkWebsite', 'website'], ['linkWiki', 'wiki'], ['linkDiscord', 'discord'], ['linkClient', 'clientAll']]) $(id).textContent = t[key];
+    $('statusText').textContent = t.checking;
+    showUpdate(info.update);
+    $('play').focus();
+    refresh();
+    setInterval(refresh, 60000);
+    renderNews(await window.launcher.news(lang).catch(() => null));
+  })();
+  const start = () => {
+    if ($('play').disabled) return;
+    $('play').disabled = true;
+    $('play').textContent = t.starting;
+    window.launcher.play();
+  };
+  window.launcher.onUpdate(showUpdate);
+  $('play').addEventListener('click', start);
+  document.addEventListener('keydown', event => { if (event.key === 'Enter' && !event.repeat && !event.target.closest('[data-link]')) start(); });
+  for (const button of document.querySelectorAll('[data-link]')) button.addEventListener('click', () => window.launcher.open(button.dataset.link));
+</script>
+</body>
+</html>

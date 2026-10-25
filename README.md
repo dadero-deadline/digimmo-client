@@ -24,7 +24,7 @@ Linux 64-bit, tested on Ubuntu. No installation needed. Updates download automat
 
 ## What changes?
 
-Warm lights at night, foliage in the wind and ambient sounds that change with the area and time of day. Adjust the effects in **F10**, or switch them off at any time. The atmosphere clock can follow your local computer time, repeat a shorter day or stay at a time you choose. While Discord is open, the desktop client shows DigiMMO as your current game; Discord's activity privacy settings can hide it.
+Warm lights at night, foliage in the wind and ambient sounds that change with the area and time of day. Adjust the effects in **F10**, or switch them off at any time. The atmosphere clock can follow your local computer time, repeat a shorter day or stay at a time you choose. The desktop client opens with a start window showing the game's latest patch notes and how many players are online, read from the game's public API; turn it off in **F10**. While Discord is open, the desktop client shows DigiMMO as your current game; Discord's activity privacy settings can hide it.
 
 ## Prefer your browser?
 

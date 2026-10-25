@@ -24,7 +24,12 @@ for(const channel of ['public','development']){
  const names=credits.flatMap(c=>c.samples.split(', '));
  assert.equal(new Set(names).size,names.length,'Every sample has exactly one credit');
  assert.deepEqual([...names].sort(),audio.map(sample=>sample.name).sort(),'Audio manifest and credits match');
- for(const file of ['main.js','preload.js','updater.js','discord.js'])new vm.Script(fs.readFileSync(path.join(folder,'client',file),'utf8'));
+ for(const file of ['main.js','preload.js','updater.js','discord.js','launcher-preload.js'])new vm.Script(fs.readFileSync(path.join(folder,'client',file),'utf8'));
+ // The launcher shows the newest release note, translated, and loads nothing remote itself.
+ const launcherNote=JSON.parse(fs.readFileSync(path.join(folder,'client/launcher-notes.json'),'utf8')),[version,note]=notes[0];
+ assert.equal(JSON.stringify(launcherNote),JSON.stringify({version,en:note,es:translations.es[note],pt:translations.pt[note]}));
+ const launcherPage=fs.readFileSync(path.join(folder,'client/launcher.html'),'utf8');
+ assert(launcherPage.includes("default-src 'none'")&&!/https?:\/\//.test(launcherPage),'Launcher page stays local');
  assert.equal(fs.readFileSync(path.join(folder,'client/tweaks.user.js'),'utf8'),text);
  assert.equal(JSON.parse(fs.readFileSync(path.join(folder,'client/package.json'),'utf8')).version,release.version);
  for(const browser of ['chromium','firefox']){

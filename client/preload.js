@@ -4,9 +4,13 @@
 // handled by the main process and never fetch scripts from this preload.
 const fs=require('node:fs');
 const path=require('node:path');
-const {ipcRenderer}=require('electron');
-// Receive status only. The page gets no Node, IPC or update-installation API.
+const {ipcRenderer,contextBridge}=require('electron');
+// Receive status only. The page gets one call to remember the start window preference
+// (shown or not, and its language), but no Node, general IPC or update-installation API.
 if(location.origin==='https://play.digimmo.com.br'&&process.isMainFrame){
+  contextBridge.exposeInMainWorld('digimmoClient',{
+    launcherPreferences:value=>ipcRenderer.send('digimmo:launcher-preferences',{show:value?.show!==false,language:String(value?.language??'')}),
+  });
   let notice=null,host=null;
   const renderNotice=()=>{
     if(!notice||!document.body)return;

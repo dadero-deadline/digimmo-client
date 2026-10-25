@@ -36,7 +36,7 @@
     masterThreshold: -1, sfxThreshold: -6, sfxRatio: 12,
     ambientEnabled: true, ambientVolume: 0.5, uiLanguage: 'auto', uiAdvanced: false, ambientWind: 1,
     ambientBirds: 1, ambientCrickets: 1, ambientFire: 1,
-    ambientWater: 1, ambientWaves: 1,
+    ambientWater: 1, ambientWaves: 1, launcher: true,
   });
   const RANGES = {
     weatherDensity: [0.1, 3], dayMinutes: [0, 240], fixedTime: [0, 1439], playerLight: [0, 2],
@@ -50,6 +50,8 @@
     ambientFire: [0, 2], ambientWater: [0, 2], ambientWaves: [0, 2],
   };
   const SETTINGS = { ...DEFAULTS };
+  // Present only in the desktop client, which stores the start window preference outside the page.
+  const CLIENT = window.digimmoClient;
   const accepted = (key, value) => {
     if (!(key in DEFAULTS)) return DEFAULTS[key];
     const sample = DEFAULTS[key];
@@ -118,6 +120,8 @@
     "Sound credits": "Créditos de sonido",
     "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding.": "Fragmentos, mono, filtrado, ajuste de volumen, fundidos en los extremos o entre bucles y codificación Opus.",
     "Show advanced settings": "Mostrar opciones avanzadas",
+    "Start window": "Ventana de inicio",
+    "Shows game updates and players online when the client starts.": "Muestra las novedades del juego y los jugadores en línea al abrir el cliente.",
     "Español": "Español",
     "World": "Mundo",
     "Audio": "Audio",
@@ -226,6 +230,8 @@
     "Sound credits": "Créditos de som",
     "Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding.": "Trechos, mono, filtragem, ajuste de volume, transições nas bordas ou entre loops e codificação Opus.",
     "Show advanced settings": "Mostrar configurações avançadas",
+    "Start window": "Janela inicial",
+    "Shows game updates and players online when the client starts.": "Mostra as novidades do jogo e os jogadores online ao abrir o cliente.",
     "Español": "Español",
     "World": "Mundo",
     "Audio": "Áudio",
@@ -2437,6 +2443,7 @@
   const MENU_SECTIONS = [
     { title: 'Environment', fields: [
       ['uiLanguage', 'Language', 'select', [['auto', 'Follow game language'], ['en', 'English'], ['es', 'Español'], ['pt', 'Português (Brazil)']]],
+      ['launcher', 'Start window', 'check', 'Shows game updates and players online when the client starts.'],
       ['atmosphere', 'Enable atmosphere', 'check', 'Toggle all atmosphere effects and ambient sounds'],
       ['weather', 'Regional weather', 'check'],
       ['weatherDensity', 'Weather density', 'range', 0.1, 3, 0.1, '×'],
@@ -2485,7 +2492,7 @@
     ] },
   ];
   const RESTART_FIELDS = new Set(['audioFix']);
-  const LIVE_FIELDS = new Set(['stepGain', 'ambientEnabled', 'ambientVolume',
+  const LIVE_FIELDS = new Set(['launcher', 'stepGain', 'ambientEnabled', 'ambientVolume',
     'ambientWind', 'ambientBirds', 'ambientCrickets', 'ambientFire', 'ambientWater', 'ambientWaves']);
   const KEYBOARD_HELP = "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.";
   // @development-start
@@ -2505,6 +2512,7 @@
     clearTimeout(rebuildTimeout);
     rebuildTimeout = setTimeout(() => ATMOS.rebuild(), 180);
   };
+  const tellClient = () => { try { CLIENT?.launcherPreferences({ show: SETTINGS.launcher, language: currentLanguage() }); } catch {} };
   const updateSetting = (name, value, commit = true) => {
     SETTINGS[name] = accepted(name, value);
     if (name === 'timeMode' && SETTINGS.timeMode === 'cycle' && SETTINGS.dayMinutes < 5) SETTINGS.dayMinutes = 60;
@@ -2512,6 +2520,7 @@
     if (['timeMode', 'fixedTime', 'dayMinutes'].includes(name)) ATMOS.preview = null;
     // @development-end
     store();
+    if (name === 'uiLanguage' || name === 'launcher') tellClient();
     if (name === 'uiLanguage' || name === 'uiAdvanced') { if (menuRoot && name === 'uiLanguage') renderTab(); return; }
     if (name === 'atmosphere') {
       ATMOS.enabled = SETTINGS.atmosphere;
@@ -2523,7 +2532,7 @@
     } else if (!LIVE_FIELDS.has(name) && commit) queueRebuild();
     if ((name === 'timeMode' || name === 'dayNight') && menuRoot) renderTab();
   };
-  const MAIN_SETTINGS = new Set(['uiLanguage', 'atmosphere', 'dayNight',
+  const MAIN_SETTINGS = new Set(['uiLanguage', 'launcher', 'atmosphere', 'dayNight',
     'timeMode', 'dayMinutes', 'fixedTime', 'season', 'clouds', 'ambientEnabled', 'ambientVolume']);
   const makeFields = (parent, groups) => {
     const main = document.createElement('section'); main.className = 'digimmo-section';
@@ -2534,6 +2543,7 @@
       for (const field of group.fields) {
         const [key, label, type, a, b, step, suffix, note] = field;
         if ((key === 'dayMinutes' && SETTINGS.timeMode !== 'cycle') || (key === 'fixedTime' && SETTINGS.timeMode !== 'fixed')) continue;
+        if (key === 'launcher' && !CLIENT) continue;
         const isMain = MAIN_SETTINGS.has(key);
         if (!isMain && !SETTINGS.uiAdvanced) continue;
         const row = document.createElement('label'); row.className = 'digimmo-row';
@@ -2709,6 +2719,7 @@
       const before = { ...SETTINGS };
       Object.assign(SETTINGS, DEFAULTS);
       store();
+      tellClient();
       if ([...RESTART_FIELDS].some(k => before[k] !== SETTINGS[k])) {
         reloadNeeded = true; reload.hidden = false;
       }
@@ -2808,6 +2819,8 @@
     requestAnimationFrame(atmosphereFrame);
   };
   requestAnimationFrame(atmosphereFrame);
+  // Once the game has settled on its language, the start window follows it at the next client start.
+  if (CLIENT) setTimeout(tellClient, 5000);
   // @development-start
   Object.assign(runtime, {
     status: 'ready', settings: SETTINGS, openMenu, closeMenu,

@@ -60,7 +60,20 @@ if(!development){
 new vm.Script(script,{filename:'tweaks.user.js'});
 fs.writeFileSync(path.join(out,'digimmo-tweaks.user.js'),script);
 fs.writeFileSync(path.join(out,'client/tweaks.user.js'),script);
-for(const file of ['main.js','preload.js','updater.js','discord.js']){
+// The launcher shows the newest client changelog entry in English, Spanish and Portuguese.
+const section=(start,end)=>{
+  const x=script.indexOf(start);
+  if(x<0)throw new Error('Missing build marker: '+start.trim());
+  return script.slice(x+start.length,script.indexOf(end,x));
+};
+const changelog=JSON.parse('['+section('  const CHANGELOG_ENTRIES = [','\n];')+']');
+const dictionary=JSON.parse(section('  const TRANSLATIONS = ','\n  const ').trim().replace(/;$/,''));
+const [number,note]=changelog[0];
+const latest={version:number,en:note,es:dictionary.es?.[note],pt:dictionary.pt?.[note]};
+if(!latest.es||!latest.pt)throw new Error('Launcher note needs a translated changelog entry');
+fs.writeFileSync(path.join(out,'client/launcher-notes.json'),JSON.stringify(latest,null,2)+'\n');
+fs.copyFileSync(path.join(root,'client/launcher.html'),path.join(out,'client/launcher.html'));
+for(const file of ['main.js','preload.js','updater.js','discord.js','launcher-preload.js']){
   let code=read('client/'+file).replace(/__DEVELOPMENT__/g,String(development));
   code=boundaries(code,'client/'+file);
   new vm.Script(code,{filename:file});
@@ -96,7 +109,7 @@ console.log(`Built ${version} (${channel}), ${Buffer.byteLength(script)} bytes, 
 // The branded development runtime reads ordinary files, so Ctrl+R sees a rebuild.
 const devApp=path.join(out,'windows/win-unpacked/resources/app');
 if(development && fs.existsSync(path.join(devApp,'main.js'))){
-  for(const file of ['main.js','preload.js','updater.js','discord.js','tweaks.user.js','icon.png','icon.ico'])
+  for(const file of ['main.js','preload.js','updater.js','discord.js','launcher-preload.js','launcher.html','launcher-notes.json','tweaks.user.js','icon.png','icon.ico'])
     fs.copyFileSync(path.join(out,'client',file),path.join(devApp,file));
   const metadata=JSON.parse(fs.readFileSync(path.join(devApp,'package.json'),'utf8'));
   metadata.version=release.version;

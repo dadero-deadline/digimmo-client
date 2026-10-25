@@ -5,7 +5,7 @@
   "extraMetadata": {"name": "digimmo-client", "main": "main.js", "desktopName": "digimmo.desktop"},
   "files": [
     "package.json",
-    {"from": "dist/public/client", "to": ".", "filter": ["main.js", "preload.js", "updater.js", "discord.js", "tweaks.user.js", "icon.png", "icon.ico"]}
+    {"from": "dist/public/client", "to": ".", "filter": ["main.js", "preload.js", "updater.js", "discord.js", "launcher.html", "launcher-preload.js", "launcher-notes.json", "tweaks.user.js", "icon.png", "icon.ico"]}
   ],
   "extraResources": [
     {"from": "dist/public/LICENSE", "to": "LICENSE"},
