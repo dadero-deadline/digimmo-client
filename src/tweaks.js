@@ -1315,10 +1315,11 @@
           'beach:palm': [2,3,1], 'serverdesert:palm': [3,2,1],
           tree: [2,2,1], dtree: [2,2,1], btree: [2,2,1], pine: [1,1,1],
           vtree: [2,2,1], vpine: [1,1,1], apple_tree: [2,2,1], pineb: [3,3,1],
-          hpine: [3,2,1], hpine_s: [2,2,1], cherrytree: [2,2,1],
+          hpine: [3,2,1], hpine_s: [2,2,1], cherrytree: [2,2,1], 'toytown:cherry_tree': [2,2,1], 'toytown:yard_tree': [2,2,1],
+          'snow:fir': [2,2,1], 'peaks:bamboo': [2,2,1], 'highton:sakurab': [4,4,3], 'city:zelkova': [2,2,1], 'city:sakura': [2,2,1],
           deadtree: [2,2,1], gnarled_tree: [2,2,1], blacktree: [2,2,1], twisttree: [2,2,1] };
         const tipsOnly = new Set(['deadtree','gnarled_tree','blacktree','twisttree']);
-        const coloredCrowns = new Set(['tree','dtree','btree','pine','vtree','vpine','apple_tree','pineb','hpine','hpine_s','cherrytree']);
+        const coloredCrowns = new Set(['tree','dtree','btree','pine','vtree','vpine','apple_tree','pineb','hpine','hpine_s','cherrytree','cherry_tree','yard_tree','fir','sakurab','zelkova','sakura']);
         const groups = new Map();
         for (const layer of [...scene.children.list]) {
           if (layer.type !== 'TilemapLayer' || !layer.layer?.name?.startsWith('above#')) continue;
@@ -1332,6 +1333,8 @@
             let index = /^\d+$/.test(match[2]) ? Number(match[2]) : {tl:0,tr:1,ml:2,mr:3,top:0}[match[2]];
             // The bent Highton pine skips the empty lower-left crown cell.
             if (match[1] === 'pineb' && index >= 6) index++;
+            // The broad Highton cherry numbers its trunk 12-13 (walls) before the hanging crown ends 14-15.
+            if (match[1] === 'sakurab' && index === 14) index = 12;
             if (index >= cols * rows) continue;
             const x = layer.x + tile.pixelX - index % cols * 16;
             const y = layer.y + tile.pixelY - Math.floor(index / cols) * 16;
@@ -1346,7 +1349,8 @@
           group.cells.sort((a,b) => a.index - b.index);
           const art = group.family + ':' + group.cells.map(c => c.index + ':' + c.tile.index).join(',');
           const width = group.cols * 16, height = group.rows * 16;
-          const palm = group.family === 'palm', tips = tipsOnly.has(group.family), banded = palm || tips;
+          // Bamboo stalks run through the crown without wood, so they bend from the base like palms.
+          const palm = group.family === 'palm' || group.family === 'bamboo', tips = tipsOnly.has(group.family), banded = palm || tips;
           const colored = coloredCrowns.has(group.family);
           let parts = masks.get(art);
           if (!parts) {
