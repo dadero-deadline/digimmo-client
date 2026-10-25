@@ -2526,15 +2526,16 @@
 
   // ---- Test build only: read-only status readout (Ctrl+Alt+P), not for release ----
   (() => {
-    let panel = null;
+    let panel = null, refresh = 0;
     const show = () => {
       if (!panel) {
         panel = document.createElement('pre');
         panel.style.cssText = 'position:fixed;left:8px;top:200px;z-index:2147483640;margin:0;padding:8px;background:rgba(0,0,0,.85);color:#fff;font:14px/1.4 Consolas,monospace;pointer-events:none;white-space:pre';
         document.body.append(panel);
-        setInterval(() => { if (!panel.hidden) render(); }, 500);
-      } else if (!panel.hidden) { panel.hidden = true; return; }
+      } else if (!panel.hidden) { panel.hidden = true; clearInterval(refresh); refresh = 0; return; }
+      // The refresh timer runs only while the readout is visible.
       panel.hidden = false; render();
+      refresh ||= setInterval(render, 500);
     };
     const render = () => {
       const st = (ATMOS.built && ATMOS.built.stats) || {};
