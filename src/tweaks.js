@@ -717,6 +717,12 @@
         const g = c.getContext('2d'); g.fillStyle = '#ffffff'; g.fillRect(0, 0, 16, 16);
         tx.addCanvas('digimmo:waterHole', c);
       }
+      // Shore tiles reflect only below their foam line: holes open from row 1 to 12 downward.
+      for (let top = 1; top <= 12; top++) if (!tx.exists('digimmo:waterHoleFrom' + top)) {
+        const c = document.createElement('canvas'); c.width = c.height = 16;
+        const g = c.getContext('2d'); g.fillStyle = '#ffffff'; g.fillRect(0, top, 16, 16 - top);
+        tx.addCanvas('digimmo:waterHoleFrom' + top, c);
+      }
       if (!tx.exists('digimmo:portalGlow')) {
         const c = document.createElement('canvas'); c.width = c.height = 24;
         const g = c.getContext('2d'), data = g.createImageData(24, 24);
@@ -892,7 +898,77 @@
         }
         merged.push({ ...light });
       }
-      return { lights: merged, water, runningWater, casters, waterCovers };
+      // Sand and foam shore overlays draw water but carry no water name. Their lower rows,
+      // matched against this map's water colours, reflect like water.
+      const shores = [];
+      if (water.length) {
+        const images = new Map(), palette = new Set(), waterGids = new Set(), shoreCells = new Set();
+        const pixels = (key) => {
+          if (!images.has(key)) {
+            let data = null;
+            try {
+              const img = scene.textures.get(key).getSourceImage(), c = document.createElement('canvas');
+              c.width = img.width; c.height = img.height;
+              const g = c.getContext('2d', { willReadFrequently: true }); g.drawImage(img, 0, 0);
+              data = g.getImageData(0, 0, img.width, img.height);
+            } catch {}
+            images.set(key, data);
+          }
+          return images.get(key);
+        };
+        const colour = (t, info, px, py) => {
+          const d = info.ts.image && pixels(info.ts.image.key), c = d && info.ts.getTileTextureCoordinates(t.index);
+          if (!c) return -1;
+          const k = ((c.y + (t.flipY ? 15 - py : py)) * d.width + c.x + (t.flipX ? 15 - px : px)) * 4;
+          return d.data[k + 3] < 128 ? -1 : d.data[k] << 16 | d.data[k + 1] << 8 | d.data[k + 2];
+        };
+        const wetCells = new Set(water.map(w => (w.x >> 4) + ',' + (w.y >> 4)));
+        for (const L of tm.layers) for (const row of L.data) for (const t of row) {
+          if (!t || t.index <= 0 || waterGids.has(t.index) || !wetCells.has(t.x + ',' + t.y)) continue;
+          const info = cache.get(t.index);
+          if (!info || !WATER_NAMES.test(baseName(info.name))) continue;
+          waterGids.add(t.index);
+          for (let py = 0; py < 16; py++) for (let px = 0; px < 16; px++) palette.add(colour(t, info, px, py));
+        }
+        palette.delete(-1);
+        const drawn = tm.layers.filter(L => L.name !== 'collision' && L.name !== 'above' &&
+          !L.name.startsWith('above#') && !L.name.startsWith('terrain_underlay'));
+        const above = tm.layers.filter(L => L.name === 'walls' || L.name === 'above');
+        for (const w of water) {
+          const cx = w.x >> 4, cy = (w.y >> 4) - 1, key = cx + ',' + cy;
+          if (cy < 0 || wetCells.has(key) || shoreCells.has(key)) continue;
+          shoreCells.add(key);
+          const stack = [];
+          for (const L of drawn) {
+            const t = L.data[cy]?.[cx];
+            if (!t || t.index <= 0 || t.rotation) continue;
+            let info = cache.get(t.index);
+            if (info === undefined) { info = tileInfo(tm, t.index); cache.set(t.index, info); }
+            if (info) stack.push([t, info]);
+          }
+          let top = 16;
+          for (let py = 15; py >= 0; py--) {
+            let n = 0;
+            for (let px = 0; px < 16; px++) {
+              let c = -1;
+              for (let i = stack.length - 1; i >= 0 && c < 0; i--) c = colour(stack[i][0], stack[i][1], px, py);
+              if (palette.has(c)) n++;
+            }
+            if (n < 12) break;
+            top = py;
+          }
+          if (top > 12) continue;
+          shores.push({ x: cx * 16, y: cy * 16, top });
+          // Objects on these shore cells (starfish, crowns) stay above the reflection.
+          for (const L of above) {
+            const t = L.data[cy]?.[cx];
+            if (!t || t.index <= 0) continue;
+            const info = cache.get(t.index) ?? tileInfo(tm, t.index), f = info && tileFrame(scene, info, t.index);
+            if (f) waterCovers.push({ x: t.pixelX, y: t.pixelY, f, flipX: !!t.flipX, flipY: !!t.flipY, rotation: t.rotation || 0 });
+          }
+        }
+      }
+      return { lights: merged, water, runningWater, casters, waterCovers, shores };
     };
 
     const rand = (a, b) => a + Math.random() * (b - a);
@@ -1014,7 +1090,7 @@
       // Tile atlases containing a 'sea' texture are used in inland maps too.
       const mapText = [scene.mapId, (scene.map && scene.map.meta && scene.map.meta.name) || ''].join(' ');
       const weather = WEATHER.filter(w => w.test.test(mapText)).slice(0, 2);
-      const { lights, water, runningWater, casters, waterCovers } = scan(scene);
+      const { lights, water, runningWater, casters, waterCovers, shores } = scan(scene);
       const localWater = localWaterSources(scene);
       // Group tree tiles only for seasonal foliage emitters. Shadows use the
       // *original sprite outlines*, never the circular placeholders from 5.3.
@@ -1660,6 +1736,7 @@
         !!sp.texture && !!sp.frame && (typeof sp.willRender !== 'function' || sp.willRender(cam));
       let reflRT = null, notWater = null;
       const waterSet = new Set(water.map(w => (w.x >> 4) + ',' + (w.y >> 4)));
+      const shoreTops = new Map(shores.map(p => [(p.x >> 4) + ',' + (p.y >> 4), p.top]));
       if (SETTINGS.reflections && water.length) {
         // Viewport sized mask, not a full map framebuffer. White erases pixels;
         // transparent water tiles let reflections show through.
@@ -1673,11 +1750,14 @@
       // the shoreline; a mirror at the feet would leave its legs hidden on land.
       const reflectionAnchor = (x, y) => {
         const cx = Math.floor(x / 16), cy = Math.floor((y - 1) / 16), wet = (tx, ty) => waterSet.has(tx + ',' + ty);
-        if (wet(cx, cy)) return { x, y: y + 1, flipY: true };
+        // Top of the reflecting surface: a whole water tile, or the water rows of a shore tile.
+        const surface = ty => wet(cx, ty) ? ty * 16 : shoreTops.has(cx + ',' + ty) ? ty * 16 + shoreTops.get(cx + ',' + ty) : null;
+        const here = surface(cy), below = surface(cy + 1);
+        if (here !== null) return { x, y: Math.max(y + 1, here), flipY: true };
         // Narrow piers, bridges and spits with water at both sides are not a shore;
         // mirroring from their end would leave a detached image beyond it.
-        if (!wet(cx, cy + 1) || ((wet(cx - 1, cy) || wet(cx - 2, cy)) && (wet(cx + 1, cy) || wet(cx + 2, cy)))) return null;
-        return { x, y: (cy + 1) * 16, flipY: true };
+        if (below === null || ((wet(cx - 1, cy) || wet(cx - 2, cy)) && (wet(cx + 1, cy) || wet(cx + 2, cy)))) return null;
+        return { x, y: below, flipY: true };
       };
       let waterMaskPosition = '';
       let lastReflectionFrame = -Infinity;
@@ -1699,6 +1779,10 @@
           // water holes in the opaque inverse mask. Stamp blending differed
           // between Phaser renderer builds, sometimes hiding the whole sprite.
           notWater.erase('digimmo:waterHole', x + 8, y + 8);
+        }
+        for (const p of shores) {
+          if (p.x < ox - 16 || p.y < oy - 16 || p.x > ox + width || p.y > oy + height) continue;
+          notWater.erase(p.top ? 'digimmo:waterHoleFrom' + p.top : 'digimmo:waterHole', p.x + 8 - ox, p.y + 8 - oy);
         }
         // Artwork drawn over the water hides the reflection beneath it.
         for (const c of waterCovers) {
