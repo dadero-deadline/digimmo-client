@@ -2255,6 +2255,690 @@
     "lighthouse",
     "026a00460046006702070246026300e902c000a0000000000000000000000000"
   ],
+  "tamers_city:console_1": [
+    "console",
+    "000000000000000000000000000000000000000000000000bf00ff00ff00ff1e"
+  ],
+  "tamers_city:console_11": [
+    "console",
+    "0000000000000000000000000800000000000000000000000000000000000000"
+  ],
+  "tamers_city:console_2": [
+    "console",
+    "000000000000000000000000000000000000000000000000003f0067007f7c7f"
+  ],
+  "tamers_city:console_4": [
+    "console",
+    "0000000000000000000000000000000000008000800080008000000000000000"
+  ],
+  "tamers_city:console_5": [
+    "console",
+    "ff1eff1eff1eff1eff1eff00000000000000001f001f001f001f000000000000"
+  ],
+  "tamers_city:console_6": [
+    "console",
+    "7c7f7c7f7c7f1c7f7c7f007f000000007800fc00fc00fc00fc00000000000000"
+  ],
+  "tamers_city:console_8": [
+    "console",
+    "0000000000000000000000080000000000000000100000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_101": [
+    "facadeGlass",
+    "1f1f0000000000001f1f1f1f1f1f1f1f1f1f0e0e00000000021e0f1e1f1f1f1f"
+  ],
+  "tamers_city:hypnos_towers_102": [
+    "facadeGlass",
+    "031f000000000000031f031f031f031f031f021f000000000006031d031f031f"
+  ],
+  "tamers_city:hypnos_towers_103": [
+    "facadeGlass",
+    "0020006000200020002000000000000000200020002000200020000000000000"
+  ],
+  "tamers_city:hypnos_towers_107": [
+    "facadeGlass",
+    "f1e0000000000000f1e0f1c0f1c0f1e0f1e0b1e0000000006160f1e0f1c0f1e0"
+  ],
+  "tamers_city:hypnos_towers_108": [
+    "facadeGlass",
+    "e3f1000000000000e1b1c3d1c3f1e3f1c3f1c30100000000c060e1f1e1f1e3f1"
+  ],
+  "tamers_city:hypnos_towers_109": [
+    "facadeGlass",
+    "0001020000000200020100010001000100010200020000000000000100010001"
+  ],
+  "tamers_city:hypnos_towers_115": [
+    "facadeGlass",
+    "1f1e1f1e0000000000001f1e1f1f1f1f1f1f1f1f0f1e0000000003061f0e1f1f"
+  ],
+  "tamers_city:hypnos_towers_116": [
+    "facadeGlass",
+    "031f031f000000000000031f031f031f031f031f031b000000000002031f031f"
+  ],
+  "tamers_city:hypnos_towers_117": [
+    "facadeGlass",
+    "0000002000200020002000200000000000000020002000200020002000200000"
+  ],
+  "tamers_city:hypnos_towers_121": [
+    "facadeGlass",
+    "f1e0f1e0000000000000f1e0f1e0f1e0f1e0f1e081a0000000000120f1e0f1e0"
+  ],
+  "tamers_city:hypnos_towers_122": [
+    "facadeGlass",
+    "c3f1c3f1000000000000c3f1c3e1c3e1c3f1e3f1017100000000c060c1b1c1d1"
+  ],
+  "tamers_city:hypnos_towers_123": [
+    "facadeGlass",
+    "0001000100000200020000010001000100010001020002000000020002010001"
+  ],
+  "tamers_city:hypnos_towers_127": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000000000000001e001e001e000600"
+  ],
+  "tamers_city:hypnos_towers_128": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000000000000000001000100010000"
+  ],
+  "tamers_city:hypnos_towers_129": [
+    "facadeGlass",
+    "1f1e1f1e1f1e0000000000001f1e1f1e1f1f1f1f1f1f0000000000001f1e1f1f"
+  ],
+  "tamers_city:hypnos_towers_130": [
+    "facadeGlass",
+    "031f031f031f000000000000031f031f031f031f031f000000000000031f031f"
+  ],
+  "tamers_city:hypnos_towers_131": [
+    "facadeGlass",
+    "0000000000200020002000200020000000000000000000600020002000200000"
+  ],
+  "tamers_city:hypnos_towers_132": [
+    "facadeGlass",
+    "00000000000000000000000000000000000000003f803f8e3f0c3f0000000000"
+  ],
+  "tamers_city:hypnos_towers_133": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000000c1fcf1fcf1fc403c00000000"
+  ],
+  "tamers_city:hypnos_towers_134": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000000000100010001000100000000"
+  ],
+  "tamers_city:hypnos_towers_135": [
+    "facadeGlass",
+    "f1e0f1e0f1e0000000000000f1e0f1e0f1c0f1e0f1e000000000000071e0f1e0"
+  ],
+  "tamers_city:hypnos_towers_136": [
+    "facadeGlass",
+    "e3f1c3f1c3f1000000000000c1e1c1f1e1d1e3f1c3f1000000000000e1f1c1f1"
+  ],
+  "tamers_city:hypnos_towers_137": [
+    "facadeGlass",
+    "0001000100010200020002000001000100010001000102000200020002010001"
+  ],
+  "tamers_city:hypnos_towers_138": [
+    "facadeGlass",
+    "00000000000000000000000000000000000000000000000000e000e000f00000"
+  ],
+  "tamers_city:hypnos_towers_141": [
+    "facadeGlass",
+    "0000000016001e001e001e009e000000000000001e001e001e001e001e000000"
+  ],
+  "tamers_city:hypnos_towers_142": [
+    "facadeGlass",
+    "0000000000010001000100010001000000000000000100010001000100010000"
+  ],
+  "tamers_city:hypnos_towers_143": [
+    "facadeGlass",
+    "1f1f1f1f1f1f1f1e0000000000001f1e1f1e1f1e1f1f1f1f1f0e000000000000"
+  ],
+  "tamers_city:hypnos_towers_144": [
+    "facadeGlass",
+    "031f031f031f031f000000000000031f031f031f031f031f031f000000000000"
+  ],
+  "tamers_city:hypnos_towers_145": [
+    "facadeGlass",
+    "0000000000000020002000200020002000000000000000200060006000200020"
+  ],
+  "tamers_city:hypnos_towers_146": [
+    "facadeGlass",
+    "00003f0e3f0e3f0e3f0e0300000000003f003f0e3c0e3f0e0f0e000000000000"
+  ],
+  "tamers_city:hypnos_towers_147": [
+    "facadeGlass",
+    "0000c1dcc1fcc1fcc1fc40100000000071dcf1fcc1fcc1fcc1fc000000000000"
+  ],
+  "tamers_city:hypnos_towers_148": [
+    "facadeGlass",
+    "0000000100010001000100000000000000010001000100010001000000000000"
+  ],
+  "tamers_city:hypnos_towers_149": [
+    "facadeGlass",
+    "f1e0f1e0f1e0f1e0000000000000f1e0f1e0f1c0f1e0f1e0e1e0000000000000"
+  ],
+  "tamers_city:hypnos_towers_150": [
+    "facadeGlass",
+    "c1f1c1f1c3f1c3f1000000000000e1f1e1f1e1f1e1f1c3f1c3f1000000000000"
+  ],
+  "tamers_city:hypnos_towers_151": [
+    "facadeGlass",
+    "0001000100010201020002000200000100010001000102010201020000000000"
+  ],
+  "tamers_city:hypnos_towers_152": [
+    "facadeGlass",
+    "0000000000e000f000f000f000f000000000000000f0007000f000f000c00000"
+  ],
+  "tamers_city:hypnos_towers_155": [
+    "facadeGlass",
+    "000000001e001e001e001e000000000000001e001e001e001e001e0000000000"
+  ],
+  "tamers_city:hypnos_towers_156": [
+    "facadeGlass",
+    "0000000000000001000100010000000000000001000100000000000100000000"
+  ],
+  "tamers_city:hypnos_towers_157": [
+    "facadeGlass",
+    "1d1e1f1e1f1e1f1e1f1e0000000000001f1e1f1e1f1e1f1e1f1f1f1f00000000"
+  ],
+  "tamers_city:hypnos_towers_158": [
+    "facadeGlass",
+    "031f031f031f031f031f000000000000031f031f031f031f031f031f00000000"
+  ],
+  "tamers_city:hypnos_towers_159": [
+    "facadeGlass",
+    "0000000000000020002000200020002000600000000000000020002000200020"
+  ],
+  "tamers_city:hypnos_towers_160": [
+    "facadeGlass",
+    "3b0e3f0e3f0e3f0c3f0c0000000000003f8c3f8e3f0e3f0e370c000000000000"
+  ],
+  "tamers_city:hypnos_towers_161": [
+    "facadeGlass",
+    "c0ecf1fcf1fcf1fc41fc000000000000f1fcf1fcf1fcc1fcc1fc000000000000"
+  ],
+  "tamers_city:hypnos_towers_162": [
+    "facadeGlass",
+    "0001000100010001000100000000000000010001000100010001000000000000"
+  ],
+  "tamers_city:hypnos_towers_163": [
+    "facadeGlass",
+    "f1e0f1c0f1e0f1e0f1e0000000000000f1e0f1e0f1c0f1e0f1e0f1e000000000"
+  ],
+  "tamers_city:hypnos_towers_164": [
+    "facadeGlass",
+    "c1a1e1f1e1f1e3f1c3f1000000000000e1f1e1f1e3f1e3f1e3f1e3f100000000"
+  ],
+  "tamers_city:hypnos_towers_165": [
+    "facadeGlass",
+    "0001000100010201020102000200020002010001000100010201020102000200"
+  ],
+  "tamers_city:hypnos_towers_166": [
+    "facadeGlass",
+    "0000000000f000e000f000f000000000000000f000f000f000f000f000000000"
+  ],
+  "tamers_city:hypnos_towers_169": [
+    "facadeGlass",
+    "000006000e001e001e001e001600000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_170": [
+    "facadeGlass",
+    "0000000100000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_171": [
+    "facadeGlass",
+    "00000f1e1f1e1f1e1f1e1f1e0000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_172": [
+    "facadeGlass",
+    "0000031f031f031f030f031f0000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_173": [
+    "facadeGlass",
+    "0020000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_174": [
+    "facadeGlass",
+    "3b0e3f0e3f0c3f0c1f0c00000000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_175": [
+    "facadeGlass",
+    "c1fcf1fcf1fcc1fcc1fc00000000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_176": [
+    "facadeGlass",
+    "0001000100010001000100000000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_177": [
+    "facadeGlass",
+    "0000f1e0f1e0f1e0f1e0f1e00000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_178": [
+    "facadeGlass",
+    "0000c1a1c3e1c3f1e371c3f10000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_179": [
+    "facadeGlass",
+    "0000000100010001000100010000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_180": [
+    "facadeGlass",
+    "0000002000e00070007000200000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_188": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000000000000000000000000002000"
+  ],
+  "tamers_city:hypnos_towers_189": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000000000000000000000000000400"
+  ],
+  "tamers_city:hypnos_towers_190": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000000000000000000000000000003"
+  ],
+  "tamers_city:hypnos_towers_201": [
+    "facadeGlass",
+    "0000000000008000000000000000800080008000800000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_202": [
+    "facadeGlass",
+    "33002000080008c1000000000000180118010b010b830b830000000000000000"
+  ],
+  "tamers_city:hypnos_towers_203": [
+    "facadeGlass",
+    "c0188010810087c400000000000001d800d8001881d886100000000000000000"
+  ],
+  "tamers_city:hypnos_towers_204": [
+    "facadeGlass",
+    "000400000005000f000000000000003e003f001f000700210000000000000000"
+  ],
+  "tamers_city:hypnos_towers_45": [
+    "facadeGlass",
+    "7ff9800000008000000000000000000100800000000000000000000000008000"
+  ],
+  "tamers_city:hypnos_towers_51": [
+    "facadeGlass",
+    "a000100000000000000000000000000010001000100000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_52": [
+    "facadeGlass",
+    "067f000000000000000000080008000800080000000000000400060000000100"
+  ],
+  "tamers_city:hypnos_towers_59": [
+    "facadeGlass",
+    "8020853000000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_66": [
+    "facadeGlass",
+    "0040007e00000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_city:hypnos_towers_73": [
+    "facadeGlass",
+    "0000000000001f1e1f1e1f1e1f1f0000000000001f1e1f1e1f1e1f1e1f1e0002"
+  ],
+  "tamers_city:hypnos_towers_74": [
+    "facadeGlass",
+    "000000000000031f031f031f031f000000000000031f031f031f031f031f0000"
+  ],
+  "tamers_city:hypnos_towers_75": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000060002000200020000000000000"
+  ],
+  "tamers_city:hypnos_towers_79": [
+    "facadeGlass",
+    "000000000000e1e0e1e0f1e0f1e0000000000000f1e0f1e0f1c0f1e0f1e00100"
+  ],
+  "tamers_city:hypnos_towers_80": [
+    "facadeGlass",
+    "000000000020e3f1c3e1c3f1c3f1000000000000a1f1c3e1c3f1c3f1c3f10000"
+  ],
+  "tamers_city:hypnos_towers_81": [
+    "facadeGlass",
+    "0000000000000000000100010001000000000000000100010201000100010000"
+  ],
+  "tamers_city:hypnos_towers_87": [
+    "facadeGlass",
+    "000000001e0e1f1e1f1e1f1f1f1f1f1e0000000000001f1e1f1e1f1f1f1f1f1f"
+  ],
+  "tamers_city:hypnos_towers_88": [
+    "facadeGlass",
+    "00000000021f031f031f031f031f031f000000000000031f031d031f031f031f"
+  ],
+  "tamers_city:hypnos_towers_89": [
+    "facadeGlass",
+    "0020006000200020002000000000000000600060002000200020000000000000"
+  ],
+  "tamers_city:hypnos_towers_93": [
+    "facadeGlass",
+    "00000000f1e0f1e0f1c0f1e0f1e0f1e0008000000000f1e0f1e0f1c0f1e0f1e0"
+  ],
+  "tamers_city:hypnos_towers_94": [
+    "facadeGlass",
+    "00000000e1e1e3f1e3f1c1f1c3f1c3f1000000000000e1e181b1c1d1e3f1e3f1"
+  ],
+  "tamers_city:hypnos_towers_95": [
+    "facadeGlass",
+    "0200020000000001000100010001000100000200000000010001000100010001"
+  ],
+  "tamers_city:subway_14": [
+    "window",
+    "00000000000000000000000000000000f800f800180000000000000000000000"
+  ],
+  "tamers_city:subway_15": [
+    "window",
+    "000000000000000000000000000000007fff7fff200000000000000000000000"
+  ],
+  "tamers_city:subway_2": [
+    "console",
+    "0000000000000000000000000000fe00fe00fe00fe00fe00fe00fe00fe000000"
+  ],
+  "tamers_city:subway_3": [
+    "console",
+    "0000000000000000000000000000000100010001000100010001000100010000"
+  ],
+  "tamers_park_props:hypnos_towers_100": [
+    "facadeGlass",
+    "000000008e008e008e00000000000000000000008e008c008e008c008c000e00"
+  ],
+  "tamers_park_props:hypnos_towers_101": [
+    "facadeGlass",
+    "0000000000e300e300e30000000000000000000000e300e300e300e300e300c3"
+  ],
+  "tamers_park_props:hypnos_towers_102": [
+    "facadeGlass",
+    "ce70ce6000000000000000000000ce70ce70ce70ce70ce70ce70ce70ce70ce70"
+  ],
+  "tamers_park_props:hypnos_towers_103": [
+    "facadeGlass",
+    "e001e00100000000000000000000000100010001600120010001600160016001"
+  ],
+  "tamers_park_props:hypnos_towers_104": [
+    "facadeGlass",
+    "c3c0e3e100000000000000000000000000000000f7c0f7c0f7c0f7c0f7c0f7c0"
+  ],
+  "tamers_park_props:hypnos_towers_105": [
+    "facadeGlass",
+    "878387c70000000000000000000000000000000003f703f703f703f703f703f7"
+  ],
+  "tamers_park_props:hypnos_towers_106": [
+    "facadeGlass",
+    "800f000f00000000000000000000800080008000800280000004000600060006"
+  ],
+  "tamers_park_props:hypnos_towers_107": [
+    "facadeGlass",
+    "0e730e63000000000000000000000e730e730e730e730e630e630c630c630e63"
+  ],
+  "tamers_park_props:hypnos_towers_108": [
+    "facadeGlass",
+    "00000000c700c600c60000000000000000000000c700c700c700c600c6008600"
+  ],
+  "tamers_park_props:hypnos_towers_109": [
+    "facadeGlass",
+    "0000000000610061007100000000000000000000007100710071007100710061"
+  ],
+  "tamers_park_props:hypnos_towers_112": [
+    "facadeGlass",
+    "ce60ce6000000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_113": [
+    "facadeGlass",
+    "0001000100000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_114": [
+    "facadeGlass",
+    "f7c0f7c000000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_115": [
+    "facadeGlass",
+    "03f703f700000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_116": [
+    "facadeGlass",
+    "8000800000000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_117": [
+    "facadeGlass",
+    "0e730c7300000000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_21": [
+    "facadeGlass",
+    "0000000000000000000000000000600060006000600000000000600060006000"
+  ],
+  "tamers_park_props:hypnos_towers_23": [
+    "facadeGlass",
+    "0000000000000000000000000000000001000180018000000000000001000180"
+  ],
+  "tamers_park_props:hypnos_towers_26": [
+    "facadeGlass",
+    "0000000000000000000000000000018001800180018000000000018001800180"
+  ],
+  "tamers_park_props:hypnos_towers_28": [
+    "facadeGlass",
+    "00000000000000000000000000000000000c000c000c000000000000000c000c"
+  ],
+  "tamers_park_props:hypnos_towers_31": [
+    "facadeGlass",
+    "6000000000006000600060006000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_33": [
+    "facadeGlass",
+    "0180000000000000010001800180000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_36": [
+    "facadeGlass",
+    "0180000000000180018001800180000000000000000000000000000000000008"
+  ],
+  "tamers_park_props:hypnos_towers_38": [
+    "facadeGlass",
+    "000c000000000000000c000c000c000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_41": [
+    "facadeGlass",
+    "0200040006000600040000000000060006000600040000000000060006000600"
+  ],
+  "tamers_park_props:hypnos_towers_42": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000240ef60ef60ef60ef6000000000"
+  ],
+  "tamers_park_props:hypnos_towers_43": [
+    "facadeGlass",
+    "04001c001c000800000000000000100018001c00040100010001000118001c00"
+  ],
+  "tamers_park_props:hypnos_towers_46": [
+    "facadeGlass",
+    "0018001800180010000000000018001800188018000000008008801800180018"
+  ],
+  "tamers_park_props:hypnos_towers_47": [
+    "facadeGlass",
+    "00000000000000000000000000000000000000000f770f770f770f7700000000"
+  ],
+  "tamers_park_props:hypnos_towers_48": [
+    "facadeGlass",
+    "0000000000600060002000000000000000400060002000000000000000400060"
+  ],
+  "tamers_park_props:hypnos_towers_51": [
+    "facadeGlass",
+    "0400000000000600060006000400000000000200060006000600000000000200"
+  ],
+  "tamers_park_props:hypnos_towers_52": [
+    "facadeGlass",
+    "ab008700ef70ef60ef6000000000af20ef60ef70ef7000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_53": [
+    "facadeGlass",
+    "080100000001000118011c000c00000100010001100118000800040000000000"
+  ],
+  "tamers_park_props:hypnos_towers_56": [
+    "facadeGlass",
+    "0010000080008018001800180010000080008018801800180010000000000008"
+  ],
+  "tamers_park_props:hypnos_towers_57": [
+    "facadeGlass",
+    "041404010f770f770f770000000006120f770f770f7708000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_58": [
+    "facadeGlass",
+    "0020000000000000004000600060000000000000000000600060000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_61": [
+    "facadeGlass",
+    "0600060006000000000000000600060006000400000002000600060006000400"
+  ],
+  "tamers_park_props:hypnos_towers_62": [
+    "facadeGlass",
+    "00000100ef60ef60ef70c670000000008320ef60ef60ef7000000000ef700300"
+  ],
+  "tamers_park_props:hypnos_towers_63": [
+    "facadeGlass",
+    "1000180018010001000100010000000000000001000100010000000000010000"
+  ],
+  "tamers_park_props:hypnos_towers_66": [
+    "facadeGlass",
+    "0018001800180010800080000000000000000000000080000000000080000000"
+  ],
+  "tamers_park_props:hypnos_towers_67": [
+    "facadeGlass",
+    "000001000f770f770f770f730000000004000f770f770f77000000000f770310"
+  ],
+  "tamers_park_props:hypnos_towers_68": [
+    "facadeGlass",
+    "0000006000600020000000000000006000600020000000000000004000600020"
+  ],
+  "tamers_park_props:hypnos_towers_70": [
+    "facadeGlass",
+    "0000000000000000000000000000000010000000e000f000f000000000001000"
+  ],
+  "tamers_park_props:hypnos_towers_71": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000000001c001c001c000000000004"
+  ],
+  "tamers_park_props:hypnos_towers_72": [
+    "facadeGlass",
+    "ef60ef60ef70000000000220ef60ef70ef600000000000000320ef60ef60ef60"
+  ],
+  "tamers_park_props:hypnos_towers_73": [
+    "facadeGlass",
+    "0001780178017800000000000001000178017800780078000000000100017801"
+  ],
+  "tamers_park_props:hypnos_towers_74": [
+    "facadeGlass",
+    "2008cf8fcf8fcf0f0000000000000805cf0fcf0fcf8fcf8f000000004609cf0f"
+  ],
+  "tamers_park_props:hypnos_towers_75": [
+    "facadeGlass",
+    "0000e1f7e1f7e1f70000000000008111e1f7e0f7e1f7c1f7000000000010e1f7"
+  ],
+  "tamers_park_props:hypnos_towers_76": [
+    "facadeGlass",
+    "0002801e801e001e000000000000000e801e001e001e001c000000008002801e"
+  ],
+  "tamers_park_props:hypnos_towers_77": [
+    "facadeGlass",
+    "0f770f770f770000000002030f770f770f7700000000000002070f770f770f77"
+  ],
+  "tamers_park_props:hypnos_towers_78": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000000380038003800000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_79": [
+    "facadeGlass",
+    "0000000000000000000000000000000000000004000700070007000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_80": [
+    "facadeGlass",
+    "e000f000f0000000000010001000f000f000e000000000009000f000f000f000"
+  ],
+  "tamers_park_props:hypnos_towers_81": [
+    "facadeGlass",
+    "001c001c001c0000000000000008001c001c001c000000000004001c001c001c"
+  ],
+  "tamers_park_props:hypnos_towers_82": [
+    "facadeGlass",
+    "00000000cb70cb30ef60ef60ef6000000000a720ef70ef70ef60000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_83": [
+    "facadeGlass",
+    "7800780010000000000140017801780078007801000100010001000078007801"
+  ],
+  "tamers_park_props:hypnos_towers_84": [
+    "facadeGlass",
+    "cf8fcf8f0080000000000000cf8fcf0fcf8fcf0f0000000008812402cf0fcf8f"
+  ],
+  "tamers_park_props:hypnos_towers_85": [
+    "facadeGlass",
+    "e1f7e1f70000000000000004c1f7e1f7e1f7c1f70000000080940044e0f7e1f7"
+  ],
+  "tamers_park_props:hypnos_towers_86": [
+    "facadeGlass",
+    "001e001e8000000000000002801e001e001e001c8000800000020008001e001e"
+  ],
+  "tamers_park_props:hypnos_towers_87": [
+    "facadeGlass",
+    "0000000006350b270f770f770f77000000000a310f770f770f77000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_88": [
+    "facadeGlass",
+    "3800380038000000000000000000380038003800000000000000380038003800"
+  ],
+  "tamers_park_props:hypnos_towers_89": [
+    "facadeGlass",
+    "0007000700070000000000080008000700070007000000000008000700070007"
+  ],
+  "tamers_park_props:hypnos_towers_90": [
+    "facadeGlass",
+    "000000009000d000f000f0000000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_91": [
+    "facadeGlass",
+    "000000000004000c001c001c0000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_92": [
+    "facadeGlass",
+    "a300ef70ef70ef600000000000000000000000000000000000000000ce70cc70"
+  ],
+  "tamers_park_props:hypnos_towers_93": [
+    "facadeGlass",
+    "780100010001000100000000000000000000000000000000000000000001e001"
+  ],
+  "tamers_park_props:hypnos_towers_94": [
+    "facadeGlass",
+    "cf8f00000000000000000000000000000000000000000000000000100000c3c1"
+  ],
+  "tamers_park_props:hypnos_towers_95": [
+    "facadeGlass",
+    "e1f7000000000000000000000000000000000000000000000000000000040787"
+  ],
+  "tamers_park_props:hypnos_towers_96": [
+    "facadeGlass",
+    "001c00008000000000000000000000000000000000000000000000008000800f"
+  ],
+  "tamers_park_props:hypnos_towers_97": [
+    "facadeGlass",
+    "0b000f770f770f7700000000000000000000000000000000000000000e730e73"
+  ],
+  "tamers_park_props:hypnos_towers_98": [
+    "facadeGlass",
+    "0000000000002000380038000000000000000000000000000000000000000000"
+  ],
+  "tamers_park_props:hypnos_towers_99": [
+    "facadeGlass",
+    "000000000009000b000700070000000000000000000000000000000000000000"
+  ],
+  "tamers_traffic:bus_9": [
+    "car",
+    "0000000000000000000008000400000000000000000000000000000000000000"
+  ],
+  "tamers_traffic:car_blue_5": [
+    "car",
+    "00000000000000c0030000000000000000000000000000000000000000000000"
+  ],
+  "tamers_traffic:car_red_5": [
+    "car",
+    "0000000000000000000006000200000000000000000000000000000000000000"
+  ],
+  "tamers_traffic:car_white_5": [
+    "car",
+    "0000000000000000010001000000000000000000000000000000000000000000"
+  ],
   "toytown:thd_19": [
     "toyWindow",
     "0000000000000000000000000000000003bc03bc03bc0018001803bc03bc03b8"

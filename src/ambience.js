@@ -1,5 +1,5 @@
       const amb = { ctx: null };
-      const isNature = /forest|grass|meadow|savanna|valley|hill|wood|lake|village|overdell/i.test(mapText);
+      const isNature = /forest|grass|meadow|savanna|valley|hill|wood|lake|village|overdell|_park\b|marsh|orochimon/i.test(mapText);
       // Only placed sea tiles can produce coastal sound. Shared atlases cannot.
       const namedShore = localWater.shore;
       const shorelineWater = namedShore.length >= 12 ? namedShore : [];
@@ -20,10 +20,10 @@
         if (/bay|shore|sea(?:\b|_)/.test(m)) Object.assign(p, { name: 'coast', wind: 0.14, crickets: 0.008, calls: 0 });
         if (/savanna|desert|canyon|dune|mesa/.test(m)) Object.assign(p, { name: 'drylands', wind: 0.22, crickets: 0.02, calls: 0.08 });
         if (/village|toy.?town/.test(m)) Object.assign(p, { name: 'village', wind: 0.05, crickets: 0.0225, calls: 0.08, town: 0 });
-        if (/odaiba|highton|fog.?city|plaza|street/.test(m)) Object.assign(p, { name: 'city', wind: 0.05, crickets: 0, calls: 0, town: 0.13 });
+        if (/odaiba|highton|fog.?city|plaza|street|tamers_(?:shinjuku_evacuation|west_shinjuku|siege_raid|bio_emergence|d_reaper_shinjuku|deva_(?:roof|transit))/.test(m)) Object.assign(p, { name: 'city', wind: 0.05, crickets: 0, calls: 0, town: 0.13 });
         if (/factor|factory|fortress|spiral.?city/.test(m)) Object.assign(p, { name: 'industry', wind: 0.035, crickets: 0, calls: 0, machine: 0.16, town: 0 });
-        if (/freeze|snow|ice|holy|summit|glacier/.test(m)) Object.assign(p, { name: 'highlands', wind: 0.24, crickets: 0, calls: 0, town: 0, machine: 0 });
-        if (/network|realm|dream|apocalymon|darkness|keep|castle/.test(m)) Object.assign(p, { name: 'remote', wind: 0.045, crickets: 0, calls: 0, town: 0, machine: 0, gulls: 0 });
+        if (/freeze|snow|ice|holy|summit|glacier|deva_mountain/.test(m)) Object.assign(p, { name: 'highlands', wind: 0.24, crickets: 0, calls: 0, town: 0, machine: 0 });
+        if (/network|realm|dream|apocalymon|darkness|keep|castle|d_reaper_kernel|zhuqiaomon|sovereign|beelzemon/.test(m)) Object.assign(p, { name: 'remote', wind: 0.045, crickets: 0, calls: 0, town: 0, machine: 0, gulls: 0 });
         return p;
       })();
       const windSound = (() => {

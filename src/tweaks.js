@@ -531,11 +531,11 @@
       { name: 'Snow', test: /freeze|snow|ice|glacier|frost|holy.?peaks|summit/i, layers: [
         { cfg: { lifespan: [7000, 11000], speedX: [3, 10], speedY: [12, 24], accelX: [-5, 5], scale: [1, 2], alpha: 0.9, tint: [0xffffff, 0xeef6ff, 0xdde9ff], rate: 22 } },
       ] },
-      { name: 'Leaves', test: /forest|woods|grove|orchard|harvest|thicket|egg.?valley|primary/i, layers: [
+      { name: 'Leaves', test: /forest|woods|grove|orchard|harvest|thicket|egg.?valley|primary|_park\b/i, layers: [
         { cfg: { lifespan: [6000, 9000], speedX: [8, 18], speedY: [6, 14], accelX: [-8, 8], scale: [2, 2], alpha: 0.9, tint: [0x6fa04a, 0x8cbf5a, 0x4f7f3a, 0xd08a3a], rate: 280 } },
         { lum: true, night: true, cfg: { lifespan: [3000, 6000], speedX: [-6, 6], speedY: [-6, 6], scale: [1, 1], alpha: 1, ease: blink, tint: [0xd8ff7a, 0xfff27a], rate: 260, add: true } },
       ] },
-      { name: 'Fog', test: /fog|mist|marsh|destiny|sea.?of.?darkness|dark.?ocean|dream|keep/i, layers: [
+      { name: 'Fog', test: /fog|mist|marsh|orochimon|destiny|sea.?of.?darkness|dark.?ocean|dream|keep/i, layers: [
         { key: 'digimmo:glow', cfg: { lifespan: [12000, 20000], speedX: [3, 8], speedY: [-1, 1], scale: [3, 6], alpha: 0.09, tint: [0xdfe6ee, 0xcfd8e2], rate: 650 } },
       ] },
       { name: 'Sea spray', test: /bay|beach|shore|reef|sea|ocean|lake|lighthouse|seaside/i, layers: [
@@ -545,7 +545,7 @@
         { cfg: { lifespan: [6000, 9000], speedX: [3, 8], speedY: [-6, 2], scale: [1, 2], alpha: 0.5, tint: [0x8a8a8a, 0x6e6e6e, 0xa0a0a0], rate: 90 } },
         { lum: true, cfg: { lifespan: [700, 1400], speedX: [-6, 6], speedY: [-22, -8], scale: [1, 1], alpha: 1, tint: [0xffd27a, 0xff8a30], rate: 900, add: true } },
       ] },
-      { name: 'Data', test: /network|digital|war.?game|revenge|apocalymon|realm/i, layers: [
+      { name: 'Data', test: /network|digital|war.?game|revenge|apocalymon|realm|d_reaper_kernel|zhuqiaomon|sovereign|beelzemon|deva_mountain/i, layers: [
         { lum: true, cfg: { lifespan: [2500, 5000], speedX: [-2, 2], speedY: [-14, -6], scale: [1, 2], alpha: 0.9, ease: blink, tint: [0x5ef2ff, 0x7dffb2, 0x3fa8ff], rate: 120, add: true } },
       ] },
       { name: 'Ghost lights', test: /overdell|graveyard|myotismon|chapel|phantom|haunt/i, layers: [
@@ -554,7 +554,7 @@
       { name: 'Confetti', test: /toy|primary[\s_-]*village/i, layers: [
         { cfg: { lifespan: [5000, 8000], speedX: [-6, 6], speedY: [10, 20], accelX: [-10, 10], scale: [2, 2], alpha: 0.9, tint: [0xff5a7a, 0xffd23a, 0x5ac8ff, 0x7aff8a, 0xc87aff], rate: 140 } },
       ] },
-      { name: 'City', test: /odaiba|highton|terrace|city|plaza|street/i, layers: [
+      { name: 'City', test: /odaiba|highton|terrace|city|plaza|street|tamers_(?:shinjuku_evacuation|west_shinjuku|siege_raid|d_reaper_shinjuku|deva_(?:roof|transit))/i, layers: [
         { cfg: { lifespan: [5000, 9000], speedX: [6, 14], speedY: [-3, 3], scale: [1, 1], alpha: 0.35, tint: [0xd8d8d8, 0xbfbfbf], rate: 140 } },
       ] },
     ];
@@ -1017,6 +1017,8 @@
     // accumulated across layers. above# duplicates are excluded.
     const localWaterSources = (scene) => {
       const tm = scene.tilemap, families = new Map(), lookup = new Map(), lake = new Map(), shore = new Map();
+      // Marshes and the Shinjuku park pond reuse sea tiles; they sound like calm water, without waves or gulls.
+      const inland = /marsh|orochimon|shinjuku_park/.test(scene.mapId || '');
       for (const layer of tm.layers) {
         if (layer.name.startsWith('above#')) continue;
         for (const row of layer.data) for (const tile of row) {
@@ -1026,8 +1028,9 @@
           const x = (layer.tilemapLayer?.x ?? layer.x ?? 0) + tile.pixelX, y = (layer.tilemapLayer?.y ?? layer.y ?? 0) + tile.pixelY;
           const base = baseName(name), key = `${x},${y}`;
           // Exact water names exclude shore trim, lamp pools, tanks and frozen ground.
-          if (/^(water|pond|pool|lake)$/i.test(base)) lake.set(key, { x: x + 8, y: y + 8 });
-          if (SEA_NAMES.test(base) || /^(bay|tb_bay)$/i.test(base)) shore.set(key, { x: x + 8, y: y + 8 });
+          const sea = SEA_NAMES.test(base) || /^(bay|tb_bay)$/i.test(base);
+          if (/^(water|pond|pool|lake)$/i.test(base) || (sea && inland)) lake.set(key, { x: x + 8, y: y + 8 });
+          else if (sea) shore.set(key, { x: x + 8, y: y + 8 });
           if (!/fountain/i.test(name)) continue;
           const family = name.replace(/_(?:\d+|tl|tr|bl|br)$/, '');
           if (!families.has(family)) families.set(family, new Map());
@@ -1505,7 +1508,7 @@
       // Tile-local aperture masks are generated from reviewed public artwork.
       // One atlas and one viewport render target serve all added light sources.
       const fxStyle = {
-        facadeGlass:[0xbad7ef,0,0.16,0.12], ruinWindow:[0xffcf85,0,0.28,0.16],
+        facadeGlass:[0xbad7ef,0,0.24,0.12], ruinWindow:[0xffcf85,0,0.28,0.16],
         window:[0xffdca0,0,0.32,0.24], toyWindow:[0xffdca0,0,0.32,0.24], violetWindow:[0xb69bea,0,0.28,0.22], stained:[0xd8c7ed,0,0.23,0.20],
         furnace:[0xffac55,0.22,0.36,0.40], candle:[0xffd58c,0.15,0.42,0.30],
         candelabra:[0xffd58c,0.15,0.42,0.55], chandelier:[0xffd58c,0.15,0.42,0.50],
@@ -1516,6 +1519,7 @@
         summon:[0xb081ef,0.08,0.30,0.26], coral:[0xc5a5f0,0.025,0.095,0.12], pumpkin:[0xffb54d,0.18,0.35,0],
         altarCrystal:[0xb18af0,0.035,0.20,0.22], altarGold:[0xf0c87d,0.015,0.16,0.18],
         tv:[0x9ed9ff,0.10,0.26,0.80], car:[0xffe4ae,0,0.42,0.26], phone:[0xb5e4ff,0.025,0.12,0.28],
+        console:[0x7cc4ff,0.05,0.26,0.30],
       };
       const fxKey = 'digimmo:apertures16', fxData = EMISSIVE_TILES;
       if (!scene.textures.exists(fxKey)) {
