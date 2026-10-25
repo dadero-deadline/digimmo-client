@@ -1,5 +1,17 @@
 # Changelog
 
+## 0.2.1 (unreleased)
+
+Night details and a calmer soundscape.
+
+- New night lights: the dragon's eye in Machine City, the Factory Town generators (also by day), the Kaiser's Fortress incubators, Sunset Bay's tiki torches and its lighthouse with a turning beam.
+- Hanging pumpkin lamps glow at the pumpkin; Piedmon's castle windows glow more softly.
+- Map exits glow at night with rising sparks.
+- Chimneys in Gate Village smoke in autumn and winter.
+- Water, sea and waterfalls are quieter with less rumble; creeks are softly audible from farther away.
+- Savanna acacias sway without gaps in their crowns.
+- Simpler audio settings: the technical compressor controls are gone.
+
 ## 0.2
 
 A large atmosphere update: classic water reflections, natural tree movement and many new lights.
