@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.3
+
+A start window, living Toy Town windows and glowing dark towers.
+
+- The desktop client opens with a start window: the game's latest patch notes, players online and links. Turn it off in F10.
+- Client updates download in the start window with a progress bar; Update and play installs them and restarts the client.
+- Skill effects glow at night in their own colours, such as Seraphimon's Seven Heavens.
+- Dark towers in Tower Forest, Kaiser Canyon and Sunset Bay glow purple at night and pulse with their panels.
+- Toy Town windows have residents: most rooms stay dark, others light up for an evening, a late reader, a TV or a night light, and the lights change during the night.
+- The Toy Town castle windows and the locomotive cab window light up.
+- The lanterns by the phone box in Sea of Darkness glow from their glass.
+- If the game stays black after a restart, the client repairs its cache once by itself.
+
 ## 0.2.2
 
 Swaying trees in Toy Town and beyond.

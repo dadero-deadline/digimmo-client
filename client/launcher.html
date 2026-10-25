@@ -183,7 +183,7 @@
     $('newsTitle').textContent = t.news;
     $('newsHint').textContent = t.loading;
     $('onlineLabel').textContent = t.online;
-    $('clientTitle').textContent = t.client + ' v' + info.version;
+    $('clientTitle').textContent = t.client + ' v' + String(info.version).replace(/\.0$/, '');
     if (info.client) {
       const lines = String(info.client[lang] || info.client.en).split('\n');
       $('clientNote').textContent = lines[0];
