@@ -39,24 +39,27 @@
   .label { margin-top: 6px; color: var(--muted); font-size: 13px; }
   .client { padding: 14px 16px; }
   .client p { margin: 0; font-size: 14px; }
-  .updater { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .updater { flex: 1; min-width: 0; margin: 0 6px; font-size: 13px; color: var(--muted); }
+  .updater > div:first-child { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .updater.ready { color: var(--gold); font-weight: 600; }
-  .bar { height: 6px; margin-top: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+  .bar { height: 8px; margin-top: 6px; border-radius: 4px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
   .bar span { display: block; height: 100%; width: 0; background: var(--gold); transition: width 0.3s; }
   button { cursor: pointer; font: inherit; }
   .ghost { padding: 8px 12px; border: 2px solid var(--line); border-radius: 6px; background: rgba(255, 255, 255, 0.04); color: var(--text); }
   .ghost:hover, .ghost:focus-visible { border-color: var(--gold); outline: none; }
   .client .ghost { margin-top: 12px; width: 100%; text-align: left; font-size: 13px; }
   footer { display: flex; align-items: center; gap: 10px; }
-  .skip { margin-left: auto; padding: 6px 4px; border: 0; background: none; color: var(--muted); font-size: 13px; text-decoration: underline; }
+  .skip { margin-left: auto; padding: 6px 4px; border: 0; background: none; color: var(--muted); font-size: 13px; text-decoration: underline; white-space: nowrap; }
   .skip:hover, .skip:focus-visible { color: var(--text); outline: none; }
   .skip:not([hidden]) + .play { margin-left: 0; }
   .play { margin-left: auto; min-width: 220px; padding: 14px 36px; border: 0; border-radius: 6px; background: var(--gold); color: #1a1400;
-    font: 800 20px/1 "Segoe UI", system-ui, sans-serif; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 5px 0 var(--gold-dark), 0 8px 18px rgba(0, 0, 0, 0.45); }
+    font: 800 20px/1 "Segoe UI", system-ui, sans-serif; letter-spacing: 2px; text-transform: uppercase; white-space: nowrap; box-shadow: 0 5px 0 var(--gold-dark), 0 8px 18px rgba(0, 0, 0, 0.45); }
   .play:hover, .play:focus-visible { filter: brightness(1.08); outline: none; }
   .play:active { transform: translateY(3px); box-shadow: 0 2px 0 var(--gold-dark), 0 4px 10px rgba(0, 0, 0, 0.45); }
   .play:disabled { cursor: progress; filter: saturate(0.6) brightness(0.85); transform: none; }
-  @media (max-width: 820px) { .content { grid-template-columns: 1fr; } .side { flex-direction: row; } .side > * { flex: 1; } }
+  @media (max-width: 820px) { .content { grid-template-columns: 1fr; } .side { flex-direction: row; } .side > * { flex: 1; }
+    .play { min-width: 0; padding: 14px 20px; font-size: 16px; letter-spacing: 1px; } .ghost { padding: 8px 10px; }
+    footer { gap: 8px; } .updater.ready { display: none; } }
 </style>
 </head>
 <body>
@@ -82,10 +85,6 @@
       <div class="panel client">
         <h2 id="clientTitle"></h2>
         <p id="clientNote"></p>
-        <div class="updater" id="updater" hidden>
-          <div id="updateText"></div>
-          <div class="bar" id="updateBar" hidden><span id="updateFill"></span></div>
-        </div>
         <button class="ghost" data-link="client" id="linkClient"></button>
       </div>
     </aside>
@@ -94,6 +93,10 @@
     <button class="ghost" data-link="website" id="linkWebsite"></button>
     <button class="ghost" data-link="wiki" id="linkWiki"></button>
     <button class="ghost" data-link="discord" id="linkDiscord"></button>
+    <div class="updater" id="updater" hidden>
+      <div id="updateText"></div>
+      <div class="bar" id="updateBar" hidden><span id="updateFill"></span></div>
+    </div>
     <button class="skip" id="skip" hidden></button>
     <button class="play" id="play"></button>
   </footer>
@@ -132,7 +135,7 @@
     if (!s || !s.reachable) setStatus('down', null);
     else setStatus(s.maintenance || !s.ok ? 'warn' : 'ok', s.online);
   };
-  // Client updates: progress in the client card; a finished download turns Play into Update and play.
+  // Client updates: progress beside the Play button; a finished download turns Play into Update and play.
   let update = { state: 'idle' };
   const renderUpdate = state => {
     update = state && typeof state.state === 'string' ? state : { state: 'idle' };
