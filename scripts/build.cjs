@@ -32,30 +32,20 @@ for(const item of manifest){
 }
 replace('__AMB_SAMPLES__',JSON.stringify(samples,null,2));
 script=script.replace(/0\.1-dev1/g,version);
+// Explicit boundaries: development blocks are removed from public output, and a
+// '// @public: ' line directly after a block supplies its public replacement.
+const DEVELOPMENT_BLOCK=/^[ \t]*\/\/ @development-start\n[\s\S]*?^[ \t]*\/\/ @development-end\n/gm;
+const PUBLIC_LINE=/^([ \t]*)\/\/ @public: (.*\n)/gm;
+const boundaries=(text,file)=>{
+  const count=marker=>(text.match(new RegExp('^[ \\t]*// @development-'+marker+'$','gm'))||[]).length;
+  if(count('start')!==count('end'))throw new Error('Unbalanced development markers in '+file);
+  if(development)return text;
+  const result=text.replace(DEVELOPMENT_BLOCK,'').replace(PUBLIC_LINE,'$1$2');
+  if(/@development-(?:start|end)|\/\/ @public: /.test(result))throw new Error('Nested or stray build marker in '+file);
+  return result;
+};
+script=boundaries(script,'src/tweaks.js');
 if(!development){
-  script=script.replace(/    \/\/ @development-start[\s\S]*?    \/\/ @development-end\n/g,'');
-  const a=script.indexOf('  // ---- Test build only:'),b=script.indexOf('  // Observe readiness',a);
-  if(a<0||b<a)throw new Error('Missing diagnostic panel boundary');
-  script=script.slice(0,a)+script.slice(b);
-  script=script.replace(/^  const (?:NAMES|DEVELOPMENT_HELP) = .*;\n/gm,'');
-  script=script.replace(/^    const PREVIEW_SECONDS = .*;\n/gm,'');
-  script=script.replace(/^    let (?:preview|anim) = null;\n/gm,'');
-  const h=script.indexOf('    const hourNow = () => {'),e=script.indexOf('    const sky =',h);
-  if(h<0||e<h)throw new Error('Missing time preview boundary');
-  script=script.slice(0,h)+'    const hourNow = realHour;\n\n'+script.slice(e);
-  const p=script.indexOf('    const PREVIEWS = '),q=script.indexOf('    return {',p);
-  if(p<0||q<p)throw new Error('Missing preview cycle boundary');
-  script=script.slice(0,p)+script.slice(q);
-  replace('tick, toggle, destroy, rebuild, cyclePreview,','tick, toggle, destroy, rebuild,');
-  script=script.replace(/^      get preview\(\).*\n/gm,'');
-  script=script.replace(/      diagnostics: \(\) => \(\{[\s\S]*?      \}\),\n/,'');
-  replace('if (anim || time - lastSky > 2000)', 'if (time - lastSky > 2000)');
-  script=script.replace(/^    else if \(e.shiftKey\).*\n/gm,'');
-  replace("    if (e.repeat) return;", "    if (e.repeat || (e.shiftKey && !backupShortcut)) return;");
-  const r=script.indexOf('  Object.assign(runtime, {'),t=script.indexOf('  Object.freeze(runtime);',r);
-  if(r<0||t<r)throw new Error('Missing development API boundary');
-  script=script.slice(0,r)+"  runtime.status = 'ready';\n"+script.slice(t);
-  script=script.replace(/^.*console\.info\(tag,.*\n/gm,'');
   // Remove obsolete development help from the translation dictionary as well.
   const translationMarker='  const TRANSLATIONS = ';
   const x=script.indexOf(translationMarker)+translationMarker.length,y=script.indexOf('\n  const ',x);
@@ -72,7 +62,7 @@ fs.writeFileSync(path.join(out,'digimmo-tweaks.user.js'),script);
 fs.writeFileSync(path.join(out,'client/tweaks.user.js'),script);
 for(const file of ['main.js','preload.js','updater.js','discord.js']){
   let code=read('client/'+file).replace(/__DEVELOPMENT__/g,String(development));
-  if(!development)code=code.replace(/  \/\/ @development-start[\s\S]*?  \/\/ @development-end\n/g,'');
+  code=boundaries(code,'client/'+file);
   new vm.Script(code,{filename:file});
   fs.writeFileSync(path.join(out,'client',file),code);
 }

@@ -2,22 +2,31 @@
 
 ## 0.2 (unreleased)
 
-- The desktop client shows DigiMMO as your current game in Discord while Discord is open.
-- Choose real time, a repeating day or a fixed atmosphere time in F10.
-- Server Desert speakers occasionally play muffled radio chatter with long pauses.
-- Nearby ponds and lakes have gentle water sounds. Waves reach the southern Fog City coast.
-- Wind varies subtly by map, with deeper desert gusts and thinner wind in ice regions. Cities retain daytime traffic and nighttime wind.
-- Visible flying attacks cast a small matching light at night. Character lights and water reflections fade with characters and stay off hidden ones.
-- Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled.
-- Lantern light follows the glass in Overdell, Myotismon Keep and the stone lanterns of Destiny Lake and Holy Peaks. The Destiny Lake wreck shows red signal lights, a glowing jewel and a lit doorway at night. Candle stands and chandeliers cast soft light below their bases; only flame tips glow.
-- Selected Toy Town windows glow at night. Factory sludge has small green particles instead of a flat glow. TV portals cast soft blue light onto nearby ground.
-- Other trees keep their wood still while foliage, blossoms, fruit and snow move with the crown. Dead trees sway only at their upper tips.
-- Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms bend gently from fixed bases.
-- Ground shadows stay off houses, igloos and other objects. Water reflections appear only in water below a character, mirrored downward from the shore and beneath water plants and other objects on the water.
-- Selected broken windows in Machine City glow across the glass and holes. Stripped car bodies stay dark; ordinary road cars keep their headlights.
-- Piedmon's castle windows glow at night instead of his throne.
-- Cottage and pagoda lights stay within the windows, without lighting roof edges or facade trim.
-- Cloud density starts at 2x, including existing settings once. Player night light defaults to 1.05x; other saved brightness choices are preserved.
+A large atmosphere update: classic water reflections, natural tree movement and many new lights.
+
+### Lighting
+- Lanterns, candles and chandeliers glow from their flames and glass.
+- More windows light up at night, including Toy Town, Machine City and Piedmon's castle.
+- New night details: the Destiny Lake wreck, TV portals and Factory sludge.
+- Attacks, skill projectiles and beams cast a matching light at night.
+
+### Shadows and reflections
+- Water mirrors characters downward at ponds, lakes and beaches.
+- Shadows no longer fall across houses and objects.
+
+### Trees and weather
+- Leaves and crowns sway while trunks stay put; palms bend from the base.
+- Clouds and weather start at 2x; seasonal leaves follow the weather setting.
+- Livelier confetti in Primary Village.
+
+### Ambience
+- Water sounds at ponds and lakes, waves on the Fog City coast and wind that varies by region.
+- Muffled loudspeaker chatter in Server Desert.
+
+### Settings and client
+- Atmosphere clock: real time, a repeating day or a fixed time (F10).
+- Player night light starts at 1.05x; other saved settings are kept.
+- The desktop client shows DigiMMO as your game in Discord.
 
 ## 0.1.4
 

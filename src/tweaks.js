@@ -211,7 +211,7 @@
     "Development only: Shift+F10 cycles the selected clock, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Solo desarrollo: Shift+F10 alterna el reloj elegido, mañana, mediodía, tarde y noche con una transición de seis segundos. Ctrl+Alt+P muestra los contadores de diagnóstico.",
     "Mono, 120 Hz low cut, gentle high-frequency filtering, constant volume matching, short loop crossfade and Opus encoding. No compression, pitch or speed change.": "Mono, filtro de corte bajo a 120 Hz, filtrado suave de agudos, ajuste constante de volumen, fundido corto de bucle y codificación Opus. Sin compresión ni cambios de tono o velocidad.",
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado en bucle, ajustado de volumen y codificado en Opus mono.",
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Water reflections appear only in water below a character, mirrored downward from the shore and beneath water plants and other objects on the water. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell, Myotismon Keep and the stone lanterns of Destiny Lake and Holy Peaks. The wreck in Destiny Lake shows red signal lights, a glowing jewel and a lit doorway at night. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night. Calm water can be heard near ponds and lakes across the maps. Fog City's southern coast has waves. Wind has regional character and subtle map variations, with deeper desert gusts and thinner wind in ice regions. Server Desert speakers occasionally play muffled radio chatter with long pauses. The atmosphere clock can follow your computer, repeat a day or hold a chosen time. The desktop client shows DigiMMO as your current game in Discord. Character lights and water reflections fade with characters and stay off hidden ones.": "Algunas ventanas rotas de Machine City iluminan tanto el cristal como los agujeros; las carrocerías destruidas permanecen a oscuras. Las ventanas del castillo de Piedmon brillan por la noche en lugar de su trono. La luz de las cabañas y la pagoda se limita a las ventanas. Las nubes comienzan en 2x y la luz nocturna del jugador tiene un valor predeterminado de 1,05x. Las sombras del suelo no oscurecen casas, iglús ni otros objetos. Los reflejos en el agua aparecen solo en el agua debajo de un personaje, reflejados hacia abajo desde la orilla y por debajo de plantas acuáticas y otros objetos sobre el agua. Las grandes copas de Native Forest se mueven en tres secciones de hojas mientras los troncos permanecen inmóviles. Las copas de Fog City se mueven unidas, incluido el follaje dorado de los ginkgos. La madera de las acacias de la sabana permanece inmóvil. Las palmeras se balancean desde una base fija, con más movimiento hacia la copa. Las copas de los demás árboles mantienen los troncos inmóviles, incluidas las flores, los frutos y el follaje nevado. Los árboles muertos solo se mueven en las puntas superiores. Algunas ventanas de Toy Town brillan por la noche. El lodo de la fábrica emite pequeñas partículas verdes en lugar de un brillo uniforme. Los portales de televisión proyectan una suave luz azul sobre el suelo frente a ellos. La luz de las farolas sigue el cristal en Overdell, Myotismon Keep y en las linternas de piedra de Destiny Lake y Holy Peaks. De noche, el naufragio de Destiny Lake muestra luces rojas de señal, una joya brillante y una puerta iluminada. Los candelabros y las lámparas de araña iluminan suavemente el suelo bajo sus bases, con llamas brillantes en lugar de metal luminoso. Primary Village tiene confeti más visible. La densidad del clima también controla las hojas estacionales, que dejan de caer al desactivar el clima. Los proyectiles visibles emiten una pequeña luz de su color por la noche. Se oye agua tranquila cerca de estanques y lagos en los mapas. La costa sur de Fog City tiene oleaje. El viento varía según la región y el mapa, con ráfagas más graves en el desierto y un viento más fino en las regiones heladas. Los altavoces de Server Desert reproducen voces de radio amortiguadas de vez en cuando, con pausas largas. El reloj de la atmósfera puede seguir el equipo, repetir un día o mantener una hora elegida. El cliente de escritorio muestra DigiMMO como tu juego actual en Discord. Las luces de los personajes y los reflejos en el agua se desvanecen con ellos y no aparecen en personajes ocultos.",
+    "A large atmosphere update: classic water reflections, natural tree movement and many new lights.\n• Water mirrors characters downward at ponds, lakes and beaches.\n• Leaves and crowns sway while trunks stay put; palms bend from the base.\n• Lanterns, candles and windows glow from their flames and glass, with new night lights across the maps.\n• Attacks, skill projectiles and beams cast a matching light at night.\n• Shadows no longer fall across houses and objects.\n• Water sounds at ponds and lakes, regional wind and loudspeaker chatter in Server Desert.\n• Choose real time, a repeating day or a fixed time for the atmosphere.\n• The desktop client shows DigiMMO as your game in Discord.": "Una gran actualización de ambiente: reflejos clásicos en el agua, árboles con movimiento natural y muchas luces nuevas.\n• El agua refleja a los personajes hacia abajo en estanques, lagos y playas.\n• Hojas y copas se mecen mientras los troncos quedan quietos; las palmeras se doblan desde la base.\n• Faroles, velas y ventanas brillan desde sus llamas y cristales, con nuevas luces nocturnas en los mapas.\n• Los ataques, los proyectiles de habilidades y los rayos proyectan de noche una luz a juego.\n• Las sombras ya no caen sobre casas ni objetos.\n• Sonidos de agua en estanques y lagos, viento regional y voces de megafonía en Server Desert.\n• Elige hora real, un día repetido o una hora fija para el ambiente.\n• El cliente de escritorio muestra DigiMMO como tu juego en Discord.",
     "Trimmed, looped, volume matched and encoded to mono Opus. Regional high-pass and low-pass filters with subtle per-map variation and slow gain changes during playback; no pitch or speed change.": "Recortado, preparado en bucle, con volumen ajustado y codificado en Opus mono. Filtros regionales de paso alto y paso bajo con variaciones sutiles por mapa y cambios lentos de volumen durante la reproducción; sin cambios de tono ni velocidad.",
     "Atmosphere clock": "Reloj de la atmósfera",
     "Repeating day": "Día en bucle",
@@ -325,7 +325,7 @@
     "Development only: Shift+F10 cycles the selected clock, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Apenas desenvolvimento: Shift+F10 alterna o relógio escolhido, manhã, meio-dia, entardecer e noite com uma transição de seis segundos. Ctrl+Alt+P mostra contadores de diagnóstico.",
     "Mono, 120 Hz low cut, gentle high-frequency filtering, constant volume matching, short loop crossfade and Opus encoding. No compression, pitch or speed change.": "Mono, corte de graves em 120 Hz, filtragem suave de agudos, ajuste constante de volume, transição curta do loop e codificação Opus. Sem compressão nem alteração de tom ou velocidade.",
     "Trimmed, looped, volume matched and encoded to mono Opus.": "Recortado, preparado em loop, ajustado em volume e codificado em Opus mono.",
-    "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Water reflections appear only in water below a character, mirrored downward from the shore and beneath water plants and other objects on the water. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell, Myotismon Keep and the stone lanterns of Destiny Lake and Holy Peaks. The wreck in Destiny Lake shows red signal lights, a glowing jewel and a lit doorway at night. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night. Calm water can be heard near ponds and lakes across the maps. Fog City's southern coast has waves. Wind has regional character and subtle map variations, with deeper desert gusts and thinner wind in ice regions. Server Desert speakers occasionally play muffled radio chatter with long pauses. The atmosphere clock can follow your computer, repeat a day or hold a chosen time. The desktop client shows DigiMMO as your current game in Discord. Character lights and water reflections fade with characters and stay off hidden ones.": "Algumas janelas quebradas de Machine City iluminam tanto o vidro quanto os buracos; as carrocerias destruídas permanecem escuras. As janelas do castelo de Piedmon brilham à noite em vez do trono. A luz das cabanas e do pagode fica restrita às janelas. As nuvens começam em 2x e a luz noturna do jogador tem valor padrão de 1,05x. As sombras do chão não escurecem casas, iglus ou outros objetos. Os reflexos na água aparecem apenas na água abaixo de um personagem, espelhados para baixo a partir da margem e por baixo de plantas aquáticas e outros objetos sobre a água. As grandes copas de Native Forest se movem em três partes de folhagem enquanto os troncos permanecem parados. As copas de Fog City se movem juntas, incluindo a folhagem dourada dos ginkgos. A madeira das acácias da savana permanece parada. As palmeiras balançam a partir de uma base fixa, com mais movimento em direção à copa. As copas das outras árvores mantêm os troncos parados, incluindo flores, frutos e folhagem com neve. As árvores mortas se movem apenas nas pontas superiores. Algumas janelas de Toy Town brilham à noite. O lodo da fábrica emite pequenas partículas verdes em vez de um brilho uniforme. Os portais de televisão projetam uma luz azul suave no chão à sua frente. A luz das lanternas acompanha o vidro em Overdell, Myotismon Keep e nas lanternas de pedra de Destiny Lake e Holy Peaks. À noite, os destroços em Destiny Lake mostram luzes vermelhas de sinal, uma joia brilhante e uma porta iluminada. Candelabros e lustres iluminam suavemente o chão abaixo das bases, com chamas brilhantes em vez de metal luminoso. Primary Village tem confetes mais visíveis. A densidade do clima também controla as folhas sazonais, que param de cair ao desativar o clima. Projéteis visíveis emitem uma pequena luz da mesma cor à noite. É possível ouvir água calma perto de lagos e lagoas nos mapas. A costa sul de Fog City tem ondas. O vento varia conforme a região e o mapa, com rajadas mais graves no deserto e um vento mais fino nas regiões geladas. Os alto-falantes de Server Desert reproduzem vozes de rádio abafadas ocasionalmente, com pausas longas. O relógio da atmosfera pode seguir o computador, repetir um dia ou manter um horário escolhido. O cliente para desktop mostra DigiMMO como seu jogo atual no Discord. As luzes dos personagens e os reflexos na água acompanham o esmaecimento deles e não aparecem em personagens ocultos.",
+    "A large atmosphere update: classic water reflections, natural tree movement and many new lights.\n• Water mirrors characters downward at ponds, lakes and beaches.\n• Leaves and crowns sway while trunks stay put; palms bend from the base.\n• Lanterns, candles and windows glow from their flames and glass, with new night lights across the maps.\n• Attacks, skill projectiles and beams cast a matching light at night.\n• Shadows no longer fall across houses and objects.\n• Water sounds at ponds and lakes, regional wind and loudspeaker chatter in Server Desert.\n• Choose real time, a repeating day or a fixed time for the atmosphere.\n• The desktop client shows DigiMMO as your game in Discord.": "Uma grande atualização de ambiente: reflexos clássicos na água, árvores com movimento natural e muitas luzes novas.\n• A água reflete os personagens para baixo em lagoas, lagos e praias.\n• Folhas e copas balançam enquanto os troncos ficam parados; as palmeiras se curvam a partir da base.\n• Lanternas, velas e janelas brilham a partir das chamas e do vidro, com novas luzes noturnas pelos mapas.\n• Ataques, projéteis de habilidades e raios lançam à noite uma luz da mesma cor.\n• As sombras não caem mais sobre casas e objetos.\n• Sons de água em lagoas e lagos, vento regional e vozes de alto-falante em Server Desert.\n• Escolha hora real, um dia repetido ou um horário fixo para o ambiente.\n• O cliente para desktop mostra DigiMMO como seu jogo no Discord.",
     "Trimmed, looped, volume matched and encoded to mono Opus. Regional high-pass and low-pass filters with subtle per-map variation and slow gain changes during playback; no pitch or speed change.": "Recortado, preparado em loop, com volume ajustado e codificado em Opus mono. Filtros regionais de passa-altas e passa-baixas com variações sutis por mapa e mudanças lentas de volume durante a reprodução; sem alterar o tom ou a velocidade.",
     "Atmosphere clock": "Relógio da atmosfera",
     "Repeating day": "Dia em ciclo",
@@ -421,7 +421,9 @@
       setComp(comp, MASTER);
       a.__digimmoSfxIn = a.sfxBus;
       a.__digimmoAudio = true;
+      // @development-start
       console.info(tag, 'Audio: effects bus rerouted');
+      // @development-end
       return true;
     } catch (e) {
       if (sfxComp) {
@@ -621,14 +623,18 @@
     };
     const REFLECT = { get alpha() { return SETTINGS.reflectionOpacity; }, tint: 0xa8c8ff, get wobble() { return SETTINGS.reflectionWobble; } };
     const AMBIENT = { get volume() { return SETTINGS.ambientVolume; } };
+    // @development-start
     const PREVIEW_SECONDS = 6;
+    // @development-end
 
     let built = null;
     const brokenMaps = new Set();
     let readyScene = null, readyTilemap = null, readyMapId = null, integrityAt = 0;
     let enabled = SETTINGS.atmosphere;
+    // @development-start
     let preview = null;
     let anim = null;
+    // @development-end
 
     const lerp = (a, b, t) => a + (b - a) * t;
     const smooth = (a, b, x) => { const t = Math.max(0, Math.min(1, (x - a) / (b - a))); return t * t * (3 - 2 * t); };
@@ -641,6 +647,7 @@
       const d = new Date();
       return d.getHours() + d.getMinutes() / 60 + d.getSeconds() / 3600;
     };
+    // @development-start
     const hourNow = () => {
       if (anim) {
         const t = Math.min(1, (performance.now() - anim.start) / anim.dur);
@@ -653,6 +660,8 @@
       }
       return preview !== null ? preview : realHour();
     };
+    // @development-end
+    // @public: const hourNow = realHour;
 
     const sky = (h) => {
       if (!SETTINGS.dayNight) h = 12;
@@ -1632,6 +1641,60 @@
         if(checked<96&&drawn<24)for(const p of scene.combat?.sig?.casts?.values?.()||[]){stamp(p.proj,p.color,p);if(checked>=96||drawn>=24)break;}
         if(checked<96&&drawn<24)for(const p of scene.telegraphs?.circles||[]){stamp(p.proj?.obj,attackColors[p.skill?.element],p);if(checked>=96||drawn>=24)break;}
         for(const [sp,light] of attackLights)if(light.frame!==frame)attackLights.delete(sp);
+        stampInstantBeams(time,ox,oy);
+      };
+      // Instant basic-attack tracers have no projectile record: the game stretches one pooled
+      // effect sprite between attacker and target and hides it when its animation ends.
+      // Their textures and element colours come from the game's attack content.
+      let beamKeys=null;
+      const instantBeamKeys=(time)=>{
+        const content=scene.combat?.deps?.content?.digimon,sprites=scene.combat?.deps?.sprites;
+        // Refresh occasionally in case attack content arrives after the map is built.
+        if(content&&typeof sprites?.resolve==='function'&&(beamKeys?.source!==content||time-beamKeys.at>10000)){
+          beamKeys=new Map();beamKeys.source=content;beamKeys.at=time;
+          for(const d of Object.values(content)){
+            const basic=d?.basic;if(!basic?.tracerFx||basic.tracerSpeed)continue;
+            try{const key=sprites.resolve(basic.tracerFx);if(key)beamKeys.set(key,attackColors[basic.element]??attackColors.neutral);}catch{}
+          }
+        }
+        return beamKeys?.size?beamKeys:null;
+      };
+      const stampInstantBeams=(time,ox,oy)=>{
+        const keys=instantBeamKeys(time),list=scene.children?.list;if(!keys||!list)return;
+        let inspected=0,beams=0;
+        for(let i=list.length-1;i>=0&&inspected<3000&&beams<8;i--,inspected++){
+          const sp=list[i];
+          if(sp.type!=='Sprite'||!keys.has(sp.texture?.key)||attackLights.has(sp)||!sp.active||!sp.visible||
+              sp.alpha<=0.01||sp.parentContainer||!sp.willRender?.(cam))continue;
+          const length=Math.abs(sp.displayWidth)||0;if(length<24)continue;
+          const color=keys.get(sp.texture.key),dx=Math.cos(sp.rotation)*length,dy=Math.sin(sp.rotation)*length;
+          const points=Math.max(2,Math.min(6,Math.round(length/32)));
+          for(let j=0;j<points;j++){
+            const u=(j+0.5)/points-0.5,x=sp.x+dx*u,y=sp.y+dy*u;
+            if(x<view.x||y<view.y||x>view.x+view.w||y>view.y+view.h)continue;
+            nightRT.stamp('digimmo:light2',undefined,Math.round(x-ox),Math.round(y-oy),
+              {tint:color,scale:0.3,alpha:0.20*s.dark*Math.min(1,sp.alpha),blendMode:ADD});
+          }
+          beams++;
+        }
+        // Sweeping boss beams follow the game's own angle while they sweep; warning bands stay unlit.
+        let sweeps=0;const now=performance.now();
+        for(const line of scene.mechB?.lines||[]){
+          if(sweeps>=4)break;
+          const sweep=line?.sweeping&&line.skill?.sweep;if(!sweep)continue;
+          const length=Math.hypot(line.tx-line.fx,line.ty-line.fy),half=sweep.arc*Math.PI/360;
+          const progress=Math.min(1,(now-line.start)/Math.max(1,line.end-line.start));
+          const angle=Math.atan2(line.ty-line.fy,line.tx-line.fx)-half+2*half*progress;
+          if(!Number.isFinite(angle)||!(length>0))continue;
+          const color=attackColors[line.skill.element]??attackColors.neutral,points=Math.max(2,Math.min(8,Math.round(length/32)));
+          for(let j=0;j<points;j++){
+            const d=length*(j+0.5)/points,x=line.fx+Math.cos(angle)*d,y=line.fy+Math.sin(angle)*d;
+            if(x<view.x||y<view.y||x>view.x+view.w||y>view.y+view.h)continue;
+            nightRT.stamp('digimmo:light2',undefined,Math.round(x-ox),Math.round(y-oy),
+              {tint:color,scale:0.34,alpha:0.20*s.dark,blendMode:ADD});
+          }
+          sweeps++;
+        }
       };
       // Shared emitters, not one emitter per light. Only on-screen sources emit.
       const detailEmitters=[];
@@ -1886,7 +1949,10 @@
             wv.width <= 0 || wv.height <= 0 || wv.width > 4096 || wv.height > 4096) return;
         view.x = wv.x - 32; view.y = wv.y - 32; view.w = wv.width + 64; view.h = wv.height + 64;
 
+        // @development-start
         if (anim || time - lastSky > 2000) {
+        // @development-end
+        // @public: if (time - lastSky > 2000) {
           lastSky = time;
           s = sky(hourNow());
         }
@@ -2132,7 +2198,9 @@
         try {
           built = build(scene);
           built.update(performance.now());
+          // @development-start
           console.info(tag, 'Atmosphere:', scene.mapId, built?.stats);
+          // @development-end
         }
         catch (e) {
           console.warn(tag, 'Atmosphere initialization failed on this map', e);
@@ -2156,6 +2224,7 @@
       } else { readyScene = null; tick(); }
     };
 
+    // @development-start
     const PREVIEWS = [null, 6.4, 12, 19.3, 23];
     const cyclePreview = () => {
       const target = anim ? anim.to : preview;
@@ -2164,22 +2233,29 @@
       anim = { from: hourNow(), to: next, start: performance.now(), dur: PREVIEW_SECONDS * 1000 };
       return next;
     };
-
+    // @development-end
     return {
+      // @development-start
       tick, toggle, destroy, rebuild, cyclePreview,
+      // @development-end
+      // @public: tick, toggle, destroy, rebuild,
       toggleAmbient: () => { SETTINGS.ambientEnabled = !SETTINGS.ambientEnabled; store(); return SETTINGS.ambientEnabled; },
       get ambient() { return SETTINGS.ambientEnabled; }, set ambient(v) { SETTINGS.ambientEnabled = !!v; },
       get enabled() { return enabled; }, set enabled(v) { enabled = !!v; SETTINGS.atmosphere = enabled; },
+      // @development-start
       get preview() { return preview; }, set preview(v) { preview = v; anim = null; },
+      // @development-end
       get built() { return built; },
+      // @development-start
       diagnostics: () => ({ map: built && built.mapId, stats: built && built.stats,
         ready: !!readyScene, blockedMaps: [...brokenMaps], clouds: built && built.cloudCount,
       }),
+      // @development-end
     };
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.2", "Selected broken windows in Machine City glow across the glass and holes; stripped car bodies stay dark. Piedmon's castle windows glow at night instead of his throne. Cottage and pagoda lights stay within the windows. Clouds start at 2x and player night light defaults to 1.05x. Ground shadows stay off houses, igloos and other objects. Water reflections appear only in water below a character, mirrored downward from the shore and beneath water plants and other objects on the water. Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms sway from fixed bases, with more movement toward their crowns. Other tree crowns keep their trunks still, including blossoms, fruit and snowy foliage. Dead trees move only at their upper tips. Selected Toy Town windows glow at night. Factory sludge emits small green motes instead of a flat glow. TV portals cast soft blue light onto the ground in front of them. Lantern light follows the glass in Overdell, Myotismon Keep and the stone lanterns of Destiny Lake and Holy Peaks. The wreck in Destiny Lake shows red signal lights, a glowing jewel and a lit doorway at night. Candle stands and chandeliers cast soft light below their bases, with bright flame tips instead of glowing metal. Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled. Visible flying attacks cast a small matching light at night. Calm water can be heard near ponds and lakes across the maps. Fog City's southern coast has waves. Wind has regional character and subtle map variations, with deeper desert gusts and thinner wind in ice regions. Server Desert speakers occasionally play muffled radio chatter with long pauses. The atmosphere clock can follow your computer, repeat a day or hold a chosen time. The desktop client shows DigiMMO as your current game in Discord. Character lights and water reflections fade with characters and stay off hidden ones."],
+  ["0.2", "A large atmosphere update: classic water reflections, natural tree movement and many new lights.\n• Water mirrors characters downward at ponds, lakes and beaches.\n• Leaves and crowns sway while trunks stay put; palms bend from the base.\n• Lanterns, candles and windows glow from their flames and glass, with new night lights across the maps.\n• Attacks, skill projectiles and beams cast a matching light at night.\n• Shadows no longer fall across houses and objects.\n• Water sounds at ponds and lakes, regional wind and loudspeaker chatter in Server Desert.\n• Choose real time, a repeating day or a fixed time for the atmosphere.\n• The desktop client shows DigiMMO as your game in Discord."],
   ["0.1.4", "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night."],
   ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance."],
   ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
@@ -2251,7 +2327,9 @@
   const LIVE_FIELDS = new Set(['stepGain', 'ambientEnabled', 'ambientVolume',
     'ambientWind', 'ambientBirds', 'ambientCrickets', 'ambientFire', 'ambientWater', 'ambientWaves']);
   const KEYBOARD_HELP = "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.";
+  // @development-start
   const DEVELOPMENT_HELP = "Development only: Shift+F10 cycles the selected clock, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.";
+  // @development-end
   let menuRoot = null, rebuildTimeout = null, reloadNeeded = false, toastTimer = null;
   let activeTab = 'graphics';
   const toast = (message, ms = 1700) => {
@@ -2492,7 +2570,7 @@
     } catch { return; }
     const box = document.createElement('aside'); box.id = 'digimmo-newversion';
     const label = document.createElement('strong'); label.textContent = tr('Tweaks') + ' ' + VERSION + ' ' + tr('is available');
-    const info = document.createElement('div'); info.textContent = tr(CHANGELOG_ENTRIES[0][1]);
+    const info = document.createElement('div'); info.textContent = tr(CHANGELOG_ENTRIES[0][1]).split('\n')[0]; // headline only
     const button = document.createElement('button'); button.textContent = tr('View changes');
     button.addEventListener('click', () => { box.remove(); openMenu('changelog'); });
     box.append(label, info, button); document.body.append(box);
@@ -2502,7 +2580,9 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startUI, { once: true });
   else startUI();
 
+  // @development-start
   const NAMES = { null: 'Atmosphere clock', 6.4: 'Morning', 12: 'Noon', 19.3: 'Evening', 23: 'Night' };
+  // @development-end
   window.addEventListener('keydown', (e) => {
     const focused = e.target;
     const typing = focused && (focused.tagName === 'INPUT' && focused.type !== 'checkbox' && focused.type !== 'range'
@@ -2514,16 +2594,22 @@
       return;
     }
     if (typing && !(menuRoot && menuRoot.contains(focused))) return;
+    // @development-start
     if (e.repeat) return;
+    // @development-end
+    // @public: if (e.repeat || (e.shiftKey && !backupShortcut)) return;
     e.preventDefault(); e.stopImmediatePropagation();
     if (backupShortcut) { toggleMenu(); return; }
     if (e.ctrlKey) { const on = ATMOS.toggleAmbient(); toast(tr('Ambient sounds') + ': ' + tr(on ? 'on' : 'off')); }
+    // @development-start
     else if (e.shiftKey) { const p = ATMOS.cyclePreview(); toast(tr('Time of day') + ': ' + tr(NAMES[p])); }
+    // @development-end
     else if (e.altKey) { const on = ATMOS.toggle(); if (menuRoot && !menuRoot.hidden) renderTab(); toast(tr('Atmosphere') + ': ' + tr(on ? 'on' : 'off')); }
     else toggleMenu();
   }, true);
 
 
+  // @development-start
   // ---- Test build only: read-only status readout (Ctrl+Alt+P), not for release ----
   (() => {
     let panel = null, refresh = 0;
@@ -2553,6 +2639,7 @@
     }, true);
   })();
 
+  // @development-end
   // Observe readiness on each animation frame. No settling timer is needed:
   // map identity, loading state and the recreated sprite are the actual guards.
   const atmosphereFrame = () => {
@@ -2560,11 +2647,14 @@
     requestAnimationFrame(atmosphereFrame);
   };
   requestAnimationFrame(atmosphereFrame);
+  // @development-start
   Object.assign(runtime, {
     status: 'ready', settings: SETTINGS, openMenu, closeMenu,
     rebuild: () => ATMOS.rebuild(), getStats: () => ATMOS.built && ATMOS.built.stats,
     diagnostics: () => ATMOS.diagnostics(),
   });
+  // @development-end
+  // @public: runtime.status = 'ready';
   Object.freeze(runtime);
 
   // Recorded ambience. Trimmed, looped, loudness matched and re-encoded (Opus).
