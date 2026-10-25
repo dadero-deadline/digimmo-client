@@ -1,5 +1,5 @@
 'use strict';
-const { app, BrowserWindow, shell, Menu, Notification, ipcMain, net } = require('electron');
+const { app, BrowserWindow, shell, Menu, Notification, ipcMain, net, autoUpdater } = require('electron');
 const { startUpdates, updateMessage } = require('./updater');
 const { startPresence } = require('./discord');
 const path = require('node:path');
@@ -48,13 +48,15 @@ if (process.env.DIGIMMO_DEV_TEST_SCRIPT && path.isAbsolute(process.env.DIGIMMO_D
 let mainWindow;
 let launcherWindow;
 let pendingUpdate = null;
+let updates = {enabled:false};
+let updateState = {state:'idle'};
 const open = win => win && !win.isDestroyed();
 const sendUpdateNotice = () => {
   if(pendingUpdate && open(mainWindow) &&
       mainWindow.webContents.getURL().startsWith(GAME))
     mainWindow.webContents.send('digimmo:update-ready',pendingUpdate);
-  if(pendingUpdate && open(launcherWindow))launcherWindow.webContents.send('launcher:update',pendingUpdate);
 };
+const sendUpdateState = () => { if(open(launcherWindow))launcherWindow.webContents.send('launcher:update',updateState); };
 const windowIcon = () => path.join(__dirname,process.platform==='win32'?'icon.ico':'icon.png');
 function createWindow() {
   const st=loadState();
@@ -151,10 +153,18 @@ const serverStatus = async () => {
     return {reachable:true,ok:health.ok!==false,online:Number.isFinite(online)?online:null,maintenance:health.drain?.on===true};
   } catch { return {reachable:false}; }
 };
-ipcMain.handle('launcher:info',event=>fromLauncher(event)?{version:app.getVersion(),locale:app.getLocale(),language:loadLauncher().language,client:clientNote(),update:pendingUpdate}:null);
+ipcMain.handle('launcher:info',event=>fromLauncher(event)?{version:app.getVersion(),locale:app.getLocale(),language:loadLauncher().language,client:clientNote(),updates:updateState}:null);
 ipcMain.handle('launcher:news',(event,language)=>fromLauncher(event)?gameNews(language):null);
 ipcMain.handle('launcher:status',event=>fromLauncher(event)?serverStatus():null);
 ipcMain.on('launcher:open',(event,link)=>{if(fromLauncher(event)&&Object.hasOwn(LINKS,link))external(LINKS[link]);});
+ipcMain.handle('launcher:install',event=>{
+  if(!fromLauncher(event)||!updates.enabled)return false;
+  // The updater starts a new AppImage while this one still holds the single-instance lock. Relaunch the
+  // replaced file once this instance has quit, so one copy always survives (only on a successful install).
+  if(process.platform==='linux'&&process.env.APPIMAGE)
+    autoUpdater.once('before-quit-for-update',()=>app.relaunch({execPath:process.env.APPIMAGE,args:process.argv.slice(1)}));
+  return updates.install();
+});
 ipcMain.on('launcher:play',event=>{
   if(!fromLauncher(event)||open(mainWindow))return;
   const launcher=launcherWindow;
@@ -172,15 +182,20 @@ else {
   app.on('second-instance',()=>{const win=[mainWindow,launcherWindow].find(open);if(win){if(win.isMinimized())win.restore();win.focus();}});
   app.whenReady().then(()=>{
     if(process.platform==='win32')app.setAppUserModelId(APP_ID);
-    startUpdates({app,development:DEVELOPMENT,notify:version=>{
-      pendingUpdate=updateMessage(app.getLocale(),version);
-      sendUpdateNotice();
-      if(Notification.isSupported())new Notification({...pendingUpdate,icon:path.join(__dirname,'icon.png')}).show();
-    }});
+    const showLauncher=loadLauncher().show;
+    // With the start window the update check starts at once, so a new client version can install before playing.
+    updates=startUpdates({app,development:DEVELOPMENT,initialDelay:showLauncher?0:20000,
+      onState:state=>{updateState=state;sendUpdateState();},
+      notify:version=>{
+        pendingUpdate=updateMessage(app.getLocale(),version);
+        sendUpdateNotice();
+        // The start window shows a finished download itself.
+        if(!open(launcherWindow)&&Notification.isSupported())new Notification({...pendingUpdate,icon:path.join(__dirname,'icon.png')}).show();
+      }});
     const presence=startPresence({applicationId:DISCORD_APPLICATION_ID});
     app.once('will-quit',()=>presence.stop());
     Menu.setApplicationMenu(null);
-    if(loadLauncher().show)createLauncher();
+    if(showLauncher)createLauncher();
     else createWindow();
   });
 }

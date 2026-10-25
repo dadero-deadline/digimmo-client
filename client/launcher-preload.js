@@ -7,6 +7,7 @@ contextBridge.exposeInMainWorld('launcher', {
   status: () => ipcRenderer.invoke('launcher:status'),
   news: language => ipcRenderer.invoke('launcher:news', language),
   play: () => ipcRenderer.send('launcher:play'),
+  install: () => ipcRenderer.invoke('launcher:install'),
   open: link => ipcRenderer.send('launcher:open', link),
-  onUpdate: callback => ipcRenderer.on('launcher:update', (_, notice) => callback(notice)),
+  onUpdate: callback => ipcRenderer.on('launcher:update', (_, state) => callback(state)),
 });

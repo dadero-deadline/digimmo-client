@@ -39,12 +39,18 @@
   .label { margin-top: 6px; color: var(--muted); font-size: 13px; }
   .client { padding: 14px 16px; }
   .client p { margin: 0; font-size: 14px; }
-  .update { margin-top: 8px !important; color: var(--gold); font-size: 13px !important; }
+  .updater { margin-top: 10px; font-size: 13px; color: var(--muted); }
+  .updater.ready { color: var(--gold); font-weight: 600; }
+  .bar { height: 6px; margin-top: 6px; border-radius: 3px; background: rgba(255, 255, 255, 0.08); overflow: hidden; }
+  .bar span { display: block; height: 100%; width: 0; background: var(--gold); transition: width 0.3s; }
   button { cursor: pointer; font: inherit; }
   .ghost { padding: 8px 12px; border: 2px solid var(--line); border-radius: 6px; background: rgba(255, 255, 255, 0.04); color: var(--text); }
   .ghost:hover, .ghost:focus-visible { border-color: var(--gold); outline: none; }
   .client .ghost { margin-top: 12px; width: 100%; text-align: left; font-size: 13px; }
   footer { display: flex; align-items: center; gap: 10px; }
+  .skip { margin-left: auto; padding: 6px 4px; border: 0; background: none; color: var(--muted); font-size: 13px; text-decoration: underline; }
+  .skip:hover, .skip:focus-visible { color: var(--text); outline: none; }
+  .skip:not([hidden]) + .play { margin-left: 0; }
   .play { margin-left: auto; min-width: 220px; padding: 14px 36px; border: 0; border-radius: 6px; background: var(--gold); color: #1a1400;
     font: 800 20px/1 "Segoe UI", system-ui, sans-serif; letter-spacing: 2px; text-transform: uppercase; box-shadow: 0 5px 0 var(--gold-dark), 0 8px 18px rgba(0, 0, 0, 0.45); }
   .play:hover, .play:focus-visible { filter: brightness(1.08); outline: none; }
@@ -76,7 +82,10 @@
       <div class="panel client">
         <h2 id="clientTitle"></h2>
         <p id="clientNote"></p>
-        <p class="update" id="update" hidden></p>
+        <div class="updater" id="updater" hidden>
+          <div id="updateText"></div>
+          <div class="bar" id="updateBar" hidden><span id="updateFill"></span></div>
+        </div>
         <button class="ghost" data-link="client" id="linkClient"></button>
       </div>
     </aside>
@@ -85,6 +94,7 @@
     <button class="ghost" data-link="website" id="linkWebsite"></button>
     <button class="ghost" data-link="wiki" id="linkWiki"></button>
     <button class="ghost" data-link="discord" id="linkDiscord"></button>
+    <button class="skip" id="skip" hidden></button>
     <button class="play" id="play"></button>
   </footer>
 </main>
@@ -93,15 +103,21 @@
     en: { subtitle: 'Unofficial desktop client', news: 'Game updates', loading: 'Loading game updates', failed: 'Game updates could not be loaded.',
       nth: n => 'Update ' + n, online: 'players online', client: 'Client', clientAll: 'All client changes',
       play: 'Play', starting: 'Starting', ok: 'Server online', warn: 'Maintenance', down: 'Server unreachable', checking: 'Checking server',
-      website: 'Website', wiki: 'Wiki', discord: 'Discord', update: 'Update ready: it installs after you close the client.' },
+      website: 'Website', wiki: 'Wiki', discord: 'Discord',
+      uChecking: 'Checking for updates', uCurrent: 'Client is up to date', uDownloading: v => 'Downloading v' + v, uReady: v => 'v' + v + ' is ready',
+      uFailed: 'Could not check for updates', updatePlay: 'Update and play', updating: 'Updating', skip: 'Play without updating' },
     es: { subtitle: 'Cliente de escritorio no oficial', news: 'Novedades del juego', loading: 'Cargando las novedades del juego', failed: 'No se pudieron cargar las novedades del juego.',
       nth: n => 'Actualización ' + n, online: 'jugadores en línea', client: 'Cliente', clientAll: 'Todos los cambios del cliente',
       play: 'Jugar', starting: 'Iniciando', ok: 'Servidor en línea', warn: 'Mantenimiento', down: 'Servidor no disponible', checking: 'Comprobando el servidor',
-      website: 'Sitio web', wiki: 'Wiki', discord: 'Discord', update: 'Actualización lista: se instala al cerrar el cliente.' },
+      website: 'Sitio web', wiki: 'Wiki', discord: 'Discord',
+      uChecking: 'Buscando actualizaciones', uCurrent: 'El cliente está actualizado', uDownloading: v => 'Descargando v' + v, uReady: v => 'v' + v + ' está lista',
+      uFailed: 'No se pudo buscar actualizaciones', updatePlay: 'Actualizar y jugar', updating: 'Actualizando', skip: 'Jugar sin actualizar' },
     pt: { subtitle: 'Cliente de desktop não oficial', news: 'Novidades do jogo', loading: 'Carregando as novidades do jogo', failed: 'Não foi possível carregar as novidades do jogo.',
       nth: n => 'Atualização ' + n, online: 'jogadores online', client: 'Cliente', clientAll: 'Todas as mudanças do cliente',
       play: 'Jogar', starting: 'Iniciando', ok: 'Servidor online', warn: 'Manutenção', down: 'Servidor indisponível', checking: 'Verificando o servidor',
-      website: 'Site', wiki: 'Wiki', discord: 'Discord', update: 'Atualização pronta: ela é instalada quando você fechar o cliente.' },
+      website: 'Site', wiki: 'Wiki', discord: 'Discord',
+      uChecking: 'Procurando atualizações', uCurrent: 'O cliente está atualizado', uDownloading: v => 'Baixando v' + v, uReady: v => 'v' + v + ' está pronta',
+      uFailed: 'Não foi possível procurar atualizações', updatePlay: 'Atualizar e jogar', updating: 'Atualizando', skip: 'Jogar sem atualizar' },
   };
   let lang = 'en', t = TEXT.en;
   const $ = id => document.getElementById(id);
@@ -116,7 +132,22 @@
     if (!s || !s.reachable) setStatus('down', null);
     else setStatus(s.maintenance || !s.ok ? 'warn' : 'ok', s.online);
   };
-  const showUpdate = notice => { if (!notice) return; $('update').textContent = t.update; $('update').hidden = false; };
+  // Client updates: progress in the client card; a finished download turns Play into Update and play.
+  let update = { state: 'idle' };
+  const renderUpdate = state => {
+    update = state && typeof state.state === 'string' ? state : { state: 'idle' };
+    const version = update.version || '', percent = Math.round(update.percent || 0);
+    const label = { checking: t.uChecking, current: t.uCurrent, error: t.uFailed, ready: t.uReady(version),
+      downloading: t.uDownloading(version) + ' · ' + percent + ' %' }[update.state];
+    $('updater').hidden = !label;
+    $('updater').className = 'updater ' + update.state;
+    $('updateText').textContent = label || '';
+    $('updateBar').hidden = update.state !== 'downloading';
+    $('updateFill').style.width = percent + '%';
+    if ($('play').disabled) return;
+    $('play').textContent = update.state === 'ready' ? t.updatePlay : t.play;
+    $('skip').hidden = update.state !== 'ready';
+  };
   // Patch notes arrive as plain text blocks and are only ever inserted as text.
   const renderNews = releases => {
     const box = $('news');
@@ -156,23 +187,30 @@
       $('clientNote').title = lines.slice(1).join('\n');
     }
     $('play').textContent = t.play;
+    $('skip').textContent = t.skip;
     for (const [id, key] of [['linkWebsite', 'website'], ['linkWiki', 'wiki'], ['linkDiscord', 'discord'], ['linkClient', 'clientAll']]) $(id).textContent = t[key];
     $('statusText').textContent = t.checking;
-    showUpdate(info.update);
+    renderUpdate(info.updates);
     $('play').focus();
     refresh();
     setInterval(refresh, 60000);
     renderNews(await window.launcher.news(lang).catch(() => null));
   })();
-  const start = () => {
+  const start = async (skipUpdate = false) => {
     if ($('play').disabled) return;
+    const install = !skipUpdate && update.state === 'ready';
     $('play').disabled = true;
+    $('skip').hidden = true;
+    $('play').textContent = install ? t.updating : t.starting;
+    // The client quits, installs and reopens itself; if that is not possible, play the current version.
+    if (install && await window.launcher.install().catch(() => false)) return;
     $('play').textContent = t.starting;
     window.launcher.play();
   };
-  window.launcher.onUpdate(showUpdate);
-  $('play').addEventListener('click', start);
-  document.addEventListener('keydown', event => { if (event.key === 'Enter' && !event.repeat && !event.target.closest('[data-link]')) start(); });
+  window.launcher.onUpdate(renderUpdate);
+  $('play').addEventListener('click', () => start());
+  $('skip').addEventListener('click', () => start(true));
+  document.addEventListener('keydown', event => { if (event.key === 'Enter' && !event.repeat && !event.target.closest('[data-link], .skip')) start(); });
   for (const button of document.querySelectorAll('[data-link]')) button.addEventListener('click', () => window.launcher.open(button.dataset.link));
 </script>
 </body>

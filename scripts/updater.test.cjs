@@ -105,3 +105,34 @@ test('packaged Windows clients update the folder they were started from',()=>{
     fs.rmdirSync(dir);
   }
 });
+
+test('the start window checks at once and follows the download',()=>{
+  const states=[],f=fixture({initialDelay:0,onState:s=>states.push(s)});
+  assert.deepEqual(f.timers.map(t=>t.ms),[0,14400000]);
+  f.updater.emit('checking-for-update');
+  f.updater.emit('update-available',{version:'0.2.3'});
+  f.updater.emit('download-progress',{percent:42.5});
+  f.updater.emit('download-progress',{percent:180});
+  f.updater.emit('update-downloaded',{version:'0.2.3'});
+  f.updater.emit('checking-for-update');f.updater.emit('update-not-available');f.updater.emit('error',Error('later check offline'));
+  assert.deepEqual(states.map(s=>s.state),['checking','downloading','downloading','downloading','ready']);
+  assert.deepEqual(states.slice(2,4).map(s=>s.percent),[42.5,100]);
+  assert.deepEqual(states.at(-1),{state:'ready',version:'0.2.3'});
+  assert.deepEqual(f.notices,['0.2.3']);f.controller.stop();
+});
+test('a failed or empty check reports its state without blocking',()=>{
+  const states=[],f=fixture({onState:s=>states.push(s.state)});
+  f.updater.emit('checking-for-update');f.updater.emit('update-not-available');
+  f.updater.emit('checking-for-update');f.updater.emit('error',Error('offline'));
+  assert.deepEqual(states,['checking','current','checking','error']);f.controller.stop();
+});
+test('installing from the start window needs a finished download and restarts into it',()=>{
+  const f=fixture(),calls=[];
+  f.updater.quitAndInstall=(...args)=>calls.push(args);
+  assert.equal(f.controller.install(),false);
+  f.updater.emit('update-available',{version:'0.2.3'});assert.equal(f.controller.install(),false);
+  f.updater.emit('update-downloaded',{version:'0.2.3'});
+  assert.equal(f.controller.install(),true);assert.deepEqual(calls,[[true,true]]);
+  f.updater.quitAndInstall=()=>{throw Error('installer missing');};assert.equal(f.controller.install(),false);
+  f.controller.stop();assert.equal(f.controller.install(),false);
+});

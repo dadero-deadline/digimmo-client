@@ -10,7 +10,7 @@ An unofficial client for [DigiMMO](https://play.digimmo.com.br/), with optional 
 2. Extract it into its own folder.
 3. Open **DigiMMO.exe** and play.
 
-Windows 64-bit. Keep the supporting files beside the EXE. Updates download automatically and install after you close the client; login and settings are kept. The EXE is unsigned.
+Windows 64-bit. Keep the supporting files beside the EXE. Updates download automatically: install them from the start window before you play, or they install after you close the client. Login and settings are kept. The EXE is unsigned.
 
 ## [Download for Linux](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO-x86_64.AppImage)
 
@@ -18,7 +18,7 @@ Windows 64-bit. Keep the supporting files beside the EXE. Updates download autom
 2. Make it executable: `chmod +x DigiMMO-x86_64.AppImage`, or tick **Allow executing as program** in its properties.
 3. Open it and play.
 
-Linux 64-bit, tested on Ubuntu. No installation needed. Updates download automatically and replace the file after you close the client. The browser folders below are in the Windows ZIP.
+Linux 64-bit, tested on Ubuntu. No installation needed. Updates download automatically and replace the file, from the start window before you play or after you close the client. The browser folders below are in the Windows ZIP.
 
 [Latest release](https://github.com/dadero-deadline/digimmo-client/releases/latest) · [Update help](UPDATES.md) · [Report a problem](https://github.com/dadero-deadline/digimmo-client/issues/new?template=bug_report.md)
 
