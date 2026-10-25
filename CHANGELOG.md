@@ -13,7 +13,7 @@
 - Selected Toy Town windows glow at night. Factory sludge has small green particles instead of a flat glow. TV portals cast soft blue light onto nearby ground.
 - Other trees keep their wood still while foliage, blossoms, fruit and snow move with the crown. Dead trees sway only at their upper tips.
 - Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms bend gently from fixed bases.
-- Ground shadows stay off houses, igloos and other objects. Reflections above the player keep their feet toward the near shore.
+- Ground shadows stay off houses, igloos and other objects. Water reflections appear only in water below a character, mirrored downward from the shore and beneath water plants and other objects on the water.
 - Selected broken windows in Machine City glow across the glass and holes. Stripped car bodies stay dark; ordinary road cars keep their headlights.
 - Piedmon's castle windows glow at night instead of his throne.
 - Cottage and pagoda lights stay within the windows, without lighting roof edges or facade trim.
