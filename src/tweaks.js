@@ -1531,7 +1531,8 @@
         summon:[0xb081ef,0.08,0.30,0.26], coral:[0xc5a5f0,0.025,0.095,0.12], pumpkin:[0xffb54d,0.18,0.35,0],
         altarCrystal:[0xb18af0,0.035,0.20,0.22], altarGold:[0xf0c87d,0.015,0.16,0.18],
         tv:[0x9ed9ff,0.10,0.26,0.80], car:[0xffe4ae,0,0.42,0.26], phone:[0xb5e4ff,0.025,0.12,0.28],
-        console:[0x7cc4ff,0.05,0.26,0.30],
+        console:[0x7cc4ff,0.05,0.26,0.30], cabWindow:[0xffd38a,0,0.36,0.20],
+        darkVein:[0xb08cff,0,0.45,0.14], darkCore:[0xa874ff,0,0.55,0.70],
       };
       const fxKey = 'digimmo:apertures16', fxData = EMISSIVE_TILES;
       if (!scene.textures.exists(fxKey)) {
@@ -1545,7 +1546,7 @@
         const texture = scene.textures.addCanvas(fxKey,canvas);
         entries.forEach(([key],i)=>texture.add(key,0,i%16*16,Math.floor(i/16)*16,16,16));
       }
-      const fxTiles = [], fxLights = [], fxSeen = new Set(), fxBuckets = new Map(), acidCells = new Map(), screenCells = [];
+      const fxTiles = [], fxLights = [], fxSeen = new Set(), fxBuckets = new Map(), acidCells = new Map(), screenCells = [], storyTiles = [];
       // Autumn and winter: the cottage chimneys smoke (artwork used in Gate Village).
       const chimneyPoints = [], chimneySmoke = SETTINGS.seasons && ['autumn', 'winter'].includes(seasonNow());
       const addFxLight = (kind,x,y,objectKey,screen) => {
@@ -1569,7 +1570,7 @@
           if(kind==='coral'&&scene.mapId!=='spiral_sea')continue;
           if((kind==='altarGold'||kind==='altarCrystal')&&scene.mapId!=='spiral_summit')continue;
           if(kind==='tv'&&!/^(gate_village|primary_village)$/.test(scene.mapId))continue;
-          if(kind==='toyWindow'&&scene.mapId!=='toy_town')continue;
+          if((kind==='toyWindow'||kind==='cabWindow')&&scene.mapId!=='toy_town')continue;
           if(kind==='ruinWindow'){
             // Keep the same few windows lit across reloads. Slabs follow their upper pane.
             const topY=y-(info.name.startsWith('ocw_slab')?16:0);
@@ -1585,8 +1586,16 @@
           const lightX=x+8+dx*Math.cos(angle)-dy*Math.sin(angle),lightY=y+8+dx*Math.sin(angle)+dy*Math.cos(angle);
           const screen=kind==='tv'?{layer,tx:tile.x,ty:tile.y,on:false}:null;
           if(screen)screenCells.push(screen);
-          fxTiles.push({kind,key,x:x+8,y:y+8,flipX:!!tile.flipX,flipY:!!tile.flipY,rotation:tile.rotation||0,screen});
-          if(kind==='tv'){
+          const record={kind,key,x:x+8,y:y+8,flipX:!!tile.flipX,flipY:!!tile.flipY,rotation:tile.rotation||0,screen};
+          fxTiles.push(record);
+          if(kind==='toyWindow'){
+            // Lit later per window, by the resident's evening (see windowStory).
+            storyTiles.push({record,gx:Math.round(x/16),gy:Math.round(y/16),mask:definition[1],flipX:record.flipX,flipY:record.flipY,
+              lightX,lightY,castle:info.ts.name==='toycastle'});
+          }else if(kind==='darkCore'){
+            // The two blinking base tiles of a dark tower share one light.
+            addFxLight(kind,lightX,lightY,'darkCore:'+(x-(info.name.endsWith('_13')?16:0))+','+y);
+          }else if(kind==='tv'){
             // The four screen tiles share one soft light spill below the glass.
             const part=screenPart?.[1];
             if(part){const sx=x-(/[bd]/.test(part)?16:0),sy=y-(/[cd]/.test(part)?16:0);addFxLight(kind,sx+16,sy+40,'tv:'+sx+','+sy,screen);}
@@ -1627,6 +1636,88 @@
       if(!portalPoints.length)for(const light of lights)if(light.kind==='portal'){
         portalPoints.push({x:light.x,y:light.y,rect:{x:light.x-8,y:light.y-8,w:16,h:16}});addFxLight('portal',light.x,light.y);
       }
+      // Toy Town windows belong to residents. Most rooms stay dark at night; the lit ones follow a small routine
+      // in the atmosphere clock, and a few people get up now and then, so the lit windows change over the night.
+      const hash32=(a,b,c)=>{
+        let h=Math.imul(a,73856093)^Math.imul(b,19349663)^Math.imul(c,83492791);
+        h=Math.imul(h^(h>>>16),0x45d9f3b);h=Math.imul(h^(h>>>16),0x45d9f3b);return (h^(h>>>16))>>>0;
+      };
+      // [story, weight in houses, weight in the castle]. Hours run 12 to 36, so the night is one span.
+      // evening: the family room until bedtime. late: someone reading past midnight. tv: a blue screen flickers.
+      // restless: dark, but someone gets up for a few minutes now and then. nightlight: a child's dim lamp.
+      // early: the baker before dawn. watch: the castle guards, all night.
+      const STORIES=[['dark',42,40],['evening',18,20],['late',9,10],['tv',7,0],['restless',14,14],['nightlight',5,0],['early',3,0],['watch',2,16]];
+      // share: the window's place among all houses (or castle windows) in a fixed shuffled order, so the mix
+      // of stories matches the weights on every map instead of depending on luck.
+      const windowStory=(gx,gy,castle,share)=>{
+        const detail=hash32(gx,gy,2);
+        let sum=0,story='dark';
+        for(const entry of STORIES){sum+=entry[castle?2:1];if(share*100<sum){story=entry[0];break;}}
+        const minutes=n=>(detail>>>(n*5)&31)/31;
+        const win={gx,gy,story,on:false,level:1,tint:null};
+        if(story==='evening'){win.from=18.5+minutes(0);win.to=castle?22+minutes(1)*3:21+minutes(1)*2.5;}
+        else if(story==='late'){win.from=20.5+minutes(0)*2;win.to=24.5+minutes(1)*2;}
+        else if(story==='tv'){win.from=19.5+minutes(0);win.to=22.5+minutes(1)*2;win.tint=0x9ed9ff;}
+        else if(story==='early'){win.from=28.5+minutes(0);win.to=32;}
+        else if(story==='nightlight'){win.level=0.35;win.tint=0xffc48a;}
+        return win;
+      };
+      const storyOn=(win,hour,now)=>{
+        const h=hour<12?hour+24:hour;
+        if(win.story==='watch'||win.story==='nightlight')return true;
+        if(win.story==='restless'){
+          // Eight minute turns: in about one in five a light goes on for one and a half to five minutes.
+          const turn=Math.floor(now/480000),roll=hash32(win.gx,win.gy,turn),start=roll%240000,length=90000+(roll>>>8)%210000,t=now%480000;
+          return roll%100<22&&t>=start&&t<start+length;
+        }
+        return win.from!==undefined&&h>=win.from&&h<win.to;
+      };
+      const storyWindows=[];
+      if(storyTiles.length){
+        // Neighbouring window tiles whose glass meets across the tile edge (mullions are at most two pixels) form one window.
+        const at=new Map(),parent=storyTiles.map((_,i)=>i),root=i=>parent[i]===i?i:(parent[i]=root(parent[i]));
+        for(const [i,t] of storyTiles.entries()){
+          t.rows=[];
+          for(let y=0;y<16;y++){
+            let bits=parseInt(t.mask.slice(y*4,y*4+4),16);
+            if(t.flipX){let m=0;for(let x=0;x<16;x++)if(bits>>x&1)m|=1<<(15-x);bits=m;}
+            t.rows.push(bits);
+          }
+          if(t.flipY)t.rows.reverse();
+          at.set(t.gx+','+t.gy,i);
+        }
+        const high=b=>31-Math.clz32(b),low=b=>31-Math.clz32(b&-b);
+        for(const [i,t] of storyTiles.entries()){
+          const right=at.get((t.gx+1)+','+t.gy),below=at.get(t.gx+','+(t.gy+1));
+          if(right!==undefined){
+            const o=storyTiles[right].rows;
+            for(let y=0;y<16;y++)if(t.rows[y]&&o[y]&&15-high(t.rows[y])+low(o[y])<=2){parent[root(i)]=root(right);break;}
+          }
+          if(below!==undefined){
+            const o=storyTiles[below].rows;
+            for(let x=0;x<16;x++){
+              const a=t.rows.findLastIndex(r=>r>>x&1),b=o.findIndex(r=>r>>x&1);
+              if(a>=0&&b>=0&&15-a+b<=2){parent[root(i)]=root(below);break;}
+            }
+          }
+        }
+        const groups=new Map();
+        for(const [i,t] of storyTiles.entries()){const r=root(i);if(!groups.has(r))groups.set(r,[]);groups.get(r).push(t);}
+        const found=[...groups.values()].map(tiles=>{
+          const gx=Math.min(...tiles.map(t=>t.gx)),gy=Math.min(...tiles.map(t=>t.gy));
+          return {tiles,gx,gy,castle:tiles.some(t=>t.castle),order:hash32(gx,gy,1)};
+        });
+        for(const castle of [false,true]){
+          const list=found.filter(f=>f.castle===castle).sort((a,b)=>a.order-b.order);
+          list.forEach((f,rank)=>{f.share=(rank+0.5)/list.length;});
+        }
+        for(const {tiles,gx,gy,castle,share} of found){
+          const win=windowStory(gx,gy,castle,share);
+          win.id=storyWindows.length;storyWindows.push(win);
+          for(const t of tiles){t.record.window=win;addFxLight('toyWindow',t.lightX,t.lightY,'window:'+win.id);}
+          fxBuckets.get('window:'+win.id).window=win;
+        }
+      }
       for(const point of fxLights){point.x/=point.n;point.y/=point.n;}
       const fxRT=fxTiles.length||portalPoints.length?own(scene.add.renderTexture(0,0,4,4)).setOrigin(0).setDepth(DEPTH_GLOW-1).setBlendMode(ADD):null;
       let fxLast=-Infinity,fxState='',fxVisible=[];
@@ -1648,12 +1739,29 @@
         }
       }
       const lampPhase=(time)=>lampClock?(lampClock.layer.timeElapsed%lampClock.duration)/lampClock.duration:(time/10000)%1;
+      // Dark tower panels blink as a two-frame tile animation (dim, bright); their glow and light follow its frame.
+      let coreClock=null;
+      if(fxTiles.some(t=>t.kind==='darkCore'))for(const layer of scene.children.list){
+        if(coreClock||layer.type!=='TilemapLayer')continue;
+        for(const row of layer.layer.data){
+          const tile=row.find(t=>t&&t.index>0&&tileInfo(tm,t.index)?.name==='darktower_12');
+          const data=tile&&tileInfo(tm,tile.index).ts.getTileData(tile.index);
+          if(data?.animationDuration>0&&Array.isArray(data.animation)){coreClock={layer,duration:data.animationDuration,frames:data.animation};break;}
+        }
+      }
+      const coreLevel=()=>{
+        if(!coreClock)return 1;
+        let t=coreClock.layer.timeElapsed%coreClock.duration;
+        for(const [i,frame] of coreClock.frames.entries()){t-=frame.duration;if(t<0)return i%2?1:0.5;}
+        return 1;
+      };
       // Frame 0 shows the lamp facing the viewer: the beam points south in the middle of it.
       const beamAngle=(time)=>Math.PI/2+(lampPhase(time)-0.25)*Math.PI*2;
       const fxAmount=(kind,time)=>{
         const style=fxStyle[kind],dark=SETTINGS.dayNight?s.dark:0;
         const flicker=kind==='furnace'||kind==='candle'||kind==='candelabra'||kind==='chandelier'||kind==='torchFlame'?0.94+0.06*Math.sin(time/430):
-          kind==='lighthouse'?0.65+0.35*Math.max(0,Math.cos((lampPhase(time)-0.25)*Math.PI*2)):1;
+          kind==='lighthouse'?0.65+0.35*Math.max(0,Math.cos((lampPhase(time)-0.25)*Math.PI*2)):
+          kind==='darkCore'?coreLevel():kind==='cabWindow'?0.95+0.05*Math.sin(time/370):1;
         return SETTINGS.lights?(style[1]+style[2]*dark)*flicker:0;
       };
       const updateMapEffects=(time,ox,oy,w,h)=>{
@@ -1663,21 +1771,28 @@
           const index=screen.layer.data[screen.ty]?.[screen.tx]?.index;
           screen.on=/^tvbig_s[a-d]_[0-2]$/.test(tileInfo(tm,index)?.name||'');
         }
-        const state=[ox,oy,w,h,SETTINGS.lights,s.dark.toFixed(2),screenCells.map(p=>+p.on).join('')].join(':');
+        if(storyWindows.length){
+          const hour=hourNow(),now=Date.now();
+          for(const win of storyWindows){
+            win.on=storyOn(win,hour,now);
+            if(win.story==='tv')win.level=0.7+0.3*Math.sin(now/180)*Math.sin(now/530+win.id);
+          }
+        }
+        const state=[ox,oy,w,h,SETTINGS.lights,s.dark.toFixed(2),screenCells.map(p=>+p.on).join(''),storyWindows.map(p=>+p.on).join(''),coreLevel()].join(':');
         if(time-fxLast<100&&state===fxState)return;fxLast=time;fxState=state;
         fxVisible=SETTINGS.lights?fxLights.filter(p=>{
           const margin=p.kind==='lighthouse'?320:64;
-          return (!p.screens||p.screens.some(c=>c.on))&&p.x>ox-margin&&p.y>oy-margin&&p.x<ox+w+margin&&p.y<oy+h+margin;
+          return (!p.screens||p.screens.some(c=>c.on))&&(!p.window||p.window.on)&&p.x>ox-margin&&p.y>oy-margin&&p.x<ox+w+margin&&p.y<oy+h+margin;
         }):[];
         if(!fxRT)return;
         if(fxRT.texture.width!==w||fxRT.texture.height!==h)fxRT.resize(w,h);
         fxRT.setPosition(ox,oy).setVisible(!!SETTINGS.lights);fxRT.clear();
         let count=0;
         for(const tile of fxTiles){
-          if(tile.screen&&!tile.screen.on)continue;
+          if(tile.screen&&!tile.screen.on||tile.window&&!tile.window.on)continue;
           if(tile.x<ox-16||tile.y<oy-16||tile.x>ox+w+16||tile.y>oy+h+16)continue;
-          const alpha=fxAmount(tile.kind,time);if(alpha<=0)continue;
-          fxRT.stamp(fxKey,tile.key,tile.x-ox,tile.y-oy,{alpha,tint:fxStyle[tile.kind][0],scaleX:tile.flipX?-1:1,scaleY:tile.flipY?-1:1,rotation:tile.rotation});
+          const alpha=fxAmount(tile.kind,time)*(tile.window?.level??1);if(alpha<=0)continue;
+          fxRT.stamp(fxKey,tile.key,tile.x-ox,tile.y-oy,{alpha,tint:tile.window?.tint??fxStyle[tile.kind][0],scaleX:tile.flipX?-1:1,scaleY:tile.flipY?-1:1,rotation:tile.rotation});
           if(++count>=1024)break;
         }
         // Portal rectangles glow above the night layer with a slow pulse, faint by day.
@@ -1687,14 +1802,18 @@
           fxRT.stamp('digimmo:light2',undefined,rect.x+rect.w/2-ox,rect.y+rect.h/2-oy,
             {alpha:portalAlpha,tint:0x8fe3ff,scaleX:(rect.w+24)/80,scaleY:(rect.h+24)/80});
         }
+        // Dark tower panels: a soft purple halo above the night layer that blinks with the panel frame.
+        const coreAlpha=SETTINGS.lights?0.34*(SETTINGS.dayNight?s.dark:0)*coreLevel():0;
+        if(coreAlpha>0)for(const point of fxVisible)if(point.kind==='darkCore')
+          fxRT.stamp('digimmo:light2',undefined,point.x-ox,point.y-oy,{alpha:coreAlpha,tint:fxStyle.darkCore[0],scaleX:0.55,scaleY:0.38});
         fxRT.render();
       };
       const stampMapLights=(time,ox,oy)=>{
         let count=0;
         for(const point of fxVisible){
-          const style=fxStyle[point.kind],alpha=fxAmount(point.kind,time);if(alpha<=0)continue;
+          const style=fxStyle[point.kind],alpha=fxAmount(point.kind,time)*(point.window?.level??1);if(alpha<=0)continue;
           nightRT.stamp('digimmo:light2',undefined,Math.round(point.x-ox),Math.round(point.y-oy),
-            {tint:style[0],scale:style[3],alpha:Math.min(0.55,alpha*1.2),blendMode:ADD});
+            {tint:point.window?.tint??style[0],scale:style[3],alpha:Math.min(0.55,alpha*1.2),blendMode:ADD});
           if(point.kind==='lighthouse'){
             // One beam from the lamp outward, 260 px long, turning with the lamp animation.
             const angle=beamAngle(time),length=260;
