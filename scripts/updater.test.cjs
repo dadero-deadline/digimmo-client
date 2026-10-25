@@ -18,7 +18,7 @@ test('development and unpacked builds never load the updater',()=>{
   fs.writeFileSync(path.join(dir,'digimmo-installed'),'nsis');
   assert.equal(startUpdates({...args,development:true}).enabled,false);
   assert.equal(startUpdates({...args,app:{isPackaged:false}}).enabled,false);
-  assert.equal(startUpdates({...args,platform:'linux'}).enabled,false);
+  assert.equal(startUpdates({...args,platform:'linux',env:{}}).enabled,false,'Only an AppImage updates on Linux');
   assert.equal(startUpdates(args).enabled,false,'Broken updater dependency must not prevent app startup');
   for(const name of ['app-update.yml','digimmo-installed'])fs.unlinkSync(path.join(dir,name));
   fs.rmdirSync(dir);
@@ -64,6 +64,26 @@ test('notification text supports all menu languages',()=>{
   assert.match(updateMessage('pt-BR','0.1.3').body,/Feche o cliente/);
   for(const lang of ['en','es','pt'])assert.match(updateMessage(lang,'0.1.3').title,/DigiMMO 0\.1\.3$/);
   assert.equal(updateMessage('en','unexpected text').title,'Update ready');
+});
+
+test('a packaged Linux AppImage updates itself; other Linux runs stay offline',()=>{
+  const dir=fs.mkdtempSync(path.join(os.tmpdir(),'digimmo-updater-appimage-'));
+  const app=Object.assign(new EventEmitter(),{isPackaged:true});
+  const updater=Object.assign(new EventEmitter(),{checkForUpdates:async()=>null});
+  const args={app,resourcesPath:dir,platform:'linux',execPath:'/tmp/.mount_DigiMMO/digimmo',loadUpdater:()=>updater,notify:()=>{}};
+  try{
+    assert.equal(startUpdates({...args,env:{APPIMAGE:'/home/jorge/DigiMMO.AppImage'}}).enabled,false,'No feed without app-update.yml');
+    fs.writeFileSync(path.join(dir,'app-update.yml'),'provider: github');
+    assert.equal(startUpdates({...args,env:{}}).enabled,false,'Unpacked or system installs do not update');
+    assert.equal(startUpdates({...args,env:{APPIMAGE:'DigiMMO.AppImage'}}).enabled,false,'Relative image paths are ignored');
+    const result=startUpdates({...args,env:{APPIMAGE:'/home/jorge/DigiMMO.AppImage'}});
+    assert.equal(result.enabled,true);
+    assert.equal(updater.installDirectory,undefined,'The AppImage updater replaces the image itself');
+    assert.equal(updater.autoInstallOnAppQuit,true);
+    result.stop();
+  }finally{
+    fs.rmSync(dir,{recursive:true,force:true});
+  }
 });
 
 test('packaged Windows clients update the folder they were started from',()=>{

@@ -10,6 +10,17 @@ const APP_ID = DEVELOPMENT ? 'com.dadero.digimmo.dev' : 'com.dadero.digimmo';
 if (!app.commandLine.hasSwitch('user-data-dir'))
   app.setPath('userData', path.join(app.getPath('appData'), 'Digi MMO'));
 app.setName('DigiMMO');
+// An AppImage cannot carry Chromium's setuid sandbox helper, and Ubuntu 23.10+ blocks the
+// unprivileged namespaces it falls back to. The game window already runs without a renderer sandbox.
+const namespacesBlocked = () => {
+  try { return fs.readFileSync('/proc/sys/kernel/apparmor_restrict_unprivileged_userns', 'utf8').trim() === '1'; }
+  catch { return false; }
+};
+if (process.platform === 'linux' && process.env.APPIMAGE && namespacesBlocked())
+  app.commandLine.appendSwitch('no-sandbox');
+// The game needs WebGL. Chromium blocks several Linux drivers (for example WSL and older Mesa),
+// which would leave the game on its loading screen instead of rendering.
+if (process.platform === 'linux') app.commandLine.appendSwitch('ignore-gpu-blocklist');
 const GAME = 'https://play.digimmo.com.br/';
 const ALLOWED = new Set(['https://play.digimmo.com.br','https://wiki.digimmo.com.br']);
 // Public ID of the DigiMMO application in the Discord Developer Portal. Empty disables presence.

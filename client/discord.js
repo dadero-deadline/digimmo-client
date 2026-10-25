@@ -5,8 +5,13 @@ const path=require('node:path');
 // Shows "Playing DigiMMO" through the local Discord desktop client. Only the
 // session start and the public client icon are sent; nothing is read from the game page.
 const ICON='https://raw.githubusercontent.com/dadero-deadline/digimmo-client/v0.1.4/client/icon.png';
-const pipePaths=(platform=process.platform,env=process.env)=>Array.from({length:10},(_,i)=>platform==='win32'?
-  '\\\\?\\pipe\\discord-ipc-'+i:path.join(env.XDG_RUNTIME_DIR||env.TMPDIR||env.TMP||env.TEMP||'/tmp','discord-ipc-'+i));
+// Linux: the native client first, then the Flatpak and Snap packages of Discord.
+const pipePaths=(platform=process.platform,env=process.env)=>{
+  if(platform==='win32')return Array.from({length:10},(_,i)=>'\\\\?\\pipe\\discord-ipc-'+i);
+  const base=env.XDG_RUNTIME_DIR||env.TMPDIR||env.TMP||env.TEMP||'/tmp';
+  return ['','app/com.discordapp.Discord','snap.discord'].flatMap(dir=>
+    Array.from({length:10},(_,i)=>path.join(base,dir,'discord-ipc-'+i)));
+};
 const frame=(op,data)=>{
   const body=Buffer.from(JSON.stringify(data)),head=Buffer.alloc(8);
   head.writeUInt32LE(op,0);head.writeUInt32LE(body.length,4);

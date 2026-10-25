@@ -20,6 +20,7 @@
     "package:extensions": "node scripts/build.cjs public && node scripts/package-release.cjs",
     "package:release": "npm run build:dev && npm run package:installer && npm run check && npm run check:updater && npm run check:installer && node scripts/package-release.cjs --installer",
     "package:installer": "node scripts/build.cjs public && electron-builder --config electron-builder.json --win nsis --x64 --publish never",
+    "package:linux": "node scripts/build.cjs public && electron-builder --config electron-builder.json --linux AppImage --x64 --publish never",
     "check:updater": "node --test scripts/updater.test.cjs",
     "check:installer": "node scripts/verify-installer.cjs"
   },

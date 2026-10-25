@@ -2,14 +2,17 @@
 const fs=require('node:fs');
 const path=require('node:path');
 
-// Packaged Windows copies update in place. Development and unpackaged runs never join the public feed.
-function startUpdates({app,development=false,resourcesPath=process.resourcesPath,platform=process.platform,execPath=process.execPath,loadUpdater=()=>require('electron-updater').autoUpdater,notify}){
-  if(development||platform!=='win32'||!app.isPackaged)return {enabled:false};
-  const config=path.join(resourcesPath,'app-update.yml');
-  if(!fs.existsSync(config)||!fs.existsSync(path.join(resourcesPath,'digimmo-installed')))return {enabled:false};
+// Packaged Windows copies update in place; a Linux AppImage replaces its own file on exit.
+// Development, unpackaged and other Linux runs never join the public feed.
+function startUpdates({app,development=false,resourcesPath=process.resourcesPath,platform=process.platform,execPath=process.execPath,env=process.env,loadUpdater=()=>require('electron-updater').autoUpdater,notify}){
+  if(development||!app.isPackaged)return {enabled:false};
+  if(!fs.existsSync(path.join(resourcesPath,'app-update.yml')))return {enabled:false};
+  const windows=platform==='win32'&&fs.existsSync(path.join(resourcesPath,'digimmo-installed'));
+  const appImage=platform==='linux'&&typeof env.APPIMAGE==='string'&&path.isAbsolute(env.APPIMAGE);
+  if(!windows&&!appImage)return {enabled:false};
   try{
     const updater=loadUpdater();
-    if(typeof execPath==='string'&&path.isAbsolute(execPath))updater.installDirectory=path.dirname(execPath);
+    if(windows&&typeof execPath==='string'&&path.isAbsolute(execPath))updater.installDirectory=path.dirname(execPath);
     return createController({app,updater,notify});
   }
   catch{return {enabled:false};}

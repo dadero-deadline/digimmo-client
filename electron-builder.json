@@ -2,7 +2,7 @@
   "appId": "com.dadero.digimmo",
   "productName": "DigiMMO",
   "directories": {"output": "dist/installer"},
-  "extraMetadata": {"name": "digimmo-client", "main": "main.js"},
+  "extraMetadata": {"name": "digimmo-client", "main": "main.js", "desktopName": "digimmo.desktop"},
   "files": [
     "package.json",
     {"from": "dist/public/client", "to": ".", "filter": ["main.js", "preload.js", "updater.js", "discord.js", "tweaks.user.js", "icon.png", "icon.ico"]}
@@ -20,6 +20,7 @@
   ],
   "asar": true,
   "npmRebuild": false,
+  "toolsets": {"appimage": "1.0.3"},
   "win": {"target": [{"target": "nsis", "arch": ["x64"]}], "icon": "client/icon.ico"},
   "nsis": {
     "oneClick": false,
@@ -32,6 +33,15 @@
     "uninstallerIcon": "client/icon.ico",
     "include": "client/installer.nsh",
     "artifactName": "DigiMMO-Setup-${version}-${arch}.${ext}"
+  },
+  "linux": {
+    "target": [{"target": "AppImage", "arch": ["x64"]}],
+    "icon": "client/icon.png",
+    "category": "Game",
+    "executableName": "digimmo",
+    "syncDesktopName": true,
+    "synopsis": "DigiMMO desktop client",
+    "artifactName": "DigiMMO-${version}-${arch}.${ext}"
   },
   "publish": [{"provider": "github", "owner": "dadero-deadline", "repo": "digimmo-client", "releaseType": "release"}]
 }
