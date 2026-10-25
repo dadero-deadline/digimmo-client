@@ -50,7 +50,7 @@ Settings support English, Español and Português (Brazil). [All keyboard contro
 
 ## Known issues
 
-This is an early release. [Campfire audio](https://github.com/dadero-deadline/digimmo-client/issues/1), [water reflections](https://github.com/dadero-deadline/digimmo-client/issues/2), [large-object shadows](https://github.com/dadero-deadline/digimmo-client/issues/3) and [tree movement](https://github.com/dadero-deadline/digimmo-client/issues/4) still need work. Some sounds repeat too often, and weather, particles and light placement need refinement. [All known issues](https://github.com/dadero-deadline/digimmo-client/issues)
+No issues are open at the moment. DigiMMO itself is updated regularly, so new or redrawn artwork can briefly lack lights or movement until the client catches up. If something looks or sounds wrong, [report it](https://github.com/dadero-deadline/digimmo-client/issues/new?template=bug_report.md) with the map, time of day and a screenshot. [Resolved issues](https://github.com/dadero-deadline/digimmo-client/issues?q=is%3Aissue+is%3Aclosed)
 
 ## Source and contributions
 
