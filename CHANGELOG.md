@@ -7,7 +7,7 @@
 - Server Desert speakers occasionally play muffled radio chatter with long pauses.
 - Nearby ponds and lakes have gentle water sounds. Waves reach the southern Fog City coast.
 - Wind varies subtly by map, with deeper desert gusts and thinner wind in ice regions. Cities retain daytime traffic and nighttime wind.
-- Visible flying attacks cast a small matching light at night.
+- Visible flying attacks cast a small matching light at night. Character lights and water reflections fade with characters and stay off hidden ones.
 - Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled.
 - Lantern light follows the glass in Overdell, Myotismon Keep and the stone lanterns of Destiny Lake and Holy Peaks. The Destiny Lake wreck shows red signal lights, a glowing jewel and a lit doorway at night. Candle stands and chandeliers cast soft light below their bases; only flame tips glow.
 - Selected Toy Town windows glow at night. Factory sludge has small green particles instead of a flat glow. TV portals cast soft blue light onto nearby ground.
