@@ -2,6 +2,8 @@
 
 ## 0.2 (unreleased)
 
+- Nearby ponds and lakes have gentle water sounds. Waves reach the southern Fog City coast.
+- Wind varies subtly by map, with deeper desert gusts and thinner wind in ice regions. Cities retain daytime traffic and nighttime wind.
 - Visible flying attacks cast a small matching light at night.
 - Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled.
 - Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases; only flame tips glow.

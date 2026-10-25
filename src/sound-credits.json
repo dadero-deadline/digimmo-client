@@ -87,7 +87,7 @@
     "source": "https://opengameart.org/content/wind1",
     "licenseUrl": "https://creativecommons.org/publicdomain/zero/1.0/",
     "samples": "wind",
-    "changes": "Trimmed, looped, volume matched and encoded to mono Opus."
+    "changes": "Trimmed, looped, volume matched and encoded to mono Opus. Regional high-pass and low-pass filters with subtle per-map variation and slow gain changes during playback; no pitch or speed change."
   },
   {
     "title": "Steam boiler sound loop",

@@ -1,7 +1,7 @@
       const amb = { ctx: null };
       const isNature = /forest|grass|meadow|savanna|valley|hill|wood|lake|village|overdell/i.test(mapText);
       // Only placed sea tiles can produce coastal sound. Shared atlases cannot.
-      const namedShore = water.filter(w => w.shore);
+      const namedShore = localWater.shore;
       const shorelineWater = namedShore.length >= 12 ? namedShore : [];
       const isCoast = shorelineWater.length >= 12;
       const windyMap = weather.some(w => /Sandstorm|Snow|Sea spray/.test(w.name));
@@ -22,6 +22,18 @@
         if (/freeze|snow|ice|holy|summit|glacier/.test(m)) Object.assign(p, { name: 'highlands', wind: 0.24, crickets: 0, calls: 0, town: 0, machine: 0 });
         if (/network|realm|dream|apocalymon|darkness|keep|castle/.test(m)) Object.assign(p, { name: 'remote', wind: 0.045, crickets: 0, calls: 0, town: 0, machine: 0, gulls: 0 });
         return p;
+      })();
+      const windSound = (() => {
+        // Shape the same recording without changing its pitch or playback speed.
+        const [high, low, pace] = ({
+          woodland: [200, 1450, 1.1], village: [180, 1600, 1.15], city: [180, 1900, 1],
+          coast: [150, 1800, 1.2], drylands: [160, 900, 1.35], highlands: [650, 2100, 0.85],
+          industry: [280, 1300, 1.25], remote: [240, 1150, 1.4],
+        })[soundProfile.name] || [200, 1600, 1];
+        let seed = 0;
+        for (const c of mapText.split(' ')[0]) seed = (Math.imul(seed, 31) + c.charCodeAt(0)) >>> 0;
+        const variation = 0.92 + (seed % 17) / 100;
+        return { high: high * variation, low: low * variation, pace: pace * variation };
       })();
       const stats = { lights: lights.length, water: water.length, runningWater: runningWater.length,
         casters: casters.length, trees: treeGroups.length, canopyLayers: trees.length, cloudsInView: 0, season,
@@ -68,7 +80,7 @@
             src.connect(f); f.connect(g); g.connect(p); p.connect(amb.groups[group]); src.start(0, Math.random() * 2);
             return { f, g, p };
           };
-          amb.wind = noiseBed('wind', 'bandpass', windyMap ? 900 : 2200, 0.6);
+          amb.wind = noiseBed('wind', 'bandpass', Math.sqrt(windSound.high * windSound.low), 0.6);
           amb.water = noiseBed('water', 'bandpass', 1200, 1.6);
           amb.sea = noiseBed('waves', 'lowpass', 600, 0.5);
         } catch (error) { ambStop(); throw error; }
@@ -121,7 +133,13 @@
         if (!buffer) return;
         const src = ambNode('createBufferSource'), g = ambNode('createGain'), p = ambNode('createStereoPanner');
         src.buffer = buffer; src.loop = true; g.gain.value = 0;
-        src.connect(g); g.connect(p); p.connect(amb.groups[group]); src.start(0, Math.random() * buffer.duration);
+        if (name === 'wind') {
+          const high = ambNode('createBiquadFilter'), low = ambNode('createBiquadFilter');
+          high.type = 'highpass'; high.frequency.value = windSound.high; high.Q.value = 0.5;
+          low.type = 'lowpass'; low.frequency.value = windSound.low; low.Q.value = 0.5;
+          src.connect(high); high.connect(low); low.connect(g);
+        } else src.connect(g);
+        g.connect(p); p.connect(amb.groups[group]); src.start(0, Math.random() * buffer.duration);
         amb.sv[name] = { g, p };
       };
       const sampleOnce = (name, group, gain, pan, t, location = null, maxDuration = Infinity, startOffset = 0) => {
@@ -184,7 +202,7 @@
         if (!me) { stats.waveGain = 0; return; }
         const P = soundProfile, day = 1 - s.dark;
         const dayMix = smooth(0.25, 0.75, day), nightMix = 1 - smooth(0.2, 0.6, day);
-        const gt = time / 1000 + windPhase;
+        const gt = (time / 1000 + windPhase) / windSound.pace;
         const gust = Math.max(0, Math.min(1, 0.6 + 0.25 * Math.sin(gt / 11.3) + 0.15 * Math.sin(gt / 4.7 + 1.9) * Math.sin(gt / 17.1)));
         if (!amb.sv && amb.samples?.ready) {
           amb.sv = {};
@@ -205,7 +223,7 @@
           v.g.gain.setTargetAtTime(gain, t, 0.55); v.p.pan.setTargetAtTime(pan, t, 0.25);
         };
         const fall = nearestSound(waterfallPos, me, 280, 8), creek = nearestSound(streamPos, me, 150, 8);
-        const fire = nearestSound(firePos, me, 170), shore = nearestSound(shorelineWater, me, 240, 8);
+        const fire = nearestSound(firePos, me, 170), shore = nearestSound(shorelineWater, me, 240);
         const lake = nearestSound(localWater.lake, me, 145);
         // A large fountain is a little louder and carries farther. Nearby
         // fountains never add into an unbounded stack of identical loops.

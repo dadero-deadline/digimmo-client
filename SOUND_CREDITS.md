@@ -17,19 +17,19 @@ Recordings are embedded in the userscript. Playing them makes no download reques
 | fire | [Ambiance_Campfire_Loop_Stereo.wav](https://freesound.org/people/Nox_Sound/sounds/558967/) by Nox_Sound | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Mono, 120 Hz low cut, gentle high-frequency filtering, constant volume matching, short loop crossfade and Opus encoding. No compression, pitch or speed change. |
 | fountain | [Fountain of a Japanese Temple](https://bigsoundbank.com/fountain-of-a-japanese-temple-s0913.html) by Olivier du Japon | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
 | lake | [2023-10-03 lake shore ambience.wav](https://freesound.org/people/Mick_/sounds/705034/) by Mick_ | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Excerpts, mono, filtering, volume matching, edge fades or loop crossfades, Opus encoding. |
-| wind | [wind1](https://opengameart.org/content/wind1) by Luke.RUSTLTD | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Trimmed, looped, volume matched and encoded to mono Opus. |
+| wind | [wind1](https://opengameart.org/content/wind1) by Luke.RUSTLTD | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Trimmed, looped, volume matched and encoded to mono Opus. Regional high-pass and low-pass filters with subtle per-map variation and slow gain changes during playback; no pitch or speed change. |
 | machine | [Steam boiler sound loop](https://opengameart.org/content/steam-boiler-sound-loop) by bart | [CC0 1.0](https://creativecommons.org/publicdomain/zero/1.0/) | Trimmed, looped, volume matched and encoded to mono Opus. |
 | crickets | [Crickets](https://opengameart.org/content/crickets) by dklon | [CC BY 3.0](https://creativecommons.org/licenses/by/3.0/) | Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop. |
 
 ## Playback
 
-Twenty embedded recordings from twelve credited sources. Fire uses the Nox_Sound campfire loop with a 120 Hz low cut and preserved crackle dynamics. Fountains use a dedicated water recording and grow moderately louder with their footprint. The southern Toy Town pool uses a calm lake recording. All local sources fade with player distance.
+Twenty embedded recordings from twelve credited sources. Fire uses the Nox_Sound campfire loop with a 120 Hz low cut and preserved crackle dynamics. Fountains use a dedicated water recording and grow moderately louder with their footprint. Placed ponds, lakes and pools use the calm lake recording. Sea ambience follows placed coastal water, including Fog City and Tokyo Bay. Decorative shore trim, lamp pools, tanks, sludge and frozen ground do not create water sounds. All local sources fade with player distance.
 
 Birds use one schedule of quieter 3.2 second passages near trees, with a 30 to 60 second initial wait and 55 to 110 seconds of silence after each. Recording and excerpt offset vary; no continuous bird bed plays underneath.
 
 Gulls play brief 2.2 second passages, with 90 to 180 seconds of silence. Crickets play 3.2 second passages, with 75 to 150 seconds of silence and one quarter of the previous woodland and village gain. There is no continuous cricket loop. Recorded pitch and speed are unchanged.
 
-Cities use distant traffic during the day and quiet wind at night, with a smooth transition between them. Villages retain wind and nature sounds. Birds are daytime only; nighttime lowers regional wind outside cities and allows sparse quiet crickets where appropriate. Fire, fountains and other local water remain audible nearby at either time.
+Cities use distant traffic during the day and quiet wind at night, with a smooth transition between them. Villages retain wind and nature sounds. Regional filters give desert wind a deeper sound and icy regions a thinner sound. Filter frequencies and the slow gust envelope vary subtly and consistently by map; the recording and playback speed stay unchanged. Birds are daytime only; nighttime lowers regional wind outside cities and allows sparse quiet crickets where appropriate. Fire, fountains and other local water remain audible nearby at either time.
 
 ## Exact excerpts and preparation
 
