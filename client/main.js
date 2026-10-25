@@ -1,6 +1,7 @@
 'use strict';
 const { app, BrowserWindow, shell, Menu, Notification } = require('electron');
 const { startUpdates, updateMessage } = require('./updater');
+const { startPresence } = require('./discord');
 const path = require('node:path');
 const fs = require('node:fs');
 const DEVELOPMENT = __DEVELOPMENT__;
@@ -11,6 +12,8 @@ if (!app.commandLine.hasSwitch('user-data-dir'))
 app.setName('DigiMMO');
 const GAME = 'https://play.digimmo.com.br/';
 const ALLOWED = new Set(['https://play.digimmo.com.br','https://wiki.digimmo.com.br']);
+// Public ID of the DigiMMO application in the Discord Developer Portal. Empty disables presence.
+const DISCORD_APPLICATION_ID = '';
 const allowed = url => { try { return ALLOWED.has(new URL(url).origin); } catch { return false; } };
 const external = url => { try { if (['http:','https:'].includes(new URL(url).protocol)) shell.openExternal(url); } catch {} };
 const stateFile = () => path.join(app.getPath('userData'),'fenster.json');
@@ -79,6 +82,8 @@ else {
       sendUpdateNotice();
       if(Notification.isSupported())new Notification({...pendingUpdate,icon:path.join(__dirname,'icon.png')}).show();
     }});
+    const presence=startPresence({applicationId:DISCORD_APPLICATION_ID});
+    app.once('will-quit',()=>presence.stop());
     createWindow();
   });
 }

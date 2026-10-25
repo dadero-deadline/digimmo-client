@@ -70,7 +70,7 @@ if(!development){
 new vm.Script(script,{filename:'tweaks.user.js'});
 fs.writeFileSync(path.join(out,'digimmo-tweaks.user.js'),script);
 fs.writeFileSync(path.join(out,'client/tweaks.user.js'),script);
-for(const file of ['main.js','preload.js','updater.js']){
+for(const file of ['main.js','preload.js','updater.js','discord.js']){
   let code=read('client/'+file).replace(/__DEVELOPMENT__/g,String(development));
   if(!development)code=code.replace(/  \/\/ @development-start[\s\S]*?  \/\/ @development-end\n/g,'');
   new vm.Script(code,{filename:file});
@@ -106,7 +106,7 @@ console.log(`Built ${version} (${channel}), ${Buffer.byteLength(script)} bytes, 
 // The branded development runtime reads ordinary files, so Ctrl+R sees a rebuild.
 const devApp=path.join(out,'windows/win-unpacked/resources/app');
 if(development && fs.existsSync(path.join(devApp,'main.js'))){
-  for(const file of ['main.js','preload.js','updater.js','tweaks.user.js','icon.png','icon.ico'])
+  for(const file of ['main.js','preload.js','updater.js','discord.js','tweaks.user.js','icon.png','icon.ico'])
     fs.copyFileSync(path.join(out,'client',file),path.join(devApp,file));
   const metadata=JSON.parse(fs.readFileSync(path.join(devApp,'package.json'),'utf8'));
   metadata.version=release.version;
