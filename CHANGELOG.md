@@ -1,6 +1,6 @@
 # Changelog
 
-## 0.2 (unreleased)
+## 0.2
 
 A large atmosphere update: classic water reflections, natural tree movement and many new lights.
 
