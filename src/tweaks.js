@@ -1718,7 +1718,7 @@
           const size=Math.max(Math.abs(sp.displayWidth)||0,Math.abs(sp.displayHeight)||0);
           const tint=Number.isInteger(color)&&color>=0&&color<=0xffffff?color:0xfff0d8;
           nightRT.stamp('digimmo:light2',undefined,Math.round(x-ox),Math.round(y-oy),
-            {tint,scale:Math.max(0.22,Math.min(0.55,size/100+0.12)),alpha:0.20*s.dark*Math.min(1,sp.alpha)*fade,blendMode:ADD});
+            {tint,scale:Math.max(0.3,Math.min(0.8,size/80+0.18)),alpha:0.40*s.dark*Math.min(1,sp.alpha)*fade,blendMode:ADD});
           drawn++;
         };
         for(const p of scene.combat?.projectiles||[]){stamp(p.obj,p.color,p);if(checked>=96||drawn>=24)break;}
@@ -1726,6 +1726,7 @@
         if(checked<96&&drawn<24)for(const p of scene.telegraphs?.circles||[]){stamp(p.proj?.obj,attackColors[p.skill?.element],p);if(checked>=96||drawn>=24)break;}
         for(const [sp,light] of attackLights)if(light.frame!==frame)attackLights.delete(sp);
         stampInstantBeams(time,ox,oy);
+        stampEffectLights(ox,oy);
       };
       // Instant basic-attack tracers have no projectile record: the game stretches one pooled
       // effect sprite between attacker and target and hides it when its animation ends.
@@ -1757,7 +1758,7 @@
             const u=(j+0.5)/points-0.5,x=sp.x+dx*u,y=sp.y+dy*u;
             if(x<view.x||y<view.y||x>view.x+view.w||y>view.y+view.h)continue;
             nightRT.stamp('digimmo:light2',undefined,Math.round(x-ox),Math.round(y-oy),
-              {tint:color,scale:0.3,alpha:0.20*s.dark*Math.min(1,sp.alpha),blendMode:ADD});
+              {tint:color,scale:0.4,alpha:0.38*s.dark*Math.min(1,sp.alpha),blendMode:ADD});
           }
           beams++;
         }
@@ -1775,9 +1776,70 @@
             const d=length*(j+0.5)/points,x=line.fx+Math.cos(angle)*d,y=line.fy+Math.sin(angle)*d;
             if(x<view.x||y<view.y||x>view.x+view.w||y>view.y+view.h)continue;
             nightRT.stamp('digimmo:light2',undefined,Math.round(x-ox),Math.round(y-oy),
-              {tint:color,scale:0.34,alpha:0.20*s.dark,blendMode:ADD});
+              {tint:color,scale:0.44,alpha:0.38*s.dark,blendMode:ADD});
           }
           sweeps++;
+        }
+      };
+      // Skill effects (the game's fx_* sprites) mostly sit below the night layer, so the night
+      // dimmed them. Redraw each visible one above it, faded in with the darkness, so effects keep
+      // their own colours at night; each also lights its surroundings in its own colour.
+      const effectRT=own(scene.add.renderTexture(0,0,4,4)).setOrigin(0).setDepth(DEPTH_NIGHT+50).setVisible(false);
+      const effectColors=new Map(),visibleEffects=[];let effectCanvas=null;
+      const effectColor=(sp)=>{
+        const id=sp.texture.key+':'+sp.frame.name;let color=effectColors.get(id);if(color!==undefined)return color;
+        color=0xfff0d8;
+        try{
+          // Brightness-weighted average of the frame, raised to full brightness.
+          if(!effectCanvas){effectCanvas=document.createElement('canvas');effectCanvas.width=effectCanvas.height=8;}
+          const f=sp.frame,ctx=effectCanvas.getContext('2d',{willReadFrequently:true});ctx.clearRect(0,0,8,8);
+          ctx.drawImage(f.source.image,f.cutX,f.cutY,f.cutWidth,f.cutHeight,0,0,8,8);
+          const d=ctx.getImageData(0,0,8,8).data;let r=0,g=0,b=0,w=0;
+          for(let i=0;i<d.length;i+=4){const k=d[i+3]*(d[i]+d[i+1]+d[i+2]);r+=d[i]*k;g+=d[i+1]*k;b+=d[i+2]*k;w+=k;}
+          if(w>0){const m=255/Math.max(1,r/w,g/w,b/w);color=(Math.round(r/w*m)<<16)|(Math.round(g/w*m)<<8)|Math.round(b/w*m);}
+        }catch{}
+        effectColors.set(id,color);return color;
+      };
+      const drawEffects=(ox,oy,W,H)=>{
+        visibleEffects.length=0;
+        const dark=SETTINGS.dayNight&&SETTINGS.lights?s.dark:0,list=scene.children?.list;
+        if(dark<=0.02||!list){effectRT.setVisible(false);return;}
+        for(let i=list.length-1,seen=0;i>=0&&seen<3000&&visibleEffects.length<32;i--,seen++){
+          const sp=list[i];
+          if((sp.type!=='Sprite'&&sp.type!=='Image')||!(sp.texture?.key||'').startsWith('fx_')||!sp.visible||
+              sp.alpha<=0.02||sp.parentContainer||!sp.frame||!sp.willRender?.(cam))continue;
+          if(sp.x<view.x-96||sp.y<view.y-96||sp.x>view.x+view.w+96||sp.y>view.y+view.h+96)continue;
+          visibleEffects.push(sp);
+        }
+        const dimmed=visibleEffects.filter(sp=>sp.depth<DEPTH_NIGHT);
+        if(!dimmed.length){effectRT.setVisible(false);return;}
+        if(effectRT.texture.width!==W||effectRT.texture.height!==H)effectRT.resize(W,H);
+        effectRT.setPosition(ox,oy).clear();
+        let lowest=Infinity;
+        for(const sp of dimmed){
+          lowest=Math.min(lowest,sp.depth);
+          effectRT.stamp(sp.texture.key,sp.frame.name,sp.x-ox,sp.y-oy,{originX:sp.originX,originY:sp.originY,
+            scaleX:sp.scaleX*(sp.flipX?-1:1),scaleY:sp.scaleY*(sp.flipY?-1:1),rotation:sp.rotation,
+            alpha:Math.min(1,sp.alpha)*Math.min(1,dark*1.15),tint:sp.isTinted?sp.tintTopLeft:0xffffff,blendMode:sp.blendMode});
+        }
+        // Characters standing in front of an effect (a charge drawn behind its caster) keep covering it.
+        if(scene.views)for(const v of scene.views.values()){
+          const c=v?.sprite;if(!drawnSprite(c)||c.depth<=lowest)continue;
+          effectRT.stamp(c.texture.key,c.frame.name,c.x-ox,c.y-oy,{originX:c.originX,originY:c.originY,
+            scaleX:c.scaleX*(c.flipX?-1:1),scaleY:c.scaleY*(c.flipY?-1:1),rotation:c.rotation,blendMode:ERASE});
+        }
+        effectRT.render();effectRT.setVisible(true);
+      };
+      const stampEffectLights=(ox,oy)=>{
+        let count=0;
+        for(const sp of visibleEffects){
+          const w=Math.abs(sp.displayWidth)||0,h=Math.abs(sp.displayHeight)||0;
+          // Projectiles already carry a light; stretched instant tracers light along their length.
+          if(attackLights.has(sp)||w>h*3)continue;
+          sp.getCenter(attackPoint);
+          nightRT.stamp('digimmo:light2',undefined,Math.round(attackPoint.x-ox),Math.round(attackPoint.y-oy),
+            {tint:effectColor(sp),scale:Math.max(0.3,Math.min(1.4,Math.max(w,h)/90+0.2)),alpha:0.5*s.dark*Math.min(1,sp.alpha),blendMode:ADD});
+          if(++count>=24)break;
         }
       };
       // Shared emitters, not one emitter per light. Only on-screen sources emit.
@@ -1823,7 +1885,7 @@
           else entry.em.emitParticleAt(point.x+(Math.random()-0.5)*12,point.y,1);
         }
       };
-      const hideMapEffects=()=>{fxRT?.setVisible(false);attackLights.clear();smoke?.setVisible(false);for(const {em} of detailEmitters)em.setVisible(false);};
+      const hideMapEffects=()=>{fxRT?.setVisible(false);effectRT.setVisible(false);attackLights.clear();smoke?.setVisible(false);for(const {em} of detailEmitters)em.setVisible(false);};
 
       const season = seasonNow(), seasonCfg = SEASONS[season];
       const extra = [];
@@ -2221,9 +2283,10 @@
               { tint: 0xfff0d8, scale: PLAYER_LIGHT() * ownSize, alpha: glowAlpha, blendMode: ADD });
           }
           stampMapLights(time,ox,oy);
+          drawEffects(ox,oy,W,H);
           stampAttackLights(time,ox,oy);
           nightRT.render();
-        }
+        } else effectRT.setVisible(false);
       };
       const safeUpdate = (time) => {
         try { update(time); }
