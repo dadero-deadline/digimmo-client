@@ -133,6 +133,8 @@
           src.connect(f); f.connect(v.g); src.onended = v.release; src.start(t, Math.random() * 1.5, 0.08);
         } catch (error) { v.release(); throw error; }
       };
+      // Water and sea sit about 13 dB lower and lose their low rumble (user mix requests).
+      const WATER_LEVEL = 0.22, WATER_LOW_CUT = 200, WATER_BEDS = new Set(['waterfall', 'stream', 'fountain', 'lake', 'sea']);
       const sampleBed = (name, group) => {
         const buffer = amb.samples.buffers[name];
         if (!buffer) return;
@@ -143,6 +145,10 @@
           high.type = 'highpass'; high.frequency.value = windSound.high; high.Q.value = 0.5;
           low.type = 'lowpass'; low.frequency.value = windSound.low; low.Q.value = 0.5;
           src.connect(high); high.connect(low); low.connect(g);
+        } else if (WATER_BEDS.has(name)) {
+          const cut = ambNode('createBiquadFilter');
+          cut.type = 'highpass'; cut.frequency.value = WATER_LOW_CUT; cut.Q.value = 0.5;
+          src.connect(cut); cut.connect(g);
         } else src.connect(g);
         g.connect(p); p.connect(amb.groups[group]); src.start(0, Math.random() * buffer.duration);
         amb.sv[name] = { g, p };
@@ -168,7 +174,12 @@
           envelope.gain.linearRampToValueAtTime(1, t + Math.min(0.12, duration / 4));
           envelope.gain.setValueAtTime(1, t + Math.max(0.12, duration - 0.4));
           envelope.gain.linearRampToValueAtTime(0, t + duration);
-          src.connect(envelope); envelope.connect(v.g); src.onended = v.release; src.start(t, offset, duration);
+          if (group === 'waves') {
+            const cut = v.node('createBiquadFilter');
+            cut.type = 'highpass'; cut.frequency.value = WATER_LOW_CUT; cut.Q.value = 0.5;
+            src.connect(cut); cut.connect(envelope);
+          } else src.connect(envelope);
+          envelope.connect(v.g); src.onended = v.release; src.start(t, offset, duration);
           return duration;
         } catch (error) { v.release(); throw error; }
       };
@@ -227,7 +238,8 @@
           const v = sv[name]; if (!v) return;
           v.g.gain.setTargetAtTime(gain, t, 0.55); v.p.pan.setTargetAtTime(pan, t, 0.25);
         };
-        const fall = nearestSound(waterfallPos, me, 280, 8), creek = nearestSound(streamPos, me, 150, 8);
+        // Creeks carry farther as a quiet flowing background; waterfalls keep their range.
+        const fall = nearestSound(waterfallPos, me, 280, 8), creek = nearestSound(streamPos, me, 320, 8);
         const fire = nearestSound(firePos, me, 170), shore = nearestSound(shorelineWater, me, 240);
         const lake = nearestSound(localWater.lake, me, 145);
         // A large fountain is a little louder and carries farther. Nearby
@@ -244,9 +256,9 @@
         const windGain = P.wind * (0.7 + 0.3 * gust) * windMix;
         set('wind', windGain);
         set('machine', P.machine); set('town', P.town * dayMix);
-        set('waterfall', 0.62 * fall.gain, fall.pan); set('stream', 0.40 * creek.gain, creek.pan);
-        set('fountain', fountain.gain, fountain.pan); set('lake', 0.28 * lake.gain, lake.pan);
-        set('fire', 0.26 * fire.gain, fire.pan); set('sea', 0.25 * shore.gain, shore.pan * 0.6);
+        set('waterfall', WATER_LEVEL * 0.62 * fall.gain, fall.pan); set('stream', WATER_LEVEL * 0.40 * creek.gain, creek.pan);
+        set('fountain', WATER_LEVEL * fountain.gain, fountain.pan); set('lake', WATER_LEVEL * 0.28 * lake.gain, lake.pan);
+        set('fire', 0.26 * fire.gain, fire.pan); set('sea', WATER_LEVEL * 0.25 * shore.gain, shore.pan * 0.6);
         // Existing waves and calls remain at their world position as the player moves.
         for (const v of amb.voices) {
           if (!v.location) continue;
@@ -275,7 +287,7 @@
         };
         if (t >= amb.nextWave) {
           amb.nextWave = audible && SETTINGS.ambientWaves > 0 && shore.gain > 0.025 && waves.length
-            ? play('wave', waves, 'waves', 0.42, shore, 5, 9) : t + 2;
+            ? play('wave', waves, 'waves', WATER_LEVEL * 0.42, shore, 5, 9) : t + 2;
         }
         // Birds have one schedule and no continuous bed underneath their calls.
         if (t >= amb.nextBird) {
@@ -306,8 +318,8 @@
           !sv.fountain && fountain, !sv.lake && { gain: 0.3 * lake.gain, pan: lake.pan }]
           .filter(Boolean).sort((a, b) => b.gain - a.gain)[0] || { gain: 0, pan: 0 };
         amb.wind.g.gain.setTargetAtTime(sv.wind ? 0 : 0.045 * windGain, t, 0.6);
-        amb.water.g.gain.setTargetAtTime(0.035 * missing.gain, t, 0.3); amb.water.p.pan.setTargetAtTime(missing.pan, t, 0.25);
-        amb.sea.g.gain.setTargetAtTime(sv.sea ? 0 : 0.018 * shore.gain, t, 0.6);
+        amb.water.g.gain.setTargetAtTime(WATER_LEVEL * 0.035 * missing.gain, t, 0.3); amb.water.p.pan.setTargetAtTime(missing.pan, t, 0.25);
+        amb.sea.g.gain.setTargetAtTime(sv.sea ? 0 : WATER_LEVEL * 0.018 * shore.gain, t, 0.6);
         amb.sea.p.pan.setTargetAtTime(shore.pan * 0.6, t, 0.25);
         if (audible && SETTINGS.ambientCrickets > 0 && P.crickets > 0 && nightMix > 0.5 && t >= amb.nextCricket) {
           if (buffers.crickets) {
@@ -321,7 +333,7 @@
         if (audible && !sv.fire && fire.gain > 0 && t >= amb.nextCrackle) {
           ambCrackle(t + 0.02, fire.pan, 0.015 * fire.gain); amb.nextCrackle = t + 0.5 + Math.random();
         }
-        stats.windGain = windGain; stats.waterGain = 0.62 * fall.gain + 0.40 * creek.gain + fountain.gain + 0.28 * lake.gain;
-        stats.fountains = localWater.fountains.length; stats.fountainGain = fountain.gain; stats.lakeGain = 0.28 * lake.gain;
+        stats.windGain = windGain; stats.waterGain = WATER_LEVEL * (0.62 * fall.gain + 0.40 * creek.gain + fountain.gain + 0.28 * lake.gain);
+        stats.fountains = localWater.fountains.length; stats.fountainGain = fountain.gain; stats.lakeGain = WATER_LEVEL * 0.28 * lake.gain;
         stats.waveGain = shore.gain; stats.activeSounds = amb.voices.size;
       };

@@ -102,6 +102,8 @@
       localStorage.setItem('digimmo.client.migrated02', '1');
     }
   } catch {}
+  // Technical audio processing values have no menu controls and always use the proven defaults.
+  for (const key of ['audioLatency', 'stepLowpass', 'masterThreshold', 'sfxThreshold', 'sfxRatio']) SETTINGS[key] = DEFAULTS[key];
 
 
   // Localized overlay; never changes the original game language.
@@ -163,15 +165,7 @@
     "Water sparkles": "Destellos del agua",
     "Enable audio adjustments": "Ajustar sonido del juego",
     "Restart the game to apply this change": "Reinicia el juego para aplicar el cambio",
-    "Audio buffer": "Búfer de audio",
-    "Large (recommended for Firefox)": "Grande (recomendado en Firefox)",
-    "Balanced": "Equilibrado",
-    "Restart required": "Reinicio necesario",
     "Footstep volume": "Volumen de pasos",
-    "Footstep low-pass cutoff": "Filtro de pasos",
-    "Master limiter threshold": "Umbral del limitador",
-    "Effects compressor threshold": "Umbral del compresor",
-    "Effects compressor ratio": "Compresión de efectos",
     "Enable ambience": "Activar sonidos ambientales",
     "Separate from the game music and sound effect volume controls": "Independiente de la música y los efectos del juego",
     "Master ambience volume": "Volumen ambiental",
@@ -277,15 +271,7 @@
     "Water sparkles": "Brilhos na água",
     "Enable audio adjustments": "Ajustes de áudio do jogo",
     "Restart the game to apply this change": "Reinicie o jogo para aplicar",
-    "Audio buffer": "Buffer de áudio",
-    "Large (recommended for Firefox)": "Grande (recomendado para Firefox)",
-    "Balanced": "Equilibrado",
-    "Restart required": "Reinicialização necessária",
     "Footstep volume": "Volume dos passos",
-    "Footstep low-pass cutoff": "Filtro dos passos",
-    "Master limiter threshold": "Limite do áudio principal",
-    "Effects compressor threshold": "Limite do compressor de efeitos",
-    "Effects compressor ratio": "Compressão dos efeitos",
     "Enable ambience": "Ativar sons ambientes",
     "Separate from the game music and sound effect volume controls": "Independente dos controles de música e efeitos do jogo",
     "Master ambience volume": "Volume ambiente",
@@ -858,10 +844,12 @@
             // These two-part lanterns emit from the glass, not their unlit posts.
             const darkPost = (info.ts.name === 'graveyard' && info.name === 'lamp_base') ||
               (info.ts.name === 'keep' && info.name === 'lantern_base') ||
-              (info.ts.name === 'shrine' && info.name === 'stone_lantern_base');
+              (info.ts.name === 'shrine' && info.name === 'stone_lantern_base') ||
+              (info.ts.name === 'puppetwoods' && info.name === 'hanglamp_base');
             const bulb = info.ts.name === 'graveyard' && info.name === 'lamp_top' ? [8, 9] :
               info.ts.name === 'keep' && info.name === 'lantern_top' ? [5, 13] :
-              info.ts.name === 'shrine' && info.name === 'stone_lantern_top' ? [8, 13] : null;
+              info.ts.name === 'shrine' && info.name === 'stone_lantern_top' ? [8, 13] :
+              info.ts.name === 'puppetwoods' && info.name === 'hanglamp_top' ? [9, 16] : null;
             // Pre-drawn light pools on the ground are not light sources.
             const def = darkPost || /pool/i.test(info.name) ? null : LIGHTS.find(l => l.test.test(info.name));
             if (def) {
@@ -1379,6 +1367,14 @@
                     if (nx >= 0 && nx < width && ny >= 0 && ny < height && foliage[ny * width + nx]) { leaves = true; break; }
                   }
                 }
+                // Acacia canopies weave thin branches through the leaves. Branches within two
+                // pixels of foliage move with it so no see-through gaps open; the fork stays fixed.
+                if (group.family === 'acacia' && !leaves) {
+                  for (let dy = -2; dy <= 2 && !leaves; dy++) for (let dx = -2; dx <= 2; dx++) {
+                    const nx = x + dx, ny = y + dy;
+                    if (nx >= 0 && nx < width && ny >= 0 && ny < height && foliage[ny * width + nx]) { leaves = true; break; }
+                  }
+                }
                 const distances = group.count === 1 ? [0] : centres.map(([cx,cy]) => Math.hypot(x-cx,y-cy));
                 const nearest = Math.min(...distances);
                 for (let part = 0; part <= group.count; part++) {
@@ -1496,6 +1492,8 @@
         candelabra:[0xffd58c,0.15,0.42,0.55], chandelier:[0xffd58c,0.15,0.42,0.50],
         devimon:[0xc74c61,0,0.22,0.24], generator:[0xff645b,0,0.32,0.32], machineSigil:[0xe86d88,0,0.26,0.24],
         wreck:[0xff4f45,0,0.30,0.16], wreckDoor:[0xffbe62,0,0.30,0.42],
+        dragonEye:[0xff3b3b,0,0.45,0.10], reactor:[0x74f0d4,0.22,0.24,0.30], lighthouse:[0xffe2a0,0.06,0.45,1.10],
+        stasis:[0x6cff7a,0.04,0.30,0.34], torchFlame:[0xffb04a,0.10,0.36,0.38], portal:[0x7cc8ff,0,0.42,0.70],
         summon:[0xb081ef,0.08,0.30,0.26], coral:[0xc5a5f0,0.025,0.095,0.12], pumpkin:[0xffb54d,0.18,0.35,0],
         altarCrystal:[0xb18af0,0.035,0.20,0.22], altarGold:[0xf0c87d,0.015,0.16,0.18],
         tv:[0x9ed9ff,0.10,0.26,0.80], car:[0xffe4ae,0,0.42,0.26], phone:[0xb5e4ff,0.025,0.12,0.28],
@@ -1513,6 +1511,8 @@
         entries.forEach(([key],i)=>texture.add(key,0,i%16*16,Math.floor(i/16)*16,16,16));
       }
       const fxTiles = [], fxLights = [], fxSeen = new Set(), fxBuckets = new Map(), acidCells = new Map(), screenCells = [];
+      // Autumn and winter: the cottage chimneys smoke (artwork used in Gate Village).
+      const chimneyPoints = [], chimneySmoke = SETTINGS.seasons && ['autumn', 'winter'].includes(seasonNow());
       const addFxLight = (kind,x,y,objectKey,screen) => {
         const bucket = objectKey || kind+':'+Math.floor(x/32)+','+Math.floor(y/32);
         let group=fxBuckets.get(bucket);
@@ -1528,6 +1528,7 @@
           const x=(layer.tilemapLayer?.x||0)+tile.pixelX,y=(layer.tilemapLayer?.y||0)+tile.pixelY;
           if(info.ts.name==='factory'&&/^sludge_\d+$/.test(info.name))acidCells.set(x+','+y,{x:x+8,y:y+8});
           const screenPart=info.ts.name==='farmland'&&/^tvbig_s([a-d])_(?:[0-2]|off)$/.exec(info.name);
+          if(chimneySmoke&&info.ts.name==='farm'&&info.name==='cottage_3')chimneyPoints.push({x:x+1,y:y+5});
           const key=info.ts.name+':'+(screenPart?'tvbig_s'+screenPart[1]+'_0':info.name),definition=fxData[key];if(!definition)continue;
           const kind=definition[0];
           if(kind==='coral'&&scene.mapId!=='spiral_sea')continue;
@@ -1564,7 +1565,11 @@
             const part=Number(info.name.match(/_(\d+)$/)?.[1]);
             const bx=x-(part%2)*16,by=y-(part>=174?16:0);
             addFxLight(kind,bx+16,by+30,'wreckDoor:'+bx+','+by);
-          }else if(kind==='candelabra'||kind==='candle')addFxLight(kind,lightX,lightY,id);
+          }else if(kind==='reactor'){
+            // Generator artwork is four tiles wide; its core tiles share one light per generator.
+            const part=Number(info.name.match(/_(\d+)$/)?.[1]);
+            addFxLight(kind,lightX,lightY,'reactor:'+(x-(part%4)*16)+','+(y-Math.floor(part/4)*16));
+          }else if(kind==='candelabra'||kind==='candle'||kind==='torchFlame')addFxLight(kind,lightX,lightY,id);
           else if(fxStyle[kind][3]>0)addFxLight(kind,lightX,lightY);
         }
       }
@@ -1574,12 +1579,46 @@
         // Public sprite anchor [16,46], roof centre [16,7].
         const x=object.x,y=object.y-39;phonePoints.push({x,y});addFxLight('phone',x,y);
       }
+      // Map exits: the game marks each portal rectangle with a faint pulse that the night layer
+      // darkens. Add a night light pool, a glow above the night layer and rising motes inside it.
+      const portalPoints=[];
+      for(const layer of tm.objects||[])for(const object of layer.objects||[]){
+        if((object.type||object.class)!=='portal'||!(object.width>0&&object.height>0))continue;
+        const rect={x:object.x,y:object.y,w:object.width,h:object.height};
+        portalPoints.push({x:rect.x+rect.w/2,y:rect.y+rect.h/2,rect});
+        addFxLight('portal',rect.x+rect.w/2,rect.y+rect.h/2,'portal:'+rect.x+','+rect.y);
+      }
+      // Maps without portal objects fall back to their warp tiles.
+      if(!portalPoints.length)for(const light of lights)if(light.kind==='portal'){
+        portalPoints.push({x:light.x,y:light.y,rect:{x:light.x-8,y:light.y-8,w:16,h:16}});addFxLight('portal',light.x,light.y);
+      }
       for(const point of fxLights){point.x/=point.n;point.y/=point.n;}
-      const fxRT=fxTiles.length?own(scene.add.renderTexture(0,0,4,4)).setOrigin(0).setDepth(DEPTH_GLOW-1).setBlendMode(ADD):null;
+      const fxRT=fxTiles.length||portalPoints.length?own(scene.add.renderTexture(0,0,4,4)).setOrigin(0).setDepth(DEPTH_GLOW-1).setBlendMode(ADD):null;
       let fxLast=-Infinity,fxState='',fxVisible=[];
+      // The lighthouse lamp is a Tiled tile animation that Phaser draws from its layer clock
+      // (timeElapsed). The double beam follows that clock: one turn per animation cycle.
+      let lampClock=null;
+      for(const layer of scene.children.list){
+        if(lampClock)break;
+        if(layer.type!=='TilemapLayer'||!layer.layer?.name?.startsWith('above#'))continue;
+        for(const row of layer.layer.data){
+          for(const tile of row){
+            const info=tile&&tile.index>0?tileInfo(tm,tile.index):null;
+            if(info?.ts.name!=='sunsetbay'||info.name!=='lighthouse_xl_3')continue;
+            const duration=info.ts.getTileData(tile.index)?.animationDuration;
+            if(duration>0)lampClock={layer,duration};
+            break;
+          }
+          if(lampClock)break;
+        }
+      }
+      const lampPhase=(time)=>lampClock?(lampClock.layer.timeElapsed%lampClock.duration)/lampClock.duration:(time/10000)%1;
+      // Frame 0 shows the lamp facing the viewer: the beam points south in the middle of it.
+      const beamAngle=(time)=>Math.PI/2+(lampPhase(time)-0.25)*Math.PI*2;
       const fxAmount=(kind,time)=>{
         const style=fxStyle[kind],dark=SETTINGS.dayNight?s.dark:0;
-        const flicker=kind==='furnace'||kind==='candle'||kind==='candelabra'||kind==='chandelier'?0.94+0.06*Math.sin(time/430):1;
+        const flicker=kind==='furnace'||kind==='candle'||kind==='candelabra'||kind==='chandelier'||kind==='torchFlame'?0.94+0.06*Math.sin(time/430):
+          kind==='lighthouse'?0.65+0.35*Math.max(0,Math.cos((lampPhase(time)-0.25)*Math.PI*2)):1;
         return SETTINGS.lights?(style[1]+style[2]*dark)*flicker:0;
       };
       const updateMapEffects=(time,ox,oy,w,h)=>{
@@ -1591,7 +1630,10 @@
         }
         const state=[ox,oy,w,h,SETTINGS.lights,s.dark.toFixed(2),screenCells.map(p=>+p.on).join('')].join(':');
         if(time-fxLast<100&&state===fxState)return;fxLast=time;fxState=state;
-        fxVisible=SETTINGS.lights?fxLights.filter(p=>(!p.screens||p.screens.some(c=>c.on))&&p.x>ox-64&&p.y>oy-64&&p.x<ox+w+64&&p.y<oy+h+64):[];
+        fxVisible=SETTINGS.lights?fxLights.filter(p=>{
+          const margin=p.kind==='lighthouse'?320:64;
+          return (!p.screens||p.screens.some(c=>c.on))&&p.x>ox-margin&&p.y>oy-margin&&p.x<ox+w+margin&&p.y<oy+h+margin;
+        }):[];
         if(!fxRT)return;
         if(fxRT.texture.width!==w||fxRT.texture.height!==h)fxRT.resize(w,h);
         fxRT.setPosition(ox,oy).setVisible(!!SETTINGS.lights);fxRT.clear();
@@ -1603,6 +1645,13 @@
           fxRT.stamp(fxKey,tile.key,tile.x-ox,tile.y-oy,{alpha,tint:fxStyle[tile.kind][0],scaleX:tile.flipX?-1:1,scaleY:tile.flipY?-1:1,rotation:tile.rotation});
           if(++count>=1024)break;
         }
+        // Portal rectangles glow above the night layer with a slow pulse, faint by day.
+        const portalAlpha=SETTINGS.lights?(0.10+0.32*(SETTINGS.dayNight?s.dark:0))*(0.8+0.2*Math.sin(time/450)):0;
+        if(portalAlpha>0)for(const {rect} of portalPoints){
+          if(rect.x+rect.w<ox-16||rect.y+rect.h<oy-16||rect.x>ox+w+16||rect.y>oy+h+16)continue;
+          fxRT.stamp('digimmo:light2',undefined,rect.x+rect.w/2-ox,rect.y+rect.h/2-oy,
+            {alpha:portalAlpha,tint:0x8fe3ff,scaleX:(rect.w+24)/80,scaleY:(rect.h+24)/80});
+        }
         fxRT.render();
       };
       const stampMapLights=(time,ox,oy)=>{
@@ -1611,6 +1660,12 @@
           const style=fxStyle[point.kind],alpha=fxAmount(point.kind,time);if(alpha<=0)continue;
           nightRT.stamp('digimmo:light2',undefined,Math.round(point.x-ox),Math.round(point.y-oy),
             {tint:style[0],scale:style[3],alpha:Math.min(0.55,alpha*1.2),blendMode:ADD});
+          if(point.kind==='lighthouse'){
+            // One beam from the lamp outward, 260 px long, turning with the lamp animation.
+            const angle=beamAngle(time),length=260;
+            nightRT.stamp('digimmo:light2',undefined,Math.round(point.x+Math.cos(angle)*length/2-ox),Math.round(point.y+Math.sin(angle)*length/2-oy),
+              {tint:style[0],scaleX:length/160,scaleY:0.22,rotation:angle,alpha:0.45*(SETTINGS.dayNight?s.dark:0),blendMode:ADD});
+          }
           if(++count>=128)break;
         }
       };
@@ -1700,29 +1755,46 @@
       const detailEmitters=[];
       for(const [kind,points,frequency,tint] of [
         ['phone',phonePoints,950,0xb5e4ff],
+        ['portal',portalPoints,160,0x9fdcff],
         ['furnace',fxLights.filter(p=>p.kind==='furnace'),600,0xffad50],
         ['acid',[...acidCells.values()],300,0xa2ed68],
       ]){
         if(!points.length)continue;
-        const em=own(scene.add.particles(0,0,'digimmo:px',{
-          emitting:false,maxParticles:kind==='acid'?12:24,lifespan:{min:900,max:1800},speedX:{min:-2,max:2},speedY:{min:-9,max:-4},
-          alpha:{start:0,end:kind==='acid'?0.7:0.5,ease:sinEase},scale:1,tint,blendMode:ADD,frequency,quantity:1,
+        // Portal motes are small soft sparks; the other details keep their single-pixel motes.
+        const em=own(scene.add.particles(0,0,kind==='portal'?'digimmo:light2':'digimmo:px',{
+          emitting:false,maxParticles:kind==='acid'?12:kind==='portal'?40:24,lifespan:{min:900,max:1800},speedX:{min:-2,max:2},speedY:{min:-9,max:-4},
+          alpha:{start:0,end:kind==='acid'?0.7:kind==='portal'?0.9:0.5,ease:sinEase},scale:kind==='portal'?{start:0.03,end:0.012}:1,
+          tint,blendMode:ADD,frequency,quantity:1,
         })).setDepth(DEPTH_GLOW);
         detailEmitters.push({em,points,kind,frequency,next:0});
       }
+      const smoke=chimneyPoints.length?own(scene.add.particles(0,0,'digimmo:light2',{
+        emitting:false,maxParticles:36,lifespan:{min:2600,max:4200},speedX:{min:2,max:7},speedY:{min:-12,max:-7},
+        // The soft light texture peaks at 55 % opacity, so the puffs start nearly opaque.
+        scale:{start:0.05,end:0.17},alpha:{start:0.85,end:0},tint:0xd2d2d6,frequency:-1,
+      })).setDepth(DEPTH_NIGHT-500):null;
+      let smokeNext=0;
+      const updateSmoke=(time)=>{
+        if(!smoke)return;
+        smoke.setVisible(true);
+        if(time<smokeNext)return;smokeNext=time+380;
+        for(const p of chimneyPoints)if(p.x>view.x&&p.x<view.x+view.w&&p.y>view.y-40&&p.y<view.y+view.h)smoke.emitParticleAt(p.x+(Math.random()-0.5)*2,p.y,1);
+      };
       const updateDetailParticles=(time)=>{
         for(const entry of detailEmitters){
           const on=SETTINGS.lights&&(entry.kind!=='furnace'||SETTINGS.fireEmbers);
-          entry.em.setVisible(!!on).setAlpha(entry.kind==='phone'?0.2+0.8*(SETTINGS.dayNight?s.dark:0):1);
+          const dark=SETTINGS.dayNight?s.dark:0;
+          entry.em.setVisible(!!on).setAlpha(entry.kind==='phone'?0.2+0.8*dark:entry.kind==='portal'?0.45+0.55*dark:1);
           if(!on||time<entry.next)continue;
           const points=entry.points.filter(p=>p.x>view.x&&p.x<view.x+view.w&&p.y>view.y&&p.y<view.y+view.h);
           entry.next=time+entry.frequency;
           if(!points.length)continue;
-          const point=points[Math.floor(Math.random()*points.length)];
-          entry.em.emitParticleAt(point.x+(Math.random()-0.5)*12,point.y,1);
+          const point=points[Math.floor(Math.random()*points.length)],rect=point.rect;
+          if(rect)entry.em.emitParticleAt(rect.x+Math.random()*rect.w,rect.y+rect.h*(0.4+0.6*Math.random()),1);
+          else entry.em.emitParticleAt(point.x+(Math.random()-0.5)*12,point.y,1);
         }
       };
-      const hideMapEffects=()=>{fxRT?.setVisible(false);attackLights.clear();for(const {em} of detailEmitters)em.setVisible(false);};
+      const hideMapEffects=()=>{fxRT?.setVisible(false);attackLights.clear();smoke?.setVisible(false);for(const {em} of detailEmitters)em.setVisible(false);};
 
       const season = seasonNow(), seasonCfg = SEASONS[season];
       const extra = [];
@@ -1962,6 +2034,7 @@
           if (em.emitting !== on) { if (on) em.start(); else em.stop(); }
         }
         updateDetailParticles(time);
+        updateSmoke(time);
         for (const fn of tickers) fn(time);
         swayTrees(time);
         treesInView.length = 0;
@@ -2311,19 +2384,14 @@
   const SOUND_SECTIONS = [
     { title: 'Game audio adjustments', fields: [
       ['audioFix', 'Enable audio adjustments', 'check', 'Restart the game to apply this change'],
-      ['audioLatency', 'Audio buffer', 'select', [['playback', 'Large (recommended for Firefox)'], ['balanced', 'Balanced']], 'Restart required'],
       ['stepGain', 'Footstep volume', 'range', 0, 2, 0.05, '×'],
-      ['stepLowpass', 'Footstep low-pass cutoff', 'range', 0, 10000, 250, ' Hz', 'Restart required'],
-      ['masterThreshold', 'Master limiter threshold', 'range', -24, 0, 1, ' dB', 'Restart required'],
-      ['sfxThreshold', 'Effects compressor threshold', 'range', -24, 0, 1, ' dB', 'Restart required'],
-      ['sfxRatio', 'Effects compressor ratio', 'range', 1, 20, 1, ':1', 'Restart required'],
     ] },
     { title: 'Ambient soundscape', fields: [
       ['ambientEnabled', 'Enable ambience', 'check', 'Separate from the game music and sound effect volume controls'],
       ['ambientVolume', 'Master ambience volume', 'range', 0, 1.5, 0.05, '×'],
     ] },
   ];
-  const RESTART_FIELDS = new Set(['audioFix', 'audioLatency', 'stepLowpass', 'masterThreshold', 'sfxThreshold', 'sfxRatio']);
+  const RESTART_FIELDS = new Set(['audioFix']);
   const LIVE_FIELDS = new Set(['stepGain', 'ambientEnabled', 'ambientVolume',
     'ambientWind', 'ambientBirds', 'ambientCrickets', 'ambientFire', 'ambientWater', 'ambientWaves']);
   const KEYBOARD_HELP = "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.";
