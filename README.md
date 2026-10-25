@@ -16,7 +16,7 @@ Windows 64-bit. Keep the supporting files beside the EXE. Updates download autom
 
 ## What changes?
 
-Warm lights at night, foliage in the wind and ambient sounds that change with the area and time of day. Adjust the effects in **F10**, or switch them off at any time. The atmosphere clock can follow your local computer time, repeat a shorter day or stay at a time you choose.
+Warm lights at night, foliage in the wind and ambient sounds that change with the area and time of day. Adjust the effects in **F10**, or switch them off at any time. The atmosphere clock can follow your local computer time, repeat a shorter day or stay at a time you choose. While Discord is open, the Windows client shows DigiMMO as your current game; Discord's activity privacy settings can hide it.
 
 ## Prefer your browser?
 

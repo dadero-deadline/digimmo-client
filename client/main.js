@@ -13,7 +13,7 @@ app.setName('DigiMMO');
 const GAME = 'https://play.digimmo.com.br/';
 const ALLOWED = new Set(['https://play.digimmo.com.br','https://wiki.digimmo.com.br']);
 // Public ID of the DigiMMO application in the Discord Developer Portal. Empty disables presence.
-const DISCORD_APPLICATION_ID = '';
+const DISCORD_APPLICATION_ID = '1563735337660846163';
 const allowed = url => { try { return ALLOWED.has(new URL(url).origin); } catch { return false; } };
 const external = url => { try { if (['http:','https:'].includes(new URL(url).protocol)) shell.openExternal(url); } catch {} };
 const stateFile = () => path.join(app.getPath('userData'),'fenster.json');

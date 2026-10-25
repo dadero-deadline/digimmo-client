@@ -2,6 +2,7 @@
 
 ## 0.2 (unreleased)
 
+- The desktop client shows DigiMMO as your current game in Discord while Discord is open.
 - Choose real time, a repeating day or a fixed atmosphere time in F10.
 - Server Desert speakers occasionally play muffled radio chatter with long pauses.
 - Nearby ponds and lakes have gentle water sounds. Waves reach the southern Fog City coast.
