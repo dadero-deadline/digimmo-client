@@ -109,10 +109,10 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
-    "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de aves más suaves y cortos, con pausas más largas y fragmentos variados, sin un bucle continuo de aves. El tráfico lejano durante el día sustituye las voces repetitivas del mercado de la ciudad y da paso suavemente a un viento tranquilo por la noche.",
+    "Calmer birds and distant city traffic.\n• Bird calls are quieter and shorter, with longer pauses and varied passages; the continuous bird loop is gone.\n• Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Aves más tranquilas y tráfico lejano en la ciudad.\n• Los cantos de aves son más suaves y cortos, con pausas más largas y fragmentos variados; ya no hay un bucle continuo de aves.\n• El tráfico lejano durante el día sustituye las voces repetitivas del mercado de la ciudad y da paso a un viento tranquilo por la noche.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Pasajes breves aleatorios con fundidos y pausas largas, sin bucle continuo de aves.",
-    "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
-    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance.": "Iluminación de ventanas en Fog City, faros alineados en los coches orientados al sur y algunas ventanas y agujeros iluminados por la noche en Machine City. La densidad del clima predeterminada es 2x. Las zonas de Network no tienen nubes y la nieve de Holy Peaks se desvanece gradualmente al salir de la meseta norte. Nueva grabación de hoguera con menos retumbo grave. Las fuentes dejan de oírse a menor distancia.",
+    "Menu fixes for smaller windows.\n• Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Ajustes del menú para ventanas pequeñas.\n• Los ajustes y la ayuda de atajos de teclado permanecen dentro del menú en ventanas pequeñas.",
+    "More window lights and a new campfire sound.\n• Windows light up in Fog City, and a few windows and broken panes glow in Machine City at night.\n• South-facing headlights follow the car body.\n• Weather starts at 2x; Network areas have no clouds, and Holy Peaks snow fades past the northern plateau.\n• A new campfire recording with less low rumble; fountains fade out over a shorter distance.": "Más ventanas iluminadas y un nuevo sonido de hoguera.\n• Las ventanas se iluminan en Fog City, y algunas ventanas y cristales rotos brillan de noche en Machine City.\n• Los faros de los coches orientados al sur siguen la carrocería.\n• El clima empieza en 2x; las zonas de Network no tienen nubes y la nieve de Holy Peaks se desvanece al salir de la meseta norte.\n• Nueva grabación de hoguera con menos retumbo grave; las fuentes dejan de oírse a menor distancia.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Reproducción limitada a 2,2 segundos con fundidos y pausas largas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado de volumen y codificado a Opus mono anteriormente. Se reproduce en pasajes de 3,2 segundos con fundidos y pausas largas, sin bucle continuo.",
     "Sound credits": "Créditos de sonido",
@@ -199,7 +199,7 @@
     "Advanced settings": "Opciones avanzadas",
     "Settings": "Ajustes",
     "Experimental tree shadows; disable if they look wrong.": "Sombras de árboles experimentales. Desactívalas si se ven mal.",
-    "Soft lighting, object shadows, moving treetops and water reflections. Regional day and night ambience with wildlife, fire, nearby fountains and water. Larger Digimon have wider light, moonlight shadows are softer, and atmosphere starts as soon as the map is ready.": "Iluminación suave, sombras de objetos, copas en movimiento y reflejos en el agua. Ambiente regional de día y de noche con fauna, fuego, agua y fuentes cercanas. Los Digimon grandes tienen una luz más amplia, las sombras lunares son más suaves y la atmósfera aparece cuando el mapa está listo.",
+    "The first release: light, shadows and ambience.\n• Soft lighting, object shadows, moving treetops and water reflections.\n• Regional day and night ambience with wildlife, fire, fountains and nearby water.\n• Larger Digimon cast wider light, moonlight shadows are softer, and the atmosphere starts as soon as the map is ready.": "El primer lanzamiento: luz, sombras y ambiente.\n• Iluminación suave, sombras de objetos, copas en movimiento y reflejos en el agua.\n• Ambiente regional de día y de noche con fauna, fuego, fuentes y agua cercana.\n• Los Digimon grandes proyectan una luz más amplia, las sombras lunares son más suaves y la atmósfera aparece en cuanto el mapa está listo.",
     "Keyboard shortcuts": "Atajos de teclado",
     "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.": "F10 o Ctrl+Shift+O: abrir o cerrar ajustes.\nAlt+F10: activar o desactivar atmósfera y sonidos ambientales.\nCtrl+F10: activar o desactivar solo sonidos ambientales.\nEscape: cerrar ajustes.",
     "Development only: Shift+F10 cycles the selected clock, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Solo desarrollo: Shift+F10 alterna el reloj elegido, mañana, mediodía, tarde y noche con una transición de seis segundos. Ctrl+Alt+P muestra los contadores de diagnóstico.",
@@ -216,10 +216,10 @@
     "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Fragmento en mono, filtro de graves de 200 Hz y dos filtros de agudos de 900 Hz, ajuste de volumen constante, fundidos y codificación Opus. Pasajes cortos variados cerca de los altavoces de Server Desert con pausas largas; sin cambios de tono ni velocidad."
   },
   "pt": {
-    "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Cantos de pássaros mais suaves e curtos, com pausas maiores e trechos variados, sem um loop contínuo de pássaros. O trânsito distante durante o dia substitui as vozes repetitivas do mercado da cidade e dá lugar suavemente a um vento tranquilo à noite.",
+    "Calmer birds and distant city traffic.\n• Bird calls are quieter and shorter, with longer pauses and varied passages; the continuous bird loop is gone.\n• Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Pássaros mais calmos e trânsito distante na cidade.\n• Os cantos de pássaros são mais suaves e curtos, com pausas maiores e trechos variados; o loop contínuo de pássaros foi removido.\n• O trânsito distante durante o dia substitui as vozes repetitivas do mercado da cidade e dá lugar a um vento tranquilo à noite.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Passagens curtas aleatórias com transições suaves e pausas longas, sem loop contínuo de pássaros.",
-    "Settings and keyboard shortcut help stay inside the menu on smaller windows.": "As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
-    "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance.": "Iluminação nas janelas de Fog City, faróis alinhados nos carros voltados para o sul e algumas janelas e buracos iluminados à noite em Machine City. A densidade padrão do clima é 2x. As áreas de Network não têm nuvens, e a neve de Holy Peaks desaparece gradualmente além do planalto norte. Nova gravação de fogueira com menos ruído grave. O som das fontes desaparece a uma distância menor.",
+    "Menu fixes for smaller windows.\n• Settings and keyboard shortcut help stay inside the menu on smaller windows.": "Ajustes no menu para janelas menores.\n• As configurações e a ajuda de atalhos de teclado ficam dentro do menu em janelas menores.",
+    "More window lights and a new campfire sound.\n• Windows light up in Fog City, and a few windows and broken panes glow in Machine City at night.\n• South-facing headlights follow the car body.\n• Weather starts at 2x; Network areas have no clouds, and Holy Peaks snow fades past the northern plateau.\n• A new campfire recording with less low rumble; fountains fade out over a shorter distance.": "Mais janelas iluminadas e um novo som de fogueira.\n• As janelas se iluminam em Fog City, e algumas janelas e vidros quebrados brilham à noite em Machine City.\n• Os faróis dos carros voltados para o sul acompanham a carroceria.\n• O clima começa em 2x; as áreas de Network não têm nuvens, e a neve de Holy Peaks desaparece além do planalto norte.\n• Nova gravação de fogueira com menos ruído grave; o som das fontes desaparece a uma distância menor.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Playback limited to 2.2 seconds with edge fades and long pauses.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Reprodução limitada a 2,2 segundos com transições suaves e pausas longas.",
     "Previously trimmed, volume matched and encoded to mono Opus. Played as 3.2 second passages with edge fades and long pauses, without a continuous loop.": "Recortado, ajustado em volume e codificado em Opus mono anteriormente. Reproduzido em trechos de 3,2 segundos com transições suaves e pausas longas, sem repetição contínua.",
     "Sound credits": "Créditos de som",
@@ -306,7 +306,7 @@
     "Advanced settings": "Opções avançadas",
     "Settings": "Configurações",
     "Experimental tree shadows; disable if they look wrong.": "Sombras experimentais das árvores. Desative se estiverem erradas.",
-    "Soft lighting, object shadows, moving treetops and water reflections. Regional day and night ambience with wildlife, fire, nearby fountains and water. Larger Digimon have wider light, moonlight shadows are softer, and atmosphere starts as soon as the map is ready.": "Iluminação suave, sombras de objetos, copas em movimento e reflexos na água. Ambiente regional de dia e de noite com animais, fogo, água e fontes próximas. Digimon maiores têm uma luz mais ampla, as sombras do luar são mais suaves e a atmosfera aparece assim que o mapa fica pronto.",
+    "The first release: light, shadows and ambience.\n• Soft lighting, object shadows, moving treetops and water reflections.\n• Regional day and night ambience with wildlife, fire, fountains and nearby water.\n• Larger Digimon cast wider light, moonlight shadows are softer, and the atmosphere starts as soon as the map is ready.": "O primeiro lançamento: luz, sombras e ambiente.\n• Iluminação suave, sombras de objetos, copas em movimento e reflexos na água.\n• Ambiente regional de dia e de noite com animais, fogo, fontes e água próxima.\n• Digimon maiores projetam uma luz mais ampla, as sombras do luar são mais suaves e a atmosfera aparece assim que o mapa fica pronto.",
     "Keyboard shortcuts": "Atalhos de teclado",
     "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.": "F10 ou Ctrl+Shift+O: abrir ou fechar configurações.\nAlt+F10: ativar ou desativar atmosfera e sons ambientes.\nCtrl+F10: ativar ou desativar apenas sons ambientes.\nEscape: fechar configurações.",
     "Development only: Shift+F10 cycles the selected clock, morning, noon, evening and night with a six second transition. Ctrl+Alt+P shows diagnostic counts.": "Apenas desenvolvimento: Shift+F10 alterna o relógio escolhido, manhã, meio-dia, entardecer e noite com uma transição de seis segundos. Ctrl+Alt+P mostra contadores de diagnóstico.",
@@ -1179,6 +1179,23 @@
             if (y > foot) foot = y;
           }
         }
+        // Numbered artwork can continue on the walls layer below and beside its
+        // above# part (the lower crates of a block pile). Those wall tiles join
+        // the object, so its shadow starts at the real foot instead of floating.
+        const todo = cells.map(([x, y]) => [x, y, crownCells.get(x + ',' + y)]);
+        for (const [key, owner] of trunkOwner) if (owner === name) {
+          const [x, y] = key.split(',').map(Number); todo.push([x, y, wallCells.get(key)]);
+        }
+        for (let added = 0; todo.length && added < 256;) {
+          const [x, y, art] = todo.pop();
+          if (!art || art.art.index === undefined) continue;
+          for (const [ax, ay] of [[1, 0], [-1, 0], [0, 1], [0, -1]]) {
+            const key = (x + ax) + ',' + (y + ay), wall = wallCells.get(key);
+            if (!wall || aboveOwner.has(key) || trunkOwner.has(key) || !adjacentShadowArt(art, wall, ax, ay)) continue;
+            trunkOwner.set(key, name); todo.push([x + ax, y + ay, wall]); added++;
+            if (y + ay > foot) foot = y + ay;
+          }
+        }
         objectFoot.set(name, (foot + 1) * 16);
       }
       const shadowParts = [];
@@ -1891,10 +1908,12 @@
         const surface = ty => wet(cx, ty) ? ty * 16 : shoreTops.has(cx + ',' + ty) ? ty * 16 + shoreTops.get(cx + ',' + ty) : null;
         const here = surface(cy), below = surface(cy + 1);
         if (here !== null) return { x, y: Math.max(y + 1, here), flipY: true };
-        // Narrow piers, bridges and spits with water at both sides are not a shore;
-        // mirroring from their end would leave a detached image beyond it.
-        if (below === null || ((wet(cx - 1, cy) || wet(cx - 2, cy)) && (wet(cx + 1, cy) || wet(cx + 2, cy)))) return null;
-        return { x, y: below, flipY: true };
+        if (below === null) return null;
+        // Narrow piers, bridges and spits with water at both sides are not a shore.
+        // Mirror about the feet there: the pier hides the near part and the image
+        // in the water beyond stays attached to the figure.
+        const narrow = (wet(cx - 1, cy) || wet(cx - 2, cy)) && (wet(cx + 1, cy) || wet(cx + 2, cy));
+        return { x, y: narrow ? y : below, flipY: true };
       };
       let waterMaskPosition = '';
       let lastReflectionFrame = -Infinity;
@@ -2332,13 +2351,10 @@
   const CHANGELOG_ENTRIES = [
   ["0.2.1", "Night details and a calmer soundscape.\n• New night lights: the dragon's eye in Machine City, the Factory Town generators (also by day), the Kaiser's Fortress incubators, Sunset Bay's tiki torches and its lighthouse with a turning beam.\n• Hanging pumpkin lamps glow at the pumpkin; Piedmon's castle windows glow more softly.\n• Map exits glow at night with rising sparks.\n• Chimneys in Gate Village smoke in autumn and winter.\n• Water, sea and waterfalls are quieter with less rumble; creeks are softly audible from farther away.\n• Savanna acacias sway without gaps in their crowns.\n• Simpler audio settings: the technical compressor controls are gone."],
   ["0.2", "A large atmosphere update: classic water reflections, natural tree movement and many new lights.\n• Water mirrors characters downward at ponds, lakes and beaches.\n• Leaves and crowns sway while trunks stay put; palms bend from the base.\n• Lanterns, candles and windows glow from their flames and glass, with new night lights across the maps.\n• Attacks, skill projectiles and beams cast a matching light at night.\n• Shadows no longer fall across houses and objects.\n• Water sounds at ponds and lakes, regional wind and loudspeaker chatter in Server Desert.\n• Choose real time, a repeating day or a fixed time for the atmosphere.\n• The desktop client shows DigiMMO as your game in Discord."],
-  ["0.1.4", "Quieter, shorter bird calls with longer pauses and varied passages, without a continuous bird loop. Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night."],
-  ["0.1.3", "Window lighting in Fog City, aligned south-facing headlights, and scattered glowing windows and holes in Machine City at night. Weather defaults to 2x. Network areas have no clouds, and Holy Peaks snow fades naturally past the northern plateau. New campfire recording with less low rumble. Fountains fade out over a shorter distance."],
-  ["0.1.2", "Settings and keyboard shortcut help stay inside the menu on smaller windows."],
-  [
-    "0.1",
-    "Soft lighting, object shadows, moving treetops and water reflections. Regional day and night ambience with wildlife, fire, nearby fountains and water. Larger Digimon have wider light, moonlight shadows are softer, and atmosphere starts as soon as the map is ready."
-  ]
+  ["0.1.4", "Calmer birds and distant city traffic.\n• Bird calls are quieter and shorter, with longer pauses and varied passages; the continuous bird loop is gone.\n• Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night."],
+  ["0.1.3", "More window lights and a new campfire sound.\n• Windows light up in Fog City, and a few windows and broken panes glow in Machine City at night.\n• South-facing headlights follow the car body.\n• Weather starts at 2x; Network areas have no clouds, and Holy Peaks snow fades past the northern plateau.\n• A new campfire recording with less low rumble; fountains fade out over a shorter distance."],
+  ["0.1.2", "Menu fixes for smaller windows.\n• Settings and keyboard shortcut help stay inside the menu on smaller windows."],
+  ["0.1", "The first release: light, shadows and ambience.\n• Soft lighting, object shadows, moving treetops and water reflections.\n• Regional day and night ambience with wildlife, fire, fountains and nearby water.\n• Larger Digimon cast wider light, moonlight shadows are softer, and the atmosphere starts as soon as the map is ready."]
 ];
   const localizedChangelog = () => tr('Changes to the actual game visuals and sounds only.') + '\n\n' +
     CHANGELOG_ENTRIES.map(([version, note]) => 'v' + version + '\n' + tr(note)).join('\n\n');
