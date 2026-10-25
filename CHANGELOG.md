@@ -9,7 +9,7 @@
 - Wind varies subtly by map, with deeper desert gusts and thinner wind in ice regions. Cities retain daytime traffic and nighttime wind.
 - Visible flying attacks cast a small matching light at night.
 - Primary Village has more visible confetti. Weather density also controls seasonal leaves, which stop when weather is disabled.
-- Lantern light follows the glass in Overdell and Myotismon Keep. Candle stands and chandeliers cast soft light below their bases; only flame tips glow.
+- Lantern light follows the glass in Overdell, Myotismon Keep and the stone lanterns of Destiny Lake and Holy Peaks. The Destiny Lake wreck shows red signal lights, a glowing jewel and a lit doorway at night. Candle stands and chandeliers cast soft light below their bases; only flame tips glow.
 - Selected Toy Town windows glow at night. Factory sludge has small green particles instead of a flat glow. TV portals cast soft blue light onto nearby ground.
 - Other trees keep their wood still while foliage, blossoms, fruit and snow move with the crown. Dead trees sway only at their upper tips.
 - Large Native Forest crowns move in three leafy sections while their trunks stay still. Fog City crowns move together, including golden ginkgo foliage. Savanna acacias keep their wood still. Palms bend gently from fixed bases.
