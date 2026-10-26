@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.2
+
+Quest markers on monsters.
+
+- Monsters you still need for a quest show a gold ! for quests, a blue ! for dailies or the sun for the daily board before their name. Switch it off in F10.
+
 ## 0.3.1
 
 A players online counter.
