@@ -36,7 +36,7 @@
     masterThreshold: -1, sfxThreshold: -6, sfxRatio: 12,
     ambientEnabled: true, ambientVolume: 0.5, uiLanguage: 'auto', uiAdvanced: false, ambientWind: 1,
     ambientBirds: 1, ambientCrickets: 1, ambientFire: 1,
-    ambientWater: 1, ambientWaves: 1, launcher: true, onlineBadge: false,
+    ambientWater: 1, ambientWaves: 1, launcher: true, onlineBadge: false, questMarks: true,
   });
   const RANGES = {
     weatherDensity: [0.1, 3], dayMinutes: [0, 240], fixedTime: [0, 1439], playerLight: [0, 2],
@@ -128,6 +128,8 @@
     "capacity": "capacidad",
     "maintenance": "mantenimiento",
     "Server status unavailable": "Estado del servidor no disponible",
+    "Quest markers": "Marcas de misión",
+    "Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.": "Marca los monstruos que aún necesitas: un ! dorado para misiones, un ! azul para diarias y el sol para el tablón diario.",
     "Español": "Español",
     "World": "Mundo",
     "Audio": "Audio",
@@ -246,6 +248,8 @@
     "capacity": "capacidade",
     "maintenance": "manutenção",
     "Server status unavailable": "Status do servidor indisponível",
+    "Quest markers": "Marcas de missão",
+    "Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.": "Marca os monstros de que você ainda precisa: um ! dourado para missões, um ! azul para diárias e o sol para o quadro diário.",
     "Español": "Español",
     "World": "Mundo",
     "Audio": "Áudio",
@@ -2585,6 +2589,7 @@
       ['uiLanguage', 'Language', 'select', [['auto', 'Follow game language'], ['en', 'English'], ['es', 'Español'], ['pt', 'Português (Brazil)']]],
       ['launcher', 'Start window', 'check', 'Shows game updates and players online when the client starts.'],
       ['onlineBadge', 'Players online', 'check', 'Shows how many players are online. Drag it anywhere.'],
+      ['questMarks', 'Quest markers', 'check', 'Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.'],
       ['atmosphere', 'Enable atmosphere', 'check', 'Toggle all atmosphere effects and ambient sounds'],
       ['weather', 'Regional weather', 'check'],
       ['weatherDensity', 'Weather density', 'range', 0.1, 3, 0.1, '×'],
@@ -2633,7 +2638,7 @@
     ] },
   ];
   const RESTART_FIELDS = new Set(['audioFix']);
-  const LIVE_FIELDS = new Set(['launcher', 'onlineBadge', 'stepGain', 'ambientEnabled', 'ambientVolume',
+  const LIVE_FIELDS = new Set(['launcher', 'onlineBadge', 'questMarks', 'stepGain', 'ambientEnabled', 'ambientVolume',
     'ambientWind', 'ambientBirds', 'ambientCrickets', 'ambientFire', 'ambientWater', 'ambientWaves']);
   const KEYBOARD_HELP = "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.";
   // @development-start
@@ -2674,7 +2679,7 @@
     } else if (!LIVE_FIELDS.has(name) && commit) queueRebuild();
     if ((name === 'timeMode' || name === 'dayNight') && menuRoot) renderTab();
   };
-  const MAIN_SETTINGS = new Set(['uiLanguage', 'launcher', 'onlineBadge', 'atmosphere', 'dayNight',
+  const MAIN_SETTINGS = new Set(['uiLanguage', 'launcher', 'onlineBadge', 'questMarks', 'atmosphere', 'dayNight',
     'timeMode', 'dayMinutes', 'fixedTime', 'season', 'clouds', 'ambientEnabled', 'ambientVolume']);
   const makeFields = (parent, groups) => {
     const main = document.createElement('section'); main.className = 'digimmo-section';
@@ -3032,6 +3037,100 @@
     return { sync };
   })();
   if (document.body) onlineBadge.sync(); else document.addEventListener('DOMContentLoaded', onlineBadge.sync, { once: true });
+  // Quest markers (F10, on by default): before the name of a monster that an active quest, daily or daily board
+  // contract still needs (to defeat it or to collect an item it drops), a gold "!" for quests, a blue "!" for dailies
+  // and the game's own sun icon for the daily board. Read only from the game's own quest data and progress; the
+  // game's name plates are never changed.
+  const questMarks = (() => {
+    const COLORS = { quest: 0xffd84a, daily: 0x76cef0 }, ORDER = ['quest', 'daily', 'board'];
+    // The sun the game's quest tracker shows for daily board contracts (10 by 9 pixels, its own palette).
+    const SUN = ['....a.....', '.a..a..a..', '..abbba...', '..bcccb...', 'aabcccbaa.', '..bcccb...', '..abbba...', '.a..a..a..', '....a.....'];
+    const sunTexture = () => {
+      const key = 'digimmo:boardSun';
+      if (!scene.textures.exists(key)) {
+        const canvas = document.createElement('canvas'), palette = { a: '#eeb018', b: '#f2ce3e', c: '#fff4a4' };
+        canvas.width = 10; canvas.height = 9;
+        const ctx = canvas.getContext('2d');
+        SUN.forEach((row, y) => [...row].forEach((p, x) => { if (palette[p]) { ctx.fillStyle = palette[p]; ctx.fillRect(x, y, 1, 1); } }));
+        scene.textures.addCanvas(key, canvas);
+      }
+      return key;
+    };
+    const MOB = 2, DEAD = 2, HIDDEN = 64;
+    // The game's own test for one-time story quests; its other quests repeat daily (shown blue at their givers).
+    const oneTime = id => /^q(\d\d[a-z]?)?_/.test(id) || /^a[23](_\d\d[a-z]?|q)_/.test(id);
+    let scene = null, lastQuests = null, lastContent = null, wanted = new Map();
+    const marks = new Map(), drops = new Map();
+    // Monsters that can drop an item, as the game's quest tracker finds them.
+    const dropSources = (content, itemId) => {
+      if (drops.has(itemId)) return drops.get(itemId);
+      const found = new Set();
+      for (const d of Object.values(content.digimon || {})) if (d?.mob?.drops?.some(x => x.itemId === itemId && x.chance > 0)) found.add(d.id);
+      for (const spawn of Object.values(content.spawns || {})) {
+        for (const zone of Object.values(spawn?.zones || {})) for (const entry of zone?.entries || []) if (entry.drops?.some(x => x.itemId === itemId)) found.add(entry.species);
+        for (const boss of spawn?.bosses || []) if (boss.drops?.some(x => x.itemId === itemId)) found.add(boss.species);
+      }
+      drops.set(itemId, [...found]);
+      return drops.get(itemId);
+    };
+    const compute = (content, quests) => {
+      const next = new Map();
+      for (const [id, state] of Object.entries(quests || {})) {
+        if (state?.state !== 1) continue;
+        const story = content.quests?.[id], contract = story ? null : content.dailyById?.[id.split('#')[0]];
+        const kind = story ? (oneTime(id) ? 'quest' : 'daily') : contract ? 'board' : null;
+        if (!kind) continue;
+        (story || contract).objectives?.forEach((goal, i) => {
+          if (!goal || (state.counters?.[i] ?? 0) >= goal.count) return;
+          const species = goal.kind === 'kill' ? [goal.species].flat() : goal.kind === 'collect' ? dropSources(content, goal.itemId) : [];
+          for (const sp of species) if (sp && (!next.has(sp) || ORDER.indexOf(kind) < ORDER.indexOf(next.get(sp)))) next.set(sp, kind);
+        });
+      }
+      return next;
+    };
+    const clear = () => { for (const mark of marks.values()) { try { mark.destroy(); } catch {} } marks.clear(); };
+    const update = () => {
+      if (!SETTINGS.questMarks || !scene?.views) { clear(); return; }
+      let content = null;
+      for (const view of scene.views.values()) if ((content = view.ctx?.content)) break;
+      let quests = null;
+      try { quests = window.dmo?.store?.getState?.()?.me?.quests; } catch {}
+      if (!content) { clear(); return; }
+      if (content !== lastContent) drops.clear();
+      if (quests !== lastQuests || content !== lastContent) { wanted = compute(content, quests); lastQuests = quests; lastContent = content; }
+      const shown = new Set();
+      if (wanted.size) for (const view of scene.views.values()) {
+        const kind = view.kind === MOB && !(view.flags & (DEAD | HIDDEN)) ? wanted.get(view.defId) : null;
+        const plate = view.plate;
+        if (!kind || !plate?.active || typeof plate.font !== 'string') continue;
+        const sun = kind === 'board';
+        let mark = marks.get(view);
+        if (!mark || !mark.active || (mark.type === 'Image') !== sun) {
+          if (mark) { try { mark.destroy(); } catch {} }
+          mark = sun ? scene.add.image(0, 0, sunTexture()).setOrigin(1, 1) : scene.add.bitmapText(0, 0, plate.font, '!', plate.fontSize || 8).setOrigin(1, 1);
+          marks.set(view, mark);
+        }
+        if (!sun) mark.setTint(COLORS[kind]);
+        const left = view.eliteMark?.visible ? view.eliteMark.x : plate.x;
+        mark.setDepth(plate.depth).setPosition(Math.round(left - 2), plate.y + (sun ? 1 : 0))
+          .setAlpha(plate.alpha).setVisible(!!plate.visible && !!plate.text);
+        shown.add(view);
+      }
+      for (const [view, mark] of marks) if (!shown.has(view)) { try { mark.destroy(); } catch {} marks.delete(view); }
+    };
+    // Follow the world scene after the game has placed its name plates for the frame.
+    const attach = () => {
+      let next = null;
+      try { next = window.dmo?.game?.scene?.getScene?.('world') || null; } catch {}
+      if (next !== scene) {
+        try { scene?.events?.off('postupdate', update); } catch {}
+        clear(); scene = next; lastQuests = lastContent = null;
+        if (scene) { scene.events.on('postupdate', update); scene.events.once('shutdown', () => { clear(); lastQuests = lastContent = null; }); }
+      }
+    };
+    setInterval(attach, 1000);
+    return { update };
+  })();
   // @development-start
   Object.assign(runtime, {
     status: 'ready', settings: SETTINGS, openMenu, closeMenu,
