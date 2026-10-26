@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.1
+
+A players online counter.
+
+- An optional counter in the game shows how many players are online. Switch it on in F10 and drag it anywhere.
+
 ## 0.3
 
 A start window, living Toy Town windows and glowing dark towers.
