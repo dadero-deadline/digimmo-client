@@ -36,7 +36,7 @@
     masterThreshold: -1, sfxThreshold: -6, sfxRatio: 12,
     ambientEnabled: true, ambientVolume: 0.5, uiLanguage: 'auto', uiAdvanced: false, ambientWind: 1,
     ambientBirds: 1, ambientCrickets: 1, ambientFire: 1,
-    ambientWater: 1, ambientWaves: 1, launcher: true, onlineBadge: false, questMarks: true, attackMacro: false,
+    ambientWater: 1, ambientWaves: 1, launcher: true, onlineBadge: false, questMarks: true, attackMacro: false, livelySprites: true,
   });
   const RANGES = {
     weatherDensity: [0.1, 3], dayMinutes: [0, 240], fixedTime: [0, 1439], playerLight: [0, 2],
@@ -130,6 +130,8 @@
     "Server status unavailable": "Estado del servidor no disponible",
     "Quest markers": "Marcas de misión",
     "Attack picks a target": "El ataque elige objetivo",
+    "Livelier Paladin Mode": "Paladin Mode más vivo",
+    "Wing beats, a moving tail in every direction and enhanced sword attacks for Imperialdramon Paladin Mode.": "Aleteo, cola en movimiento en todas las direcciones y ataques de espada mejorados para Imperialdramon Paladin Mode.",
     "Basic attack without a living target first selects the nearest enemy, in the same press.": "El ataque básico sin un objetivo vivo selecciona primero al enemigo más cercano, con la misma pulsación.",
     "Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.": "Marca los monstruos que aún necesitas: un ! dorado para misiones, un ! azul para diarias y el sol para el tablón diario.",
     "Español": "Español",
@@ -253,6 +255,8 @@
     "Server status unavailable": "Status do servidor indisponível",
     "Quest markers": "Marcas de missão",
     "Attack picks a target": "Ataque escolhe alvo",
+    "Livelier Paladin Mode": "Paladin Mode mais vivo",
+    "Wing beats, a moving tail in every direction and enhanced sword attacks for Imperialdramon Paladin Mode.": "Batidas de asa, cauda em movimento em todas as direções e ataques de espada aprimorados para Imperialdramon Paladin Mode.",
     "Basic attack without a living target first selects the nearest enemy, in the same press.": "O ataque básico sem um alvo vivo seleciona primeiro o inimigo mais próximo, com o mesmo toque.",
     "Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.": "Marca os monstros de que você ainda precisa: um ! dourado para missões, um ! azul para diárias e o sol para o quadro diário.",
     "Español": "Español",
@@ -2633,6 +2637,7 @@
       ['reflectionOpacity', 'Reflection opacity', 'range', 0, 1, 0.05, ''],
       ['reflectionWobble', 'Water distortion', 'range', 0, 5, 0.5, ' px'],
       ['waterSparkles', 'Water sparkles', 'check'],
+      ['livelySprites', 'Livelier Paladin Mode', 'check', 'Wing beats, a moving tail in every direction and enhanced sword attacks for Imperialdramon Paladin Mode.'],
     ] },
   ];
   const SOUND_SECTIONS = [
@@ -2646,7 +2651,7 @@
     ] },
   ];
   const RESTART_FIELDS = new Set(['audioFix']);
-  const LIVE_FIELDS = new Set(['launcher', 'onlineBadge', 'questMarks', 'attackMacro', 'stepGain', 'ambientEnabled', 'ambientVolume',
+  const LIVE_FIELDS = new Set(['launcher', 'onlineBadge', 'questMarks', 'attackMacro', 'livelySprites', 'stepGain', 'ambientEnabled', 'ambientVolume',
     'ambientWind', 'ambientBirds', 'ambientCrickets', 'ambientFire', 'ambientWater', 'ambientWaves']);
   const KEYBOARD_HELP = "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.";
   // @development-start
@@ -3138,6 +3143,268 @@
     };
     setInterval(attach, 1000);
     return { update };
+  })();
+  // Livelier Imperialdramon Paladin Mode (F10 advanced, on by default). Its game idle and walk animations are one
+  // pose moved up and down by up to 4 px. From that pose the client draws 8 frames per direction in which the wings
+  // beat from the shoulders, the tail sways in all four directions and a light runs down the blade. Combat poses
+  // gain anticipation, a directional follow-through and a short blade trail, keeping their original timings.
+  // The four base poses must match their pixel fingerprints and every
+  // idle/walk frame must be that shifted pose, so redrawn artwork is left alone. Regions are pixel areas of the
+  // 224 px frames; blue parts in front of a wing
+  // (tail, arm guard) and the sword in the back view stay in place while the wing moves behind them. The game's
+  // atlas stores identical frames once (frame 1 and 7, idle and walk share a place), so the new frames are drawn
+  // into their own area below the sheet and those frames are pointed there.
+  (() => {
+    const KEY = 'imperialdramon_paladin', SIZE = 224, BOB = [0, 1, 2, 3, 4, 3, 2, 1];
+    const WING = 10 * Math.PI / 180;
+    const POSE_HASHES = { down: 1920746719, left: 2192349647, right: 3738600876, up: 1277938536 };
+    const COMBAT_HASHES = {"attack_down_0":2078000106,"attack_down_1":1019545296,"attack_down_2":1920746719,"attack_left_0":2790544356,"attack_left_1":2555183661,"attack_left_2":2192349647,"attack_right_0":897393937,"attack_right_1":3515321617,"attack_right_2":2114825858,"attack_right_3":3738600876,"attack_up_0":2613169361,"attack_up_1":3535461773,"attack_up_2":1277938536,"skill_down_0":2078000106,"skill_down_1":1513458862,"skill_down_2":3377241467,"skill_left_0":2790544356,"skill_left_1":1207326692,"skill_left_2":2952366150,"skill_right_0":897393937,"skill_right_1":3871470865,"skill_right_2":2123482390,"skill_up_0":2613169361,"skill_up_1":2989644098,"skill_up_2":3535461773,"sig_omega_blade_down_0":2078000106,"sig_omega_blade_down_1":1370529454,"sig_omega_blade_down_2":1513458862,"sig_omega_blade_down_3":1532918446,"sig_omega_blade_down_4":220948654,"sig_omega_blade_down_5":1532918446,"sig_omega_blade_down_6":3377241467,"sig_omega_blade_down_7":1920746719,"sig_omega_blade_left_0":2790544356,"sig_omega_blade_left_1":1365726692,"sig_omega_blade_left_2":1207326692,"sig_omega_blade_left_3":2449562084,"sig_omega_blade_left_4":931683300,"sig_omega_blade_left_5":2449562084,"sig_omega_blade_left_6":2952366150,"sig_omega_blade_left_7":2192349647,"sig_omega_blade_right_0":897393937,"sig_omega_blade_right_1":3515321617,"sig_omega_blade_right_2":3871470865,"sig_omega_blade_right_3":355228945,"sig_omega_blade_right_4":4240885009,"sig_omega_blade_right_5":355228945,"sig_omega_blade_right_6":2123482390,"sig_omega_blade_right_7":3738600876,"sig_omega_blade_up_0":3634281304,"sig_omega_blade_up_1":2103176256,"sig_omega_blade_up_2":2989644098,"sig_omega_blade_up_3":3071352642,"sig_omega_blade_up_4":2732844354,"sig_omega_blade_up_5":3071352642,"sig_omega_blade_up_6":3535461773,"sig_omega_blade_up_7":1277938536};
+    const poseHash = pixels => {
+      let hash = 2166136261;
+      for (let i = 0; i < pixels.length; i += 4)
+        for (let c = 0; c < 4; c++) hash = Math.imul(hash ^ (pixels[i + 3] ? pixels[i + c] : 0), 16777619);
+      return hash >>> 0;
+    };
+    const REGIONS = {"down":{"wingL":{"p":[88,110,92,118,84,130,78,142,74,154,70,168,64,186,58,196,44,194,38,164,46,136,64,118],"c":[86,134],"s":1},"wingR":{"p":[139,112,146,120,152,130,158,144,164,162,168,194,158,198,150,178,148,162,149,140,141,124],"c":[126,134],"s":-1},"blade":{"p":[129,164,141,164,141,216,129,216]}},"left":{"wing":{"p":[132,110,141,112,153,119,167,137,179,155,186,176,182,188,170,192,158,192,150,180,146,168,139,160,138,146,138,124],"c":[138,134],"s":-1},"blade":{"p":[88,154,100,154,100,214,88,214]}},"right":{"wing":{"p":[92,110,103,113,101,124,92,132,89,146,85,160,79,172,70,187,58,192,44,190,38,172,47,146,65,123,83,111],"c":[92,136],"s":1},"blade":{"p":[128,154,139,154,139,212,128,212]}},"up":{"wingL":{"p":[96,112,100,122,98,136,96,150,90,164,82,176,66,184,56,180,56,160,66,136,82,118],"c":[100,138],"s":1,"a":0.7,"x":[63,118,78,118,78,216,63,216]},"wingR":{"p":[124,110,134,114,150,130,164,152,172,172,170,196,160,196,150,180,140,168,130,158,124,146,122,124],"c":[122,138],"s":-1},"blade":{"p":[65,164,77,164,77,214,65,214]}}};
+    let patched = null, original = null;
+    const inside = (p, x, y) => {
+      let c = false;
+      for (let i = 0, j = p.length - 2; i < p.length; j = i, i += 2)
+        if ((p[i + 1] > y) !== (p[j + 1] > y) && x < (p[j] - p[i]) * (y - p[i + 1]) / (p[j + 1] - p[i + 1]) + p[i]) c = !c;
+      return c;
+    };
+    const blue = (d, i) => {
+      const r = d[i] / 255, g = d[i + 1] / 255, b = d[i + 2] / 255, max = Math.max(r, g, b), min = Math.min(r, g, b);
+      if (!max || max - min < 0.5 * max || max !== b) return false;
+      const hue = 60 * (4 + (r - g) / (max - min));
+      return hue >= 200 && hue <= 240;
+    };
+    // The tail is the largest connected blue area below the shoulders. Include its dark outline,
+    // keep the root fixed, and bend each scanline: no holes from forward rotation or detached tip.
+    const swayTail = (out, phase, amplitude = 10) => {
+      const src = new Uint8ClampedArray(out), seen = new Uint8Array(SIZE * SIZE);
+      let tail = [];
+      for (let y = 155; y < SIZE; y++) for (let x = 0; x < SIZE; x++) {
+        const i = y * SIZE + x;
+        if (seen[i] || !src[i * 4 + 3] || !blue(src, i * 4)) continue;
+        const component = [i]; seen[i] = 1;
+        for (let q = 0; q < component.length; q++) {
+          const at = component[q], ax = at % SIZE, ay = (at / SIZE) | 0;
+          for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+            const nx = ax + dx, ny = ay + dy, n = ny * SIZE + nx;
+            if (nx < 0 || nx >= SIZE || ny < 155 || ny >= SIZE || seen[n] || !src[n * 4 + 3] || !blue(src, n * 4)) continue;
+            seen[n] = 1; component.push(n);
+          }
+        }
+        if (component.length > tail.length) tail = component;
+      }
+      if (tail.length < 20) return;
+      const mask = new Uint8Array(SIZE * SIZE);
+      for (const i of tail) {
+        const x = i % SIZE, y = (i / SIZE) | 0;
+        for (let dy = -1; dy <= 1; dy++) for (let dx = -1; dx <= 1; dx++) {
+          const nx = x + dx, ny = y + dy, n = ny * SIZE + nx;
+          if (nx >= 0 && nx < SIZE && ny >= 155 && ny < SIZE && src[n * 4 + 3] &&
+            (blue(src, n * 4) || Math.max(src[n * 4], src[n * 4 + 1], src[n * 4 + 2]) < 100)) mask[n] = 1;
+        }
+      }
+      const top = Math.max(155, Math.min(...tail.map(i => (i / SIZE) | 0)) - 1), bottom = Math.min(SIZE - 1, Math.max(...tail.map(i => (i / SIZE) | 0)) + 1);
+      // Recover only the covered background, never fill the vacated outer contour of a wing.
+      for (let y = top; y <= bottom; y++) for (let x = 0; x < SIZE; x++) {
+        const i = y * SIZE + x;
+        if (!mask[i]) continue;
+        let left = x - 1, right = x + 1;
+        while (left >= 0 && mask[y * SIZE + left]) left--;
+        while (right < SIZE && mask[y * SIZE + right]) right++;
+        const l = (y * SIZE + left) * 4, r = (y * SIZE + right) * 4;
+        out[i * 4 + 3] = 0;
+        if (left >= 0 && right < SIZE && src[l + 3] && src[r + 3]) {
+          const from = x - left <= right - x ? l : r;
+          for (let c = 0; c < 4; c++) out[i * 4 + c] = src[from + c];
+        }
+      }
+      for (let y = top; y <= bottom; y++) {
+        const t = Math.max(0, Math.min(1, (y - top - 8) / Math.max(1, bottom - top - 8)));
+        const shift = Math.round(amplitude * Math.sin(phase - t * 0.9) * t * t);
+        for (let x = 0; x < SIZE; x++) {
+          const i = y * SIZE + x, nx = x + shift, n = (y * SIZE + nx) * 4;
+          if (!mask[i] || nx < 0 || nx >= SIZE) continue;
+          // White/gold armor stays in front; the blue tail can pass over the grey wing behind it.
+          const greyWing = Math.max(out[n], out[n + 1], out[n + 2]) < 190 && Math.max(out[n], out[n + 1], out[n + 2]) - Math.min(out[n], out[n + 1], out[n + 2]) < 35;
+          if (!out[n + 3] || mask[y * SIZE + nx] || greyWing || !shift)
+            for (let c = 0; c < 4; c++) out[n + c] = src[i * 4 + c];
+        }
+      }
+    };
+    const combatFrame = (src, direction, kind, k, length) => {
+      const out = new Uint8ClampedArray(src), special = kind === 'sig_omega_blade';
+      const strike = k === (kind === 'skill' ? length - 1 : length - 2);
+      const recover = kind !== 'skill' && k === length - 1;
+      const charge = special && k > 0 && k < length - 2;
+      swayTail(out, k * 1.2 + (strike ? 1.4 : 0), strike ? 14 : 10);
+      const layer = document.createElement('canvas'); layer.width = layer.height = SIZE;
+      layer.getContext('2d').putImageData(new ImageData(out, SIZE, SIZE), 0, 0);
+      const canvas = document.createElement('canvas'); canvas.width = canvas.height = SIZE;
+      const ctx = canvas.getContext('2d', { willReadFrequently: true }); ctx.imageSmoothingEnabled = false;
+      const sign = direction === 'left' || direction === 'up' ? -1 : 1;
+      const lean = recover ? 0 : strike ? sign * 0.065 : charge ? sign * Math.sin(k * 1.3) * 0.018 : -sign * 0.035;
+      const dx = strike ? sign * 3 : recover ? 0 : -sign;
+      const dy = charge ? -Math.round(2 * Math.sin(k * Math.PI / 5)) : strike ? 2 : recover ? 0 : -1;
+      ctx.translate(112 + dx, 177 + dy); ctx.rotate(lean); ctx.translate(-112, -177); ctx.drawImage(layer, 0, 0);
+      // A short, tapered light ribbon follows the swing; it is painted behind the original blade/body.
+      if (strike) {
+        const left = direction === 'left' || direction === 'up';
+        const start = direction === 'down' ? [106, 75] : direction === 'up' ? [123, 75] : direction === 'left' ? [114, 43] : [132, 46];
+        const tip = direction === 'down' ? [kind === 'attack' ? 168 : 173, 210] : direction === 'up' ? [32, 208] : direction === 'left' ? [39, 211] : [kind === 'attack' ? 202 : 192, 207];
+        const control = [left ? tip[0] - 13 : tip[0] + 13, 123];
+        ctx.globalCompositeOperation = 'destination-over';
+        ctx.fillStyle = special ? 'rgba(174,228,255,0.72)' : 'rgba(255,225,145,0.62)';
+        ctx.beginPath();
+        ctx.moveTo(...start); ctx.quadraticCurveTo(...control, ...tip);
+        ctx.quadraticCurveTo(control[0] + (left ? 16 : -16), control[1] + 12, ...start);
+        ctx.fill();
+        ctx.strokeStyle = 'rgba(255,251,222,0.88)'; ctx.lineWidth = 1;
+        ctx.beginPath(); ctx.moveTo(...start); ctx.quadraticCurveTo(...control, ...tip); ctx.stroke();
+      }
+      return ctx.getImageData(0, 0, SIZE, SIZE);
+    };
+    const maskOf = (name, spec, src) => {
+      const mask = new Uint8Array(SIZE * SIZE), xs = spec.p.filter((_, i) => i % 2 === 0), ys = spec.p.filter((_, i) => i % 2);
+      for (let y = Math.max(0, Math.min(...ys)); y < Math.min(SIZE, Math.max(...ys) + 1); y++)
+        for (let x = Math.max(0, Math.min(...xs)); x < Math.min(SIZE, Math.max(...xs) + 1); x++) {
+          if (!inside(spec.p, x + 0.5, y + 0.5) || (spec.x && inside(spec.x, x + 0.5, y + 0.5))) continue;
+          if (name.startsWith('wing') && src[(y * SIZE + x) * 4 + 3] && blue(src, (y * SIZE + x) * 4)) continue;
+          mask[y * SIZE + x] = 1;
+        }
+      return mask;
+    };
+    // Turn a region about its pivot; the angle grows from nothing near the root to the full angle at the tip.
+    const bend = (out, src, mask, spec, angle) => {
+      const [px, py] = spec.c;
+      let far = 1, x0 = SIZE, y0 = SIZE, x1 = 0, y1 = 0;
+      for (let i = 0; i < mask.length; i++) if (mask[i]) {
+        const x = i % SIZE, y = (i / SIZE) | 0;
+        far = Math.max(far, Math.hypot(x - px, y - py)); x0 = Math.min(x0, x); y0 = Math.min(y0, y); x1 = Math.max(x1, x); y1 = Math.max(y1, y);
+        out[i * 4 + 3] = 0;
+      }
+      const pad = Math.ceil(2 * far * Math.sin(Math.abs(angle) / 2)) + 1;
+      for (let y = Math.max(0, y0 - pad); y <= Math.min(SIZE - 1, y1 + pad); y++)
+        for (let x = Math.max(0, x0 - pad); x <= Math.min(SIZE - 1, x1 + pad); x++) {
+          const w = Math.max(0, Math.min(1, (Math.hypot(x - px, y - py) - 6) / (far - 6))), a = -angle * w * w;
+          const sx = Math.round(px + (x - px) * Math.cos(a) - (y - py) * Math.sin(a)), sy = Math.round(py + (x - px) * Math.sin(a) + (y - py) * Math.cos(a));
+          if (sx < 0 || sy < 0 || sx >= SIZE || sy >= SIZE || !mask[sy * SIZE + sx] || !src[(sy * SIZE + sx) * 4 + 3]) continue;
+          const t = (y * SIZE + x) * 4;
+          if (out[t + 3] === 0 || mask[y * SIZE + x]) for (let c = 0; c < 4; c++) out[t + c] = src[(sy * SIZE + sx) * 4 + c];
+        }
+    };
+    const shimmer = (out, spec, k) => {
+      const ys = spec.p.filter((_, i) => i % 2), top = Math.min(...ys), bottom = Math.max(...ys);
+      const centre = top + (bottom - top + 12) * k / 8 - 6;
+      for (let y = top; y < bottom; y++) {
+        const t = Math.max(0, 1 - Math.abs(y - centre) / 4);
+        if (!t) continue;
+        for (let x = 0; x < SIZE; x++) {
+          const i = (y * SIZE + x) * 4;
+          if (out[i + 3] && out[i] + out[i + 1] + out[i + 2] > 420 && inside(spec.p, x + 0.5, y + 0.5))
+            for (let c = 0; c < 3; c++) out[i + c] = Math.round(out[i + c] + (255 - out[i + c]) * 0.7 * t);
+        }
+      }
+    };
+    const sameShifted = (a, b, dy) => {
+      for (let y = 0; y < SIZE; y++) for (let x = 0; x < SIZE * 4; x++) {
+        const from = y + dy < SIZE ? a[(y + dy) * SIZE * 4 + x] : 0;
+        if (b[y * SIZE * 4 + x] !== from) return false;
+      }
+      return true;
+    };
+    const apply = textures => {
+      if (!textures?.exists?.(KEY)) return;
+      const texture = textures.get(KEY), source = texture.source?.[0];
+      if (!source || patched === source) return;
+      if (!SETTINGS.livelySprites) return;
+      const frame = name => texture.frames?.[name];
+      const names = Object.keys(REGIONS).flatMap(d => [...BOB.keys()].flatMap(k => ['idle_' + d + '_' + k, 'walk_' + d + '_' + k]));
+      if (!names.every(n => frame(n)?.cutWidth === SIZE && frame(n)?.cutHeight === SIZE &&
+        frame(n).source === source && !frame(n).rotated && !frame(n).data?.trim)) { patched = source; return; }
+      const combatNames = Object.keys(COMBAT_HASHES);
+      const validCombat = combatNames.every(n => frame(n)?.cutWidth === SIZE && frame(n)?.cutHeight === SIZE &&
+        frame(n).source === source && !frame(n).rotated && !frame(n).data?.trim);
+      const count = Object.keys(REGIONS).length * BOB.length + (validCombat ? combatNames.length : 0);
+      const columns = Math.max(Math.floor(source.width / SIZE), Math.ceil(Math.sqrt(count)));
+      if (!columns) { patched = source; return; }
+      const canvas = document.createElement('canvas');
+      canvas.width = Math.max(source.width, columns * SIZE); canvas.height = source.height + Math.ceil(count / columns) * SIZE;
+      const ctx = canvas.getContext('2d', { willReadFrequently: true });
+      ctx.drawImage(source.image, 0, 0);
+      const read = name => ctx.getImageData(frame(name).cutX, frame(name).cutY, SIZE, SIZE).data;
+      const results = [];
+      for (const [d, regions] of Object.entries(REGIONS)) {
+        const src = read('idle_' + d + '_0');
+        if (poseHash(src) !== POSE_HASHES[d]) { patched = source; return; }
+        // The known artwork: frame k is frame 0 raised by BOB[k], and every walk frame repeats its idle frame.
+        for (const k of BOB.keys()) {
+          const idle = read('idle_' + d + '_' + k);
+          if (!sameShifted(src, idle, BOB[k]) || !sameShifted(idle, read('walk_' + d + '_' + k), 0)) { patched = source; return; }
+        }
+        const masks = Object.fromEntries(Object.entries(regions).map(([name, spec]) => [name, maskOf(name, spec, src)]));
+        for (const k of BOB.keys()) {
+          const out = new Uint8ClampedArray(src), up = 1 - 2 * BOB[(k + 1) % 8] / 4;
+          for (const [name, spec] of Object.entries(regions)) {
+            if (name.startsWith('wing')) bend(out, src, masks[name], spec, spec.s * WING * (spec.a || 1) * up);
+          }
+          swayTail(out, 2 * Math.PI * k / 8);
+          if (regions.blade) shimmer(out, regions.blade, k);
+          const shifted = new Uint8ClampedArray(SIZE * SIZE * 4);
+          shifted.set(out.subarray(BOB[k] * SIZE * 4), 0);
+          results.push([['idle_' + d + '_' + k, 'walk_' + d + '_' + k], new ImageData(shifted, SIZE, SIZE)]);
+        }
+      }
+      // Attack poses have their own fingerprints: future combat artwork is never deformed with old assumptions.
+      if (validCombat && combatNames.every(n => poseHash(read(n)) === COMBAT_HASHES[n])) {
+        for (const name of combatNames) {
+          const parts = name.split('_'), k = Number(parts.pop()), direction = parts.pop(), kind = parts.join('_');
+          const length = combatNames.filter(n => n.startsWith(kind + '_' + direction + '_')).length;
+          results.push([[name], combatFrame(read(name), direction, kind, k, length)]);
+        }
+      }
+      const cuts = new Map(Object.values(texture.frames).map(f => [f, [f.cutX, f.cutY]]));
+      results.forEach(([names, image], slot) => {
+        const x = (slot % columns) * SIZE, y = source.height + Math.floor(slot / columns) * SIZE;
+        ctx.putImageData(image, x, y);
+        for (const name of names) cuts.set(frame(name), [x, y]);
+      });
+      original = { image: source.image, source: source.source, isCanvas: source.isCanvas, width: source.width, height: source.height,
+        cuts: new Map(Object.values(texture.frames).map(f => [f, [f.cutX, f.cutY]])) };
+      source.image = source.source = canvas; source.isCanvas = true; source.width = canvas.width; source.height = canvas.height;
+      refit(texture, cuts);
+      try { source.update(); } catch {}
+      patched = source;
+    };
+    // Texture coordinates depend on the sheet size, so every frame is refitted after the sheet grows or shrinks.
+    const refit = (texture, cuts) => {
+      for (const f of Object.values(texture.frames)) {
+        const [x, y] = cuts.get(f) || [f.cutX, f.cutY];
+        f.cutX = x; f.cutY = y;
+        // The canvas renderer reads the same place from the frame data.
+        if (f.data?.cut) { f.data.cut.x = x; f.data.cut.y = y; f.data.cut.r = x + f.cutWidth; f.data.cut.b = y + f.cutHeight; }
+        if (f.data?.drawImage) { f.data.drawImage.x = x; f.data.drawImage.y = y; }
+        if (f.rotated && typeof f.updateUVsInverted === 'function') f.updateUVsInverted(); else f.updateUVs();
+      }
+    };
+    const restore = textures => {
+      if (!original || !patched || !textures?.exists?.(KEY) || textures.get(KEY).source?.[0] !== patched) { original = null; return; }
+      const { cuts, ...sourceState } = original;
+      Object.assign(patched, sourceState);
+      refit(textures.get(KEY), cuts);
+      try { patched.update(); } catch {}
+      original = null; patched = null;
+    };
+    setInterval(() => {
+      let textures = null;
+      try { textures = window.dmo?.game?.textures; } catch {}
+      if (!textures) return;
+      try { if (SETTINGS.livelySprites) apply(textures); else restore(textures); } catch {}
+    }, 1000);
   })();
   // Attack macro (F10, off by default): one press of the game's attack (its key or the basic attack hotbar slot)
   // first runs the game's own "nearest target" when there is no living monster targeted, then the attack itself,
