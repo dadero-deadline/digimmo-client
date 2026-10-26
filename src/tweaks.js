@@ -36,7 +36,7 @@
     masterThreshold: -1, sfxThreshold: -6, sfxRatio: 12,
     ambientEnabled: true, ambientVolume: 0.5, uiLanguage: 'auto', uiAdvanced: false, ambientWind: 1,
     ambientBirds: 1, ambientCrickets: 1, ambientFire: 1,
-    ambientWater: 1, ambientWaves: 1, launcher: true,
+    ambientWater: 1, ambientWaves: 1, launcher: true, onlineBadge: false,
   });
   const RANGES = {
     weatherDensity: [0.1, 3], dayMinutes: [0, 240], fixedTime: [0, 1439], playerLight: [0, 2],
@@ -122,6 +122,12 @@
     "Show advanced settings": "Mostrar opciones avanzadas",
     "Start window": "Ventana de inicio",
     "Shows game updates and players online when the client starts.": "Muestra las novedades del juego y los jugadores en línea al abrir el cliente.",
+    "Players online": "Jugadores en línea",
+    "Shows how many players are online. Drag it anywhere.": "Muestra cuántos jugadores hay en línea. Arrástralo a cualquier lugar.",
+    "online": "en línea",
+    "capacity": "capacidad",
+    "maintenance": "mantenimiento",
+    "Server status unavailable": "Estado del servidor no disponible",
     "Español": "Español",
     "World": "Mundo",
     "Audio": "Audio",
@@ -233,6 +239,12 @@
     "Show advanced settings": "Mostrar configurações avançadas",
     "Start window": "Janela inicial",
     "Shows game updates and players online when the client starts.": "Mostra as novidades do jogo e os jogadores online ao abrir o cliente.",
+    "Players online": "Jogadores online",
+    "Shows how many players are online. Drag it anywhere.": "Mostra quantos jogadores estão online. Arraste para qualquer lugar.",
+    "online": "online",
+    "capacity": "capacidade",
+    "maintenance": "manutenção",
+    "Server status unavailable": "Status do servidor indisponível",
     "Español": "Español",
     "World": "Mundo",
     "Audio": "Áudio",
@@ -2569,6 +2581,7 @@
     { title: 'Environment', fields: [
       ['uiLanguage', 'Language', 'select', [['auto', 'Follow game language'], ['en', 'English'], ['es', 'Español'], ['pt', 'Português (Brazil)']]],
       ['launcher', 'Start window', 'check', 'Shows game updates and players online when the client starts.'],
+      ['onlineBadge', 'Players online', 'check', 'Shows how many players are online. Drag it anywhere.'],
       ['atmosphere', 'Enable atmosphere', 'check', 'Toggle all atmosphere effects and ambient sounds'],
       ['weather', 'Regional weather', 'check'],
       ['weatherDensity', 'Weather density', 'range', 0.1, 3, 0.1, '×'],
@@ -2617,7 +2630,7 @@
     ] },
   ];
   const RESTART_FIELDS = new Set(['audioFix']);
-  const LIVE_FIELDS = new Set(['launcher', 'stepGain', 'ambientEnabled', 'ambientVolume',
+  const LIVE_FIELDS = new Set(['launcher', 'onlineBadge', 'stepGain', 'ambientEnabled', 'ambientVolume',
     'ambientWind', 'ambientBirds', 'ambientCrickets', 'ambientFire', 'ambientWater', 'ambientWaves']);
   const KEYBOARD_HELP = "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.";
   // @development-start
@@ -2646,6 +2659,7 @@
     // @development-end
     store();
     if (name === 'uiLanguage' || name === 'launcher') tellClient();
+    if (name === 'uiLanguage' || name === 'onlineBadge') onlineBadge.sync();
     if (name === 'uiLanguage' || name === 'uiAdvanced') { if (menuRoot && name === 'uiLanguage') renderTab(); return; }
     if (name === 'atmosphere') {
       ATMOS.enabled = SETTINGS.atmosphere;
@@ -2657,7 +2671,7 @@
     } else if (!LIVE_FIELDS.has(name) && commit) queueRebuild();
     if ((name === 'timeMode' || name === 'dayNight') && menuRoot) renderTab();
   };
-  const MAIN_SETTINGS = new Set(['uiLanguage', 'launcher', 'atmosphere', 'dayNight',
+  const MAIN_SETTINGS = new Set(['uiLanguage', 'launcher', 'onlineBadge', 'atmosphere', 'dayNight',
     'timeMode', 'dayMinutes', 'fixedTime', 'season', 'clouds', 'ambientEnabled', 'ambientVolume']);
   const makeFields = (parent, groups) => {
     const main = document.createElement('section'); main.className = 'digimmo-section';
@@ -2845,6 +2859,7 @@
       Object.assign(SETTINGS, DEFAULTS);
       store();
       tellClient();
+      onlineBadge.sync();
       if ([...RESTART_FIELDS].some(k => before[k] !== SETTINGS[k])) {
         reloadNeeded = true; reload.hidden = false;
       }
@@ -2946,6 +2961,74 @@
   requestAnimationFrame(atmosphereFrame);
   // Once the game has settled on its language, the start window follows it at the next client start.
   if (CLIENT) setTimeout(tellClient, 5000);
+  // Optional players online badge (F10, off by default). While shown it reads the game's public status every
+  // 30 s; drag it anywhere and the spot is remembered. Events on the badge do not reach the game.
+  const onlineBadge = (() => {
+    const KEY = 'digimmo.client.onlineBadge';
+    let badge = null, timer = null, health = null, failed = false;
+    const place = (x, y) => {
+      const w = badge.offsetWidth || 100, h = badge.offsetHeight || 24;
+      badge.style.left = Math.max(0, Math.min(innerWidth - w, x)) + 'px';
+      badge.style.top = Math.max(0, Math.min(innerHeight - h, y)) + 'px';
+    };
+    const render = () => {
+      if (!badge) return;
+      const online = Number(health?.online ?? health?.capacity?.online);
+      badge.dataset.state = failed ? 'down' : !health ? '' : health.drain?.on ? 'warn' : 'ok';
+      badge.querySelector('b').textContent = !failed && Number.isFinite(online) ? String(online) : '–';
+      badge.querySelector('span').textContent = tr('online');
+      badge.title = failed ? tr('Server status unavailable') : tr('Players online') +
+        (health?.capacity?.max ? ' · ' + tr('capacity') + ' ' + health.capacity.max : '') + (health?.drain?.on ? ' · ' + tr('maintenance') : '');
+    };
+    const refresh = async () => {
+      try { health = await (await fetch('/api/health', { cache: 'no-store' })).json(); failed = false; }
+      catch { failed = true; }
+      render();
+    };
+    const create = () => {
+      const style = document.createElement('style');
+      style.textContent = `#digimmo-online{position:fixed;z-index:2147483644;display:flex;align-items:center;gap:6px;padding:4px 10px;
+        background:#0c1734e6;color:#eaf1ff;border:2px solid #e8c46b;box-shadow:0 0 0 2px #142850;font:bold 13px 'Courier New',monospace;
+        cursor:grab;user-select:none;touch-action:none}#digimmo-online[hidden]{display:none!important}#digimmo-online b{color:#ffe198}
+        #digimmo-online i{width:8px;height:8px;border-radius:50%;background:#7a86a8}#digimmo-online[data-state=ok] i{background:#5ee08a}
+        #digimmo-online[data-state=warn] i{background:#f5c542}#digimmo-online[data-state=down] i{background:#ff6b6b}
+        #digimmo-online.dragging{cursor:grabbing}`;
+      badge = document.createElement('div'); badge.id = 'digimmo-online';
+      badge.append(document.createElement('i'), document.createElement('b'), document.createElement('span'));
+      document.head.append(style); document.body.append(badge);
+      render();
+      let saved = null;
+      try { saved = JSON.parse(localStorage.getItem(KEY)); } catch {}
+      place(Number.isFinite(saved?.x) ? saved.x : innerWidth - 150, Number.isFinite(saved?.y) ? saved.y : 70);
+      let drag = null;
+      badge.addEventListener('pointerdown', e => {
+        e.stopPropagation(); e.preventDefault();
+        drag = { dx: e.clientX - badge.offsetLeft, dy: e.clientY - badge.offsetTop };
+        badge.setPointerCapture(e.pointerId); badge.classList.add('dragging');
+      });
+      badge.addEventListener('pointermove', e => { if (drag) { e.stopPropagation(); place(e.clientX - drag.dx, e.clientY - drag.dy); } });
+      const drop = e => {
+        if (!drag) return;
+        e.stopPropagation(); drag = null; badge.classList.remove('dragging');
+        try { localStorage.setItem(KEY, JSON.stringify({ x: badge.offsetLeft, y: badge.offsetTop })); } catch {}
+      };
+      badge.addEventListener('pointerup', drop); badge.addEventListener('pointercancel', drop);
+      for (const type of ['click', 'dblclick', 'mousedown', 'mouseup', 'wheel', 'contextmenu']) badge.addEventListener(type, e => e.stopPropagation());
+      addEventListener('resize', () => { if (!badge.hidden) place(badge.offsetLeft, badge.offsetTop); });
+    };
+    // Show or hide with the setting; also refreshes the language. No requests while it is off.
+    const sync = () => {
+      if (!document.body) return;
+      if (!SETTINGS.onlineBadge) { clearInterval(timer); timer = null; if (badge) badge.hidden = true; return; }
+      if (!badge) create();
+      badge.hidden = false;
+      place(badge.offsetLeft, badge.offsetTop);
+      render();
+      if (!timer) { refresh(); timer = setInterval(refresh, 30000); }
+    };
+    return { sync };
+  })();
+  if (document.body) onlineBadge.sync(); else document.addEventListener('DOMContentLoaded', onlineBadge.sync, { once: true });
   // @development-start
   Object.assign(runtime, {
     status: 'ready', settings: SETTINGS, openMenu, closeMenu,
