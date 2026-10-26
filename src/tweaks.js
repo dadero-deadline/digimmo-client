@@ -36,7 +36,7 @@
     masterThreshold: -1, sfxThreshold: -6, sfxRatio: 12,
     ambientEnabled: true, ambientVolume: 0.5, uiLanguage: 'auto', uiAdvanced: false, ambientWind: 1,
     ambientBirds: 1, ambientCrickets: 1, ambientFire: 1,
-    ambientWater: 1, ambientWaves: 1, launcher: true, onlineBadge: false, questMarks: true,
+    ambientWater: 1, ambientWaves: 1, launcher: true, onlineBadge: false, questMarks: true, attackMacro: false,
   });
   const RANGES = {
     weatherDensity: [0.1, 3], dayMinutes: [0, 240], fixedTime: [0, 1439], playerLight: [0, 2],
@@ -129,6 +129,8 @@
     "maintenance": "mantenimiento",
     "Server status unavailable": "Estado del servidor no disponible",
     "Quest markers": "Marcas de misión",
+    "Attack picks a target": "El ataque elige objetivo",
+    "Basic attack without a living target first selects the nearest enemy, in the same press.": "El ataque básico sin un objetivo vivo selecciona primero al enemigo más cercano, con la misma pulsación.",
     "Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.": "Marca los monstruos que aún necesitas: un ! dorado para misiones, un ! azul para diarias y el sol para el tablón diario.",
     "Español": "Español",
     "World": "Mundo",
@@ -250,6 +252,8 @@
     "maintenance": "manutenção",
     "Server status unavailable": "Status do servidor indisponível",
     "Quest markers": "Marcas de missão",
+    "Attack picks a target": "Ataque escolhe alvo",
+    "Basic attack without a living target first selects the nearest enemy, in the same press.": "O ataque básico sem um alvo vivo seleciona primeiro o inimigo mais próximo, com o mesmo toque.",
     "Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.": "Marca os monstros de que você ainda precisa: um ! dourado para missões, um ! azul para diárias e o sol para o quadro diário.",
     "Español": "Español",
     "World": "Mundo",
@@ -2593,6 +2597,7 @@
       ['launcher', 'Start window', 'check', 'Shows game updates and players online when the client starts.'],
       ['onlineBadge', 'Players online', 'check', 'Shows how many players are online. Drag it anywhere.'],
       ['questMarks', 'Quest markers', 'check', 'Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.'],
+      ['attackMacro', 'Attack picks a target', 'check', 'Basic attack without a living target first selects the nearest enemy, in the same press.'],
       ['atmosphere', 'Enable atmosphere', 'check', 'Toggle all atmosphere effects and ambient sounds'],
       ['weather', 'Regional weather', 'check'],
       ['weatherDensity', 'Weather density', 'range', 0.1, 3, 0.1, '×'],
@@ -2641,7 +2646,7 @@
     ] },
   ];
   const RESTART_FIELDS = new Set(['audioFix']);
-  const LIVE_FIELDS = new Set(['launcher', 'onlineBadge', 'questMarks', 'stepGain', 'ambientEnabled', 'ambientVolume',
+  const LIVE_FIELDS = new Set(['launcher', 'onlineBadge', 'questMarks', 'attackMacro', 'stepGain', 'ambientEnabled', 'ambientVolume',
     'ambientWind', 'ambientBirds', 'ambientCrickets', 'ambientFire', 'ambientWater', 'ambientWaves']);
   const KEYBOARD_HELP = "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.";
   // @development-start
@@ -2682,7 +2687,7 @@
     } else if (!LIVE_FIELDS.has(name) && commit) queueRebuild();
     if ((name === 'timeMode' || name === 'dayNight') && menuRoot) renderTab();
   };
-  const MAIN_SETTINGS = new Set(['uiLanguage', 'launcher', 'onlineBadge', 'questMarks', 'atmosphere', 'dayNight',
+  const MAIN_SETTINGS = new Set(['uiLanguage', 'launcher', 'onlineBadge', 'questMarks', 'attackMacro', 'atmosphere', 'dayNight',
     'timeMode', 'dayMinutes', 'fixedTime', 'season', 'clouds', 'ambientEnabled', 'ambientVolume']);
   const makeFields = (parent, groups) => {
     const main = document.createElement('section'); main.className = 'digimmo-section';
@@ -3133,6 +3138,31 @@
     };
     setInterval(attach, 1000);
     return { update };
+  })();
+  // Attack macro (F10, off by default): one press of the game's attack (its key or the basic attack hotbar slot)
+  // first runs the game's own "nearest target" when there is no living monster targeted, then the attack itself,
+  // like an attack macro. It acts only on that press; nothing repeats and nothing happens without a key press.
+  (() => {
+    const WRAPPED = Symbol('digimmo attack macro'), MOB = 2, DEAD = 2;
+    const hasLivingTarget = scene => {
+      let id = null;
+      try { id = window.dmo?.store?.getState?.()?.target?.id ?? null; } catch {}
+      const entity = id ? (window.dmo?.net?.state?.entities?.get?.(id) ?? scene.views?.get?.(id)) : null;
+      return !!entity && entity.kind === MOB && !(entity.flags & DEAD);
+    };
+    const wrap = () => {
+      let scene = null;
+      try { scene = window.dmo?.game?.scene?.getScene?.('world') || null; } catch {}
+      if (!scene || typeof scene.runAction !== 'function' || scene.runAction[WRAPPED]) return;
+      const original = scene.runAction;
+      const run = function (action) {
+        if (SETTINGS.attackMacro && action?.t === 'attack' && !hasLivingTarget(this)) original.call(this, { t: 'nearestTarget' });
+        return original.call(this, action);
+      };
+      run[WRAPPED] = true;
+      scene.runAction = run;
+    };
+    setInterval(wrap, 1000);
   })();
   // @development-start
   Object.assign(runtime, {
