@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.3.3
+
+Livelier Paladin Mode and an optional attack macro.
+
+- Imperialdramon Paladin Mode moves its wings and tail in every direction, with more expressive sword attacks, skills and Omega Blade. Switch it off in the advanced F10 settings.
+- Optional: basic attack picks the nearest enemy when you have no living target, then attacks in the same key press. Enable **Attack picks a target** in F10.
+
 ## 0.3.2
 
 Quest markers on monsters.
