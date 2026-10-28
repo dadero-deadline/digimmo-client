@@ -131,7 +131,7 @@
     "Quest markers": "Marcas de misión",
     "Attack picks a target": "El ataque elige objetivo",
     "Livelier Paladin Mode": "Paladin Mode más vivo",
-    "Wing beats, a moving tail in every direction and enhanced sword attacks for Imperialdramon Paladin Mode.": "Aleteo, cola en movimiento en todas las direcciones y ataques de espada mejorados para Imperialdramon Paladin Mode.",
+    "Wing beats, a moving tail, enhanced sword attacks and tiny blue motes falling from the cape of Imperialdramon Paladin Mode.": "Aleteo, cola en movimiento, ataques de espada mejorados y pequeñas partículas azules que caen de la capa de Imperialdramon Paladin Mode.",
     "Basic attack without a living target first selects the nearest enemy, in the same press.": "El ataque básico sin un objetivo vivo selecciona primero al enemigo más cercano, con la misma pulsación.",
     "Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.": "Marca los monstruos que aún necesitas: un ! dorado para misiones, un ! azul para diarias y el sol para el tablón diario.",
     "Español": "Español",
@@ -257,7 +257,7 @@
     "Quest markers": "Marcas de missão",
     "Attack picks a target": "Ataque escolhe alvo",
     "Livelier Paladin Mode": "Paladin Mode mais vivo",
-    "Wing beats, a moving tail in every direction and enhanced sword attacks for Imperialdramon Paladin Mode.": "Batidas de asa, cauda em movimento em todas as direções e ataques de espada aprimorados para Imperialdramon Paladin Mode.",
+    "Wing beats, a moving tail, enhanced sword attacks and tiny blue motes falling from the cape of Imperialdramon Paladin Mode.": "Batidas de asa, cauda em movimento, ataques de espada aprimorados e pequenas partículas azuis caindo da capa de Imperialdramon Paladin Mode.",
     "Basic attack without a living target first selects the nearest enemy, in the same press.": "O ataque básico sem um alvo vivo seleciona primeiro o inimigo mais próximo, com o mesmo toque.",
     "Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.": "Marca os monstros de que você ainda precisa: um ! dourado para missões, um ! azul para diárias e o sol para o quadro diário.",
     "Español": "Español",
@@ -2573,6 +2573,10 @@
       get preview() { return preview; }, set preview(v) { preview = v; anim = null; },
       // @development-end
       get built() { return built; },
+      get nightGlow() {
+        return enabled && SETTINGS.dayNight && SETTINGS.lights && built
+          ? { scene: built.scene, strength: sky(hourNow()).dark, depth: DEPTH_GLOW } : null;
+      },
       // @development-start
       diagnostics: () => ({ map: built && built.mapId, stats: built && built.stats,
         ready: !!readyScene, blockedMaps: [...brokenMaps], clouds: built && built.cloudCount,
@@ -2640,7 +2644,7 @@
       ['reflectionOpacity', 'Reflection opacity', 'range', 0, 1, 0.05, ''],
       ['reflectionWobble', 'Water distortion', 'range', 0, 5, 0.5, ' px'],
       ['waterSparkles', 'Water sparkles', 'check'],
-      ['livelySprites', 'Livelier Paladin Mode', 'check', 'Wing beats, a moving tail in every direction and enhanced sword attacks for Imperialdramon Paladin Mode.'],
+      ['livelySprites', 'Livelier Paladin Mode', 'check', 'Wing beats, a moving tail, enhanced sword attacks and tiny blue motes falling from the cape of Imperialdramon Paladin Mode.'],
     ] },
   ];
   const SOUND_SECTIONS = [
@@ -3402,11 +3406,111 @@
       try { patched.update(); } catch {}
       original = null; patched = null;
     };
+    // Tiny blue motes leave the cape hem in world space, so they keep falling when the character moves.
+    const capeMotes = (() => {
+      const DOT = 'digimmo:paladinCapeMote', GLOW = 'digimmo:paladinCapeGlow', LIMIT = 16;
+      const HEMS = {
+        down: [[55, 178], [62, 186], [154, 177], [161, 186]],
+        left: [[160, 177], [171, 184], [179, 175]],
+        right: [[49, 176], [59, 184], [71, 175]],
+        up: [[65, 170], [79, 174], [153, 178], [162, 186]],
+      };
+      let scene = null;
+      const emitters = new Map();
+      const dispose = entry => {
+        entry.emitter.destroy();
+        for (const glow of entry.glows) glow.destroy();
+      };
+      const clear = () => {
+        for (const entry of emitters.values()) dispose(entry);
+        emitters.clear();
+      };
+      const lightMotes = (entry, night) => {
+        const strength = night?.scene === scene ? night.strength : 0;
+        const particles = strength > 0.01 ? entry.emitter.alive : [];
+        if (particles.length && !scene.textures.exists(GLOW)) {
+          const canvas = document.createElement('canvas'); canvas.width = canvas.height = 16;
+          const ctx = canvas.getContext('2d'), gradient = ctx.createRadialGradient(8, 8, 0, 8, 8, 8);
+          gradient.addColorStop(0, 'rgba(190,235,255,1)');
+          gradient.addColorStop(0.2, 'rgba(91,188,255,0.8)');
+          gradient.addColorStop(0.55, 'rgba(55,140,255,0.25)');
+          gradient.addColorStop(1, 'rgba(35,110,255,0)');
+          ctx.fillStyle = gradient; ctx.fillRect(0, 0, 16, 16);
+          scene.textures.addCanvas(GLOW, canvas);
+        }
+        const matrix = entry.emitter.getWorldTransformMatrix();
+        for (let i = 0; i < Math.max(particles.length, entry.glows.length); i++) {
+          const particle = particles[i];
+          if (!particle) { entry.glows[i].setVisible(false); continue; }
+          const glow = entry.glows[i] || (entry.glows[i] = scene.add.image(0, 0, GLOW).setBlendMode('ADD'));
+          const world = matrix.transformPoint(particle.x, particle.y);
+          glow.setPosition(world.x, world.y).setScale(particle.scaleX * 0.85, particle.scaleY * 0.85)
+            .setDepth(night.depth).setAlpha(particle.alpha * entry.emitter.alpha * strength * 0.85).setVisible(true);
+        }
+      };
+      const detach = () => {
+        if (scene) { scene.events.off('postupdate', update); scene.events.off('shutdown', detach); }
+        clear(); scene = null;
+      };
+      const update = (time, delta) => {
+        if (!SETTINGS.livelySprites || !original || !scene?.views) { clear(); return; }
+        const shown = new Set(), camera = scene.cameras.main.worldView;
+        const night = typeof ATMOS === 'undefined' ? null : ATMOS.nightGlow;
+        for (const view of scene.views.values()) {
+          const sprite = view.sprite;
+          if (shown.size >= LIMIT || !sprite?.active || !sprite.visible || sprite.alpha <= 0 ||
+            (view.flags & 66) || sprite.texture?.key !== KEY || sprite.frame?.source !== patched) continue;
+          const bounds = sprite.getBounds();
+          if (bounds.right < camera.x - 32 || bounds.left > camera.right + 32 || bounds.bottom < camera.y - 32 || bounds.top > camera.bottom + 32) continue;
+          const match = /_(down|left|right|up)_(\d+)$/.exec(String(sprite.frame.name));
+          if (!match || /^(hurt|faint)_/.test(String(sprite.frame.name))) continue;
+          shown.add(sprite);
+          let entry = emitters.get(sprite);
+          if (!entry) {
+            if (!scene.textures.exists(DOT)) {
+              const canvas = document.createElement('canvas'); canvas.width = canvas.height = 2;
+              const ctx = canvas.getContext('2d'); ctx.fillStyle = '#fff'; ctx.fillRect(0, 0, 2, 2);
+              scene.textures.addCanvas(DOT, canvas);
+            }
+            const emitter = scene.add.particles(0, 0, DOT, {
+              emitting: false, lifespan: { min: 950, max: 1350 }, maxParticles: 8,
+              speedX: { min: -3, max: 3 }, speedY: { min: 13, max: 21 }, gravityY: 6,
+              scale: { min: 0.5, max: 0.85 }, alpha: { start: 0.95, end: 0 }, quantity: 1, tint: 0x5bbcff,
+              blendMode: 'NORMAL',
+            });
+            entry = { emitter, glows: [], elapsed: 0, point: 0 }; emitters.set(sprite, entry);
+          }
+          entry.emitter.setDepth(sprite.depth - 0.5).setAlpha(sprite.alpha);
+          lightMotes(entry, night);
+          entry.elapsed += Math.min(50, Math.max(0, delta || 0));
+          if (entry.elapsed < 200) continue;
+          entry.elapsed -= 200;
+          const points = HEMS[match[1]], point = points[entry.point++ % points.length];
+          const bob = /^(idle|walk)_/.test(String(sprite.frame.name)) ? BOB[Number(match[2])] || 0 : 0;
+          const x = point[0] + (Math.random() - 0.5) * 6, y = point[1] - bob;
+          const localX = (sprite.flipX ? SIZE - x : x) - sprite.displayOriginX;
+          const localY = (sprite.flipY ? SIZE - y : y) - sprite.displayOriginY;
+          const world = sprite.getWorldTransformMatrix().transformPoint(localX, localY);
+          entry.emitter.emitParticleAt(world.x, world.y, 1);
+        }
+        for (const [sprite, entry] of emitters) if (!shown.has(sprite)) { dispose(entry); emitters.delete(sprite); }
+      };
+      const attach = () => {
+        let next = null;
+        try { if (SETTINGS.livelySprites && original) next = window.dmo?.game?.scene?.getScene?.('world'); } catch {}
+        if (next && !next.sys?.isActive?.()) next = null;
+        if (next === scene) return;
+        detach(); scene = next || null;
+        if (scene) { scene.events.on('postupdate', update); scene.events.once('shutdown', detach); }
+      };
+      return { attach };
+    })();
     setInterval(() => {
       let textures = null;
       try { textures = window.dmo?.game?.textures; } catch {}
       if (!textures) return;
       try { if (SETTINGS.livelySprites) apply(textures); else restore(textures); } catch {}
+      capeMotes.attach();
     }, 1000);
   })();
   // Attack macro (F10, off by default): one press of the game's attack (its key or the basic attack hotbar slot)
