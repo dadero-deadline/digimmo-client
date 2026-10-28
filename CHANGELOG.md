@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.4
+
+Blue cape particles for Paladin Mode.
+
+- Small blue particles fall from the cape of Imperialdramon Paladin Mode and glow softly at night.
+
+- Controlled by Livelier Paladin Mode in the advanced F10 settings; the night glow follows the atmosphere lighting settings.
+
 ## 0.3.3
 
 Livelier Paladin Mode and an optional attack macro.
