@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.5
+
+- Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons are removed from the archive cards beside Switch; the original confirmation stays unchanged.
+
+- Optional automatic quest acceptance and turn-in when you open an NPC dialog. Enable it in F10; off by default. Reward choices and other NPC services stay manual. Quests with identical names are handled separately.
+
 ## 0.3.4
 
 Blue cape particles for Paladin Mode.

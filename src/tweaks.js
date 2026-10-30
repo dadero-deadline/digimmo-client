@@ -36,7 +36,7 @@
     masterThreshold: -1, sfxThreshold: -6, sfxRatio: 12,
     ambientEnabled: true, ambientVolume: 0.5, uiLanguage: 'auto', uiAdvanced: false, ambientWind: 1,
     ambientBirds: 1, ambientCrickets: 1, ambientFire: 1,
-    ambientWater: 1, ambientWaves: 1, launcher: true, onlineBadge: false, questMarks: true, attackMacro: false, livelySprites: true,
+    ambientWater: 1, ambientWaves: 1, launcher: true, onlineBadge: false, questMarks: true, autoQuests: false, attackMacro: false, livelySprites: true,
   });
   const RANGES = {
     weatherDensity: [0.1, 3], dayMinutes: [0, 240], fixedTime: [0, 1439], playerLight: [0, 2],
@@ -111,6 +111,17 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
+    "Release Digimon": "Liberar Digimon",
+    "Choose a Digimon. The game will ask you to confirm.": "Elige un Digimon. El juego te pedirá confirmación.",
+    "Continue": "Continuar",
+    "Cancel": "Cancelar",
+    "Unavailable": "No disponible",
+    "No Digimon available here.": "No hay Digimon disponibles aquí.",
+    "Loading…": "Cargando…",
+    "Auto accept and turn in quests": "Aceptar y entregar misiones automáticamente",
+    "Off by default. Open an NPC dialog to accept offered quests and turn in completed ones. Reward choices stay manual.": "Desactivado de forma predeterminada. Abre el diálogo de un PNJ para aceptar las misiones ofrecidas y entregar las completadas. La elección de recompensas sigue siendo manual.",
+    "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged.": "Aceptación y entrega automáticas de misiones opcionales.\n• Activa Aceptar y entregar misiones automáticamente en F10 y abre el diálogo de un PNJ. Las misiones disponibles se aceptan y las completadas se entregan mediante los botones normales del diálogo. Las misiones con nombres idénticos se gestionan por separado.\n• Desactivado de forma predeterminada. La elección de recompensas y los demás servicios de los PNJ siguen siendo manuales.\n• Liberar Digimon tiene un botón separado entre los Digimon guardados y los huevos y su propia pantalla de selección. Los botones para liberar ya no aparecen junto a Cambiar en el archivo; la confirmación original se mantiene.",
+    "Changes to visuals, sound and interface helpers.": "Cambios en los gráficos, el sonido y las ayudas de interfaz.",
     "Blue cape particles for Paladin Mode.\n• Small blue particles fall from the cape of Imperialdramon Paladin Mode and glow softly at night.\n• Controlled by Livelier Paladin Mode in the advanced F10 settings; the night glow follows the atmosphere lighting settings.": "Partículas azules en la capa de Paladin Mode.\n• Pequeñas partículas azules caen de la capa de Imperialdramon Paladin Mode y brillan suavemente por la noche.\n• Se controlan con Paladin Mode más vivo en los ajustes avanzados de F10; el brillo nocturno sigue los ajustes de iluminación ambiental.",
     "Calmer birds and distant city traffic.\n• Bird calls are quieter and shorter, with longer pauses and varied passages; the continuous bird loop is gone.\n• Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Aves más tranquilas y tráfico lejano en la ciudad.\n• Los cantos de aves son más suaves y cortos, con pausas más largas y fragmentos variados; ya no hay un bucle continuo de aves.\n• El tráfico lejano durante el día sustituye las voces repetitivas del mercado de la ciudad y da paso a un viento tranquilo por la noche.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Fragmentos en mono, filtrado, ajuste de volumen y codificación Opus. Pasajes breves aleatorios con fundidos y pausas largas, sin bucle continuo de aves.",
@@ -238,6 +249,17 @@
     "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Fragmento en mono, filtro de graves de 200 Hz y dos filtros de agudos de 900 Hz, ajuste de volumen constante, fundidos y codificación Opus. Pasajes cortos variados cerca de los altavoces de Server Desert con pausas largas; sin cambios de tono ni velocidad."
   },
   "pt": {
+    "Release Digimon": "Liberar Digimon",
+    "Choose a Digimon. The game will ask you to confirm.": "Escolha um Digimon. O jogo pedirá sua confirmação.",
+    "Continue": "Continuar",
+    "Cancel": "Cancelar",
+    "Unavailable": "Indisponível",
+    "No Digimon available here.": "Nenhum Digimon disponível aqui.",
+    "Loading…": "Carregando…",
+    "Auto accept and turn in quests": "Aceitar e entregar missões automaticamente",
+    "Off by default. Open an NPC dialog to accept offered quests and turn in completed ones. Reward choices stay manual.": "Desativado por padrão. Abra o diálogo de um NPC para aceitar as missões oferecidas e entregar as concluídas. A escolha de recompensas continua manual.",
+    "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged.": "Aceitação e entrega automáticas de missões opcionais.\n• Ative Aceitar e entregar missões automaticamente no F10 e abra o diálogo de um NPC. As missões disponíveis são aceitas e as concluídas são entregues pelos botões normais do diálogo. Missões com nomes idênticos são tratadas separadamente.\n• Desativado por padrão. A escolha de recompensas e os outros serviços dos NPCs continuam manuais.\n• Liberar Digimon tem um botão separado entre os Digimon guardados e os ovos e sua própria tela de seleção. Os botões para liberar não ficam mais ao lado de Trocar no arquivo; a confirmação original é mantida.",
+    "Changes to visuals, sound and interface helpers.": "Mudanças nos gráficos, no som e nas opções de interface.",
     "Blue cape particles for Paladin Mode.\n• Small blue particles fall from the cape of Imperialdramon Paladin Mode and glow softly at night.\n• Controlled by Livelier Paladin Mode in the advanced F10 settings; the night glow follows the atmosphere lighting settings.": "Partículas azuis na capa do Paladin Mode.\n• Pequenas partículas azuis caem da capa do Imperialdramon Paladin Mode e brilham suavemente à noite.\n• São controladas por Paladin Mode mais vivo nas configurações avançadas de F10; o brilho noturno segue as configurações de iluminação ambiente.",
     "Calmer birds and distant city traffic.\n• Bird calls are quieter and shorter, with longer pauses and varied passages; the continuous bird loop is gone.\n• Distant daytime traffic replaces the repeating city market voices and fades into quiet wind at night.": "Pássaros mais calmos e trânsito distante na cidade.\n• Os cantos de pássaros são mais suaves e curtos, com pausas maiores e trechos variados; o loop contínuo de pássaros foi removido.\n• O trânsito distante durante o dia substitui as vozes repetitivas do mercado da cidade e dá lugar a um vento tranquilo à noite.",
     "Excerpts, mono, filtering, volume matching and Opus encoding. Short randomized passages with edge fades and long pauses; no continuous bird loop.": "Trechos em mono, filtragem, ajuste de volume e codificação Opus. Passagens curtas aleatórias com transições suaves e pausas longas, sem loop contínuo de pássaros.",
@@ -2588,6 +2610,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
+  ["0.3.5", "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged."],
   ["0.3.4", "Blue cape particles for Paladin Mode.\n• Small blue particles fall from the cape of Imperialdramon Paladin Mode and glow softly at night.\n• Controlled by Livelier Paladin Mode in the advanced F10 settings; the night glow follows the atmosphere lighting settings."],
   ["0.3.3", "Livelier Paladin Mode and an optional attack macro.\n• Imperialdramon Paladin Mode moves its wings and tail in every direction, with more expressive sword attacks, skills and Omega Blade. Switch it off in the advanced F10 settings.\n• Optional: basic attack picks the nearest enemy when you have no living target, then attacks in the same key press. Enable Attack picks a target in F10."],
   ["0.3.2", "Quest markers on monsters.\n• Monsters you still need for a quest show a gold ! for quests, a blue ! for dailies or the sun for the daily board before their name. Switch it off in F10."],
@@ -2601,7 +2624,7 @@
   ["0.1.2", "Menu fixes for smaller windows.\n• Settings and keyboard shortcut help stay inside the menu on smaller windows."],
   ["0.1", "The first release: light, shadows and ambience.\n• Soft lighting, object shadows, moving treetops and water reflections.\n• Regional day and night ambience with wildlife, fire, fountains and nearby water.\n• Larger Digimon cast wider light, moonlight shadows are softer, and the atmosphere starts as soon as the map is ready."]
 ];
-  const localizedChangelog = () => tr('Changes to the actual game visuals and sounds only.') + '\n\n' +
+  const localizedChangelog = () => tr("Changes to visuals, sound and interface helpers.") + '\n\n' +
     CHANGELOG_ENTRIES.map(([version, note]) => 'v' + version + '\n' + tr(note)).join('\n\n');
   const localizedSoundCredits = () =>
     SOUND_CREDITS.map(c => `${c.title} — ${c.author}\n${c.samples}\n${c.license}: ${c.licenseUrl}\n${c.source}\n${tr(c.changes)}`).join('\n\n');
@@ -2611,6 +2634,7 @@
       ['launcher', 'Start window', 'check', 'Shows game updates and players online when the client starts.'],
       ['onlineBadge', 'Players online', 'check', 'Shows how many players are online. Drag it anywhere.'],
       ['questMarks', 'Quest markers', 'check', 'Marks monsters you still need: a gold ! for quests, a blue ! for dailies and the sun for the daily board.'],
+      ['autoQuests', 'Auto accept and turn in quests', 'check', 'Off by default. Open an NPC dialog to accept offered quests and turn in completed ones. Reward choices stay manual.'],
       ['attackMacro', 'Attack picks a target', 'check', 'Basic attack without a living target first selects the nearest enemy, in the same press.'],
       ['atmosphere', 'Enable atmosphere', 'check', 'Toggle all atmosphere effects and ambient sounds'],
       ['weather', 'Regional weather', 'check'],
@@ -2661,7 +2685,7 @@
     ] },
   ];
   const RESTART_FIELDS = new Set(['audioFix']);
-  const LIVE_FIELDS = new Set(['launcher', 'onlineBadge', 'questMarks', 'attackMacro', 'livelySprites', 'stepGain', 'ambientEnabled', 'ambientVolume',
+  const LIVE_FIELDS = new Set(['launcher', 'onlineBadge', 'questMarks', 'autoQuests', 'attackMacro', 'livelySprites', 'stepGain', 'ambientEnabled', 'ambientVolume',
     'ambientWind', 'ambientBirds', 'ambientCrickets', 'ambientFire', 'ambientWater', 'ambientWaves']);
   const KEYBOARD_HELP = "F10 or Ctrl+Shift+O: open or close settings.\nAlt+F10: toggle atmosphere and ambient sounds.\nCtrl+F10: toggle only ambient sounds.\nEscape: close settings.";
   // @development-start
@@ -2691,6 +2715,7 @@
     store();
     if (name === 'uiLanguage' || name === 'launcher') tellClient();
     if (name === 'uiLanguage' || name === 'onlineBadge') onlineBadge.sync();
+    if (name === 'autoQuests') autoQuests.sync();
     if (name === 'uiLanguage' || name === 'uiAdvanced') { if (menuRoot && name === 'uiLanguage') renderTab(); return; }
     if (name === 'atmosphere') {
       ATMOS.enabled = SETTINGS.atmosphere;
@@ -2702,7 +2727,7 @@
     } else if (!LIVE_FIELDS.has(name) && commit) queueRebuild();
     if ((name === 'timeMode' || name === 'dayNight') && menuRoot) renderTab();
   };
-  const MAIN_SETTINGS = new Set(['uiLanguage', 'launcher', 'onlineBadge', 'questMarks', 'attackMacro', 'atmosphere', 'dayNight',
+  const MAIN_SETTINGS = new Set(['uiLanguage', 'launcher', 'onlineBadge', 'questMarks', 'autoQuests', 'attackMacro', 'atmosphere', 'dayNight',
     'timeMode', 'dayMinutes', 'fixedTime', 'season', 'clouds', 'ambientEnabled', 'ambientVolume']);
   const makeFields = (parent, groups) => {
     const main = document.createElement('section'); main.className = 'digimmo-section';
@@ -2891,6 +2916,7 @@
       store();
       tellClient();
       onlineBadge.sync();
+      autoQuests.sync();
       if ([...RESTART_FIELDS].some(k => before[k] !== SETTINGS[k])) {
         reloadNeeded = true; reload.hidden = false;
       }
@@ -3060,6 +3086,237 @@
     return { sync };
   })();
   if (document.body) onlineBadge.sync(); else document.addEventListener('DOMContentLoaded', onlineBadge.sync, { once: true });
+  // Opt-in quest dialog clicks. Use only the game's displayed choices and their current metadata;
+  // never send quest commands, open an NPC remotely or choose unrelated services/rewards.
+  const autoQuests = (() => {
+    const PANEL = '[data-panel="dialog"]';
+    const WATCH = PANEL + ', .modal, [aria-modal="true"], #digimmo-panel';
+    const MARKS = new Set(['ready', 'repeatReady', 'available', 'repeat']);
+    let observer = null, timer = null, session = null, pending = null;
+    const attempted = new Set();
+    const reset = () => { session = pending = null; attempted.clear(); };
+    const visible = el => !!el?.isConnected && el.getClientRects().length > 0 &&
+      el.checkVisibility({ checkOpacity: true, checkVisibilityCSS: true }) && !el.closest('[hidden], [inert]');
+    const clickable = el => {
+      if (!visible(el) || el.matches(':disabled, [aria-disabled="true"]')) return false;
+      const r = el.getBoundingClientRect(), hit = document.elementFromPoint(r.x + r.width / 2, r.y + r.height / 2);
+      return !!hit && el.contains(hit);
+    };
+    const normalize = text => String(text || '').replace(/\s+/g, ' ').trim();
+    const schedule = () => { if (observer && timer === null) timer = setTimeout(run, 250); };
+    const run = () => {
+      timer = null;
+      if (!SETTINGS.autoQuests || document.hidden) return;
+      const state = window.dmo?.store?.getState?.(), dialog = state?.dialog;
+      const panel = document.querySelector(PANEL);
+      // world.loading is progress: 1 means complete. The screen identifies an actual map load.
+      if (!dialog || !state.me || state.screen !== 'world' || state.world?.loading === true ||
+          state.world?.isLoading === true || state.world?.teleporting === true || !visible(panel)) { reset(); return; }
+      const key = JSON.stringify([state.world?.mapId, dialog.npc]);
+      if (key !== session) { reset(); session = key; }
+      if ([...document.querySelectorAll('.modal, [aria-modal="true"], #digimmo-panel')].some(visible)) return;
+      // A changed node is navigation, not permission to repeat a previously sent quest action.
+      const choices = dialog.node?.choices;
+      if (!Array.isArray(choices) || panel.querySelector('input, select, textarea, [role="radio"], [role="listbox"], .quest__rewards button, .quest__rewards [role="button"]')) return;
+      if (pending?.sent) {
+        const result = state.me.quests?.[pending.quest]?.state;
+        if (pending.action === 'acceptQuest' ? result !== 1 && result !== 2 : result !== 3) return;
+        pending = null;
+      }
+      const briefing = panel.querySelector('.briefing[data-quest]');
+      if (briefing) {
+        if (!pending || pending.node !== dialog.node.id || briefing.dataset.quest !== pending.quest) return;
+        const actions = [...briefing.querySelectorAll('.briefing__actions button')];
+        if (actions.length !== 2 || briefing.querySelector('.briefing__warn') ||
+            !choices.some(c => c.id === pending.id && c.action === 'acceptQuest' && c.questId === pending.quest)) return;
+        const accept = actions.find(b => b.classList.contains('px-btn--gold'));
+        if (actions.filter(b => b.classList.contains('px-btn--gold')).length !== 1 || !clickable(accept)) return;
+        pending.sent = true; accept.click(); return;
+      }
+      if (pending) {
+        // Wait for the briefing opened by our click. A different node cancels that pending preview.
+        if (pending.node === dialog.node.id) return;
+        pending = null;
+      }
+      const candidates = [];
+      const stateFor = c => state.me.quests?.[c.questId]?.state ?? 0;
+      for (const button of panel.querySelectorAll('.dialog__choices > button.dialog__choice')) {
+        if (!clickable(button)) continue;
+        const label = normalize([...button.childNodes].filter(n => n.nodeType === Node.TEXT_NODE).map(n => n.textContent).join(''));
+        if (!label) continue;
+        let matches = choices.filter(c => {
+          if (!c || typeof c.label !== 'string' || normalize(c.label) !== label) return false;
+          const status = stateFor(c);
+          return c.action === 'acceptQuest' ? status === 0 || status === 3 : c.action === 'turnInQuest' ? status === 2 : true;
+        });
+        // The game keys each React answer by choice.id. Identical labels (Gennai's two Reef Patrols)
+        // need that identity; read only, validate against current choices, and skip unresolved ambiguity.
+        const fiberKey = Object.keys(button).find(key => key.startsWith('__reactFiber$'));
+        const choiceId = fiberKey && button[fiberKey]?.key;
+        if (typeof choiceId === 'string') matches = matches.filter(c => c.id === choiceId);
+        if (matches.length !== 1) continue;
+        const c = matches[0], status = stateFor(c);
+        const action = c.action, mark = button.querySelector('.dialog__mark')?.dataset.mark;
+        const quest = typeof c.questId === 'string' && c.questId.length > 0;
+        const ready = quest && action === 'turnInQuest' && status === 2;
+        const offer = quest && action === 'acceptQuest' && (status === 0 || status === 3);
+        // Only pure navigation marked by the game as an available/completed quest; never a shop or exchange.
+        const navigation = !action && typeof c.next === 'string' && MARKS.has(mark);
+        if (!ready && !offer && !navigation) continue;
+        const id = JSON.stringify(quest ? [action, c.questId] : ['next', dialog.node.id, c.id]);
+        if (!attempted.has(id)) candidates.push({ c, button, id, rank: ready ? 0 : offer ? 1 : 2 });
+      }
+      const next = candidates.sort((a, b) => a.rank - b.rank)[0];
+      if (!next || attempted.size >= 32) return;
+      attempted.add(next.id);
+      if (next.c.action) pending = { id: next.c.id, node: dialog.node.id, quest: next.c.questId,
+        action: next.c.action, sent: next.c.action === 'turnInQuest' };
+      else pending = { node: dialog.node.id };
+      next.button.click();
+    };
+    const sync = () => {
+      if (!SETTINGS.autoQuests) {
+        observer?.disconnect(); observer = null; clearTimeout(timer); timer = null; reset();
+        document.removeEventListener('visibilitychange', schedule); return;
+      }
+      if (!document.body || observer) return;
+      observer = new MutationObserver(records => {
+        if (records.some(r => r.target instanceof Element && (r.target.closest(WATCH) ||
+            [...r.addedNodes, ...r.removedNodes].some(n => n instanceof Element && (n.matches(WATCH) || n.querySelector(WATCH)))))) schedule();
+      });
+      observer.observe(document.body, { childList: true, subtree: true, attributes: true,
+        attributeFilter: ['disabled', 'hidden', 'class', 'aria-disabled', 'aria-modal'] });
+      document.addEventListener('visibilitychange', schedule);
+      schedule();
+    };
+    return { sync };
+  })();
+  if (document.body) autoQuests.sync(); else document.addEventListener('DOMContentLoaded', autoQuests.sync, { once: true });
+  // Keep release actions out of ordinary archive cards. A separate archive button selects one partner;
+  // only the original game's release button opens its unchanged confirmation/password dialog.
+  (() => {
+    const ARCHIVE = '[data-panel="archive"]', WATCH = ARCHIVE;
+    let picker = null, selected = null, signature = '', timer = null;
+    const read = () => window.dmo?.store?.getState?.();
+    const releaseButtons = () => [...document.querySelectorAll(ARCHIVE + ' .arch-card__release[data-release]')];
+    const blocked = button => button.disabled || button.getAttribute('aria-disabled') === 'true' || button.hasAttribute('data-blocked');
+    const close = () => {
+      picker?.remove(); picker = null; selected = null; signature = '';
+      document.body.removeAttribute('data-digimmo-release-open');
+      document.querySelector('[data-digimmo-release-entry]')?.focus({ preventScroll: true });
+    };
+    const choose = id => {
+      selected = id;
+      for (const row of picker.querySelectorAll('[data-release-pick]')) row.setAttribute('aria-pressed', String(row.dataset.releasePick === id));
+      picker.querySelector('[data-release-next]').disabled = !id;
+    };
+    const refresh = () => {
+      timer = null;
+      for (const archive of document.querySelectorAll(ARCHIVE + ' .arch')) {
+        const box = archive.querySelector(':scope > [data-testid="archive-box"]');
+        if (!box) continue;
+        let entry = archive.querySelector('[data-digimmo-release-entry]');
+        if (!entry) {
+          const tools = document.createElement('div'); tools.setAttribute('data-digimmo-release-tools', '');
+          entry = document.createElement('button'); entry.type = 'button'; entry.className = 'px-btn px-btn--ghost';
+          entry.setAttribute('data-digimmo-release-entry', '');
+          entry.addEventListener('click', open); tools.append(entry); box.after(tools);
+        }
+        const label = tr('Release Digimon');
+        if (entry.textContent !== label) entry.textContent = label;
+      }
+      if (!picker) return;
+      const state = read();
+      if (state?.screen !== 'world' || !state.me || !state.windows?.archive) { close(); return; }
+      const buttons = releaseButtons(), partners = state.archive?.partners;
+      const records = buttons.flatMap(button => {
+        const id = button.dataset.release, card = button.closest('.arch-card[data-partner]');
+        const partner = partners?.find(p => p.partnerId === id);
+        if (!card || card.dataset.partner !== id || !partner) return [];
+        return [{ id, button, card, name: card.querySelector('.arch-card__name')?.textContent || '',
+          meta: card.querySelector('.arch-card__sub')?.textContent || '',
+          badge: card.querySelector('.arch-card__badge')?.textContent || '', off: blocked(button) }];
+      });
+      const next = JSON.stringify([currentLanguage(), !!partners, records.map(r => [r.id, r.name, r.meta, r.badge, r.off])]);
+      if (next === signature) return;
+      signature = next;
+      if (!records.some(r => r.id === selected && !r.off)) selected = null;
+      picker.querySelector('h2').textContent = tr('Release Digimon');
+      picker.querySelector('[data-release-help]').textContent = tr('Choose a Digimon. The game will ask you to confirm.');
+      picker.querySelector('[data-release-next]').textContent = tr('Continue');
+      picker.querySelector('[data-release-back]').textContent = tr('Cancel');
+      const list = picker.querySelector('[data-release-list]'); list.replaceChildren();
+      for (const r of records) {
+        const row = document.createElement('button'); row.type = 'button'; row.dataset.releasePick = r.id;
+        row.disabled = r.off; row.setAttribute('aria-pressed', String(selected === r.id));
+        const portrait = r.card.querySelector('.arch-card__portrait')?.cloneNode(true);
+        if (portrait) { portrait.setAttribute('aria-hidden', 'true'); row.append(portrait); }
+        const info = document.createElement('span'), name = document.createElement('b'), meta = document.createElement('small');
+        name.textContent = r.name; meta.textContent = r.meta + (r.badge ? ' · ' + r.badge : r.off ? ' · ' + tr('Unavailable') : '');
+        info.append(name, meta); row.append(info); row.addEventListener('click', () => choose(r.id)); list.append(row);
+      }
+      if (!records.length) { const text = document.createElement('p'); text.textContent = tr(partners ? 'No Digimon available here.' : 'Loading…'); list.append(text); }
+      picker.querySelector('[data-release-next]').disabled = !selected;
+    };
+    const schedule = () => { if (timer === null) timer = setTimeout(refresh, 0); };
+    const open = () => {
+      if (picker || read()?.screen !== 'world' || !read()?.windows?.archive || document.querySelector('.release-modal')) return;
+      document.body.setAttribute('data-digimmo-release-open', '');
+      picker = document.createElement('div'); picker.id = 'digimmo-release-picker'; picker.className = 'modal';
+      picker.innerHTML = '<section role="dialog" aria-modal="true" aria-labelledby="digimmo-release-title"><h2 id="digimmo-release-title"></h2><p data-release-help></p><div data-release-list></div><footer><button type="button" data-release-back></button><button type="button" data-release-next disabled></button></footer></section>';
+      picker.querySelector('h2').textContent = tr('Release Digimon');
+      picker.querySelector('[data-release-help]').textContent = tr('Choose a Digimon. The game will ask you to confirm.');
+      const back = picker.querySelector('[data-release-back]'), next = picker.querySelector('[data-release-next]');
+      back.textContent = tr('Cancel'); next.textContent = tr('Continue');
+      back.addEventListener('click', () => close());
+      next.addEventListener('click', () => {
+        // Re-resolve the stable partner ID and current game button; never retain a stale row/index action.
+        const id = selected, state = read(), matches = releaseButtons().filter(b => b.dataset.release === id);
+        if (!id || state?.screen !== 'world' || !state.windows?.archive || !state.archive?.partners?.some(p => p.partnerId === id) ||
+            matches.length !== 1 || blocked(matches[0])) { signature = ''; refresh(); return; }
+        const button = matches[0]; close(); button.click();
+      });
+      for (const event of ['pointerdown', 'mousedown', 'click', 'dblclick', 'wheel']) picker.addEventListener(event, e => e.stopPropagation());
+      document.body.append(picker);
+      schedule(); back.focus({ preventScroll: true });
+    };
+    const init = () => {
+      const style = document.createElement('style');
+      style.textContent = `${ARCHIVE} .arch-card__release{display:none!important}
+        ${ARCHIVE} [data-digimmo-release-tools]{display:flex;justify-content:flex-end;padding:10px 0;border-bottom:1px solid #607eaf55}
+        ${ARCHIVE} [data-digimmo-release-entry]{color:#efa7a7}
+        body[data-digimmo-release-open] ${ARCHIVE}{visibility:hidden!important;pointer-events:none!important}
+        #digimmo-release-picker{position:fixed;inset:0;z-index:2147483645;background:#080a26a6;display:grid;place-items:center;padding:16px;box-sizing:border-box;font:13px 'Courier New',monospace;color:#eaf1ff}
+        #digimmo-release-picker section{display:flex;flex-direction:column;gap:12px;box-sizing:border-box;width:min(480px,100%);max-height:85vh;padding:18px;background:#0c1734;border:3px solid #e8c46b;box-shadow:0 0 0 3px #142850}
+        #digimmo-release-picker h2{font-size:18px;color:#ffe198;margin:0}#digimmo-release-picker p{margin:0;line-height:1.4}
+        #digimmo-release-picker [data-release-list]{overflow:auto;min-height:50px;display:grid;gap:8px}
+        #digimmo-release-picker button{font:inherit;color:#eaf1ff;background:#172e54;border:2px solid #607eaf;cursor:pointer;padding:8px}
+        #digimmo-release-picker [data-release-pick]{display:flex;gap:12px;align-items:center;text-align:left}
+        #digimmo-release-picker [data-release-pick]>span:last-child{display:grid;gap:5px;min-width:0;overflow-wrap:anywhere}
+        #digimmo-release-picker [aria-pressed=true]{border-color:#ffe198;background:#263d65}
+        #digimmo-release-picker button:disabled{opacity:.45;cursor:default}#digimmo-release-picker button:focus-visible{outline:2px solid #ffe198;outline-offset:2px}
+        #digimmo-release-picker footer{display:flex;justify-content:space-between;gap:20px}#digimmo-release-picker [data-release-next]{color:#ffe198}`;
+      document.head.append(style);
+      new MutationObserver(records => {
+        if (records.some(r => !picker?.contains(r.target) && r.target instanceof Element && (r.target.closest(WATCH) ||
+            [...r.addedNodes, ...r.removedNodes].some(n => n instanceof Element && (n.matches(WATCH) || n.querySelector(WATCH)))))) schedule();
+      }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['data-blocked', 'disabled', 'aria-disabled'] });
+      schedule();
+    };
+    window.addEventListener('keydown', e => {
+      if (!picker) return;
+      e.stopImmediatePropagation();
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      else if (e.key === 'Tab') {
+        const controls = [...picker.querySelectorAll('button:not(:disabled)')], index = controls.indexOf(document.activeElement);
+        if (!controls.length) return;
+        e.preventDefault(); controls[index < 0 ? (e.shiftKey ? controls.length - 1 : 0) :
+          (index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length].focus();
+      }
+    }, true);
+    window.addEventListener('keyup', e => { if (picker) e.stopImmediatePropagation(); }, true);
+    if (document.body) init(); else document.addEventListener('DOMContentLoaded', init, { once: true });
+  })();
   // Quest markers (F10, on by default): before the name of a monster that an active quest, daily or daily board
   // contract still needs (to defeat it or to collect an item it drops), a gold "!" for quests, a blue "!" for dailies
   // and the game's own sun icon for the daily board. Read only from the game's own quest data and progress; the

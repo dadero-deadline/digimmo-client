@@ -2,7 +2,7 @@
 
 <img src="client/icon.png" alt="DigiMMO icon" width="80" height="80" align="right">
 
-An unofficial client for [DigiMMO](https://play.digimmo.com.br/), with optional lighting, moving treetops, shadows, reflections and regional ambience. Available as a Windows or Linux app, browser extension or userscript. Visuals, sound and small interface helpers; nothing plays by itself.
+An unofficial client for [DigiMMO](https://play.digimmo.com.br/), with optional lighting, moving treetops, shadows, reflections and regional ambience. Available as a Windows or Linux app, browser extension or userscript. Visuals, sound and optional interface helpers.
 
 ## [Download for Windows](https://github.com/dadero-deadline/digimmo-client/releases/latest/download/DigiMMO.zip)
 
@@ -24,7 +24,7 @@ Linux 64-bit, tested on Ubuntu. No installation needed. Updates download automat
 
 ## What changes?
 
-Warm lights at night, foliage in the wind and ambient sounds that change with the area and time of day. Adjust the effects in **F10**, or switch them off at any time. The atmosphere clock can follow your local computer time, repeat a shorter day or stay at a time you choose. The desktop client opens with a start window showing the game's latest patch notes and how many players are online, read from the game's public API; turn it off in **F10**. An optional players online counter in the game can be switched on there too and dragged anywhere. Monsters you still need for a quest show a gold (quest) or blue (daily) exclamation mark before their name, or the sun for the daily board. An optional attack macro makes basic attack select the nearest enemy first when nothing alive is targeted. Imperialdramon Paladin Mode beats its wings, sways its tail in every direction and follows through on sword attacks with a brief blade trail. Blue motes fall from its cape and glow softly at night. While Discord is open, the desktop client shows DigiMMO as your current game; Discord's activity privacy settings can hide it.
+Warm lights at night, foliage in the wind and ambient sounds that change with the area and time of day. Adjust the effects in **F10**, or switch them off at any time. The atmosphere clock can follow your local computer time, repeat a shorter day or stay at a time you choose. The desktop client opens with a start window showing the game's latest patch notes and how many players are online, read from the game's public API; turn it off in **F10**. An optional players online counter in the game can be switched on there too and dragged anywhere. Monsters you still need for a quest show a gold (quest) or blue (daily) exclamation mark before their name, or the sun for the daily board. An optional setting accepts and turns in quests when you open an NPC dialog; it starts off and leaves reward choices to you. Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen, keeping it away from Switch. An optional attack macro makes basic attack select the nearest enemy first when nothing alive is targeted. Imperialdramon Paladin Mode beats its wings, sways its tail in every direction and follows through on sword attacks with a brief blade trail. Blue motes fall from its cape and glow softly at night. While Discord is open, the desktop client shows DigiMMO as your current game; Discord's activity privacy settings can hide it.
 
 ## Prefer your browser?
 

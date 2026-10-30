@@ -2,7 +2,7 @@
 
 Fork the repository, create a branch and keep your change focused. Submit a pull request with a clear description and what you tested. The maintainer reviews and merges changes; forks do not update official releases automatically.
 
-Keep the project cosmetic: no gameplay automation or game network modifications. Update menu text in English, Spanish and Brazilian Portuguese together. Document every new sound in SOUND_CREDITS.md and the in-game credits, preferably using CC0 or attributed CC BY assets.
+Keep changes focused on visuals, sound and explicitly approved interface helpers. Quest acceptance and turn-in use the normal visible NPC dialog buttons and stay off by default. Do not add autonomous movement, combat loops or game network modifications. Update menu text in English, Spanish and Brazilian Portuguese together. Document every new sound in SOUND_CREDITS.md and the in-game credits, preferably using CC0 or attributed CC BY assets.
 
 ## Development
 
