@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.6
+
+Quest markers for repeatable dailies.
+
+- Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.
+
 ## 0.3.5
 
 - Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons are removed from the archive cards beside Switch; the original confirmation stays unchanged.

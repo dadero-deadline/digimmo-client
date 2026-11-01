@@ -111,6 +111,7 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
+    "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.": "Marcadores de misión para diarias repetibles.\n• Las diarias repetibles, como las de Takato en Digital Fog, cambian a nuevos objetivos después de la primera vez. Los monstruos de esos objetivos vuelven a mostrar su ! azul.",
     "Release Digimon": "Liberar Digimon",
     "Choose a Digimon. The game will ask you to confirm.": "Elige un Digimon. El juego te pedirá confirmación.",
     "Continue": "Continuar",
@@ -249,6 +250,7 @@
     "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Fragmento en mono, filtro de graves de 200 Hz y dos filtros de agudos de 900 Hz, ajuste de volumen constante, fundidos y codificación Opus. Pasajes cortos variados cerca de los altavoces de Server Desert con pausas largas; sin cambios de tono ni velocidad."
   },
   "pt": {
+    "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.": "Marcadores de missão para diárias repetíveis.\n• Diárias repetíveis, como as do Takato na Digital Fog, mudam para novos objetivos depois da primeira vez. Os monstros desses objetivos voltam a mostrar o ! azul.",
     "Release Digimon": "Liberar Digimon",
     "Choose a Digimon. The game will ask you to confirm.": "Escolha um Digimon. O jogo pedirá sua confirmação.",
     "Continue": "Continuar",
@@ -2610,6 +2612,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
+  ["0.3.6", "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again."],
   ["0.3.5", "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged."],
   ["0.3.4", "Blue cape particles for Paladin Mode.\n• Small blue particles fall from the cape of Imperialdramon Paladin Mode and glow softly at night.\n• Controlled by Livelier Paladin Mode in the advanced F10 settings; the night glow follows the atmosphere lighting settings."],
   ["0.3.3", "Livelier Paladin Mode and an optional attack macro.\n• Imperialdramon Paladin Mode moves its wings and tail in every direction, with more expressive sword attacks, skills and Omega Blade. Switch it off in the advanced F10 settings.\n• Optional: basic attack picks the nearest enemy when you have no living target, then attacks in the same key press. Enable Attack picks a target in F10."],
@@ -3360,8 +3363,13 @@
         const story = content.quests?.[id], contract = story ? null : content.dailyById?.[id.split('#')[0]];
         const kind = story ? (oneTime(id) ? 'quest' : 'daily') : contract ? 'board' : null;
         if (!kind) continue;
-        (story || contract).objectives?.forEach((goal, i) => {
-          if (!goal || (state.counters?.[i] ?? 0) >= goal.count) return;
+        // Repeatable quests: once the counters run past the first objectives, the game switches to
+        // repeat.objectives, whose counters follow the first run's counters and one day stamp.
+        const def = story || contract, first = def.objectives?.length ?? 0;
+        const again = !!def.repeat && (state.counters?.length ?? 0) > first;
+        const goals = again ? def.repeat.objectives : def.objectives, offset = again ? first + 1 : 0;
+        goals?.forEach((goal, i) => {
+          if (!goal || (state.counters?.[offset + i] ?? 0) >= goal.count) return;
           const species = goal.kind === 'kill' ? [goal.species].flat() : goal.kind === 'collect' ? dropSources(content, goal.itemId) : [];
           for (const sp of species) if (sp && (!next.has(sp) || ORDER.indexOf(kind) < ORDER.indexOf(next.get(sp)))) next.set(sp, kind);
         });
