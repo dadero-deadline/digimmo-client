@@ -6,6 +6,8 @@ Quest markers for repeatable dailies.
 
 - Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.
 
+- A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.
+
 ## 0.3.5
 
 - Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons are removed from the archive cards beside Switch; the original confirmation stays unchanged.

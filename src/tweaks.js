@@ -111,7 +111,7 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
-    "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.": "Marcadores de misión para diarias repetibles.\n• Las diarias repetibles, como las de Takato en Digital Fog, cambian a nuevos objetivos después de la primera vez. Los monstruos de esos objetivos vuelven a mostrar su ! azul.",
+    "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de misión para diarias repetibles.\n• Las diarias repetibles, como las de Takato en Digital Fog, cambian a nuevos objetivos después de la primera vez. Los monstruos de esos objetivos vuelven a mostrar su ! azul.\n• Un botón Usar todas en el álbum de cartas muestra todas las cartas que aún puedes usar, con sus copias y el total; las cartas raras se pueden desmarcar. Al confirmar, las cartas se usan de una en una. Se detiene en el primer error del juego y puedes cancelarlo en cualquier momento.",
     "Release Digimon": "Liberar Digimon",
     "Choose a Digimon. The game will ask you to confirm.": "Elige un Digimon. El juego te pedirá confirmación.",
     "Continue": "Continuar",
@@ -119,6 +119,33 @@
     "Unavailable": "No disponible",
     "No Digimon available here.": "No hay Digimon disponibles aquí.",
     "Loading…": "Cargando…",
+    "Slash all": "Usar todas",
+    "Every card you can still slash, with the copies you own up to its limit.": "Todas las cartas que aún puedes usar, con las copias que tienes hasta su límite.",
+    "Untick rare cards you want to keep.": "Desmarca las cartas raras que quieras conservar.",
+    "Slashed cards are consumed permanently.": "Las cartas usadas se consumen permanentemente.",
+    "No cards can be slashed right now.": "Ahora no puedes usar ninguna carta.",
+    "Slashing unlocks when an owned partner reaches Lv 99.": "Se desbloquea cuando un compañero tuyo alcanza el Nv 99.",
+    "Slash outside combat.": "Usa las cartas fuera de combate.",
+    "This card has reached its limit.": "Esta carta ya alcanzó su límite.",
+    "You do not have enough copies of this card.": "No tienes suficientes copias de esta carta.",
+    "The game did not answer within 8 seconds.": "El juego no respondió en 8 segundos.",
+    "The command could not be sent.": "No se pudo enviar el comando.",
+    "The status window was closed.": "Se cerró la ventana de estado.",
+    "The cards tab was closed.": "Se cerró la pestaña de cartas.",
+    "The map changed or the world reloaded.": "Cambió el mapa o el mundo se recargó.",
+    "Common": "Común",
+    "Rare": "Rara",
+    "Ultra Rare": "Ultrarrara",
+    "Total": "Total",
+    "card": "carta",
+    "cards": "cartas",
+    "copy": "copia",
+    "copies": "copias",
+    "Slashing": "Usando",
+    "Done.": "Listo.",
+    "Stopped.": "Detenido.",
+    "Close": "Cerrar",
+    "Slash all stopped.": "Usar todas se detuvo.",
     "Auto accept and turn in quests": "Aceptar y entregar misiones automáticamente",
     "Off by default. Open an NPC dialog to accept offered quests and turn in completed ones. Reward choices stay manual.": "Desactivado de forma predeterminada. Abre el diálogo de un PNJ para aceptar las misiones ofrecidas y entregar las completadas. La elección de recompensas sigue siendo manual.",
     "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged.": "Aceptación y entrega automáticas de misiones opcionales.\n• Activa Aceptar y entregar misiones automáticamente en F10 y abre el diálogo de un PNJ. Las misiones disponibles se aceptan y las completadas se entregan mediante los botones normales del diálogo. Las misiones con nombres idénticos se gestionan por separado.\n• Desactivado de forma predeterminada. La elección de recompensas y los demás servicios de los PNJ siguen siendo manuales.\n• Liberar Digimon tiene un botón separado entre los Digimon guardados y los huevos y su propia pantalla de selección. Los botones para liberar ya no aparecen junto a Cambiar en el archivo; la confirmación original se mantiene.",
@@ -250,7 +277,7 @@
     "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Fragmento en mono, filtro de graves de 200 Hz y dos filtros de agudos de 900 Hz, ajuste de volumen constante, fundidos y codificación Opus. Pasajes cortos variados cerca de los altavoces de Server Desert con pausas largas; sin cambios de tono ni velocidad."
   },
   "pt": {
-    "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.": "Marcadores de missão para diárias repetíveis.\n• Diárias repetíveis, como as do Takato na Digital Fog, mudam para novos objetivos depois da primeira vez. Os monstros desses objetivos voltam a mostrar o ! azul.",
+    "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de missão para diárias repetíveis.\n• Diárias repetíveis, como as do Takato na Digital Fog, mudam para novos objetivos depois da primeira vez. Os monstros desses objetivos voltam a mostrar o ! azul.\n• Um botão Usar todas no fichário de cartas mostra todas as cartas que você ainda pode usar, com as cópias e o total; as cartas raras podem ser desmarcadas. Ao confirmar, as cartas são usadas uma de cada vez. Para no primeiro erro do jogo e pode ser cancelado a qualquer momento.",
     "Release Digimon": "Liberar Digimon",
     "Choose a Digimon. The game will ask you to confirm.": "Escolha um Digimon. O jogo pedirá sua confirmação.",
     "Continue": "Continuar",
@@ -258,6 +285,33 @@
     "Unavailable": "Indisponível",
     "No Digimon available here.": "Nenhum Digimon disponível aqui.",
     "Loading…": "Carregando…",
+    "Slash all": "Usar todas",
+    "Every card you can still slash, with the copies you own up to its limit.": "Todas as cartas que você ainda pode usar, com as cópias que possui até o limite.",
+    "Untick rare cards you want to keep.": "Desmarque as cartas raras que deseja manter.",
+    "Slashed cards are consumed permanently.": "As cartas usadas são consumidas permanentemente.",
+    "No cards can be slashed right now.": "Nenhuma carta pode ser usada agora.",
+    "Slashing unlocks when an owned partner reaches Lv 99.": "O uso libera quando um parceiro seu alcança o Nv 99.",
+    "Slash outside combat.": "Use fora de combate.",
+    "This card has reached its limit.": "Esta carta já atingiu o limite.",
+    "You do not have enough copies of this card.": "Você não tem cópias suficientes desta carta.",
+    "The game did not answer within 8 seconds.": "O jogo não respondeu em 8 segundos.",
+    "The command could not be sent.": "Não foi possível enviar o comando.",
+    "The status window was closed.": "A janela de status foi fechada.",
+    "The cards tab was closed.": "A aba de cartas foi fechada.",
+    "The map changed or the world reloaded.": "O mapa mudou ou o mundo foi recarregado.",
+    "Common": "Comum",
+    "Rare": "Rara",
+    "Ultra Rare": "Ultrarrara",
+    "Total": "Total",
+    "card": "carta",
+    "cards": "cartas",
+    "copy": "cópia",
+    "copies": "cópias",
+    "Slashing": "Usando",
+    "Done.": "Concluído.",
+    "Stopped.": "Interrompido.",
+    "Close": "Fechar",
+    "Slash all stopped.": "Usar todas foi interrompido.",
     "Auto accept and turn in quests": "Aceitar e entregar missões automaticamente",
     "Off by default. Open an NPC dialog to accept offered quests and turn in completed ones. Reward choices stay manual.": "Desativado por padrão. Abra o diálogo de um NPC para aceitar as missões oferecidas e entregar as concluídas. A escolha de recompensas continua manual.",
     "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged.": "Aceitação e entrega automáticas de missões opcionais.\n• Ative Aceitar e entregar missões automaticamente no F10 e abra o diálogo de um NPC. As missões disponíveis são aceitas e as concluídas são entregues pelos botões normais do diálogo. Missões com nomes idênticos são tratadas separadamente.\n• Desativado por padrão. A escolha de recompensas e os outros serviços dos NPCs continuam manuais.\n• Liberar Digimon tem um botão separado entre os Digimon guardados e os ovos e sua própria tela de seleção. Os botões para liberar não ficam mais ao lado de Trocar no arquivo; a confirmação original é mantida.",
@@ -2612,7 +2666,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.3.6", "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again."],
+  ["0.3.6", "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time."],
   ["0.3.5", "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged."],
   ["0.3.4", "Blue cape particles for Paladin Mode.\n• Small blue particles fall from the cape of Imperialdramon Paladin Mode and glow softly at night.\n• Controlled by Livelier Paladin Mode in the advanced F10 settings; the night glow follows the atmosphere lighting settings."],
   ["0.3.3", "Livelier Paladin Mode and an optional attack macro.\n• Imperialdramon Paladin Mode moves its wings and tail in every direction, with more expressive sword attacks, skills and Omega Blade. Switch it off in the advanced F10 settings.\n• Optional: basic attack picks the nearest enemy when you have no living target, then attacks in the same key press. Enable Attack picks a target in F10."],
@@ -3318,6 +3372,223 @@
       }
     }, true);
     window.addEventListener('keyup', e => { if (picker) e.stopImmediatePropagation(); }, true);
+    if (document.body) init(); else document.addEventListener('DOMContentLoaded', init, { once: true });
+  })();
+  // Slash all in the card binder (approved interface helper). An overview lists every owned card that can still be
+  // slashed; only after confirmation does it send the binder's own slashCards command, one card at a time. Like the
+  // binder it waits for the training count to rise, a training error line in chat or eight seconds before the next card.
+  (() => {
+    const BINDER = '[data-testid="training-panel"]', WATCH = BINDER;
+    const ERRORS = ['training_level', 'training_busy', 'training_full', 'training_missing'];
+    const STATS = ['hp', 'ds', 'at', 'de', 'ht', 'ct', 'bl', 'ev'], QUALITY = ['Common', 'Rare', 'Ultra Rare'];
+    const REASONS = {
+      training_level: 'Slashing unlocks when an owned partner reaches Lv 99.', training_busy: 'Slash outside combat.',
+      training_full: 'This card has reached its limit.', training_missing: 'You do not have enough copies of this card.',
+      timeout: 'The game did not answer within 8 seconds.', send: 'The command could not be sent.',
+      window: 'The status window was closed.', tab: 'The cards tab was closed.', world: 'The map changed or the world reloaded.'
+    };
+    // Game rules: a series 3 world and an owned partner at Lv 99; one command slashes 1 to 999 copies.
+    const SERIES = 3, MIN_LEVEL = 99, MAX_QTY = 999, WAIT_MS = 8000, POLL_MS = 100, GAP_MS = 300;
+    let overlay = null, mode = '', rows = [], job = null, inflight = null, failure = '', place = '', lang = '';
+    let timer = null, next = null;
+    const read = () => { try { return window.dmo?.store?.getState?.(); } catch { return null; } };
+    const items = () => { try { return window.dmo?.game?.scene?.getScene?.('world')?.deps?.content?.items; } catch { return null; } };
+    const valid = t => !!t && STATS.includes(t.stat) && Number.isSafeInteger(t.points) && t.points >= 1 && [0, 1, 2].includes(t.rarity ?? 0);
+    // The binder's copy limit: base uses plus mastery copies, from item.training and me.training[itemId].
+    const capacity = (t, count) => {
+      const base = t.baseUses ?? (t.rarity === 2 ? 24 : t.rarity === 1 ? 36 : 60), mastery = t.masteryPoints ?? (t.rarity === 2 ? 30 : 0);
+      const limit = base + mastery * Math.max(1, t.masteryCopiesPerPoint ?? 34), used = Number.isSafeInteger(count) && count > 0 ? Math.min(count, limit) : 0;
+      return { used, limit, remaining: limit - used };
+    };
+    const owned = (me, id) => (me?.cards || []).reduce((sum, c) => sum + (c?.itemId === id && c.qty > 0 ? c.qty : 0), 0);
+    const unlocked = state => (state?.world?.series ?? 1) >= SERIES &&
+      (state.me?.partner?.level >= MIN_LEVEL || !!state.archive?.partners?.some(p => p?.level >= MIN_LEVEL));
+    // The binder's card name: the item name without its stat and rarity (English suffix, Spanish prefix).
+    const cardName = item => {
+      const stat = item.training.stat.toUpperCase();
+      return String(item.name || item.id).replace(RegExp(` (?:Ultra Rare |Rare )?${stat} Card$`), '').replace(RegExp(`^Carta (?:Ultrarrara |Rara )?de ${stat} de `), '');
+    };
+    const collect = state => Object.entries(items() || {}).flatMap(([key, item]) => {
+      const t = item?.training, id = item?.id || key;
+      if (!valid(t)) return [];
+      const qty = Math.min(owned(state.me, id), capacity(t, state.me.training?.[id]).remaining, MAX_QTY);
+      return qty >= 1 ? [{ id, sort: String(item.name || id), name: cardName(item), rarity: t.rarity ?? 0, stat: t.stat, qty, on: true, state: '' }] : [];
+    }).sort((a, b) => a.sort.localeCompare(b.sort));
+    const where = state => JSON.stringify([state?.me?.charId, state?.world?.mapId, state?.world?.channel]);
+    const blocked = state => {
+      if (state?.screen !== 'world' || !state.me || state.world?.loading === true || state.world?.isLoading === true ||
+          state.world?.teleporting === true || where(state) !== place) return 'world';
+      if (!state.windows?.status) return 'window';
+      return document.querySelector(BINDER) ? '' : 'tab';
+    };
+    const totals = () => {
+      const q = s => overlay.querySelector(s), overview = mode === 'overview';
+      const chosen = rows.filter(r => r.on), copies = chosen.reduce((sum, r) => sum + r.qty, 0);
+      const total = q('[data-slash-total]'), status = q('[data-slash-status]'), back = q('[data-slash-back]'), start = q('[data-slash-start]');
+      total.hidden = !rows.length;
+      total.textContent = `${tr('Total')}: ${chosen.length} ${tr(chosen.length === 1 ? 'card' : 'cards')} · ${copies} ${tr(copies === 1 ? 'copy' : 'copies')}`;
+      status.hidden = !job; status.toggleAttribute('data-alert', mode === 'stopped');
+      if (job) {
+        const count = `${job.done} / ${job.list.length}`, row = job.list[job.index];
+        status.textContent = mode === 'running' ? `${count} · ${tr('Slashing')} ${row ? row.name + ' ×' + (row.sent ?? row.qty) : ''}` :
+          mode === 'done' ? `${count} · ${tr('Done.')}` : `${count} · ${tr('Stopped.')} ${tr(REASONS[failure] || failure)}`;
+      }
+      back.textContent = tr(mode === 'done' || mode === 'stopped' ? 'Close' : 'Cancel');
+      start.textContent = tr('Slash all'); start.hidden = !overview;
+      start.disabled = !overview || !chosen.length || !unlocked(read());
+    };
+    const render = () => {
+      if (!overlay) return;
+      lang = currentLanguage();
+      const q = s => overlay.querySelector(s), overview = mode === 'overview', locked = overview && !unlocked(read());
+      q('h2').textContent = tr('Slash all');
+      q('[data-slash-help]').textContent = locked ? tr(REASONS.training_level) : !rows.length ? tr('No cards can be slashed right now.') :
+        tr('Every card you can still slash, with the copies you own up to its limit.') + (overview && rows.some(r => r.rarity > 0) ? ' ' + tr('Untick rare cards you want to keep.') : '');
+      q('[data-slash-warn]').textContent = rows.length ? tr('Slashed cards are consumed permanently.') : '';
+      const list = q('[data-slash-list]'), shown = overview ? rows : rows.filter(r => r.on);
+      list.replaceChildren(); list.hidden = !shown.length;
+      for (const r of shown) {
+        const row = document.createElement(overview ? 'label' : 'div');
+        row.dataset.slashCard = r.id; row.dataset.rarity = String(r.rarity); row.toggleAttribute('data-off', !r.on);
+        if (r.state) row.dataset.state = r.state;
+        if (overview) {
+          // Common cards are always slashed; rare and ultra rare cards can be kept.
+          const box = document.createElement('input'); box.type = 'checkbox'; box.checked = r.on; box.disabled = r.rarity === 0;
+          box.addEventListener('change', () => { r.on = box.checked; row.toggleAttribute('data-off', !r.on); totals(); });
+          row.append(box);
+        } else {
+          const mark = document.createElement('span'); mark.setAttribute('aria-hidden', 'true');
+          mark.textContent = { done: '✓', active: '…', failed: '✗', skipped: '–' }[r.state] || '·'; row.append(mark);
+        }
+        const info = document.createElement('span'), name = document.createElement('b'), meta = document.createElement('small'), qty = document.createElement('span');
+        name.textContent = r.name; meta.textContent = tr(QUALITY[r.rarity]) + ' · ' + r.stat.toUpperCase();
+        qty.setAttribute('data-slash-qty', ''); qty.textContent = '×' + (r.sent ?? r.qty);
+        info.append(name, meta); row.append(info, qty); list.append(row);
+      }
+      totals();
+    };
+    const stop = reason => { clearTimeout(next); next = null; failure = reason; mode = 'stopped'; render(); };
+    // One command in flight at a time. It is watched to the end even after Cancel, and the entry stays disabled until then.
+    const watch = () => {
+      const f = inflight;
+      if (!f) return;
+      const state = read(), count = state?.me?.training?.[f.id] ?? 0;
+      const code = (state?.chat || []).find(line => !f.seen.has(line) && ERRORS.includes(line?.code))?.code;
+      const result = count > f.before ? 'ok' : code || (Date.now() >= f.until ? 'timeout' : '');
+      if (!result) {
+        const reason = mode === 'running' && blocked(state);
+        if (reason) stop(reason);
+        setTimeout(watch, POLL_MS); return;
+      }
+      inflight = null; schedule();
+      const row = job?.list[job.index];
+      if (row?.id !== f.id || row.state !== 'active') return;
+      row.state = result === 'ok' ? 'done' : 'failed';
+      if (result === 'ok') { job.done++; if (mode === 'running') job.index++; }
+      if (mode !== 'running') render();
+      else if (result !== 'ok') stop(result);
+      else { render(); next = setTimeout(step, GAP_MS); }
+    };
+    const step = () => {
+      next = null;
+      if (mode !== 'running' || inflight) return;
+      const state = read(), reason = blocked(state);
+      if (reason) { stop(reason); return; }
+      if (job.index >= job.list.length) { mode = 'done'; render(); return; }
+      if (!unlocked(state)) { stop('training_level'); return; }
+      const row = job.list[job.index], t = items()?.[row.id]?.training;
+      // Fresh limits before every command, never more than the overview showed.
+      const qty = valid(t) ? Math.min(row.qty, owned(state.me, row.id), capacity(t, state.me.training?.[row.id]).remaining, MAX_QTY) : 0;
+      if (qty < 1) { row.state = 'skipped'; job.index++; render(); next = setTimeout(step, 0); return; }
+      row.state = 'active'; row.sent = qty;
+      inflight = { id: row.id, before: state.me.training?.[row.id] ?? 0, seen: new Set(state.chat || []), until: Date.now() + WAIT_MS };
+      try { window.dmo.client.command('slashCards', { itemId: row.id, qty }); }
+      catch { inflight = null; row.state = 'failed'; stop('send'); return; }
+      render(); schedule(); setTimeout(watch, POLL_MS);
+    };
+    const begin = () => {
+      const list = rows.filter(r => r.on);
+      if (mode !== 'overview' || !list.length || !unlocked(read())) return;
+      job = { list, index: 0, done: 0 }; mode = 'running'; step();
+    };
+    const close = () => {
+      if (mode === 'running') toast(`${tr('Slash all stopped.')} ${job.done} / ${job.list.length}`, 2600);
+      clearTimeout(next); next = null; overlay?.remove(); overlay = null; mode = ''; job = null; rows = [];
+      refresh(); document.querySelector('[data-digimmo-slash-entry]:not(:disabled)')?.focus({ preventScroll: true });
+    };
+    const open = () => {
+      const state = read();
+      if (overlay || inflight || state?.screen !== 'world' || !state.me || !state.windows?.status || !document.querySelector(BINDER) ||
+          document.querySelector('[data-testid="card-slash-confirm"]')) return;
+      place = where(state); rows = collect(state); mode = 'overview'; job = null; failure = '';
+      overlay = document.createElement('div'); overlay.id = 'digimmo-slash-picker'; overlay.className = 'modal';
+      overlay.innerHTML = '<section role="dialog" aria-modal="true" aria-labelledby="digimmo-slash-title"><h2 id="digimmo-slash-title"></h2><p data-slash-help></p><p data-slash-warn></p><div data-slash-list></div><p data-slash-total></p><p data-slash-status role="status"></p><footer><button type="button" data-slash-back></button><button type="button" data-slash-start></button></footer></section>';
+      overlay.querySelector('[data-slash-back]').addEventListener('click', close);
+      overlay.querySelector('[data-slash-start]').addEventListener('click', begin);
+      for (const event of ['pointerdown', 'mousedown', 'click', 'dblclick', 'wheel', 'contextmenu']) overlay.addEventListener(event, e => e.stopPropagation());
+      document.body.append(overlay); render();
+      overlay.querySelector('[data-slash-back]').focus({ preventScroll: true });
+    };
+    const refresh = () => {
+      timer = null;
+      for (const binder of document.querySelectorAll(BINDER)) {
+        const filters = binder.querySelector(':scope > .binder-filters');
+        if (!filters) continue;
+        let entry = binder.querySelector('[data-digimmo-slash-entry]');
+        if (!entry) {
+          const tools = document.createElement('div'); tools.setAttribute('data-digimmo-slash-tools', '');
+          entry = document.createElement('button'); entry.type = 'button'; entry.className = 'px-btn px-btn--ghost';
+          entry.setAttribute('data-digimmo-slash-entry', '');
+          entry.addEventListener('click', open); tools.append(entry); filters.after(tools);
+        }
+        const label = tr('Slash all');
+        if (entry.textContent !== label) entry.textContent = label;
+        if (entry.disabled !== !!inflight) entry.disabled = !!inflight;
+      }
+      if (overlay && mode === 'overview' && blocked(read())) close();
+      else if (overlay && lang !== currentLanguage()) render();
+    };
+    const schedule = () => { if (timer === null) timer = setTimeout(refresh, 0); };
+    const init = () => {
+      const style = document.createElement('style');
+      style.textContent = `${BINDER} [data-digimmo-slash-tools]{display:flex;justify-content:flex-end;padding:0 0 8px}
+        ${BINDER} [data-digimmo-slash-entry]{color:#ffe198}
+        #digimmo-slash-picker{position:fixed;inset:0;z-index:2147483645;background:#080a26a6;display:grid;place-items:center;padding:16px;box-sizing:border-box;font:13px 'Courier New',monospace;color:#eaf1ff}
+        #digimmo-slash-picker [hidden]{display:none!important}
+        #digimmo-slash-picker section{display:flex;flex-direction:column;gap:12px;box-sizing:border-box;width:min(520px,100%);max-height:85vh;padding:18px;background:#0c1734;border:3px solid #e8c46b;box-shadow:0 0 0 3px #142850}
+        #digimmo-slash-picker h2{font-size:18px;color:#ffe198;margin:0}#digimmo-slash-picker p{margin:0;line-height:1.4}
+        #digimmo-slash-picker [data-slash-warn],#digimmo-slash-picker [data-alert]{color:#efa7a7}
+        #digimmo-slash-picker [data-slash-list]{overflow:auto;min-height:50px;display:grid;gap:6px}
+        #digimmo-slash-picker [data-slash-card]{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:10px;align-items:center;padding:6px 8px;background:#172e54;border:2px solid #607eaf}
+        #digimmo-slash-picker label[data-slash-card]{cursor:pointer}#digimmo-slash-picker [data-off]{opacity:.5}
+        #digimmo-slash-picker [data-slash-card]>span:nth-child(2){display:grid;gap:3px;overflow-wrap:anywhere}
+        #digimmo-slash-picker [data-slash-card] small{color:#aebcdb}#digimmo-slash-picker [data-rarity="1"] small{color:#8fd0ff}#digimmo-slash-picker [data-rarity="2"] small{color:#ffcf6b}
+        #digimmo-slash-picker [data-slash-qty]{color:#ffe198;font-weight:bold}
+        #digimmo-slash-picker [data-state=done]{border-color:#6fbf73}#digimmo-slash-picker [data-state=active]{border-color:#ffe198}#digimmo-slash-picker [data-state=failed]{border-color:#e06c6c}
+        #digimmo-slash-picker input{margin:0;width:16px;height:16px;accent-color:#e8c46b}
+        #digimmo-slash-picker button{font:inherit;color:#eaf1ff;background:#172e54;border:2px solid #607eaf;cursor:pointer;padding:8px}
+        #digimmo-slash-picker button:disabled,#digimmo-slash-picker input:disabled{opacity:.45;cursor:default}
+        #digimmo-slash-picker :focus-visible{outline:2px solid #ffe198;outline-offset:2px}
+        #digimmo-slash-picker footer{display:flex;justify-content:space-between;gap:20px}#digimmo-slash-picker [data-slash-start]{color:#ffe198}`;
+      document.head.append(style);
+      new MutationObserver(records => {
+        if (records.some(r => !overlay?.contains(r.target) && r.target instanceof Element && (r.target.closest(WATCH) ||
+            [...r.addedNodes, ...r.removedNodes].some(n => n instanceof Element && (n.matches(WATCH) || n.querySelector(WATCH)))))) schedule();
+      }).observe(document.body, { childList: true, subtree: true });
+      schedule();
+    };
+    window.addEventListener('keydown', e => {
+      if (!overlay) return;
+      e.stopImmediatePropagation();
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      else if (e.key === 'Tab') {
+        const controls = [...overlay.querySelectorAll('button:not(:disabled):not([hidden]), input:not(:disabled)')], index = controls.indexOf(document.activeElement);
+        if (!controls.length) return;
+        e.preventDefault(); controls[index < 0 ? (e.shiftKey ? controls.length - 1 : 0) :
+          (index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length].focus();
+      }
+    }, true);
+    window.addEventListener('keyup', e => { if (overlay) e.stopImmediatePropagation(); }, true);
     if (document.body) init(); else document.addEventListener('DOMContentLoaded', init, { once: true });
   })();
   // Quest markers (F10, on by default): before the name of a monster that an active quest, daily or daily board
