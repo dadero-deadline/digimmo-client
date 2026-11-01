@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.7
+
+Auto accept for repeatable dailies.
+
+- Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.
+
 ## 0.3.6
 
 Quest markers for repeatable dailies.

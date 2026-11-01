@@ -111,6 +111,7 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
+    "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.": "Aceptación automática de diarias repetibles.\n• Aceptar y entregar misiones automáticamente ahora acepta todas las diarias con personajes que vuelven a la primera página del diálogo después de cada misión, como Takato.",
     "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de misión para diarias repetibles.\n• Las diarias repetibles, como las de Takato en Digital Fog, cambian a nuevos objetivos después de la primera vez. Los monstruos de esos objetivos vuelven a mostrar su ! azul.\n• Un botón Usar todas en el álbum de cartas muestra todas las cartas que aún puedes usar, con sus copias y el total; las cartas raras se pueden desmarcar. Al confirmar, las cartas se usan de una en una. Se detiene en el primer error del juego y puedes cancelarlo en cualquier momento.",
     "Release Digimon": "Liberar Digimon",
     "Choose a Digimon. The game will ask you to confirm.": "Elige un Digimon. El juego te pedirá confirmación.",
@@ -277,6 +278,7 @@
     "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Fragmento en mono, filtro de graves de 200 Hz y dos filtros de agudos de 900 Hz, ajuste de volumen constante, fundidos y codificación Opus. Pasajes cortos variados cerca de los altavoces de Server Desert con pausas largas; sin cambios de tono ni velocidad."
   },
   "pt": {
+    "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.": "Aceitação automática de diárias repetíveis.\n• Aceitar e entregar missões automaticamente agora aceita todas as diárias com personagens que voltam para a primeira página do diálogo depois de cada missão, como o Takato.",
     "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de missão para diárias repetíveis.\n• Diárias repetíveis, como as do Takato na Digital Fog, mudam para novos objetivos depois da primeira vez. Os monstros desses objetivos voltam a mostrar o ! azul.\n• Um botão Usar todas no fichário de cartas mostra todas as cartas que você ainda pode usar, com as cópias e o total; as cartas raras podem ser desmarcadas. Ao confirmar, as cartas são usadas uma de cada vez. Para no primeiro erro do jogo e pode ser cancelado a qualquer momento.",
     "Release Digimon": "Liberar Digimon",
     "Choose a Digimon. The game will ask you to confirm.": "Escolha um Digimon. O jogo pedirá sua confirmação.",
@@ -2666,6 +2668,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
+  ["0.3.7", "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato."],
   ["0.3.6", "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time."],
   ["0.3.5", "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged."],
   ["0.3.4", "Blue cape particles for Paladin Mode.\n• Small blue particles fall from the cape of Imperialdramon Paladin Mode and glow softly at night.\n• Controlled by Livelier Paladin Mode in the advanced F10 settings; the night glow follows the atmosphere lighting settings."],
@@ -3179,6 +3182,9 @@
         const result = state.me.quests?.[pending.quest]?.state;
         if (pending.action === 'acceptQuest' ? result !== 1 && result !== 2 : result !== 3) return;
         pending = null;
+        // Daily givers can send the dialog back to its first page after each quest. Real progress
+        // allows the marked navigation again; without progress nothing is pressed twice.
+        for (const id of attempted) if (id.startsWith('["next"')) attempted.delete(id);
       }
       const briefing = panel.querySelector('.briefing[data-quest]');
       if (briefing) {
