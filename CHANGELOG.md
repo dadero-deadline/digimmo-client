@@ -6,6 +6,8 @@ Auto accept for repeatable dailies.
 
 - Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.
 
+- A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time.
+
 ## 0.3.6
 
 Quest markers for repeatable dailies.

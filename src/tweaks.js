@@ -111,7 +111,7 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
-    "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.": "Aceptación automática de diarias repetibles.\n• Aceptar y entregar misiones automáticamente ahora acepta todas las diarias con personajes que vuelven a la primera página del diálogo después de cada misión, como Takato.",
+    "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.\n• A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time.": "Aceptación automática de diarias repetibles.\n• Aceptar y entregar misiones automáticamente ahora acepta todas las diarias con personajes que vuelven a la primera página del diálogo después de cada misión, como Takato.\n• Un botón Deshacer todo en la pestaña Deshacer de la forja muestra todo el equipo de tu bolsa que se puede deshacer, con su Digizoid y el total. Los favoritos y las piezas etiquetadas quedan fuera; las piezas épicas o mejores quedan sin marcar hasta que las marques. Al confirmar, las piezas se deshacen de una en una. Se detiene en el primer error del juego y puedes cancelarlo en cualquier momento.",
     "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de misión para diarias repetibles.\n• Las diarias repetibles, como las de Takato en Digital Fog, cambian a nuevos objetivos después de la primera vez. Los monstruos de esos objetivos vuelven a mostrar su ! azul.\n• Un botón Usar todas en el álbum de cartas muestra todas las cartas que aún puedes usar, con sus copias y el total; las cartas raras se pueden desmarcar. Al confirmar, las cartas se usan de una en una. Se detiene en el primer error del juego y puedes cancelarlo en cualquier momento.",
     "Release Digimon": "Liberar Digimon",
     "Choose a Digimon. The game will ask you to confirm.": "Elige un Digimon. El juego te pedirá confirmación.",
@@ -147,6 +147,20 @@
     "Stopped.": "Detenido.",
     "Close": "Cerrar",
     "Slash all stopped.": "Usar todas se detuvo.",
+    "Salvage all": "Deshacer todo",
+    "Every piece of gear in your bag that the forge can salvage. Epic or better pieces stay unticked until you tick them.": "Todo el equipo de tu bolsa que la forja puede deshacer. Las piezas épicas o mejores quedan sin marcar hasta que las marques.",
+    "Favorites and tagged pieces are kept": "Se conservan los favoritos y las piezas etiquetadas",
+    "Salvaged gear is gone for good.": "El equipo deshecho se pierde para siempre.",
+    "No gear can be salvaged right now.": "Ahora no hay equipo que deshacer.",
+    "The forge was closed.": "Se cerró la forja.",
+    "The Salvage tab was closed.": "Se cerró la pestaña Deshacer.",
+    "Uncommon": "Poco común",
+    "Epic": "Épica",
+    "Legendary": "Legendaria",
+    "piece": "pieza",
+    "pieces": "piezas",
+    "Salvaging": "Deshaciendo",
+    "Salvage all stopped.": "Deshacer todo se detuvo.",
     "Auto accept and turn in quests": "Aceptar y entregar misiones automáticamente",
     "Off by default. Open an NPC dialog to accept offered quests and turn in completed ones. Reward choices stay manual.": "Desactivado de forma predeterminada. Abre el diálogo de un PNJ para aceptar las misiones ofrecidas y entregar las completadas. La elección de recompensas sigue siendo manual.",
     "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged.": "Aceptación y entrega automáticas de misiones opcionales.\n• Activa Aceptar y entregar misiones automáticamente en F10 y abre el diálogo de un PNJ. Las misiones disponibles se aceptan y las completadas se entregan mediante los botones normales del diálogo. Las misiones con nombres idénticos se gestionan por separado.\n• Desactivado de forma predeterminada. La elección de recompensas y los demás servicios de los PNJ siguen siendo manuales.\n• Liberar Digimon tiene un botón separado entre los Digimon guardados y los huevos y su propia pantalla de selección. Los botones para liberar ya no aparecen junto a Cambiar en el archivo; la confirmación original se mantiene.",
@@ -278,7 +292,7 @@
     "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Fragmento en mono, filtro de graves de 200 Hz y dos filtros de agudos de 900 Hz, ajuste de volumen constante, fundidos y codificación Opus. Pasajes cortos variados cerca de los altavoces de Server Desert con pausas largas; sin cambios de tono ni velocidad."
   },
   "pt": {
-    "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.": "Aceitação automática de diárias repetíveis.\n• Aceitar e entregar missões automaticamente agora aceita todas as diárias com personagens que voltam para a primeira página do diálogo depois de cada missão, como o Takato.",
+    "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.\n• A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time.": "Aceitação automática de diárias repetíveis.\n• Aceitar e entregar missões automaticamente agora aceita todas as diárias com personagens que voltam para a primeira página do diálogo depois de cada missão, como o Takato.\n• Um botão Desmanchar tudo na aba Desmanchar da forja mostra todo equipamento da sua bolsa que pode ser desmanchado, com o Digizoid e o total. Favoritos e peças etiquetadas ficam de fora; peças épicas ou melhores ficam desmarcadas até você marcar. Ao confirmar, as peças são desmanchadas uma de cada vez. Para no primeiro erro do jogo e pode ser cancelado a qualquer momento.",
     "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de missão para diárias repetíveis.\n• Diárias repetíveis, como as do Takato na Digital Fog, mudam para novos objetivos depois da primeira vez. Os monstros desses objetivos voltam a mostrar o ! azul.\n• Um botão Usar todas no fichário de cartas mostra todas as cartas que você ainda pode usar, com as cópias e o total; as cartas raras podem ser desmarcadas. Ao confirmar, as cartas são usadas uma de cada vez. Para no primeiro erro do jogo e pode ser cancelado a qualquer momento.",
     "Release Digimon": "Liberar Digimon",
     "Choose a Digimon. The game will ask you to confirm.": "Escolha um Digimon. O jogo pedirá sua confirmação.",
@@ -314,6 +328,20 @@
     "Stopped.": "Interrompido.",
     "Close": "Fechar",
     "Slash all stopped.": "Usar todas foi interrompido.",
+    "Salvage all": "Desmanchar tudo",
+    "Every piece of gear in your bag that the forge can salvage. Epic or better pieces stay unticked until you tick them.": "Todo equipamento da sua bolsa que a forja pode desmanchar. Peças épicas ou melhores ficam desmarcadas até você marcar.",
+    "Favorites and tagged pieces are kept": "Favoritos e peças etiquetadas são mantidos",
+    "Salvaged gear is gone for good.": "O equipamento desmanchado some para sempre.",
+    "No gear can be salvaged right now.": "Nenhum equipamento pode ser desmanchado agora.",
+    "The forge was closed.": "A forja foi fechada.",
+    "The Salvage tab was closed.": "A aba Desmanchar foi fechada.",
+    "Uncommon": "Incomum",
+    "Epic": "Épica",
+    "Legendary": "Lendária",
+    "piece": "peça",
+    "pieces": "peças",
+    "Salvaging": "Desmanchando",
+    "Salvage all stopped.": "Desmanchar tudo foi interrompido.",
     "Auto accept and turn in quests": "Aceitar e entregar missões automaticamente",
     "Off by default. Open an NPC dialog to accept offered quests and turn in completed ones. Reward choices stay manual.": "Desativado por padrão. Abra o diálogo de um NPC para aceitar as missões oferecidas e entregar as concluídas. A escolha de recompensas continua manual.",
     "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged.": "Aceitação e entrega automáticas de missões opcionais.\n• Ative Aceitar e entregar missões automaticamente no F10 e abra o diálogo de um NPC. As missões disponíveis são aceitas e as concluídas são entregues pelos botões normais do diálogo. Missões com nomes idênticos são tratadas separadamente.\n• Desativado por padrão. A escolha de recompensas e os outros serviços dos NPCs continuam manuais.\n• Liberar Digimon tem um botão separado entre os Digimon guardados e os ovos e sua própria tela de seleção. Os botões para liberar não ficam mais ao lado de Trocar no arquivo; a confirmação original é mantida.",
@@ -2668,7 +2696,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.3.7", "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato."],
+  ["0.3.7", "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.\n• A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time."],
   ["0.3.6", "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time."],
   ["0.3.5", "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged."],
   ["0.3.4", "Blue cape particles for Paladin Mode.\n• Small blue particles fall from the cape of Imperialdramon Paladin Mode and glow softly at night.\n• Controlled by Livelier Paladin Mode in the advanced F10 settings; the night glow follows the atmosphere lighting settings."],
@@ -3581,6 +3609,229 @@
         if (records.some(r => !overlay?.contains(r.target) && r.target instanceof Element && (r.target.closest(WATCH) ||
             [...r.addedNodes, ...r.removedNodes].some(n => n instanceof Element && (n.matches(WATCH) || n.querySelector(WATCH)))))) schedule();
       }).observe(document.body, { childList: true, subtree: true });
+      schedule();
+    };
+    window.addEventListener('keydown', e => {
+      if (!overlay) return;
+      e.stopImmediatePropagation();
+      if (e.key === 'Escape') { e.preventDefault(); close(); }
+      else if (e.key === 'Tab') {
+        const controls = [...overlay.querySelectorAll('button:not(:disabled):not([hidden]), input:not(:disabled)')], index = controls.indexOf(document.activeElement);
+        if (!controls.length) return;
+        e.preventDefault(); controls[index < 0 ? (e.shiftKey ? controls.length - 1 : 0) :
+          (index + (e.shiftKey ? -1 : 1) + controls.length) % controls.length].focus();
+      }
+    }, true);
+    window.addEventListener('keyup', e => { if (overlay) e.stopImmediatePropagation(); }, true);
+    if (document.body) init(); else document.addEventListener('DOMContentLoaded', init, { once: true });
+  })();
+  // Salvage all in the forge's Salvage tab (approved interface helper). An overview lists every piece of gear in the bag
+  // that the forge can salvage; favorites and tagged pieces stay out as in the game, and Epic or better pieces, which the
+  // game confirms one by one, stay unticked until chosen. Only after confirmation does it send the forge's own
+  // forgeSalvage command, one piece at a time, waiting for the piece to leave the bag, an error line in chat or 8 seconds.
+  (() => {
+    const FORGE = '[data-testid="forge"]', WATCH = FORGE, TAB = '[data-forge-tab="salvage"][aria-selected="true"]';
+    const RARITY = ['Common', 'Uncommon', 'Rare', 'Epic', 'Legendary'];
+    // The forge's yield: Digizoid of the gear's band, by rarity and by tier above the start of the band.
+    const BANDS = [{ material: 'blue_digizoid', from: 1, to: 5 }, { material: 'red_digizoid', from: 6, to: 8 }, { material: 'gold_digizoid', from: 9, to: 11 }];
+    const BY_RARITY = [1, 2, 4, 10, 25], PER_TIER = 1.5, CONFIRM_RARITY = 3;
+    const REASONS = {
+      timeout: 'The game did not answer within 8 seconds.', send: 'The command could not be sent.',
+      forge: 'The forge was closed.', tab: 'The Salvage tab was closed.', world: 'The map changed or the world reloaded.'
+    };
+    const WAIT_MS = 8000, POLL_MS = 100, GAP_MS = 300;
+    let overlay = null, mode = '', rows = [], kept = 0, job = null, inflight = null, failure = '', place = '', npc = '', lang = '';
+    let timer = null, next = null;
+    const read = () => { try { return window.dmo?.store?.getState?.(); } catch { return null; } };
+    const items = () => { try { return window.dmo?.game?.scene?.getScene?.('world')?.deps?.content?.items; } catch { return null; } };
+    const band = tier => BANDS.find(b => tier >= b.from && tier <= b.to) ?? (tier < 1 ? BANDS[0] : BANDS[2]);
+    const salvageYield = (def, rarity) => {
+      const gear = def?.gear, material = gear && (gear.forge?.material ?? band(gear.tier).material);
+      if (!gear || !material) return null;
+      const from = (BANDS.find(b => b.material === material) ?? band(gear.tier)).from, r = Math.max(0, Math.min(4, Math.floor(rarity)));
+      return { itemId: material, qty: Math.floor(BY_RARITY[r] * PER_TIER ** Math.max(0, gear.tier - from) + 0.5 + 1e-9) };
+    };
+    // The forge refuses favorites and pieces tagged for a gear set.
+    const locked = piece => !!piece.gear.fav || !!piece.gear.tags?.length;
+    const metal = id => String(items()?.[id]?.name || id);
+    const where = state => JSON.stringify([state?.me?.charId, state?.world?.mapId, state?.world?.channel]);
+    const blocked = state => {
+      if (state?.screen !== 'world' || !state.me || state.world?.loading === true || state.world?.isLoading === true ||
+          state.world?.teleporting === true || where(state) !== place) return 'world';
+      if (!state.forge || state.forge.npc !== npc) return 'forge';
+      return document.querySelector(FORGE + ' ' + TAB) ? '' : 'tab';
+    };
+    const collect = state => {
+      const list = items() || {};
+      kept = 0;
+      return (state.me.inventory || []).flatMap(piece => {
+        const def = piece?.gear && list[piece.itemId];
+        if (!def?.gear) return [];
+        if (locked(piece)) { kept++; return []; }
+        const gain = salvageYield(def, piece.gear.rarity);
+        return gain ? [{ uid: piece.gear.uid, name: String(def.name || piece.itemId), rarity: piece.gear.rarity, tier: def.gear.tier, gain,
+          on: piece.gear.rarity < CONFIRM_RARITY, state: '' }] : [];
+      });
+    };
+    const totals = () => {
+      const q = s => overlay.querySelector(s), overview = mode === 'overview', chosen = rows.filter(r => r.on), gains = new Map();
+      for (const r of chosen) gains.set(r.gain.itemId, (gains.get(r.gain.itemId) || 0) + r.gain.qty);
+      const total = q('[data-salvage-total]'), status = q('[data-salvage-status]'), back = q('[data-salvage-back]'), start = q('[data-salvage-start]');
+      total.hidden = !rows.length;
+      total.textContent = `${tr('Total')}: ${chosen.length} ${tr(chosen.length === 1 ? 'piece' : 'pieces')}` +
+        [...gains].map(([id, qty]) => ` · ${qty} ${metal(id)}`).join('');
+      status.hidden = !job; status.toggleAttribute('data-alert', mode === 'stopped');
+      if (job) {
+        const count = `${job.done} / ${job.list.length}`, row = job.list[job.index];
+        status.textContent = mode === 'running' ? `${count} · ${tr('Salvaging')} ${row ? row.name : ''}` :
+          mode === 'done' ? `${count} · ${tr('Done.')}` : `${count} · ${tr('Stopped.')} ${tr(REASONS[failure] || failure)}`;
+      }
+      back.textContent = tr(mode === 'done' || mode === 'stopped' ? 'Close' : 'Cancel');
+      start.textContent = tr('Salvage all'); start.hidden = !overview; start.disabled = !overview || !chosen.length;
+    };
+    const render = () => {
+      if (!overlay) return;
+      lang = currentLanguage();
+      const q = s => overlay.querySelector(s), overview = mode === 'overview';
+      q('h2').textContent = tr('Salvage all');
+      q('[data-salvage-help]').textContent = rows.length ? tr('Every piece of gear in your bag that the forge can salvage. Epic or better pieces stay unticked until you tick them.') :
+        tr('No gear can be salvaged right now.');
+      q('[data-salvage-kept]').hidden = !kept || !overview;
+      q('[data-salvage-kept]').textContent = `${tr('Favorites and tagged pieces are kept')}: ${kept}`;
+      q('[data-salvage-warn]').textContent = rows.length ? tr('Salvaged gear is gone for good.') : '';
+      const list = q('[data-salvage-list]'), shown = overview ? rows : rows.filter(r => r.on);
+      list.replaceChildren(); list.hidden = !shown.length;
+      for (const r of shown) {
+        const row = document.createElement(overview ? 'label' : 'div');
+        row.dataset.salvagePiece = r.uid; row.dataset.rarity = String(r.rarity); row.toggleAttribute('data-off', !r.on);
+        if (r.state) row.dataset.state = r.state;
+        if (overview) {
+          const box = document.createElement('input'); box.type = 'checkbox'; box.checked = r.on;
+          box.addEventListener('change', () => { r.on = box.checked; row.toggleAttribute('data-off', !r.on); totals(); });
+          row.append(box);
+        } else {
+          const mark = document.createElement('span'); mark.setAttribute('aria-hidden', 'true');
+          mark.textContent = { done: '✓', active: '…', failed: '✗', skipped: '–' }[r.state] || '·'; row.append(mark);
+        }
+        const info = document.createElement('span'), name = document.createElement('b'), meta = document.createElement('small'), gain = document.createElement('span');
+        name.textContent = r.name; meta.textContent = `${tr(RARITY[Math.max(0, Math.min(4, r.rarity))] || '')} · T${r.tier}`;
+        gain.setAttribute('data-salvage-gain', ''); gain.textContent = `+${r.gain.qty} ${metal(r.gain.itemId)}`;
+        info.append(name, meta); row.append(info, gain); list.append(row);
+      }
+      totals();
+    };
+    const stop = reason => { clearTimeout(next); next = null; failure = reason; mode = 'stopped'; render(); };
+    // One command in flight at a time. It is watched to the end even after Cancel, and the entry stays disabled until then.
+    const watch = () => {
+      const f = inflight;
+      if (!f) return;
+      const state = read(), gone = !!state?.me && !(state.me.inventory || []).some(piece => piece?.gear?.uid === f.uid);
+      // Errors reach the chat as system notices; a salvaged piece only shows a toast.
+      const line = (state?.chat || []).find(l => !f.seen.has(l) && l?.notice === true && l.code && l.code !== 'forge_salvaged');
+      const result = gone ? 'ok' : line ? String(line.text || line.code) : Date.now() >= f.until ? 'timeout' : '';
+      if (!result) {
+        const reason = mode === 'running' && blocked(state);
+        if (reason) stop(reason);
+        setTimeout(watch, POLL_MS); return;
+      }
+      inflight = null; schedule();
+      const row = job?.list[job.index];
+      if (row?.uid !== f.uid || row.state !== 'active') return;
+      row.state = result === 'ok' ? 'done' : 'failed';
+      if (result === 'ok') { job.done++; if (mode === 'running') job.index++; }
+      if (mode !== 'running') render();
+      else if (result !== 'ok') stop(result);
+      else { render(); next = setTimeout(step, GAP_MS); }
+    };
+    const step = () => {
+      next = null;
+      if (mode !== 'running' || inflight) return;
+      const state = read(), reason = blocked(state);
+      if (reason) { stop(reason); return; }
+      if (job.index >= job.list.length) { mode = 'done'; render(); return; }
+      // Fresh slot before every command: the same piece, still in the bag and still allowed by the forge.
+      const row = job.list[job.index], bag = state.me.inventory || [], slot = bag.findIndex(piece => piece?.gear?.uid === row.uid);
+      const piece = bag[slot], def = items()?.[piece?.itemId];
+      if (slot < 0 || !def?.gear || locked(piece) || !salvageYield(def, piece.gear.rarity)) {
+        row.state = 'skipped'; job.index++; render(); next = setTimeout(step, 0); return;
+      }
+      row.state = 'active';
+      inflight = { uid: row.uid, seen: new Set(state.chat || []), until: Date.now() + WAIT_MS };
+      try { window.dmo.client.command('forgeSalvage', { npc: state.forge.npc, slot, uid: row.uid }); }
+      catch { inflight = null; row.state = 'failed'; stop('send'); return; }
+      render(); schedule(); setTimeout(watch, POLL_MS);
+    };
+    const begin = () => {
+      const list = rows.filter(r => r.on);
+      if (mode !== 'overview' || !list.length) return;
+      job = { list, index: 0, done: 0 }; mode = 'running'; step();
+    };
+    const close = () => {
+      if (mode === 'running') toast(`${tr('Salvage all stopped.')} ${job.done} / ${job.list.length}`, 2600);
+      clearTimeout(next); next = null; overlay?.remove(); overlay = null; mode = ''; job = null; rows = [];
+      refresh(); document.querySelector('[data-digimmo-salvage-entry]:not(:disabled)')?.focus({ preventScroll: true });
+    };
+    const open = () => {
+      const state = read();
+      if (overlay || inflight || state?.screen !== 'world' || !state.me || !state.forge || !document.querySelector(FORGE + ' ' + TAB) ||
+          document.querySelector('[data-testid="forge-salvage-confirm"]')) return;
+      place = where(state); npc = state.forge.npc; rows = collect(state); mode = 'overview'; job = null; failure = '';
+      overlay = document.createElement('div'); overlay.id = 'digimmo-salvage-picker'; overlay.className = 'modal';
+      overlay.innerHTML = '<section role="dialog" aria-modal="true" aria-labelledby="digimmo-salvage-title"><h2 id="digimmo-salvage-title"></h2><p data-salvage-help></p><p data-salvage-kept></p><p data-salvage-warn></p><div data-salvage-list></div><p data-salvage-total></p><p data-salvage-status role="status"></p><footer><button type="button" data-salvage-back></button><button type="button" data-salvage-start></button></footer></section>';
+      overlay.querySelector('[data-salvage-back]').addEventListener('click', close);
+      overlay.querySelector('[data-salvage-start]').addEventListener('click', begin);
+      for (const event of ['pointerdown', 'mousedown', 'click', 'dblclick', 'wheel', 'contextmenu']) overlay.addEventListener(event, e => e.stopPropagation());
+      document.body.append(overlay); render();
+      overlay.querySelector('[data-salvage-back]').focus({ preventScroll: true });
+    };
+    const refresh = () => {
+      timer = null;
+      for (const forge of document.querySelectorAll(FORGE)) {
+        const tabs = forge.querySelector(':scope > .shop__tabs');
+        if (!tabs) continue;
+        let tools = forge.querySelector('[data-digimmo-salvage-tools]'), entry = tools?.querySelector('[data-digimmo-salvage-entry]');
+        if (!entry) {
+          tools = document.createElement('div'); tools.setAttribute('data-digimmo-salvage-tools', '');
+          entry = document.createElement('button'); entry.type = 'button'; entry.className = 'px-btn px-btn--ghost';
+          entry.setAttribute('data-digimmo-salvage-entry', '');
+          entry.addEventListener('click', open); tools.append(entry); tabs.after(tools);
+        }
+        const label = tr('Salvage all'), off = !forge.querySelector(TAB);
+        if (entry.textContent !== label) entry.textContent = label;
+        if (tools.hidden !== off) tools.hidden = off;
+        if (entry.disabled !== !!inflight) entry.disabled = !!inflight;
+      }
+      if (overlay && mode === 'overview' && blocked(read())) close();
+      else if (overlay && lang !== currentLanguage()) render();
+    };
+    const schedule = () => { if (timer === null) timer = setTimeout(refresh, 0); };
+    const init = () => {
+      const style = document.createElement('style');
+      style.textContent = `${FORGE} [data-digimmo-salvage-tools]{display:flex;justify-content:flex-end;padding:6px 0}
+        ${FORGE} [data-digimmo-salvage-tools][hidden]{display:none}${FORGE} [data-digimmo-salvage-entry]{color:#fff}
+        #digimmo-salvage-picker{position:fixed;inset:0;z-index:2147483645;background:#080a26a6;display:grid;place-items:center;padding:16px;box-sizing:border-box;font:13px 'Courier New',monospace;color:#eaf1ff}
+        #digimmo-salvage-picker [hidden]{display:none!important}
+        #digimmo-salvage-picker section{display:flex;flex-direction:column;gap:12px;box-sizing:border-box;width:min(560px,100%);max-height:85vh;padding:18px;background:#0c1734;border:3px solid #e8c46b;box-shadow:0 0 0 3px #142850}
+        #digimmo-salvage-picker h2{font-size:18px;color:#ffe198;margin:0}#digimmo-salvage-picker p{margin:0;line-height:1.4}
+        #digimmo-salvage-picker [data-salvage-warn],#digimmo-salvage-picker [data-alert]{color:#efa7a7}#digimmo-salvage-picker [data-salvage-kept]{color:#aebcdb}
+        #digimmo-salvage-picker [data-salvage-list]{overflow:auto;min-height:50px;display:grid;gap:6px}
+        #digimmo-salvage-picker [data-salvage-piece]{display:grid;grid-template-columns:18px minmax(0,1fr) auto;gap:10px;align-items:center;padding:6px 8px;background:#172e54;border:2px solid #607eaf}
+        #digimmo-salvage-picker label[data-salvage-piece]{cursor:pointer}#digimmo-salvage-picker [data-off]{opacity:.5}
+        #digimmo-salvage-picker [data-salvage-piece]>span:nth-child(2){display:grid;gap:3px;overflow-wrap:anywhere}
+        #digimmo-salvage-picker [data-salvage-piece] small{color:#aebcdb}#digimmo-salvage-picker [data-rarity="1"] small{color:#8fe08f}#digimmo-salvage-picker [data-rarity="2"] small{color:#8fd0ff}
+        #digimmo-salvage-picker [data-rarity="3"] small{color:#d6a2ff}#digimmo-salvage-picker [data-rarity="4"] small{color:#ffb35c}
+        #digimmo-salvage-picker [data-salvage-gain]{color:#ffe198;font-weight:bold;text-align:right}
+        #digimmo-salvage-picker [data-state=done]{border-color:#6fbf73}#digimmo-salvage-picker [data-state=active]{border-color:#ffe198}#digimmo-salvage-picker [data-state=failed]{border-color:#e06c6c}
+        #digimmo-salvage-picker input{margin:0;width:16px;height:16px;accent-color:#e8c46b}
+        #digimmo-salvage-picker button{font:inherit;color:#eaf1ff;background:#172e54;border:2px solid #607eaf;cursor:pointer;padding:8px}
+        #digimmo-salvage-picker button:disabled{opacity:.45;cursor:default}
+        #digimmo-salvage-picker :focus-visible{outline:2px solid #ffe198;outline-offset:2px}
+        #digimmo-salvage-picker footer{display:flex;justify-content:space-between;gap:20px}#digimmo-salvage-picker [data-salvage-start]{color:#fff}`;
+      document.head.append(style);
+      new MutationObserver(records => {
+        if (records.some(r => !overlay?.contains(r.target) && r.target instanceof Element && (r.target.closest(WATCH) ||
+            [...r.addedNodes, ...r.removedNodes].some(n => n instanceof Element && (n.matches(WATCH) || n.querySelector(WATCH)))))) schedule();
+      }).observe(document.body, { childList: true, subtree: true, attributes: true, attributeFilter: ['aria-selected'] });
       schedule();
     };
     window.addEventListener('keydown', e => {
