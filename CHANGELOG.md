@@ -8,6 +8,8 @@ Reliable auto accept for dailies.
 
 - During a Biomerge your night light stays with your fused Digimon instead of trailing behind it.
 
+- The plain pumpkins in Puppet Woods no longer glow; only its hanging pumpkin lanterns light up at night.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
