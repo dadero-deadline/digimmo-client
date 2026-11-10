@@ -14,6 +14,8 @@ Reliable auto accept for dailies.
 
 - Toy Town and Odaiba windows light up to their dark blue edges at night, not just the pale middle of the glass.
 
+- Highton Terrace windows light up as whole panes, curtains included, without glowing frame lines or dark corners.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
