@@ -10,6 +10,8 @@ Reliable auto accept for dailies.
 
 - The plain pumpkins in Puppet Woods no longer glow; only its hanging pumpkin lanterns light up at night.
 
+- Side-facing cars in Odaiba and Highton Terrace light up at the front now; cars there and in Fog City show small red tail lights.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
