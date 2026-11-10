@@ -12,6 +12,8 @@ Reliable auto accept for dailies.
 
 - Side-facing cars in Odaiba and Highton Terrace light up at the front now; cars there and in Fog City show small red tail lights.
 
+- Toy Town and Odaiba windows light up to their dark blue edges at night, not just the pale middle of the glass.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
