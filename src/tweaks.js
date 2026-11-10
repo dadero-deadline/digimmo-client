@@ -111,7 +111,7 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
-    "Reliable auto accept for dailies.\n• Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.": "Aceptación automática fiable de diarias.\n• Aceptar y entregar misiones automáticamente ya no se detiene tras la primera diaria cuando el servidor confirma una misión después de que el diálogo haya avanzado, como con Jenrya en Deva Transit.",
+    "Reliable auto accept for dailies.\n• Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.\n• During a Biomerge your night light stays with your fused Digimon instead of trailing behind it.": "Aceptación automática fiable de diarias.\n• Aceptar y entregar misiones automáticamente ya no se detiene tras la primera diaria cuando el servidor confirma una misión después de que el diálogo haya avanzado, como con Jenrya en Deva Transit.\n• Durante un Biomerge tu luz nocturna se queda con tu Digimon fusionado en lugar de quedarse atrás.",
     "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.\n• A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time.": "Aceptación automática de diarias repetibles.\n• Aceptar y entregar misiones automáticamente ahora acepta todas las diarias con personajes que vuelven a la primera página del diálogo después de cada misión, como Takato.\n• Un botón Deshacer todo en la pestaña Deshacer de la forja muestra todo el equipo de tu bolsa que se puede deshacer, con su Digizoid y el total. Los favoritos y las piezas etiquetadas quedan fuera; las piezas épicas o mejores quedan sin marcar hasta que las marques. Al confirmar, las piezas se deshacen de una en una. Se detiene en el primer error del juego y puedes cancelarlo en cualquier momento.",
     "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de misión para diarias repetibles.\n• Las diarias repetibles, como las de Takato en Digital Fog, cambian a nuevos objetivos después de la primera vez. Los monstruos de esos objetivos vuelven a mostrar su ! azul.\n• Un botón Usar todas en el álbum de cartas muestra todas las cartas que aún puedes usar, con sus copias y el total; las cartas raras se pueden desmarcar. Al confirmar, las cartas se usan de una en una. Se detiene en el primer error del juego y puedes cancelarlo en cualquier momento.",
     "Release Digimon": "Liberar Digimon",
@@ -293,7 +293,7 @@
     "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Fragmento en mono, filtro de graves de 200 Hz y dos filtros de agudos de 900 Hz, ajuste de volumen constante, fundidos y codificación Opus. Pasajes cortos variados cerca de los altavoces de Server Desert con pausas largas; sin cambios de tono ni velocidad."
   },
   "pt": {
-    "Reliable auto accept for dailies.\n• Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.": "Aceitação automática confiável de diárias.\n• Aceitar e entregar missões automaticamente não para mais depois da primeira diária quando o servidor confirma uma missão depois que o diálogo já avançou, como com o Jenrya em Deva Transit.",
+    "Reliable auto accept for dailies.\n• Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.\n• During a Biomerge your night light stays with your fused Digimon instead of trailing behind it.": "Aceitação automática confiável de diárias.\n• Aceitar e entregar missões automaticamente não para mais depois da primeira diária quando o servidor confirma uma missão depois que o diálogo já avançou, como com o Jenrya em Deva Transit.\n• Durante um Biomerge sua luz noturna fica com o seu Digimon fundido em vez de ficar para trás.",
     "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.\n• A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time.": "Aceitação automática de diárias repetíveis.\n• Aceitar e entregar missões automaticamente agora aceita todas as diárias com personagens que voltam para a primeira página do diálogo depois de cada missão, como o Takato.\n• Um botão Desmanchar tudo na aba Desmanchar da forja mostra todo equipamento da sua bolsa que pode ser desmanchado, com o Digizoid e o total. Favoritos e peças etiquetadas ficam de fora; peças épicas ou melhores ficam desmarcadas até você marcar. Ao confirmar, as peças são desmanchadas uma de cada vez. Para no primeiro erro do jogo e pode ser cancelado a qualquer momento.",
     "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de missão para diárias repetíveis.\n• Diárias repetíveis, como as do Takato na Digital Fog, mudam para novos objetivos depois da primeira vez. Os monstros desses objetivos voltam a mostrar o ! azul.\n• Um botão Usar todas no fichário de cartas mostra todas as cartas que você ainda pode usar, com as cópias e o total; as cartas raras podem ser desmarcadas. Ao confirmar, as cartas são usadas uma de cada vez. Para no primeiro erro do jogo e pode ser cancelado a qualquer momento.",
     "Release Digimon": "Liberar Digimon",
@@ -1655,9 +1655,11 @@
       let lastCloudSec = null;
       let visibleClouds = 0;
       const nightRT = own(scene.add.renderTexture(0, 0, 4, 4)).setOrigin(0, 0).setDepth(DEPTH_NIGHT).setBlendMode(MULTIPLY);
+      // In a Biomerge the tamer is fused into the partner and only follows it; the own light stays with the Digimon.
+      const ownId = () => { try { return scene.partnerId && scene.merged?.() ? scene.partnerId : scene.ownId; } catch { return scene.ownId; } };
       const ownPos = () => {
         try {
-          const v = scene.views && scene.views.get(scene.ownId);
+          const v = scene.views && scene.views.get(ownId());
           if (v && v.sprite) return { x: v.sprite.x, y: v.sprite.y };
           const e = window.dmo.net.state.entities.get(window.dmo.net.hello.tamerId);
           return e ? { x: e.x, y: e.y } : null;
@@ -2531,10 +2533,10 @@
             // other tamers, partner Digimon, wild Digimon and NPCs. Sized by
             // sprite height, nearest first, capped for performance.
             if (scene.views) {
-              const others = [];
+              const others = [], self = ownId();
               for (const [id, v] of scene.views) {
                 const sp = v && v.sprite;
-                if (id === scene.ownId || !sp?.active || !drawnSprite(sp)) continue;
+                if (id === scene.ownId || id === self || !sp?.active || !drawnSprite(sp)) continue;
                 if (sp.x < ox - 160 || sp.y < oy - 160 || sp.x > ox + W + 160 || sp.y > oy + H + 160) continue;
                 others.push(sp);
               }
@@ -2548,10 +2550,12 @@
                   { tint: 0xfff0d8, scale: PLAYER_LIGHT() * 0.55 * size, alpha: glowAlpha * 0.7 * Math.min(1, sp.alpha), blendMode: ADD });
               }
             }
-            const p = ownPos();
-            const ownSprite = scene.views?.get?.(scene.ownId)?.sprite;
-            const ownSize = Math.max(1, Math.min(3, Math.max(Math.abs(Number(ownSprite?.displayHeight) || 32), Math.abs(Number(ownSprite?.displayWidth) || 24)) / 40));
-            if (p) nightRT.stamp('digimmo:light2', undefined, Math.round(p.x - ox), Math.round(p.y - 8 - oy),
+            const p = ownPos(), fused = ownId() !== scene.ownId;
+            const ownSprite = scene.views?.get?.(ownId())?.sprite, ownHeight = Math.abs(Number(ownSprite?.displayHeight) || 32);
+            const ownSize = Math.max(1, Math.min(3, Math.max(ownHeight, Math.abs(Number(ownSprite?.displayWidth) || 24)) / 40));
+            // A fused Digimon is lit around its body like the other characters; the tamer just above the feet.
+            const ownY = fused && ownSprite ? ownSprite.y + (0.5 - (ownSprite.originY ?? 0.5)) * ownHeight + ownHeight * 0.15 : p?.y - 8;
+            if (p) nightRT.stamp('digimmo:light2', undefined, Math.round(p.x - ox), Math.round(ownY - oy),
               { tint: 0xfff0d8, scale: PLAYER_LIGHT() * ownSize, alpha: glowAlpha, blendMode: ADD });
           }
           stampMapLights(time,ox,oy);
@@ -2698,7 +2702,7 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.4", "Reliable auto accept for dailies.\n• Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit."],
+  ["0.4", "Reliable auto accept for dailies.\n• Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.\n• During a Biomerge your night light stays with your fused Digimon instead of trailing behind it."],
   ["0.3.7", "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.\n• A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time."],
   ["0.3.6", "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time."],
   ["0.3.5", "Optional automatic quest acceptance and turn-in.\n• Enable Auto accept and turn in quests in F10, then open an NPC dialog. Available quests are accepted and completed quests are turned in through the normal dialog buttons. Quests with identical names are handled separately.\n• Off by default. Reward choices and other NPC services stay manual.\n• Release Digimon has a separate button between stored Digimon and Eggs and its own selection screen. Release buttons no longer sit beside Switch in the archive; the original confirmation is unchanged."],

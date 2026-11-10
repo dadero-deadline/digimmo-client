@@ -6,6 +6,8 @@ Reliable auto accept for dailies.
 
 - Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.
 
+- During a Biomerge your night light stays with your fused Digimon instead of trailing behind it.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
