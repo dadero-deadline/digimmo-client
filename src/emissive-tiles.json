@@ -95,6 +95,46 @@
     "stained",
     "004d005d000d007f007c00720072007f001d005e001800000000000000000000"
   ],
+  "city:bus_0": [
+    "window",
+    "00000000000000000000000000000000000000000000000000000000e780e580"
+  ],
+  "city:bus_1": [
+    "window",
+    "00000000000000000000000000000000000000000000000000000000bfcfbfcf"
+  ],
+  "city:bus_2": [
+    "window",
+    "00000000000000000000000000000000000000000000000000000000fcfffcff"
+  ],
+  "city:bus_3": [
+    "window",
+    "000000000000000000000000000000000000000000000000000000001ff39ff3"
+  ],
+  "city:bus_4": [
+    "window",
+    "000000000000000000000000000000000000000000000000000000000600060d"
+  ],
+  "city:bus_5": [
+    "window",
+    "e780e780e780e780e78000000000000000000000000000000000000000000000"
+  ],
+  "city:bus_6": [
+    "window",
+    "bfcfbfcfbfcfbfcfbfcf00000000000000000000000000000000000000000000"
+  ],
+  "city:bus_7": [
+    "window",
+    "fcfffcfffcfffcfffcff00000000000000000000000000000000000000000000"
+  ],
+  "city:bus_8": [
+    "window",
+    "9ff39ff39ff39ff39ff380008000000000000000000000000000000000000000"
+  ],
+  "city:bus_9": [
+    "window",
+    "0c050a090f8d0f890f84078c100c000000000000000000000000000000000000"
+  ],
   "city:car_blue_3": [
     "carTail",
     "0000000000000000000000000000000000000008000000000000000000000000"
@@ -514,6 +554,54 @@
   "farmland:tvbig_sd_0": [
     "tv",
     "ffffffffffffffffffffffffffffffffffffffffffffffffffffffff7fff0000"
+  ],
+  "fogcity:bus_0": [
+    "window",
+    "000000000000000000000000000000000000000000007c007c007c007c007c00"
+  ],
+  "fogcity:bus_1": [
+    "window",
+    "00000000000000000000000000000000000000000000f9fff9fff9fff9fff9ff"
+  ],
+  "fogcity:bus_10": [
+    "window",
+    "d8ff98ff58ff0000000000000000000000000000000000000000000000000000"
+  ],
+  "fogcity:bus_11": [
+    "window",
+    "01f102f103f10000000000000000000000000000000000000000000000000000"
+  ],
+  "fogcity:bus_2": [
+    "window",
+    "00000000000000000000000000000000000000000000ffcfffcfffcfffcfffcf"
+  ],
+  "fogcity:bus_3": [
+    "window",
+    "00000000000000000000000000000000000000000000cffccffccffccffccffc"
+  ],
+  "fogcity:bus_4": [
+    "window",
+    "0000000000000000000000000000000000000000000000ff00ff58ff40ff98ff"
+  ],
+  "fogcity:bus_5": [
+    "window",
+    "0000000000000000000000000000000000000000000001c00150014101c00141"
+  ],
+  "fogcity:bus_6": [
+    "window",
+    "7c007c007c000000000000000000000000000000000000000000000000000000"
+  ],
+  "fogcity:bus_7": [
+    "window",
+    "f9fff9fff9ff0000000000000000000000000000000000000000000000000000"
+  ],
+  "fogcity:bus_8": [
+    "window",
+    "ffcfffcfffcf0000000000000000000000000000000000000000000000000000"
+  ],
+  "fogcity:bus_9": [
+    "window",
+    "cffccffccffc0000000000000000000000000000000000000000000000000000"
   ],
   "fogcity:car_black_w_3": [
     "car",
@@ -2123,6 +2211,1614 @@
     "window",
     "0000000000000000000000003e603e603e603e603e603e603e603e603e603e60"
   ],
+  "odaiba:ostation_10": [
+    "window",
+    "000000000000f9f9787878787878787878787878000000000000000000000000"
+  ],
+  "odaiba:ostation_11": [
+    "window",
+    "00000000000079f8787878787878787878787878000000000000000000000000"
+  ],
+  "odaiba:ostation_12": [
+    "window",
+    "000000000000f9f8787878787878787878787878000000000000000000000000"
+  ],
+  "odaiba:ostation_25": [
+    "greenLamp",
+    "00000000000000000000010007c007c00fe007c007c001000000000000000000"
+  ],
+  "odaiba:ostation_26": [
+    "stationSign",
+    "0000000000000000800060006000600060006000800000000000000000000000"
+  ],
+  "odaiba:ostation_27": [
+    "stationSign",
+    "0000000000000000fe1f06600660066006600660fe1f00000000000000000000"
+  ],
+  "odaiba:ostation_28": [
+    "stationSign",
+    "00000000000000001f81606660667fe660666066606100000000000000000000"
+  ],
+  "odaiba:ostation_29": [
+    "stationSign",
+    "0000000000000000e1f860606060e06060606060e1f800000000000000000000"
+  ],
+  "odaiba:ostation_30": [
+    "stationSign",
+    "0000000000000000f81f06600660fe1f06600660061f00000000000000000000"
+  ],
+  "odaiba:ostation_31": [
+    "stationSign",
+    "0000000000000000000100060006000700060006000600000000000000000000"
+  ],
+  "odaiba:ostation_34": [
+    "window",
+    "000000000000000000000000000000000000000000000000000000000000ffc0"
+  ],
+  "odaiba:ostation_35": [
+    "window",
+    "00000000000000000000000000000000000000000000000000000000000003ff"
+  ],
+  "odaiba:ostation_37": [
+    "window",
+    "000000000000000000000000000000000000000000000000fffcfffcfffcfffc"
+  ],
+  "odaiba:ostation_38": [
+    "window",
+    "000000000000000000000000000000000000000000000000fffcfffcfffcfffc"
+  ],
+  "odaiba:ostation_39": [
+    "window",
+    "000000000000000000000000000000000000000000000000fffcfffcfffcfffc"
+  ],
+  "odaiba:ostation_45": [
+    "window",
+    "ffc0ffc0ffc0ffc0ffc0ffc0ffc07f40ffc0ffc0ffc0ffc0ffc0ffc0ffc07f40"
+  ],
+  "odaiba:ostation_46": [
+    "window",
+    "03ff03ff03ff03ff03ff03ff03ff00ff03ff03ff03ff03ff03ff03ff03ff00ff"
+  ],
+  "odaiba:ostation_48": [
+    "window",
+    "fffcfffcfffcfffcfffcfffc0000fffcfffcfffcfffcfffcfffcfffcfffcfffc"
+  ],
+  "odaiba:ostation_54": [
+    "window",
+    "ffc0ffc0ffc0ffc0ffc0ffc0ffc0000000000000000000000000000000000000"
+  ],
+  "odaiba:ostation_55": [
+    "window",
+    "03ff03ff03ff03ff03ff03ff03ff000000000000000000000000000000000000"
+  ],
+  "odaiba:ostation_56": [
+    "window",
+    "fffcfffc3e0c3e0cfefcfefcfefc3e0cfefcfefcfefcfefcfefcfefcfefc3e0c"
+  ],
+  "odaiba:ostation_57": [
+    "window",
+    "fffcfffce0f8e0f8effaeffaeffae0f8effaeffaeffaeffaeffaeffaeffae0f8"
+  ],
+  "odaiba:ostation_58": [
+    "window",
+    "fffcfffc0f800f80ffbcffbcffbc0f80ffbcffbcffbcffbcfffcfffcfffc0fc0"
+  ],
+  "odaiba:ostation_59": [
+    "window",
+    "fffcfffcf83cf83cfbfcfbfcfbfcf83cfbfcfbfcfbfcfbfcfbfcfbfcfbfcf83c"
+  ],
+  "odaiba:ostation_9": [
+    "window",
+    "000000000000f9f8787878787878787878787878000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_100": [
+    "window",
+    "000000000000000000000000000000000000000000000000000000003f803f80"
+  ],
+  "odaiba:tv_bitmap_101": [
+    "window",
+    "0000000000000000000000000000000000000000000000000000000003f803f8"
+  ],
+  "odaiba:tv_bitmap_102": [
+    "window",
+    "000000000000000000000000000000000000000000000000000000007f807f80"
+  ],
+  "odaiba:tv_bitmap_109": [
+    "window",
+    "0000000000000000000000000000000000000000000000000000000003fc07fc"
+  ],
+  "odaiba:tv_bitmap_121": [
+    "window",
+    "000000000000fc00fc00fc00fc00bc00fc00fc00fe00fe00fc00fc00fc00f800"
+  ],
+  "odaiba:tv_bitmap_122": [
+    "window",
+    "000000000000f80ff81ff83ff83ff83ff83ff83ff83ff83ff83ff83ff83ff03f"
+  ],
+  "odaiba:tv_bitmap_123": [
+    "window",
+    "000000000000f05ff07ff07ff07f707ff07ff07ff07ff07ff07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_124": [
+    "window",
+    "000000000000e07ff07ff07ff07ff07ff07ff07fe07fe07fe07fe07fe07fe07f"
+  ],
+  "odaiba:tv_bitmap_125": [
+    "window",
+    "00000000000000ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff00ff"
+  ],
+  "odaiba:tv_bitmap_128": [
+    "window",
+    "0000000000000000f000f000f000f000f000f000f000f000f000f000f000d000"
+  ],
+  "odaiba:tv_bitmap_129": [
+    "window",
+    "00000000000000000007000f000f000f000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_130": [
+    "window",
+    "3f803f803f803f807f807f803f00000000000000000000001f801f803f803f80"
+  ],
+  "odaiba:tv_bitmap_131": [
+    "window",
+    "03f803f803f803f803f807f803f8000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_132": [
+    "window",
+    "7f807f807f807f807f807f803f80000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_139": [
+    "window",
+    "07fc07fc03fe03fe03fe07fe03fc0000000000000000000001fc01fc01fe01fe"
+  ],
+  "odaiba:tv_bitmap_140": [
+    "window",
+    "000000000000f000f000f800f800f800f800f800f800f800f800f800f800f800"
+  ],
+  "odaiba:tv_bitmap_141": [
+    "window",
+    "000000000000000f001f001f001f001f001f001f001f001f001f001f001f001f"
+  ],
+  "odaiba:tv_bitmap_142": [
+    "window",
+    "000000000000ff00ff80ff80ff80ff80ff80ff80ff80ff80ff80ff80ff80ff00"
+  ],
+  "odaiba:tv_bitmap_143": [
+    "window",
+    "000000000000fe07fe07fe07ff07ff07ff07fb07ff07ff07ff07ff07ff07fe07"
+  ],
+  "odaiba:tv_bitmap_144": [
+    "window",
+    "000000000000000f000f000f000f000f000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_146": [
+    "window",
+    "000000000000f800f800f800fc00fc00fc00fc00fc00fc00fc00fc00fc00f800"
+  ],
+  "odaiba:tv_bitmap_147": [
+    "window",
+    "000000000000003f003f003f003f003f003f003f003f003f003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_152": [
+    "window",
+    "0000000000000000000000004800f800f800f800f800f800f800f800f800f800"
+  ],
+  "odaiba:tv_bitmap_153": [
+    "window",
+    "0000000000000000000000008060f07ff07ff07ff07ff07ff07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_154": [
+    "window",
+    "000000000000000000000000c021f07ff07ff07ff07ff07ff07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_155": [
+    "window",
+    "000000000000000000000000e0c3e0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ff"
+  ],
+  "odaiba:tv_bitmap_156": [
+    "window",
+    "00000000000000000000000000f081ffc1ffc1ffc1ffc1ffe1ffe1ffe1ffc1ff"
+  ],
+  "odaiba:tv_bitmap_157": [
+    "window",
+    "00000000000000000000000001df00ff00ff03ff03ff03ff03ff03ff01ff01ff"
+  ],
+  "odaiba:tv_bitmap_158": [
+    "window",
+    "0000000000000000000000000000000000000000f000f000f000f000f000f000"
+  ],
+  "odaiba:tv_bitmap_159": [
+    "window",
+    "00000000000000000000000000000000000000000007000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_160": [
+    "window",
+    "7f807f807f803c00000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_169": [
+    "window",
+    "03fe03fc01fc01f0000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_170": [
+    "window",
+    "f800000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_171": [
+    "window",
+    "001f000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_173": [
+    "window",
+    "0000000000000000000000003e00ff00ff00ff00ff00ff00ff00ff00ff00ff00"
+  ],
+  "odaiba:tv_bitmap_174": [
+    "window",
+    "0000000000000000000000000004000f000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_176": [
+    "window",
+    "0000000000000000000000008000fc00f800f800fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_177": [
+    "window",
+    "000000000000000000000000001f003f003f003f003f003f003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_182": [
+    "window",
+    "f800f800f8000000000000000000000000000000f800f800f800f800f800f800"
+  ],
+  "odaiba:tv_bitmap_183": [
+    "window",
+    "f07ff07ff07f0000000000000000000000000000007f007f007f007e007f007f"
+  ],
+  "odaiba:tv_bitmap_184": [
+    "window",
+    "f07ff07fc03f0000000000000000000000000000e000f000f000f000f0007000"
+  ],
+  "odaiba:tv_bitmap_185": [
+    "window",
+    "e0ffe0ffe07f0000000000000000000000008000e0ffe0ffe0ffe0fde0ff60ff"
+  ],
+  "odaiba:tv_bitmap_186": [
+    "window",
+    "c1ffc1ffc1ff0000000000000000000000000003c0ffc0ffc1ffc1ffe1ffe1ff"
+  ],
+  "odaiba:tv_bitmap_187": [
+    "window",
+    "01ff01ff01ff000000000000000000000000000002ff03ff03ff03ff03ff03ff"
+  ],
+  "odaiba:tv_bitmap_188": [
+    "window",
+    "f000f000f000f000d00000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_189": [
+    "window",
+    "000f000f000f000f000f00000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_203": [
+    "window",
+    "ff00ff00ff000000000000000000000000000c00fe00ff00ff00ff00ff00ff00"
+  ],
+  "odaiba:tv_bitmap_204": [
+    "window",
+    "000f000f000b0000000000000000000000000000000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_206": [
+    "window",
+    "fc00fc00f8000000000000000000000000000000f800f800fc00bc00fc00ec00"
+  ],
+  "odaiba:tv_bitmap_207": [
+    "window",
+    "003f003f001f0000000000000000000000000000003f003f003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_211": [
+    "window",
+    "0000000000000000000000000000000000000000000000000000e000fc00fc00"
+  ],
+  "odaiba:tv_bitmap_212": [
+    "window",
+    "f800f800f800f800f800f8000000000000000000000000000000c00ff83ff83f"
+  ],
+  "odaiba:tv_bitmap_213": [
+    "window",
+    "007f007f007f007f007f007f0000000000000000000000000000c020f07ff07f"
+  ],
+  "odaiba:tv_bitmap_214": [
+    "window",
+    "f000f000f000f000f000f0000000000000000000000000000000e000f07ff07f"
+  ],
+  "odaiba:tv_bitmap_215": [
+    "window",
+    "c0ffc0ffc0ffe0ffe0ffe0ff0000000000000000000000000000c00fe0ffe0ff"
+  ],
+  "odaiba:tv_bitmap_216": [
+    "window",
+    "c1ffc1ffc1ffc1ffc1ffc1ff00000000000000000000000000000003c0ffc0ff"
+  ],
+  "odaiba:tv_bitmap_217": [
+    "window",
+    "03ff03ff03ff03ff03ff01ff000000000000000000000000000000c103ff03ff"
+  ],
+  "odaiba:tv_bitmap_218": [
+    "window",
+    "f000f000f000f000f000f000f000f000f000f000f00000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_219": [
+    "window",
+    "000f000f000f000f000f000f000f000f000f000f000f00000000000000000000"
+  ],
+  "odaiba:tv_bitmap_221": [
+    "window",
+    "0000000000000000000000000000000000000000011801f803f803f803f803f8"
+  ],
+  "odaiba:tv_bitmap_228": [
+    "window",
+    "00000000000000000000000000000000000000001f801f801f801f801f801f80"
+  ],
+  "odaiba:tv_bitmap_232": [
+    "window",
+    "00000000000000000000000000000000000000000000000000001800ff80ff80"
+  ],
+  "odaiba:tv_bitmap_233": [
+    "window",
+    "ff00ff00ff00ff00ff00ff000000000000000000000000000000000000070007"
+  ],
+  "odaiba:tv_bitmap_234": [
+    "window",
+    "000f000f000f000f000f000f00000000000000000000000000003e00fe00fe00"
+  ],
+  "odaiba:tv_bitmap_235": [
+    "window",
+    "00000000000000000000000000000000000000000000000000003c00fe0ffe0f"
+  ],
+  "odaiba:tv_bitmap_236": [
+    "window",
+    "fc00fc00fc00fc00fc00fc000000000000000000000000000000a81cfc1ffc1f"
+  ],
+  "odaiba:tv_bitmap_237": [
+    "window",
+    "003f003f003f003f003f003f0000000000000000000000000000e000f03ff03f"
+  ],
+  "odaiba:tv_bitmap_238": [
+    "window",
+    "00000000000000000000000000000000000000000000000000000003007f007f"
+  ],
+  "odaiba:tv_bitmap_241": [
+    "window",
+    "fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_242": [
+    "window",
+    "f83ff83fd83fd83ff83ff83ff83ff83ff83fe00f000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_243": [
+    "window",
+    "f07ff07ff07ff07ff07ff07ff07ff07ff07f207f000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_244": [
+    "window",
+    "e07ff07ff07ff07ff07ff07ff07ff07fe07f807f000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_245": [
+    "window",
+    "e0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ff809f000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_246": [
+    "window",
+    "c1ffc1ffc1ffc1ffe1ffc1ffc1ffc1ffc1ff8047000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_247": [
+    "window",
+    "03ff03ff03ff03ff03ff03ff03ff03ff03ff01ff000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_248": [
+    "window",
+    "000000000000000000001000f000f000f000f000f000f000f000f000f000f000"
+  ],
+  "odaiba:tv_bitmap_249": [
+    "window",
+    "000000000000000000000000000f000f000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_251": [
+    "window",
+    "03f803f800000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_258": [
+    "window",
+    "1f801e000000000000000000000000000000000000800f801f801f801f801f80"
+  ],
+  "odaiba:tv_bitmap_262": [
+    "window",
+    "ff80ff80ff80ff80ff80ff80ff80ff80ff80fc00000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_263": [
+    "window",
+    "0007000700070007000700070007000700070001000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_264": [
+    "window",
+    "fe00ff00fe00ff00ff00ff00ff00ff00ff00e000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_265": [
+    "window",
+    "fe0ffe0ffe0ffe0ffc0ffe0ffe0ffe0ffe0ff807000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_266": [
+    "window",
+    "fc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ff01f000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_267": [
+    "window",
+    "f03ff03fd03ff03ff03ff83ff83ff83ff83ff02f000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_268": [
+    "window",
+    "007f007f007f007f007f007f007f007f007f0043000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_271": [
+    "window",
+    "0400fc00fc00fc00fc00fc00fe00fe00fe00fe00fc00fc00fc00000000000000"
+  ],
+  "odaiba:tv_bitmap_272": [
+    "window",
+    "0823f83ff83ff83ff83ff83ff83ff83ff83ff83ff83ff83ff83f000000000000"
+  ],
+  "odaiba:tv_bitmap_273": [
+    "window",
+    "0050007f007f007f007f007f007f007f007f007f007f007f007f000000000000"
+  ],
+  "odaiba:tv_bitmap_274": [
+    "window",
+    "0000e000e000f000f000f000f000f000f000f000f000f000f000000000000000"
+  ],
+  "odaiba:tv_bitmap_275": [
+    "window",
+    "0000e0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ff000000000000"
+  ],
+  "odaiba:tv_bitmap_276": [
+    "window",
+    "001400ff00ff01ff01ff01ff01ff01ff01ff01ff01ff01ff01ff000000000000"
+  ],
+  "odaiba:tv_bitmap_278": [
+    "window",
+    "8000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_279": [
+    "window",
+    "000f000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_288": [
+    "window",
+    "1f801f801f801f80300000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_290": [
+    "window",
+    "00000000000000000000000000000000000000000000f800f800f000f000f000"
+  ],
+  "odaiba:tv_bitmap_291": [
+    "window",
+    "00000000000000000000000000000000000000000000000f001f001f001f001f"
+  ],
+  "odaiba:tv_bitmap_294": [
+    "window",
+    "0200fe00ff00df00fe00fe00fe00ff00ff00fe00fe00fe00fe00000000000000"
+  ],
+  "odaiba:tv_bitmap_295": [
+    "window",
+    "0000fe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0f000000000000"
+  ],
+  "odaiba:tv_bitmap_296": [
+    "window",
+    "8002f81ff81ff81ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1f000000000000"
+  ],
+  "odaiba:tv_bitmap_297": [
+    "window",
+    "0009f03ff03ff03ff03ff03ff03ff03ff83ff83ff83ff83ff83f000000000000"
+  ],
+  "odaiba:tv_bitmap_298": [
+    "window",
+    "0000007f007f007f007f007f007f007f007f007f007f007f007f000000000000"
+  ],
+  "odaiba:tv_bitmap_302": [
+    "window",
+    "00000000000000000000f800f800f800b800f800f800f800f800f800f800f800"
+  ],
+  "odaiba:tv_bitmap_303": [
+    "window",
+    "0000000000000000e05ff07ff07ff07e707ff07ff07ff07ff07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_304": [
+    "window",
+    "0000000000000000007f007f007f007f007f007f007f007f007f007f007f007f"
+  ],
+  "odaiba:tv_bitmap_305": [
+    "window",
+    "00000000000000008000e000e000c000e000e000e000e000c000e000e000e000"
+  ],
+  "odaiba:tv_bitmap_306": [
+    "window",
+    "0000000000000000c007c0ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ff"
+  ],
+  "odaiba:tv_bitmap_307": [
+    "window",
+    "0000000000000000027f03ff03ff03ff03fd03ff03ff03ff03ff03ff03ff03ff"
+  ],
+  "odaiba:tv_bitmap_320": [
+    "window",
+    "f000f000f800f800f800f800f000f00000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_321": [
+    "window",
+    "001f001f001f001f001f001f001f001f00000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_322": [
+    "window",
+    "0000000000000000ff80ff80ff80ff80ff80ff80ff80ff80ff80ff80ff80ff80"
+  ],
+  "odaiba:tv_bitmap_323": [
+    "window",
+    "0000000000000000fa00ff07ff07ff07ff07ff07ff07ff07ff07ff07ff07ff07"
+  ],
+  "odaiba:tv_bitmap_324": [
+    "window",
+    "00000000000000000001000f000f000f000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_331": [
+    "window",
+    "0000000000000000000000000000f000fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_332": [
+    "window",
+    "0000000000000000000000000000183ff83ff83ff83ff83ff83ff83ff83ff83f"
+  ],
+  "odaiba:tv_bitmap_333": [
+    "window",
+    "0000000000000000000000000000f05cf07ff07ff07ff07ff07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_334": [
+    "window",
+    "0000000000000000000000000000e063f07fe07ff07ff07ff07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_335": [
+    "window",
+    "0000000000000000000000000000e07fe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ff"
+  ],
+  "odaiba:tv_bitmap_336": [
+    "window",
+    "0000000000000000000000000000c1c0c1ffc1ffc1ffc1ffc1ffe1ffc1ffc1ff"
+  ],
+  "odaiba:tv_bitmap_337": [
+    "window",
+    "000000000000000000000000000001f803ff03ff03ff03ff03ff03ff01ff01ff"
+  ],
+  "odaiba:tv_bitmap_352": [
+    "window",
+    "0000000000000000000000000000f880ff80ff80ff80ff80ff80ff80ff80ff80"
+  ],
+  "odaiba:tv_bitmap_353": [
+    "window",
+    "0000000000000000000000000000000100070007000700070007000700070007"
+  ],
+  "odaiba:tv_bitmap_354": [
+    "window",
+    "0000000000000000000000000000fe00ff00ff00ff00ff00ff00ff00ff00ff00"
+  ],
+  "odaiba:tv_bitmap_355": [
+    "window",
+    "0000000000000000000000000000f80ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0f"
+  ],
+  "odaiba:tv_bitmap_356": [
+    "window",
+    "00000000000000000000000000000007001f001f001f001f001f001f001f001f"
+  ],
+  "odaiba:tv_bitmap_357": [
+    "window",
+    "0000000000000000000000000000f000f000f000f000f000f000f000f000f800"
+  ],
+  "odaiba:tv_bitmap_358": [
+    "window",
+    "0000000000000000000000000000007c007f007f007f007f007f007f007f007f"
+  ],
+  "odaiba:tv_bitmap_361": [
+    "window",
+    "fc00fc00fc00f800000000000000000000000000f800fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_362": [
+    "window",
+    "f83ff83ff83ff03f000000000000000000000000781ff83ff83ff83ff83ff83f"
+  ],
+  "odaiba:tv_bitmap_363": [
+    "window",
+    "f07ff07ff07fe01f000000000000000000000000703ff07ff07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_364": [
+    "window",
+    "f07fe07fe07fe07f0000000000000000000000000063007f007f007f007f007f"
+  ],
+  "odaiba:tv_bitmap_365": [
+    "window",
+    "e0ffe0ffe0ffc0ff000000000000000000000000e000e000c000e000e000e000"
+  ],
+  "odaiba:tv_bitmap_366": [
+    "window",
+    "c1ffc1ffc1ff80ff00000000000000000000000000ffc1ffc1ffc1ffc1ffc1ff"
+  ],
+  "odaiba:tv_bitmap_367": [
+    "window",
+    "01ff01ff01ff01ff00000000000000000000000000f800ff01ff01ff01ff01ff"
+  ],
+  "odaiba:tv_bitmap_368": [
+    "window",
+    "0000000000000000000000000000f000f000f000f000f000f000f000f000f000"
+  ],
+  "odaiba:tv_bitmap_369": [
+    "window",
+    "0000000000000000000000000000000f000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_371": [
+    "window",
+    "000000000000000000000000cffecffecffecffecffecffecffecffecffecffe"
+  ],
+  "odaiba:tv_bitmap_372": [
+    "window",
+    "000000000000000000000000f0fff0fff0fff0fff8fff8fff8fff1fff1fff8ff"
+  ],
+  "odaiba:tv_bitmap_373": [
+    "window",
+    "000000000000000000000000003f003f003f003f003f003f003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_374": [
+    "window",
+    "0000000000000000000000003f383ff83ff83ff83ff83ff83ff83ff83ff83ff8"
+  ],
+  "odaiba:tv_bitmap_375": [
+    "window",
+    "0000000000000000000000001ffe1ffe1ffe1ffe1ffe3ffe1ffe1ffe1ffe1ffe"
+  ],
+  "odaiba:tv_bitmap_376": [
+    "window",
+    "000000000000000000000000fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_377": [
+    "window",
+    "000000000000000000000000ff1fff1fff1fff1fff1fff1fff1fff1fff1fff1f"
+  ],
+  "odaiba:tv_bitmap_378": [
+    "window",
+    "000000000000000000000000ffe37fe37fe3ffe3ffe37fe37fe37fe37fe37fe3"
+  ],
+  "odaiba:tv_bitmap_380": [
+    "window",
+    "000000000000000000000000f800f800f800f800f800f800f800f800f800f800"
+  ],
+  "odaiba:tv_bitmap_381": [
+    "window",
+    "000000000000000000000000000f000f001f001f001f001f001f001f001f001f"
+  ],
+  "odaiba:tv_bitmap_382": [
+    "window",
+    "ff80ff80ff00ff00000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_383": [
+    "window",
+    "0007000700070007000000000000000000000000e000fe00ff00ff00ff00ff00"
+  ],
+  "odaiba:tv_bitmap_384": [
+    "window",
+    "ff00ff00ff00fc000000000000000000000000000000000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_385": [
+    "window",
+    "fe0ffe0ffe0ffc07000000000000000000000000c600fe00fe00fe00fe00fe00"
+  ],
+  "odaiba:tv_bitmap_386": [
+    "window",
+    "001f001f001f001f000000000000000000000000f80ffc1ffc1ffc1ffc1ffc1f"
+  ],
+  "odaiba:tv_bitmap_387": [
+    "window",
+    "f800f800f000f000000000000000000000000000003f003f003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_388": [
+    "window",
+    "007f007f007f007f000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_391": [
+    "window",
+    "fc00fe00fe00fc00fc00fc00f0000000000000000000000000000000fc00fc00"
+  ],
+  "odaiba:tv_bitmap_392": [
+    "window",
+    "f83ff83ff83ff83ff83ff83fe00e000000000000000000000000801ff83ff83f"
+  ],
+  "odaiba:tv_bitmap_393": [
+    "window",
+    "f07ff07ff07ff07ff07ff07fc05f000000000000000000000000003f007f007f"
+  ],
+  "odaiba:tv_bitmap_394": [
+    "window",
+    "007f007f007f007f007f007f001b000000000000000000000000e000f000f000"
+  ],
+  "odaiba:tv_bitmap_395": [
+    "window",
+    "e000e000e000e000e000e0008000000000000000000000000000607fe0ffe0ff"
+  ],
+  "odaiba:tv_bitmap_396": [
+    "window",
+    "e1ffe1ffe1ffc1ffc1ffc1ff0077000000000000000000000000c0fec0ffc1ff"
+  ],
+  "odaiba:tv_bitmap_397": [
+    "window",
+    "01ff01ff01ff01ff01ff01ff007f00000000000000000000000001fc03ff03ff"
+  ],
+  "odaiba:tv_bitmap_398": [
+    "window",
+    "f000000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_399": [
+    "window",
+    "000f000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_401": [
+    "window",
+    "cffecffecffe000000000000cffecffecffecffecffecffecffecffecffecffe"
+  ],
+  "odaiba:tv_bitmap_402": [
+    "window",
+    "f8fff8fff8ffe00000000000f0fff9fff8fff8fff8fff8fff8fff8fff8fff8ff"
+  ],
+  "odaiba:tv_bitmap_403": [
+    "window",
+    "003f003f003f000300000000003f003f003f003f003f003f003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_404": [
+    "window",
+    "3ff83ff83ff803c0000000003ff8bff8bff8bff83ff83ff83ff83ff83ff83ff8"
+  ],
+  "odaiba:tv_bitmap_405": [
+    "window",
+    "1ffe1ffe1ffe0000000000001ffe3fff3fff3fff3ffe3ffe1ffe1ffe1ffe1ffe"
+  ],
+  "odaiba:tv_bitmap_406": [
+    "window",
+    "fc00fc00fc000c0000000000fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_407": [
+    "window",
+    "ff1fff1fff1f000000000000ff1fff1fff1fff1fff1fff1fff1fff1fff1fff1f"
+  ],
+  "odaiba:tv_bitmap_408": [
+    "window",
+    "7fe37fe37fe30000000000007fe37fe37fe37fe37fe3ffe3ffe3ffe3ffe3ffe3"
+  ],
+  "odaiba:tv_bitmap_410": [
+    "window",
+    "f800f000f0000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_411": [
+    "window",
+    "001f001f000f0000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_413": [
+    "window",
+    "ff00ff00ff00ff00ff00ff00fe00000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_414": [
+    "window",
+    "000f000f000f000f000f000f000f000000000000000000000000e200ff00fe00"
+  ],
+  "odaiba:tv_bitmap_415": [
+    "window",
+    "fe00fe00fe00fe00fe00fe00f000000000000000000000000000f001fe0ffe0f"
+  ],
+  "odaiba:tv_bitmap_416": [
+    "window",
+    "fc1ffc1ffc1ffc1ffc1ffc1fd017000000000000000000000000001f001f001f"
+  ],
+  "odaiba:tv_bitmap_417": [
+    "window",
+    "003f003f003f003f003f003f000f000000000000000000000000f800f000f800"
+  ],
+  "odaiba:tv_bitmap_418": [
+    "window",
+    "00000000000000000000000000000000000000000000000000000060007f007f"
+  ],
+  "odaiba:tv_bitmap_421": [
+    "window",
+    "fc00fc00fc00fe00fe00fe00fe00fc00fc000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_422": [
+    "window",
+    "f83ff83ff83ff83ff83ff83ff83ff83ff83fe02e000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_423": [
+    "window",
+    "007f007f007f007f007f007f007f007f007f007f000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_424": [
+    "window",
+    "f000f000f000f000e000e000e000e000e0000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_425": [
+    "window",
+    "e0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffc0f0000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_426": [
+    "window",
+    "c1ffc1ffc1ffc1ffc1ffe1ffc1ffc1ffc1ff8103000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_427": [
+    "window",
+    "03ff03ff03ff03ff03ff03ff03ff03ff03ff020f000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_431": [
+    "window",
+    "cffecffecffe0000000000e0cffecffecffecffecffecffecffecffecffecffe"
+  ],
+  "odaiba:tv_bitmap_432": [
+    "window",
+    "f8fff8fff8ff000000000078f8fff0fff0fff8fff9fff9fff8fff9fff9fff8ff"
+  ],
+  "odaiba:tv_bitmap_433": [
+    "window",
+    "003f003f003f00000000001e003f007f007f007f007f003f003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_434": [
+    "window",
+    "3ff83ff83ff80000000027f8bff8bff83ff83ff83ff83ff83ff83ff83ff83ff8"
+  ],
+  "odaiba:tv_bitmap_435": [
+    "window",
+    "3ffe3ffe3ffe000000001fc23fff3ffe3ffe3ffe3ffe3ffe1ffe1ffe3ffe3ffe"
+  ],
+  "odaiba:tv_bitmap_436": [
+    "window",
+    "fc00fc00fc00000000008000fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_437": [
+    "window",
+    "ff1fff1fff1f80180000f01fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1f"
+  ],
+  "odaiba:tv_bitmap_438": [
+    "window",
+    "ffe3ffe3ffe30000000006037fe37fe37fe37fe37fe37fe37fe3ffe37fe37fe3"
+  ],
+  "odaiba:tv_bitmap_444": [
+    "window",
+    "fe00fe00ff00ff00ff00ff00fe00fe00fe001000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_445": [
+    "window",
+    "fe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0f8006000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_446": [
+    "window",
+    "001f001f001f001f001f001f001f001f001f001f000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_447": [
+    "window",
+    "f800f000f000f000f000f000f800f800f8003000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_448": [
+    "window",
+    "007f007f007f007f007f007f007f007f007f0058000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_451": [
+    "window",
+    "f800fc00fc00fc00fc00fc00fc00fc00fe00fc00fc00fc00fc00000000000000"
+  ],
+  "odaiba:tv_bitmap_452": [
+    "window",
+    "0007003f003f003f003f003f003f003f003f003f003f003f003f000000000000"
+  ],
+  "odaiba:tv_bitmap_455": [
+    "window",
+    "6000e000e000e000e000e000e000e000e000e000e000c000c000000000000000"
+  ],
+  "odaiba:tv_bitmap_456": [
+    "window",
+    "00f000ff01ff01ff01ff01ff01ff01ff01ff01ff01ff01ff01ff000000000000"
+  ],
+  "odaiba:tv_bitmap_461": [
+    "window",
+    "cffec7fe81f600000000cffecffecffecffecffecffecffecffecffecffecffe"
+  ],
+  "odaiba:tv_bitmap_462": [
+    "window",
+    "f8fff0fff07f00000000f8fff8fff9fff9fff9fff9fff9fffbfffbfff9fff8ff"
+  ],
+  "odaiba:tv_bitmap_463": [
+    "window",
+    "003f003f003f00000000003f007f007f007f007f003f003f003f007f007f003f"
+  ],
+  "odaiba:tv_bitmap_464": [
+    "window",
+    "3ff83ff83ff0000000003ff83ff83ff83ff83ff83ff83ff83ff83ff83ff83ff8"
+  ],
+  "odaiba:tv_bitmap_465": [
+    "window",
+    "3ffe3ffe3ffe000000003ffe3ffe3ffe3ffe3ffe1ffe1ffe1ffe1ffe1ffe1ffe"
+  ],
+  "odaiba:tv_bitmap_466": [
+    "window",
+    "fc00fc00fc0000000000fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_467": [
+    "window",
+    "ff1fff1fff1f00000000ff1fff1fff1fff1fff1fff1fff1fff1fff1fff1fff1f"
+  ],
+  "odaiba:tv_bitmap_468": [
+    "window",
+    "7fe37fe37fa3000000007fe37fe37fe3ffe3ffe37fe37fe3ffe3ffe3ffe37fe3"
+  ],
+  "odaiba:tv_bitmap_472": [
+    "window",
+    "f100ff80ff80ff80ff80ff80ff80ff80ff80ff80ff80ff80ff80000000000000"
+  ],
+  "odaiba:tv_bitmap_473": [
+    "window",
+    "9f03ff07ff07ff07ff07ff07ff07ff07ff07ff07ff07ff07ff07000000000000"
+  ],
+  "odaiba:tv_bitmap_474": [
+    "window",
+    "000f000f000f000f000f000f000f000f000f000f000f000f000f000000000000"
+  ],
+  "odaiba:tv_bitmap_475": [
+    "window",
+    "f800fc00fe00fe00fe00fe00fe00fe00fe00fe00fe00fe00fc00000000000000"
+  ],
+  "odaiba:tv_bitmap_476": [
+    "window",
+    "0001001f001f001f001f001f001f001f001f001f001f001f001f000000000000"
+  ],
+  "odaiba:tv_bitmap_481": [
+    "window",
+    "00000000000000000800fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_482": [
+    "window",
+    "0000000000000000000ff83ff83ff83ff83ff83ff83ff83ff83ff83ff83ff83f"
+  ],
+  "odaiba:tv_bitmap_483": [
+    "window",
+    "00000000000000000007003f007f007f007f007f007f007f007f007f007f007f"
+  ],
+  "odaiba:tv_bitmap_484": [
+    "window",
+    "00000000000000000000f000f000f000f000f000f000f000e000f000f000f000"
+  ],
+  "odaiba:tv_bitmap_485": [
+    "window",
+    "000000000000000040bec0ffc0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ff"
+  ],
+  "odaiba:tv_bitmap_486": [
+    "window",
+    "0000000000000000007e80ffc0ffc1ffc1ffc1ffe1ffe1ffc1ffc1ffc1ffc1ff"
+  ],
+  "odaiba:tv_bitmap_487": [
+    "window",
+    "00000000000000c000ff03ff03ff03ff01ff03ff01ff01ff01ff01ff01ff01ff"
+  ],
+  "odaiba:tv_bitmap_488": [
+    "window",
+    "0000000000000000000000000000f000f000f000f000f000f000f000f000f000"
+  ],
+  "odaiba:tv_bitmap_489": [
+    "window",
+    "0000000000000000000000000000000f000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_491": [
+    "window",
+    "cffec7fe000000000000cffecffecffecffecffecffecffecffecffecffecffe"
+  ],
+  "odaiba:tv_bitmap_492": [
+    "window",
+    "f8fff8fff00000000000f8fff9fff9fff8fff8fff8fff8fff8fff8fff8fff8ff"
+  ],
+  "odaiba:tv_bitmap_493": [
+    "window",
+    "003f003f000000000000003f007f007f007f007f003f003f003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_494": [
+    "window",
+    "3ff83ff81df8000000003ff83ff83ff8bff8bff8bff8bff83ff83ff83ff83ff8"
+  ],
+  "odaiba:tv_bitmap_495": [
+    "window",
+    "1ffe1ffe07fe000000001ffe3ffe3ffe3fff3fff3fff3fff3ffe3ffe3ffe1ffe"
+  ],
+  "odaiba:tv_bitmap_496": [
+    "window",
+    "fc00fc00000000000000fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_497": [
+    "window",
+    "ff1fff1f700600000000ff1fff3fff1fff1fff1fff1fff1fff1fff1fff1fff1f"
+  ],
+  "odaiba:tv_bitmap_498": [
+    "window",
+    "7fe37fe30400000000007fe37fe37fe37fe3ffe3ffe3ffe3ffe3ffe3ffe3ffe3"
+  ],
+  "odaiba:tv_bitmap_502": [
+    "window",
+    "00000000000000007e00ff00ff00ff80ff80ff80ff80ff80ff80ff80ff80ff80"
+  ],
+  "odaiba:tv_bitmap_503": [
+    "window",
+    "00000000000000003e00ff03ff07ff07ff07ff07ff07ff07ff07ff07ff07fe07"
+  ],
+  "odaiba:tv_bitmap_504": [
+    "window",
+    "0000000000000000700efe0ffe0ffe0ffe0fff0fff0fff0ffe0ffe0ffe0ffe0f"
+  ],
+  "odaiba:tv_bitmap_505": [
+    "window",
+    "000000000000000000000007000f000f000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_507": [
+    "window",
+    "00000000000000000000f000f000f000f000d000f000f000f800f800f800f000"
+  ],
+  "odaiba:tv_bitmap_508": [
+    "window",
+    "00000000000000000078007f007f007f007f007f007f007f007f007f007f007f"
+  ],
+  "odaiba:tv_bitmap_511": [
+    "window",
+    "00000000000000000000000000009000fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_512": [
+    "window",
+    "2002000000000000000000000000180ff83ff83ff83ff83ff83ff83ff83ff83f"
+  ],
+  "odaiba:tv_bitmap_513": [
+    "window",
+    "0001000000000000000000000000007f007f007f007f007f007f007f007f007f"
+  ],
+  "odaiba:tv_bitmap_514": [
+    "window",
+    "0000000000000000000000000000c000e000f000e000f000f000f000f000e000"
+  ],
+  "odaiba:tv_bitmap_515": [
+    "window",
+    "0000000000000000000000000000e00fe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ff"
+  ],
+  "odaiba:tv_bitmap_516": [
+    "window",
+    "001200000000000000000000000000ddc0ffc0ffc1ffc1ffc1ffe1ffe1ffe1ff"
+  ],
+  "odaiba:tv_bitmap_517": [
+    "window",
+    "0078000000000000000000000000000f00ff01ff03ff03ff03ff03ff03ff03ff"
+  ],
+  "odaiba:tv_bitmap_518": [
+    "window",
+    "f000f00000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_519": [
+    "window",
+    "000f000f00000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_521": [
+    "window",
+    "cffecffecffe000300000000cffecffecffecffecffecffecffecffecffecffe"
+  ],
+  "odaiba:tv_bitmap_522": [
+    "window",
+    "f9fff9fff8ff180000000000f9fff8fff0fff8fff8fff8fff8fff8fff8fff8ff"
+  ],
+  "odaiba:tv_bitmap_523": [
+    "window",
+    "007f007f007f007800000000003f003f003f003f003f003f007f007f007f007f"
+  ],
+  "odaiba:tv_bitmap_524": [
+    "window",
+    "3ff83ff83ff8e00c000000003ff83ff83ff83ff83ff83ff83ff83ff83ff83ff8"
+  ],
+  "odaiba:tv_bitmap_525": [
+    "window",
+    "1ffe1ffe1ffe13e1000000003ffe3ffe1ffe1ffe1ffe3ffe3ffe3ffe3ffe3ffe"
+  ],
+  "odaiba:tv_bitmap_526": [
+    "window",
+    "fc00fc00fe000f0000000000fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_527": [
+    "window",
+    "ff1fff1fff1f030000000000ff1fff1fff1fff1fff1fff1fff1fff1fff1fff1f"
+  ],
+  "odaiba:tv_bitmap_528": [
+    "window",
+    "ffe3ffe3ffe30003000000007fe37fe37fe3ffe3ffe3ffe3ffe3ffe3ffe3ffe3"
+  ],
+  "odaiba:tv_bitmap_532": [
+    "window",
+    "f0000000000000000000000000007a00ff80ff80ff80ff80ff80ff80ff80ff80"
+  ],
+  "odaiba:tv_bitmap_533": [
+    "window",
+    "e800000000000000000000000000000000070007000700070007000700070007"
+  ],
+  "odaiba:tv_bitmap_534": [
+    "window",
+    "0000000000000000000000000000c000fe00fe00fe00ff00ff00ff00ff00ff00"
+  ],
+  "odaiba:tv_bitmap_535": [
+    "window",
+    "0000000000000000000000000000c800fe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0f"
+  ],
+  "odaiba:tv_bitmap_536": [
+    "window",
+    "0000000000000000000000000000000d001f001f001f001f001f001f001f001f"
+  ],
+  "odaiba:tv_bitmap_541": [
+    "window",
+    "fe00fc00fe00fc000000000000000000000000000000fc00fe00fe00fe00fc00"
+  ],
+  "odaiba:tv_bitmap_542": [
+    "window",
+    "f83ff83ff83ff03f00000000000000000000000000000003003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_543": [
+    "window",
+    "007f007f007f007f0000000000000000000000000000e000f000f000f000f000"
+  ],
+  "odaiba:tv_bitmap_544": [
+    "window",
+    "e000f000f000f0000000000000000000000000000000e063e07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_545": [
+    "window",
+    "e0ffe0ffe0ffe0ff0000000000000000000000000000e0c3c0ffc0ffc0ffc0ff"
+  ],
+  "odaiba:tv_bitmap_546": [
+    "window",
+    "c1ffc1ffc1ffc1ff0000000000000000000000000000000100ff00ff01ff01ff"
+  ],
+  "odaiba:tv_bitmap_547": [
+    "window",
+    "03ff03ff03ff01ff000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_551": [
+    "window",
+    "cffecffecffec7fe008000000000cffecffecffecffecffecffecffecffecffe"
+  ],
+  "odaiba:tv_bitmap_552": [
+    "window",
+    "f8fff8fff8fff0ff800700000000f8fff8fff8fff8fff8fff8fff8fff8fff8ff"
+  ],
+  "odaiba:tv_bitmap_553": [
+    "window",
+    "007f007f007f003f000700000000007f007f007f007f007f007f007f007f007f"
+  ],
+  "odaiba:tv_bitmap_554": [
+    "window",
+    "3ff83ff83ff83ff800f8000000003ff83ff83ff8bff8bff8bff83ff83ff83ff8"
+  ],
+  "odaiba:tv_bitmap_555": [
+    "window",
+    "1ffe1ffe1ffe1ffe0ffe000000003ffe3ffe3ffe3fff3fff3fff3ffe1ffe3ffe"
+  ],
+  "odaiba:tv_bitmap_556": [
+    "window",
+    "fc00fc00fc00fc00f80000000000fc00fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_557": [
+    "window",
+    "ff1fff1fff1fff1f380700000000ff1fff1fff1fff1fff1fff1fff1fff1fff1f"
+  ],
+  "odaiba:tv_bitmap_558": [
+    "window",
+    "ffe3ffe3ffe3ffe3180000000000ffe3ffe3ffe3ffe3ffe3ffe37fe37fe37fe3"
+  ],
+  "odaiba:tv_bitmap_562": [
+    "window",
+    "ff80ff80ff80ff0000000000000000000000000000001e00ff80ff80ff80ff80"
+  ],
+  "odaiba:tv_bitmap_563": [
+    "window",
+    "000700070007000700000000000000000000000000001e04ff07ff07ff07ff07"
+  ],
+  "odaiba:tv_bitmap_564": [
+    "window",
+    "ff00fe00fe00fe0000000000000000000000000000000004000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_565": [
+    "window",
+    "fe0ffe0ffe0ffc0f00000000000000000000000000003800fe00fe00fe00fe00"
+  ],
+  "odaiba:tv_bitmap_566": [
+    "window",
+    "001f001f001f001f0000000000000000000000000000000c001f001f001f001f"
+  ],
+  "odaiba:tv_bitmap_571": [
+    "window",
+    "fc00fe00fe00fe00fe00fc00fc00fc000000000000000000000000000000fc00"
+  ],
+  "odaiba:tv_bitmap_572": [
+    "window",
+    "003f003f003f003f003f003f003f000f0000000000000000000000000007001f"
+  ],
+  "odaiba:tv_bitmap_573": [
+    "window",
+    "f000f000f000f000f000f000f000f000000000000000000000000000b000f000"
+  ],
+  "odaiba:tv_bitmap_574": [
+    "window",
+    "f07fe07ff07ff07ff07ff07ff07fe07f0000000000000000000000000071007f"
+  ],
+  "odaiba:tv_bitmap_575": [
+    "window",
+    "c0ffc0ffe0ffe0ffe0ffe0ffe0ffc01f0000000000000000000000000000e000"
+  ],
+  "odaiba:tv_bitmap_576": [
+    "window",
+    "01ff01ff01ff01ff01ff01ff01ff00ff00000000000000000000000000f8c0ff"
+  ],
+  "odaiba:tv_bitmap_577": [
+    "window",
+    "00000000000000000000000000000000000000000000000000000000003e03ff"
+  ],
+  "odaiba:tv_bitmap_581": [
+    "window",
+    "cffecffecffecffe0000000000000000cffecffecffecffecffecffecffecffe"
+  ],
+  "odaiba:tv_bitmap_582": [
+    "window",
+    "f8fff8ff00ff00ff004800000000000000ff00ff00ff00ff00ff00ff00ff00ff"
+  ],
+  "odaiba:tv_bitmap_583": [
+    "window",
+    "007f007f0000000000000000000000000000dd82fdfefdfefdfefdfefffefffe"
+  ],
+  "odaiba:tv_bitmap_584": [
+    "window",
+    "3ff83ff800000000000000000000000000007f07ff07ff07ff87ff87ff07ff07"
+  ],
+  "odaiba:tv_bitmap_585": [
+    "window",
+    "1ffe3ffe000000000000000000000000000081fe81ff81ff81ff81ffc1ffc1ff"
+  ],
+  "odaiba:tv_bitmap_586": [
+    "window",
+    "fc00fc000000000000000000000000000000ff0fff3fffffffffffffffffffff"
+  ],
+  "odaiba:tv_bitmap_587": [
+    "window",
+    "ff1fff1fff00ff007f00000000000000ff00ff00ff00ff01ff01ff01ff01ff01"
+  ],
+  "odaiba:tv_bitmap_588": [
+    "window",
+    "7fe3ffe3ffe3ffe3ff020000000000007fe37fe37fe37fe3ffe3ffe3ffe3ffe3"
+  ],
+  "odaiba:tv_bitmap_592": [
+    "window",
+    "ff80ff80ff80ff80ff80ff80ff80fe000000000000000000000000001c00ff80"
+  ],
+  "odaiba:tv_bitmap_593": [
+    "window",
+    "ff07ff07ff07ff07ff07ff07ff07fe010000000000000000000000004f00ff07"
+  ],
+  "odaiba:tv_bitmap_594": [
+    "window",
+    "000f000f000f000f000f000f000f000f0000000000000000000000000200ff0f"
+  ],
+  "odaiba:tv_bitmap_595": [
+    "window",
+    "fe00fe00fe00fe00fe00fe00fe00fc000000000000000000000000003000fe0f"
+  ],
+  "odaiba:tv_bitmap_596": [
+    "window",
+    "001f001f001f001f001f001f001f000f000000000000000000000000800ef81f"
+  ],
+  "odaiba:tv_bitmap_597": [
+    "window",
+    "000000000000000000000000000000000000000000000000000000000007003f"
+  ],
+  "odaiba:tv_bitmap_601": [
+    "window",
+    "fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00fc0000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_602": [
+    "window",
+    "003f003f003f003f003f003f003f003f003f003f003f00000000000000000000"
+  ],
+  "odaiba:tv_bitmap_603": [
+    "window",
+    "f000f000f000f000f000f000f000f000f000f000f00000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_604": [
+    "window",
+    "007f007f007f007f007f007f007f007f007f007f007f00000000000000000000"
+  ],
+  "odaiba:tv_bitmap_605": [
+    "window",
+    "e000e000e000e000e000e000e000e000e000e000e00000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_606": [
+    "window",
+    "c0ffe0ffe1ffe1ffe1ffe1ffc1ffc1ffc1ffc1ffc1ff00000000000000000000"
+  ],
+  "odaiba:tv_bitmap_607": [
+    "window",
+    "03ff03ff03ff03ff03ff03ff03ff03ff03ff03ff03ff00000000000000000000"
+  ],
+  "odaiba:tv_bitmap_608": [
+    "window",
+    "0000000000000000000000000000d000f000f000f000f000f000f000f000f000"
+  ],
+  "odaiba:tv_bitmap_609": [
+    "window",
+    "00000000000000000000000000000003000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_611": [
+    "window",
+    "c7fec7fe00000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_612": [
+    "window",
+    "00ff00ff00000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_613": [
+    "window",
+    "fffefffefffefffefffefffefffefffefffefffefffefffefc3e000000000000"
+  ],
+  "odaiba:tv_bitmap_614": [
+    "window",
+    "ff07ff07ff07ff07ff07ff07ff07ff07ff87ff07ff07ff070001000000000000"
+  ],
+  "odaiba:tv_bitmap_615": [
+    "window",
+    "c7ff83ff83ff83ff83ff83ff83ff83ff83ffe1ffc1ffc1ff81fe000000000000"
+  ],
+  "odaiba:tv_bitmap_616": [
+    "window",
+    "ffffffffffffffffffffffffffffffffffffffffffffffff6fbf000000000000"
+  ],
+  "odaiba:tv_bitmap_617": [
+    "window",
+    "ff01ff0100010001000100010001000100010001000100010000000000000000"
+  ],
+  "odaiba:tv_bitmap_618": [
+    "window",
+    "ffe3ffe300000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_622": [
+    "window",
+    "ff80ff80ff80ff80ff80ff80ff80ff80ff80ff80ff8000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_623": [
+    "window",
+    "ff07ff07ff07ff07ff07ff07ff07ff07ff07ff07ff0700000000000000000000"
+  ],
+  "odaiba:tv_bitmap_624": [
+    "window",
+    "ff0ffe0fff0fff0fff0fff0fff0fff0fff0fff0ffe0f00000000000000000000"
+  ],
+  "odaiba:tv_bitmap_625": [
+    "window",
+    "fe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffc0f00000000000000000000"
+  ],
+  "odaiba:tv_bitmap_626": [
+    "window",
+    "fc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1f00000000000000000000"
+  ],
+  "odaiba:tv_bitmap_627": [
+    "window",
+    "003f003f003f003f003f003f003f003f003f003f003f00000000000000000000"
+  ],
+  "odaiba:tv_bitmap_631": [
+    "window",
+    "00000000fc00f800fc00be00fe00fe00fe00fc00fc00fe00fc00fc0000000000"
+  ],
+  "odaiba:tv_bitmap_632": [
+    "window",
+    "00000000001f003f003f003f003f003f003f003f003f003f003f003f00000000"
+  ],
+  "odaiba:tv_bitmap_633": [
+    "window",
+    "00000000f000f000f000f000f000f000f000f000f000f000f000f00000000000"
+  ],
+  "odaiba:tv_bitmap_634": [
+    "window",
+    "00000000007f007f007f007f007f007f007f007f007f007f007f007f00000000"
+  ],
+  "odaiba:tv_bitmap_635": [
+    "window",
+    "00000000e000e000c000c000c000e000e000e000e000e000e000e00000000000"
+  ],
+  "odaiba:tv_bitmap_636": [
+    "window",
+    "00000000c0ffc0ffc0ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ffc1ff00000000"
+  ],
+  "odaiba:tv_bitmap_637": [
+    "window",
+    "0000000002ff02ff03ff03fd03ff01ff01ff01ff01ff01ff01ff01ff00000000"
+  ],
+  "odaiba:tv_bitmap_638": [
+    "window",
+    "f000f00000000000000000000000000000000000000000000000f000f000f000"
+  ],
+  "odaiba:tv_bitmap_639": [
+    "window",
+    "000f000f00000000000000000000000000000000000000000000000f000f000f"
+  ],
+  "odaiba:tv_bitmap_650": [
+    "window",
+    "0000000000000000000000000000000000000000000000000800f800f800f000"
+  ],
+  "odaiba:tv_bitmap_651": [
+    "window",
+    "0000000000000000000000000000000000000000000000000000001f001f001f"
+  ],
+  "odaiba:tv_bitmap_652": [
+    "window",
+    "00000000ff00ff80ff80ff80ff80ff80ff80ff80ff80ff00ff00ff8000000000"
+  ],
+  "odaiba:tv_bitmap_653": [
+    "window",
+    "00001c00ff07ff07ff07ff07ff07ff07ff07ff07ff07ff07fe07ff0700000000"
+  ],
+  "odaiba:tv_bitmap_654": [
+    "window",
+    "00000000fe0ffe0ffe0fdf0fff0fff0fff0fff0ffe0ffe0ffe0ffe0f00000000"
+  ],
+  "odaiba:tv_bitmap_655": [
+    "window",
+    "00000000000f000f000f000f000f000f000f000f000f000f000f000f00000000"
+  ],
+  "odaiba:tv_bitmap_661": [
+    "window",
+    "000000000000000000000000fc00fe00fe00fe00fe00fe00fe00fe00fe00fe00"
+  ],
+  "odaiba:tv_bitmap_662": [
+    "window",
+    "00000000000000000000003ff83ff83ff83ff83ff83ff83ff83ff83ff83ff83f"
+  ],
+  "odaiba:tv_bitmap_663": [
+    "window",
+    "000000000000000000000000007f007f007e007f007f007f007f007f007f007f"
+  ],
+  "odaiba:tv_bitmap_666": [
+    "window",
+    "000000000000000000000000c000c000c000c000c000e000e000c000c000c000"
+  ],
+  "odaiba:tv_bitmap_667": [
+    "window",
+    "00000000000000000000024c02ff03ff03ff03ff03ff03ff03ff03ff03ff03ff"
+  ],
+  "odaiba:tv_bitmap_668": [
+    "window",
+    "d000d000f000f000f000f000f000f00000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_669": [
+    "window",
+    "000f000f000f000f000f000f000f000f00000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_680": [
+    "window",
+    "f800f800f800f800f800f800f800f000f0000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_681": [
+    "window",
+    "001f001f001f001f001f001f001f001f001f0000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_683": [
+    "window",
+    "000000000000000000007e00fe00ff00ff00ff00ff00ff00ff00ff00ff00ff00"
+  ],
+  "odaiba:tv_bitmap_684": [
+    "window",
+    "000000000000000000000000000f000f000f000f000f000f000f000f000f000f"
+  ],
+  "odaiba:tv_bitmap_686": [
+    "window",
+    "000000000000000000000000f800f800fc00fc00fc00fc00fc00fc00fc00fc00"
+  ],
+  "odaiba:tv_bitmap_687": [
+    "window",
+    "00000000000000000000003f003f003f003f003f003f003f003f003f003f003f"
+  ],
+  "odaiba:tv_bitmap_691": [
+    "window",
+    "fc00000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_692": [
+    "window",
+    "f83f0000000000000000000000000000f800f800f800f800f800d800f800f800"
+  ],
+  "odaiba:tv_bitmap_693": [
+    "window",
+    "007f0000000000000000000000000000f07ff07ff07ff07ff07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_694": [
+    "window",
+    "0000000000000000000000000000c000e07fe07ff07ff07ff07ff07ff07ff07f"
+  ],
+  "odaiba:tv_bitmap_695": [
+    "window",
+    "00000000000000000000000000000003e0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ff"
+  ],
+  "odaiba:tv_bitmap_696": [
+    "window",
+    "8000000000000000000000000000000680ffe0ffe1ffc1ffc1ffc1ffe1ffe1ff"
+  ],
+  "odaiba:tv_bitmap_697": [
+    "window",
+    "01ff000000000000000000000000000603ff03ff03ff03ff03ff03ff03ff03ff"
+  ],
+  "odaiba:tv_bitmap_710": [
+    "window",
+    "00000000f800f800fc00fc00f800f800f000f000f800f800f800f800f8000000"
+  ],
+  "odaiba:tv_bitmap_711": [
+    "window",
+    "00000000000f001f001f001f001f001f001f001f001f001f001f001f001f0000"
+  ],
+  "odaiba:tv_bitmap_712": [
+    "window",
+    "00000000000000000000000000000000ff00ff00ff00ff80ff80ff80ff80ff80"
+  ],
+  "odaiba:tv_bitmap_713": [
+    "window",
+    "ff00000000000000000000000000000000070007000700070007000700070007"
+  ],
+  "odaiba:tv_bitmap_714": [
+    "window",
+    "000f000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_715": [
+    "window",
+    "00000000000000000000000000000000fc00fe00fe00fe00fe00fe00fe00fe00"
+  ],
+  "odaiba:tv_bitmap_716": [
+    "window",
+    "f8000000000000000000000000000000001f001f001f001f001f001f001f001f"
+  ],
+  "odaiba:tv_bitmap_717": [
+    "window",
+    "003f000000000000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_722": [
+    "window",
+    "f800f800f800f000000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_723": [
+    "window",
+    "f07ff07ff07fe07f000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_724": [
+    "window",
+    "f07ff07ff07fe07f000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_725": [
+    "window",
+    "e0ffe0ffe0ffc0ff000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_726": [
+    "window",
+    "c1ffe1ffc1ff80ff000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_727": [
+    "window",
+    "03ff01ff01ff01ff000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_742": [
+    "window",
+    "ff80ff80ff80ff00000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_743": [
+    "window",
+    "0007000700070007000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_745": [
+    "window",
+    "fe00fe00fe00fc00000000000000000000000000000000000000000000000000"
+  ],
+  "odaiba:tv_bitmap_746": [
+    "window",
+    "001f001f001f001f000000000000000000000000000000000000000000000000"
+  ],
   "odaiba:tvxl_10": [
     "window",
     "007f007f007f007f007f007f007f007f007f007f000000000000000000000000"
@@ -3158,6 +4854,42 @@
   "tamers_park_props:hypnos_towers_99": [
     "facadeGlass",
     "000000000009000b000700070000000000000000000000000000000000000000"
+  ],
+  "tamers_traffic:bus_0": [
+    "window",
+    "0000000000000000000000000000000000000000000000008fc0dfe0dfe0dfe0"
+  ],
+  "tamers_traffic:bus_1": [
+    "window",
+    "0000000000000000000000000000000000000000000000007f3f7f3f7f3f7f3f"
+  ],
+  "tamers_traffic:bus_2": [
+    "window",
+    "000000000000000000000000000000000000000000000000fcfefcfefcfefcfe"
+  ],
+  "tamers_traffic:bus_3": [
+    "window",
+    "00000000000000000000000000000000000000000000000007f9c7f9c7f9c7f9"
+  ],
+  "tamers_traffic:bus_4": [
+    "window",
+    "00000000000000000000000000000000000000000000060006c00e4c0e440f44"
+  ],
+  "tamers_traffic:bus_5": [
+    "window",
+    "dfe0dfe09fe00000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_traffic:bus_6": [
+    "window",
+    "7f3f7f3f7f3f0000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_traffic:bus_7": [
+    "window",
+    "fcfefcfefdfe0000000000000000000000000000000000000000000000000000"
+  ],
+  "tamers_traffic:bus_8": [
+    "window",
+    "07f907f907f98000000000000000000000000000000000000000000000000000"
   ],
   "tamers_traffic:bus_9": [
     "car",

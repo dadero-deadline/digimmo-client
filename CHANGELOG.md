@@ -18,6 +18,8 @@ Reliable auto accept for dailies.
 
 - New night lights in Highton Terrace: the station's windows, entrance, sign and lamps, the train on the viaduct, the park toilet, and the rift's cracks on the plaza, which pulse in violet.
 
+- New night lights in Odaiba: windows in the TV building on Daemon's plaza (about two thirds lit, the lobby fully), the station with its train, sign and lamps, and buses on every map with lit windows.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
