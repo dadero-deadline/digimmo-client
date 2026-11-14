@@ -20,6 +20,8 @@ Reliable auto accept for dailies.
 
 - New night lights in Odaiba: windows in the TV building on Daemon's plaza (about two thirds lit, the lobby fully), the station with its train, sign and lamps, and buses on every map with lit windows.
 
+- Kaiser's Fortress lights up: the red lamps on its walls and dais, its red beacons and alarm lights, and its wall screens glow at night.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
