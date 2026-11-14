@@ -16,6 +16,8 @@ Reliable auto accept for dailies.
 
 - Highton Terrace windows light up as whole panes, curtains included, without glowing frame lines or dark corners.
 
+- New night lights in Highton Terrace: the station's windows, entrance, sign and lamps, the train on the viaduct, the park toilet, and the rift's cracks on the plaza, which pulse in violet.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.

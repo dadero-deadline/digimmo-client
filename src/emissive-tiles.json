@@ -127,6 +127,30 @@
     "car",
     "0000000000000000000000000000000008000c00000000000000000000000000"
   ],
+  "city:door_dreams_0": [
+    "riftGlow",
+    "00000000000000000000000018001c000e000700030001000000000000000000"
+  ],
+  "city:door_dreams_1": [
+    "riftGlow",
+    "0000000000000000000000000000000000000080000000000000000001000100"
+  ],
+  "city:door_dreams_2": [
+    "riftGlow",
+    "0000000000000000000004001800000000800080018002004000000000000080"
+  ],
+  "city:door_dreams_3": [
+    "riftGlow",
+    "01000180008000000000000000000106011c0138007c00f801d001e101800100"
+  ],
+  "city:door_dreams_4": [
+    "riftGlow",
+    "03803f8087803f00fc00e000d000e000c000800000000000c000000000000000"
+  ],
+  "city:door_dreams_5": [
+    "riftGlow",
+    "00000000000001020002000300030025009f01ff01fe01f001f8000000000000"
+  ],
   "darkocean:sigil_1": [
     "summon",
     "0000000000000000000000000000000000000000000000000000c00060001800"
@@ -1407,6 +1431,110 @@
     "window",
     "007f007f007f0000000000000000000000000000000000000000000000000000"
   ],
+  "highton:hstation_10": [
+    "window",
+    "000000000000f9f9787878787878787878787878000000000000000000000000"
+  ],
+  "highton:hstation_11": [
+    "window",
+    "00000000000079f8787878787878787878787878000000000000000000000000"
+  ],
+  "highton:hstation_12": [
+    "window",
+    "000000000000f9f8787878787878787878787878000000000000000000000000"
+  ],
+  "highton:hstation_25": [
+    "greenLamp",
+    "00000000000001000fe01ff01ff01ff03ff81ff01ff01ff00fe0010000000000"
+  ],
+  "highton:hstation_26": [
+    "stationSign",
+    "0000000000000000818081808180ff8081808180818000000000000000000000"
+  ],
+  "highton:hstation_27": [
+    "stationSign",
+    "000000000000000007e18181818181818181818107e100000000000000000000"
+  ],
+  "highton:hstation_28": [
+    "stationSign",
+    "0000000000000000187e19811801f9f919811981187e00000000000000000000"
+  ],
+  "highton:hstation_29": [
+    "stationSign",
+    "0000000000000000ff9818181818181f18181818181800000000000000000000"
+  ],
+  "highton:hstation_30": [
+    "stationSign",
+    "000000000000000087e19818981898189818981887e000000000000000000000"
+  ],
+  "highton:hstation_31": [
+    "stationSign",
+    "000000000000000001810187019901e101810181018100000000000000000000"
+  ],
+  "highton:hstation_34": [
+    "window",
+    "000000000000000000000000000000000000000000000000000000000000ffc0"
+  ],
+  "highton:hstation_35": [
+    "window",
+    "00000000000000000000000000000000000000000000000000000000000003ff"
+  ],
+  "highton:hstation_37": [
+    "window",
+    "000000000000000000000000000000000000000000000000fffcfffcfffcfffc"
+  ],
+  "highton:hstation_38": [
+    "window",
+    "000000000000000000000000000000000000000000000000fffcfffcfffcfffc"
+  ],
+  "highton:hstation_39": [
+    "window",
+    "000000000000000000000000000000000000000000000000fffcfffcfffcfffc"
+  ],
+  "highton:hstation_45": [
+    "window",
+    "ffc0ffc0ffc0ffc0ffc0ffc0ffc07f40ffc0ffc0ffc0ffc0ffc0ffc0ffc07f40"
+  ],
+  "highton:hstation_46": [
+    "window",
+    "03ff03ff03ff03ff03ff03ff03ff00ff03ff03ff03ff03ff03ff03ff03ff00ff"
+  ],
+  "highton:hstation_48": [
+    "window",
+    "fffcfffcfffcfffcfffcfffc0000fffcfffcfffcfffcfffcfffcfffcfffcfffc"
+  ],
+  "highton:hstation_54": [
+    "window",
+    "ffc0ffc0ffc0ffc0ffc0ffc0ffc0000000000000000000000000000000000000"
+  ],
+  "highton:hstation_55": [
+    "window",
+    "03ff03ff03ff03ff03ff03ff03ff000000000000000000000000000000000000"
+  ],
+  "highton:hstation_56": [
+    "window",
+    "fffcfffcfefcfefcfefcfefcfefc3e0cfefcfefcfefcfefcfefcfefcfefc3e0c"
+  ],
+  "highton:hstation_57": [
+    "window",
+    "fffcfffceffaeffaeffaeffaeffae0f8effaeffaeffaeffaeffaeffaeffae0f8"
+  ],
+  "highton:hstation_58": [
+    "window",
+    "fffcfffcffbcffbcffbcffbcffbc0f80ffbcffbcffbcffbcfffcfffcfffc0fc0"
+  ],
+  "highton:hstation_59": [
+    "window",
+    "fffcfffcfbfcfbfcfbfcfbfcfbfcf83cfbfcfbfcfbfcfbfcfbfcfbfcfbfcf83c"
+  ],
+  "highton:hstation_9": [
+    "window",
+    "000000000000f9f8787878787878787878787878000000000000000000000000"
+  ],
+  "highton:rift_glow_0": [
+    "riftGlow",
+    "0000000000000000000000400060809840842102190006000200000000000000"
+  ],
   "highton:shopbld_1_10": [
     "window",
     "000000000000000000000000ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0ffe0"
@@ -1470,6 +1598,30 @@
   "highton:shopbld_5_9": [
     "window",
     "ff80ff80ff80ff80ff8000000000000000000000000000000000000000000000"
+  ],
+  "highton:toilet_3": [
+    "window",
+    "00000000000000000000000000000000fc00fc00fc00fc00fc00fc00fc00fe00"
+  ],
+  "highton:toilet_4": [
+    "window",
+    "00000000000000000000000000000000c007c007c007c007c007c007c007e007"
+  ],
+  "highton:toilet_5": [
+    "window",
+    "00000000000000000000000000000000007e007e007e007e007e007e007e007f"
+  ],
+  "highton:toilet_6": [
+    "window",
+    "0000fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00fc00fe000000"
+  ],
+  "highton:toilet_7": [
+    "window",
+    "0000c007c007c007c007c007c007c007c007c007c007c007c007c007e0070000"
+  ],
+  "highton:toilet_8": [
+    "window",
+    "0000007e007e007e007e007e007e007e007e007e007e007e007e007e007f0000"
   ],
   "holypeaks:pagoda_xl_102": [
     "window",
