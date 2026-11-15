@@ -25,6 +25,10 @@ for(const channel of ['public','development']){
  assert.equal(new Set(names).size,names.length,'Every sample has exactly one credit');
  assert.deepEqual([...names].sort(),audio.map(sample=>sample.name).sort(),'Audio manifest and credits match');
  for(const file of ['main.js','preload.js','updater.js','discord.js','launcher-preload.js'])new vm.Script(fs.readFileSync(path.join(folder,'client',file),'utf8'));
+ // Both windows stay in the renderer sandbox; the game preload gets the effects from the main process.
+ const wrapper=fs.readFileSync(path.join(folder,'client/main.js'),'utf8'),gamePreload=fs.readFileSync(path.join(folder,'client/preload.js'),'utf8');
+ assert(!wrapper.includes('sandbox:false')&&wrapper.split('sandbox:true').length===3,'Game and start window are sandboxed');
+ assert.deepEqual(gamePreload.match(/require\('[^']+'\)/g),["require('electron')"],'The game preload uses no Node modules');
  // The launcher shows the newest release note, translated, and loads nothing remote itself.
  const launcherNote=JSON.parse(fs.readFileSync(path.join(folder,'client/launcher-notes.json'),'utf8')),[version,note]=notes[0];
  assert.equal(JSON.stringify(launcherNote),JSON.stringify({version,en:note,es:translations.es[note],pt:translations.pt[note]}));

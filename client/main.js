@@ -11,7 +11,7 @@ if (!app.commandLine.hasSwitch('user-data-dir'))
   app.setPath('userData', path.join(app.getPath('appData'), 'Digi MMO'));
 app.setName('DigiMMO');
 // An AppImage cannot carry Chromium's setuid sandbox helper, and Ubuntu 23.10+ blocks the
-// unprivileged namespaces it falls back to. The game window already runs without a renderer sandbox.
+// unprivileged namespaces it falls back to. Only there the client starts without the sandbox.
 const namespacesBlocked = () => {
   try { return fs.readFileSync('/proc/sys/kernel/apparmor_restrict_unprivileged_userns', 'utf8').trim() === '1'; }
   catch { return false; }
@@ -39,12 +39,17 @@ const loadState = () => { try { return JSON.parse(fs.readFileSync(stateFile(),'u
 const launcherFile = () => path.join(app.getPath('userData'),'launcher.json');
 const launcherChoice = value => ({show:value?.show!==false,language:Object.hasOwn(LANGUAGES,value?.language)?value.language:null});
 const loadLauncher = () => { try { return launcherChoice(JSON.parse(fs.readFileSync(launcherFile(),'utf8'))); } catch { return launcherChoice(); } };
-const developmentArguments = [];
+// The game window's preload is sandboxed and cannot read files, so it asks for the effects on every page load.
+const readText = file => { try { return fs.readFileSync(file,'utf8'); } catch { return null; } };
+const tweaks = () => {
+  let code = null;
   // @development-start
-// Development loads its freshly built bundle unless a test file is explicitly selected.
-if (process.env.DIGIMMO_DEV_TEST_SCRIPT && path.isAbsolute(process.env.DIGIMMO_DEV_TEST_SCRIPT))
-  developmentArguments.push('--digimmo-test-script='+process.env.DIGIMMO_DEV_TEST_SCRIPT);
+  // Development loads its freshly built bundle unless a test file is explicitly selected.
+  if (process.env.DIGIMMO_DEV_TEST_SCRIPT && path.isAbsolute(process.env.DIGIMMO_DEV_TEST_SCRIPT))
+    code = readText(process.env.DIGIMMO_DEV_TEST_SCRIPT);
   // @development-end
+  return code || readText(path.join(__dirname,'tweaks.user.js'));
+};
 let mainWindow;
 let launcherWindow;
 let pendingUpdate = null;
@@ -64,8 +69,7 @@ function createWindow() {
     minWidth:800,minHeight:600,title:'DigiMMO',icon:windowIcon(),
     backgroundColor:'#0b1030',autoHideMenuBar:true,show:false,
     webPreferences:{preload:path.join(__dirname,'preload.js'),partition:'persist:digimmo',
-      contextIsolation:true,sandbox:false,backgroundThrottling:false,devTools:DEVELOPMENT,
-      additionalArguments:developmentArguments}});
+      contextIsolation:true,sandbox:true,backgroundThrottling:false,devTools:DEVELOPMENT}});
   mainWindow=win;
   win.webContents.on('dom-ready',sendUpdateNotice);
   if(process.platform==='win32')win.setAppDetails({appId:APP_ID,
@@ -172,6 +176,8 @@ ipcMain.on('launcher:play',event=>{
   // Keep the start window until the game window appears, so there is no empty gap.
   mainWindow.once('show',()=>{if(open(launcher))launcher.close();});
 });
+// Only a preload can send this; the page has no IPC. The answer is the same script that ships beside the client.
+ipcMain.on('digimmo:tweaks',event=>{event.returnValue=tweaks();});
 ipcMain.on('digimmo:launcher-preferences',(event,value)=>{
   try { if(!open(mainWindow)||event.sender!==mainWindow.webContents||new URL(event.senderFrame.url).origin+'/'!==GAME)return; } catch { return; }
   const next=launcherChoice(value),current=loadLauncher();
