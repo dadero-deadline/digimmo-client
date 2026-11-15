@@ -22,6 +22,8 @@ Reliable auto accept for dailies.
 
 - Kaiser's Fortress lights up: the red lamps on its walls and dais, its red beacons and alarm lights, and its wall screens glow at night.
 
+- Holy Peaks: the red paper lanterns glow from the middle of the paper instead of their top, and the turquoise destiny stones, such as the one in the shrine, glow softly, with incense burning on the shrine's offering table.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
