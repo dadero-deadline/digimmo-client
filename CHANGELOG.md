@@ -26,6 +26,8 @@ Reliable auto accept for dailies.
 
 - Dream Ruins: the stained glass windows glow at night in the colour of their glass, red, blue or violet, and the window slits in the towers glow violet.
 
+- Myotismon's Keep: the castle's tower windows and wall slits glow warm at night, and its stained glass windows glow red, blue or violet, without their gold rings and frames.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
