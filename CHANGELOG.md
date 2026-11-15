@@ -28,6 +28,8 @@ Reliable auto accept for dailies.
 
 - Myotismon's Keep: the castle's tower windows and wall slits glow warm at night, and its stained glass windows glow red, blue or violet, without their gold rings and frames.
 
+- Fog City: the motorboat by the pier in the southeast lights its cabin windows at night and shows a red and a green running light at the bow.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
