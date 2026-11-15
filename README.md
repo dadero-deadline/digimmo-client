@@ -75,7 +75,7 @@ Work in your own fork and submit a focused pull request for maintainer review. O
 
 ## Support
 
-The client is free and stays free. If you enjoy it, you can buy me a coffee.
+The client is free and stays free.
 
 <a href="https://buymeacoffee.com/dadero"><img src="assets/branding/buy-me-a-coffee.svg" alt="Buy me a coffee :)" height="36"></a>
 
