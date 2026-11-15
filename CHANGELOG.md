@@ -24,6 +24,8 @@ Reliable auto accept for dailies.
 
 - Holy Peaks: the red paper lanterns glow from the middle of the paper instead of their top, and the turquoise destiny stones, such as the one in the shrine, glow softly, with incense burning on the shrine's offering table.
 
+- Dream Ruins: the stained glass windows glow at night in the colour of their glass, red, blue or violet, and the window slits in the towers glow violet.
+
 ## 0.3.7
 
 Auto accept for repeatable dailies.
