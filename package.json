@@ -15,6 +15,7 @@
     "build:dev": "node scripts/build.cjs development",
     "build:icons": "node scripts/build-icons.cjs",
     "check": "node scripts/verify-build.cjs",
+    "test": "npm run build && npm run build:dev && npm run check && npm run check:updater && npm run check:effects",
     "stage:test": "node scripts/build.cjs development --stage-test",
     "package:windows": "npm run package:installer",
     "package:extensions": "node scripts/build.cjs public && node scripts/package-release.cjs",
@@ -22,6 +23,7 @@
     "package:installer": "node scripts/build.cjs public && electron-builder --config electron-builder.json --win nsis --x64 --publish never",
     "package:linux": "node scripts/build.cjs public && electron-builder --config electron-builder.json --linux AppImage --x64 --publish never",
     "check:updater": "node --test scripts/updater.test.cjs",
+    "check:effects": "node --test scripts/effects.test.cjs scripts/ambience.test.cjs",
     "check:installer": "node scripts/verify-installer.cjs"
   },
   "dependencies": {

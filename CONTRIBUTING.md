@@ -15,6 +15,8 @@ The shared source is in `src/`, the Electron wrapper in `client/`, and the brows
 
 Keep public packages in the sibling `release/<version>/` folder, archived builds in `archive/` and private checks in `tests/`. Do not launch old executables from the workspace root or archive. Keep profiles, credentials, game caches and private reports outside Git.
 
+`npm test` builds both channels and runs the offline checks: the build verification, the updater tests and the effect and ambience tests in `scripts/`. GitHub runs the same command for every push to `main` and every pull request. These tests use mocks; they do not start the game.
+
 Distinguish syntax checks, local reconstructions and actual game tests. For visual or audio changes, include the map and conditions needed to reproduce the result.
 
 ## Releases
