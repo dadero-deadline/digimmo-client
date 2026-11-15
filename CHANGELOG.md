@@ -2,7 +2,7 @@
 
 ## 0.4
 
-Reliable auto accept for dailies.
+New night lights from Highton Terrace to Myotismon's Keep, and reliable auto accept for dailies.
 
 - Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.
 
