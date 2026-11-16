@@ -1,13 +1,5 @@
 # Changelog
 
-## 0.4.1
-
-A notice when a game update gets ahead of the client.
-
-- When a game update changes something the client relies on, a brief note names the paused features once and F10 lists them with a short code for reports. Until now they stopped without a word; everything else keeps working.
-
-- The desktop client runs the game page in the browser sandbox and uses Electron 45.3.
-
 ## 0.4
 
 New night lights from Highton Terrace to Myotismon's Keep, and reliable auto accept for dailies.

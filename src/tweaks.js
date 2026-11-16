@@ -111,10 +111,6 @@
   // Localized overlay; never changes the original game language.
   const TRANSLATIONS = {
   "es": {
-    "A notice when a game update gets ahead of the client.\n• When a game update changes something the client relies on, a brief note names the paused features once and F10 lists them with a short code for reports. Until now they stopped without a word; everything else keeps working.\n• The desktop client runs the game page in the browser sandbox and uses Electron 45.3.": "Un aviso cuando una actualización del juego se adelanta al cliente.\n• Cuando una actualización del juego cambia algo de lo que depende el cliente, un aviso breve indica una sola vez las funciones en pausa y F10 las muestra con un código breve para informar del problema. Hasta ahora dejaban de funcionar sin avisar; todo lo demás sigue funcionando.\n• El cliente de escritorio ejecuta la página del juego en el sandbox del navegador y usa Electron 45.3.",
-    "Client features paused": "Funciones del cliente en pausa",
-    "This usually follows a game update. Everything else keeps working. Check for a client update; if none is available yet, please report it with this code:": "Suele ocurrir tras una actualización del juego. Todo lo demás sigue funcionando. Comprueba si hay una actualización del cliente; si aún no la hay, informa del problema con este código:",
-    "Atmosphere on this map": "Ambiente en este mapa",
     "New night lights from Highton Terrace to Myotismon's Keep, and reliable auto accept for dailies.\n• Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.\n• During a Biomerge your night light stays with your fused Digimon instead of trailing behind it.\n• The plain pumpkins in Puppet Woods no longer glow; only its hanging pumpkin lanterns light up at night.\n• Side-facing cars in Odaiba and Highton Terrace light up at the front now; cars there and in Fog City show small red tail lights.\n• Toy Town and Odaiba windows light up to their dark blue edges at night, not just the pale middle of the glass.\n• Highton Terrace windows light up as whole panes, curtains included, without glowing frame lines or dark corners.\n• New night lights in Highton Terrace: the station's windows, entrance, sign and lamps, the train on the viaduct, the park toilet, and the rift's cracks on the plaza, which pulse in violet.\n• New night lights in Odaiba: windows in the TV building on Daemon's plaza (about two thirds lit, the lobby fully), the station with its train, sign and lamps, and buses on every map with lit windows.\n• Kaiser's Fortress lights up: the red lamps on its walls and dais, its red beacons and alarm lights, and its wall screens glow at night.\n• Holy Peaks: the red paper lanterns glow from the middle of the paper instead of their top, and the turquoise destiny stones, such as the one in the shrine, glow softly, with incense burning on the shrine's offering table.\n• Dream Ruins: the stained glass windows glow at night in the colour of their glass, red, blue or violet, and the window slits in the towers glow violet.\n• Myotismon's Keep: the castle's tower windows and wall slits glow warm at night, and its stained glass windows glow red, blue or violet, without their gold rings and frames.\n• Fog City: the motorboat by the pier in the southeast lights its cabin windows at night and shows a red and a green running light at the bow.": "Nuevas luces nocturnas desde Highton Terrace hasta Myotismon's Keep, y aceptación automática fiable de diarias.\n• Aceptar y entregar misiones automáticamente ya no se detiene tras la primera diaria cuando el servidor confirma una misión después de que el diálogo haya avanzado, como con Jenrya en Deva Transit.\n• Durante un Biomerge tu luz nocturna se queda con tu Digimon fusionado en lugar de quedarse atrás.\n• Las calabazas normales de Puppet Woods ya no brillan; de noche solo se iluminan sus faroles de calabaza colgantes.\n• Los coches de perfil en Odaiba y Highton Terrace ahora se iluminan por delante; allí y en Fog City muestran pequeñas luces traseras rojas.\n• Las ventanas de Toy Town y Odaiba se iluminan de noche hasta sus bordes azul oscuro, no solo el centro claro del cristal.\n• Las ventanas de Highton Terrace se iluminan enteras, cortinas incluidas, sin líneas de marco brillantes ni esquinas oscuras.\n• Nuevas luces nocturnas en Highton Terrace: las ventanas, la entrada, el letrero y las farolas de la estación, el tren del viaducto, el baño del parque y las grietas de la fisura en la plaza, que laten en violeta.\n• Nuevas luces nocturnas en Odaiba: las ventanas del edificio de televisión en la plaza de Daemon (cerca de dos tercios encendidas, el vestíbulo entero), la estación con su tren, su letrero y sus farolas, y los autobuses de todos los mapas con ventanas iluminadas.\n• Kaiser's Fortress se ilumina: las lámparas rojas de sus paredes y del estrado, sus balizas rojas y luces de alarma, y sus pantallas de pared brillan de noche.\n• Holy Peaks: los farolillos rojos de papel brillan desde el centro del papel en lugar de su borde superior, y las piedras del destino turquesa, como la del santuario, brillan suavemente, con incienso encendido en la mesa de ofrendas.\n• Dream Ruins: las vidrieras brillan de noche en el color de su cristal, rojo, azul o violeta, y las saeteras de las torres brillan en violeta.\n• Myotismon's Keep: las ventanas de las torres y las saeteras de la muralla brillan cálidas de noche, y sus vidrieras brillan en rojo, azul o violeta, sin sus anillos dorados ni sus marcos.\n• Fog City: la lancha junto al muelle del sureste ilumina de noche las ventanas de su cabina y muestra una luz de navegación roja y otra verde en la proa.",
     "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.\n• A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time.": "Aceptación automática de diarias repetibles.\n• Aceptar y entregar misiones automáticamente ahora acepta todas las diarias con personajes que vuelven a la primera página del diálogo después de cada misión, como Takato.\n• Un botón Deshacer todo en la pestaña Deshacer de la forja muestra todo el equipo de tu bolsa que se puede deshacer, con su Digizoid y el total. Los favoritos y las piezas etiquetadas quedan fuera; las piezas épicas o mejores quedan sin marcar hasta que las marques. Al confirmar, las piezas se deshacen de una en una. Se detiene en el primer error del juego y puedes cancelarlo en cualquier momento.",
     "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de misión para diarias repetibles.\n• Las diarias repetibles, como las de Takato en Digital Fog, cambian a nuevos objetivos después de la primera vez. Los monstruos de esos objetivos vuelven a mostrar su ! azul.\n• Un botón Usar todas en el álbum de cartas muestra todas las cartas que aún puedes usar, con sus copias y el total; las cartas raras se pueden desmarcar. Al confirmar, las cartas se usan de una en una. Se detiene en el primer error del juego y puedes cancelarlo en cualquier momento.",
@@ -297,10 +293,6 @@
     "Excerpt, mono, 200 Hz low cut and two 900 Hz high cuts, constant volume matching, edge fades and Opus encoding. Varied short passages near Server Desert speakers with long pauses; no pitch or speed change.": "Fragmento en mono, filtro de graves de 200 Hz y dos filtros de agudos de 900 Hz, ajuste de volumen constante, fundidos y codificación Opus. Pasajes cortos variados cerca de los altavoces de Server Desert con pausas largas; sin cambios de tono ni velocidad."
   },
   "pt": {
-    "A notice when a game update gets ahead of the client.\n• When a game update changes something the client relies on, a brief note names the paused features once and F10 lists them with a short code for reports. Until now they stopped without a word; everything else keeps working.\n• The desktop client runs the game page in the browser sandbox and uses Electron 45.3.": "Um aviso quando uma atualização do jogo fica à frente do cliente.\n• Quando uma atualização do jogo muda algo de que o cliente depende, um aviso breve indica uma única vez os recursos em pausa e o F10 mostra a lista com um código curto para relatar o problema. Até agora eles paravam sem avisar; todo o resto continua funcionando.\n• O cliente para desktop executa a página do jogo na sandbox do navegador e usa o Electron 45.3.",
-    "Client features paused": "Recursos do cliente em pausa",
-    "This usually follows a game update. Everything else keeps working. Check for a client update; if none is available yet, please report it with this code:": "Isso costuma acontecer após uma atualização do jogo. Todo o resto continua funcionando. Verifique se há uma atualização do cliente; se ainda não houver, relate o problema com este código:",
-    "Atmosphere on this map": "Atmosfera neste mapa",
     "New night lights from Highton Terrace to Myotismon's Keep, and reliable auto accept for dailies.\n• Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.\n• During a Biomerge your night light stays with your fused Digimon instead of trailing behind it.\n• The plain pumpkins in Puppet Woods no longer glow; only its hanging pumpkin lanterns light up at night.\n• Side-facing cars in Odaiba and Highton Terrace light up at the front now; cars there and in Fog City show small red tail lights.\n• Toy Town and Odaiba windows light up to their dark blue edges at night, not just the pale middle of the glass.\n• Highton Terrace windows light up as whole panes, curtains included, without glowing frame lines or dark corners.\n• New night lights in Highton Terrace: the station's windows, entrance, sign and lamps, the train on the viaduct, the park toilet, and the rift's cracks on the plaza, which pulse in violet.\n• New night lights in Odaiba: windows in the TV building on Daemon's plaza (about two thirds lit, the lobby fully), the station with its train, sign and lamps, and buses on every map with lit windows.\n• Kaiser's Fortress lights up: the red lamps on its walls and dais, its red beacons and alarm lights, and its wall screens glow at night.\n• Holy Peaks: the red paper lanterns glow from the middle of the paper instead of their top, and the turquoise destiny stones, such as the one in the shrine, glow softly, with incense burning on the shrine's offering table.\n• Dream Ruins: the stained glass windows glow at night in the colour of their glass, red, blue or violet, and the window slits in the towers glow violet.\n• Myotismon's Keep: the castle's tower windows and wall slits glow warm at night, and its stained glass windows glow red, blue or violet, without their gold rings and frames.\n• Fog City: the motorboat by the pier in the southeast lights its cabin windows at night and shows a red and a green running light at the bow.": "Novas luzes noturnas de Highton Terrace a Myotismon's Keep, e aceitação automática confiável de diárias.\n• Aceitar e entregar missões automaticamente não para mais depois da primeira diária quando o servidor confirma uma missão depois que o diálogo já avançou, como com o Jenrya em Deva Transit.\n• Durante um Biomerge sua luz noturna fica com o seu Digimon fundido em vez de ficar para trás.\n• As abóboras comuns de Puppet Woods não brilham mais; à noite só as lanternas de abóbora penduradas acendem.\n• Os carros de lado em Odaiba e Highton Terrace agora acendem na frente; ali e em Fog City mostram pequenas lanternas traseiras vermelhas.\n• As janelas de Toy Town e Odaiba acendem à noite até as bordas azul-escuras, não só o centro claro do vidro.\n• As janelas de Highton Terrace acendem por inteiro, com as cortinas, sem linhas de moldura brilhando nem cantos escuros.\n• Novas luzes noturnas em Highton Terrace: as janelas, a entrada, a placa e as lâmpadas da estação, o trem no viaduto, o banheiro do parque e as rachaduras da fenda na praça, que pulsam em violeta.\n• Novas luzes noturnas em Odaiba: as janelas do prédio de TV na praça do Daemon (cerca de dois terços acesas, o saguão inteiro), a estação com o trem, a placa e as lâmpadas, e os ônibus de todos os mapas com janelas iluminadas.\n• Kaiser's Fortress se ilumina: as lâmpadas vermelhas das paredes e do estrado, os faróis vermelhos, as luzes de alarme e as telas de parede brilham à noite.\n• Holy Peaks: as lanternas vermelhas de papel brilham do meio do papel em vez da borda de cima, e as pedras do destino turquesa, como a do santuário, brilham suavemente, com incenso aceso na mesa de oferendas.\n• Dream Ruins: os vitrais brilham à noite na cor do vidro, vermelho, azul ou violeta, e as seteiras das torres brilham em violeta.\n• Myotismon's Keep: as janelas das torres e as seteiras da muralha brilham quentes à noite, e os vitrais brilham em vermelho, azul ou violeta, sem os anéis dourados e as molduras.\n• Fog City: a lancha junto ao píer no sudeste acende à noite as janelas da cabine e mostra uma luz de navegação vermelha e outra verde na proa.",
     "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.\n• A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time.": "Aceitação automática de diárias repetíveis.\n• Aceitar e entregar missões automaticamente agora aceita todas as diárias com personagens que voltam para a primeira página do diálogo depois de cada missão, como o Takato.\n• Um botão Desmanchar tudo na aba Desmanchar da forja mostra todo equipamento da sua bolsa que pode ser desmanchado, com o Digizoid e o total. Favoritos e peças etiquetadas ficam de fora; peças épicas ou melhores ficam desmarcadas até você marcar. Ao confirmar, as peças são desmanchadas uma de cada vez. Para no primeiro erro do jogo e pode ser cancelado a qualquer momento.",
     "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time.": "Marcadores de missão para diárias repetíveis.\n• Diárias repetíveis, como as do Takato na Digital Fog, mudam para novos objetivos depois da primeira vez. Os monstros desses objetivos voltam a mostrar o ! azul.\n• Um botão Usar todas no fichário de cartas mostra todas as cartas que você ainda pode usar, com as cópias e o total; as cartas raras podem ser desmarcadas. Ao confirmar, as cartas são usadas uma de cada vez. Para no primeiro erro do jogo e pode ser cancelado a qualquer momento.",
@@ -2710,8 +2702,6 @@
       get preview() { return preview; }, set preview(v) { preview = v; anim = null; },
       // @development-end
       get built() { return built; },
-      // Maps on which the effects failed to start or stopped after an error.
-      get broken() { return [...brokenMaps]; },
       get nightGlow() {
         return enabled && SETTINGS.dayNight && SETTINGS.lights && built
           ? { scene: built.scene, strength: sky(hourNow()).dark, depth: DEPTH_GLOW } : null;
@@ -2725,7 +2715,6 @@
   })();
 
   const CHANGELOG_ENTRIES = [
-  ["0.4.1", "A notice when a game update gets ahead of the client.\n• When a game update changes something the client relies on, a brief note names the paused features once and F10 lists them with a short code for reports. Until now they stopped without a word; everything else keeps working.\n• The desktop client runs the game page in the browser sandbox and uses Electron 45.3."],
   ["0.4", "New night lights from Highton Terrace to Myotismon's Keep, and reliable auto accept for dailies.\n• Auto accept and turn in quests no longer stops after the first daily when the server confirms a quest after the dialog has already moved on, as at Jenrya in Deva Transit.\n• During a Biomerge your night light stays with your fused Digimon instead of trailing behind it.\n• The plain pumpkins in Puppet Woods no longer glow; only its hanging pumpkin lanterns light up at night.\n• Side-facing cars in Odaiba and Highton Terrace light up at the front now; cars there and in Fog City show small red tail lights.\n• Toy Town and Odaiba windows light up to their dark blue edges at night, not just the pale middle of the glass.\n• Highton Terrace windows light up as whole panes, curtains included, without glowing frame lines or dark corners.\n• New night lights in Highton Terrace: the station's windows, entrance, sign and lamps, the train on the viaduct, the park toilet, and the rift's cracks on the plaza, which pulse in violet.\n• New night lights in Odaiba: windows in the TV building on Daemon's plaza (about two thirds lit, the lobby fully), the station with its train, sign and lamps, and buses on every map with lit windows.\n• Kaiser's Fortress lights up: the red lamps on its walls and dais, its red beacons and alarm lights, and its wall screens glow at night.\n• Holy Peaks: the red paper lanterns glow from the middle of the paper instead of their top, and the turquoise destiny stones, such as the one in the shrine, glow softly, with incense burning on the shrine's offering table.\n• Dream Ruins: the stained glass windows glow at night in the colour of their glass, red, blue or violet, and the window slits in the towers glow violet.\n• Myotismon's Keep: the castle's tower windows and wall slits glow warm at night, and its stained glass windows glow red, blue or violet, without their gold rings and frames.\n• Fog City: the motorboat by the pier in the southeast lights its cabin windows at night and shows a red and a green running light at the bow."],
   ["0.3.7", "Auto accept for repeatable dailies.\n• Auto accept and turn in quests now accepts every daily at givers that return to their first dialog page after each quest, such as Takato.\n• A Salvage all button in the forge's Salvage tab lists every piece of gear in your bag that can be salvaged, with its Digizoid and a total. Favorites and tagged pieces stay out; Epic or better pieces stay unticked until you tick them. After you confirm, the pieces are salvaged one at a time. It stops at the first game error and can be cancelled at any time."],
   ["0.3.6", "Quest markers for repeatable dailies.\n• Repeatable dailies, such as Takato's in the Digital Fog, switch to new objectives after the first run. Monsters needed for those objectives show their blue ! again.\n• A Slash all button in the card binder lists every card you can still slash, with its copies and a total; rare cards can be unticked. After you confirm, the cards are slashed one at a time. It stops at the first game error and can be cancelled at any time."],
@@ -2913,7 +2902,6 @@
     if (!menuRoot) return;
     const content = menuRoot.querySelector('.digimmo-content');
     content.replaceChildren();
-    const paused = compat.section(); if (paused) content.append(paused);
     menuRoot.setAttribute('aria-label', tr('DigiMMO Tweaks'));
     menuRoot.querySelector('h2').textContent = 'DigiMMO · ' + tr('Settings').toUpperCase();
     const reset = menuRoot.querySelector('#digimmo-reload'); if (reset) reset.textContent = tr('Restart game');
@@ -2990,9 +2978,6 @@
         width:min(320px,92vw);background:#142b51;color:#fff;border:3px solid #f5d483;
         padding:14px;font:13px/1.5 'Courier New',monospace;box-shadow:4px 4px 0 #030819}
       #digimmo-newversion button{margin-top:8px;background:#f5d483;color:#12254a;border:0;padding:8px;cursor:pointer;font:inherit}
-      #digimmo-panel #digimmo-compat-note{border-color:#e8c46b}
-      #digimmo-panel #digimmo-compat-note p{margin:0 0 8px;line-height:1.45}
-      #digimmo-panel #digimmo-compat-note code{display:block;color:#fce298;user-select:text;overflow-wrap:anywhere}
       @media(max-width:570px){#digimmo-panel{top:2%;max-height:96vh;font-size:12px}
         #digimmo-panel .digimmo-row{grid-template-columns:1fr 1fr}
         #digimmo-panel .digimmo-foot{flex-direction:column;flex-wrap:nowrap;align-items:stretch}
@@ -3071,112 +3056,6 @@
   const startUI = () => { initMenu(); announceVersion(); };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', startUI, { once: true });
   else startUI();
-
-  // Early warning after game updates. The effects and helpers read a few of the game's internal objects.
-  // While the game runs, their presence is checked every ten seconds. One that stays missing, or effects
-  // that failed on the current map, are named once in a brief line and listed in F10 instead of failing
-  // without a word. Nothing is sent anywhere.
-  const compat = (() => {
-    const KEY = 'digimmo.client.compatNotice', EVERY = 10000;
-    const HELP = 'This usually follows a game update. Everything else keeps working. Check for a client update; if none is available yet, please report it with this code:';
-    // Features under the names the F10 menu uses, each with the setting that switches it on.
-    const AREAS = [
-      ['Atmosphere', () => ATMOS.enabled], ['Atmosphere on this map', () => ATMOS.enabled], ['Audio', () => AUDIO_ENABLED],
-      ['Quest markers', () => SETTINGS.questMarks], ['Auto accept and turn in quests', () => SETTINGS.autoQuests],
-      ['Attack picks a target', () => SETTINGS.attackMacro], ['Release Digimon', () => true],
-      ['Slash all', () => true], ['Salvage all', () => true],
-    ];
-    const [LIGHT, HERE, SOUND, MARKS, QUESTS, ATTACK, RELEASE, SLASH, SALVAGE] = AREAS.map(area => area[0]);
-    const object = value => !!value && typeof value === 'object';
-    // [code for reports, features that need it, test]. Every test mirrors a path the client already reads,
-    // and all of them hold from the game's login screen on. A missing parent is reported by its own entry.
-    const PROBES = [
-      ['store.getState', [LIGHT, MARKS, QUESTS, ATTACK, RELEASE, SLASH, SALVAGE], g => typeof g.dmo.store?.getState === 'function'],
-      ['state', [LIGHT, MARKS, QUESTS, ATTACK, RELEASE, SLASH, SALVAGE], g => typeof g.dmo.store?.getState !== 'function' || object(g.state)],
-      ['state.screen', [QUESTS, RELEASE, SLASH, SALVAGE], g => !g.state || typeof g.state.screen === 'string'],
-      ['state.world', [LIGHT], g => !g.state || object(g.state.world)],
-      ['state.me', [MARKS, QUESTS, RELEASE, SLASH, SALVAGE], g => !g.state || 'me' in g.state],
-      ['state.dialog', [QUESTS], g => !g.state || 'dialog' in g.state],
-      ['state.target', [ATTACK], g => !g.state || 'target' in g.state],
-      ['state.windows', [RELEASE, SLASH], g => !g.state || object(g.state.windows)],
-      ['state.archive', [RELEASE], g => !g.state || 'archive' in g.state],
-      ['state.forge', [SALVAGE], g => !g.state || 'forge' in g.state],
-      ['state.chat', [SLASH, SALVAGE], g => !g.state || Array.isArray(g.state.chat)],
-      ['game.scene.getScene', [LIGHT, MARKS, ATTACK, SLASH, SALVAGE], g => typeof g.dmo.game?.scene?.getScene === 'function'],
-      ['scene', [LIGHT, MARKS, ATTACK, SLASH, SALVAGE], g => typeof g.dmo.game?.scene?.getScene !== 'function' || object(g.scene)],
-      ['scene.worldDrawn', [LIGHT], g => !g.scene || typeof g.scene.worldDrawn === 'boolean'],
-      ['scene.tilemap', [LIGHT], g => !g.scene || 'tilemap' in g.scene],
-      ['scene.mapId', [LIGHT], g => !g.scene || 'mapId' in g.scene],
-      ['scene.ownId', [LIGHT], g => !g.scene || 'ownId' in g.scene],
-      ['scene.views', [LIGHT, MARKS, ATTACK], g => !g.scene || (typeof g.scene.views?.get === 'function' && typeof g.scene.views.values === 'function')],
-      ['scene.events', [LIGHT, MARKS], g => !g.scene || typeof g.scene.events?.on === 'function'],
-      ['scene.add', [LIGHT, MARKS], g => !g.scene || typeof g.scene.add?.renderTexture === 'function'],
-      ['scene.runAction', [ATTACK], g => !g.scene || typeof g.scene.runAction === 'function'],
-      ['scene.deps.content', [SLASH, SALVAGE], g => !g.scene || object(g.scene.deps?.content)],
-      ['client.command', [SLASH, SALVAGE], g => typeof g.dmo.client?.command === 'function'],
-      ['audioDirector.cue', [SOUND], g => typeof g.dmo.audioDirector?.cue === 'function'],
-      ['audio.kill', [SOUND], g => typeof g.dmo.audio?.kill === 'function'],
-    ];
-    let seen = new Set(), failed = [], announced = '';
-    // Affected features the player has switched on, in menu order.
-    const areas = () => {
-      const hit = new Set();
-      for (const id of failed) {
-        if (id.startsWith('effects:')) hit.add(HERE);
-        else for (const name of id === 'window.dmo' ? AREAS.map(area => area[0]) : PROBES.find(probe => probe[0] === id)[1]) hit.add(name);
-      }
-      if (hit.has(LIGHT)) hit.delete(HERE);
-      return AREAS.filter(([name, on]) => hit.has(name) && on()).map(area => area[0]);
-    };
-    // One brief line per situation and client version, which takes no clicks. After that only F10 shows it,
-    // so a problem that lasts for days is mentioned once and never nags.
-    const announce = () => {
-      const list = areas(), signature = list.join('|');
-      if (!list.length || !document.body || signature === announced) return;
-      announced = signature;
-      try {
-        const saved = JSON.parse(localStorage.getItem(KEY) || 'null');
-        const shown = saved?.version === VERSION && Array.isArray(saved.shown) ? saved.shown : [];
-        if (shown.includes(signature)) return;
-        localStorage.setItem(KEY, JSON.stringify({ version: VERSION, shown: [...shown, signature].slice(-20) }));
-      } catch {}
-      toast(tr('Client features paused') + ': ' + list.slice(0, 3).map(tr).join(', ') + (list.length > 3 ? ', …' : '') + ' · F10', 6000);
-    };
-    // The same list at the top of F10, with the codes a report needs.
-    const section = () => {
-      const list = areas();
-      if (!list.length) return null;
-      const box = document.createElement('section'); box.className = 'digimmo-section'; box.id = 'digimmo-compat-note';
-      const title = document.createElement('h3'); title.textContent = tr('Client features paused');
-      const names = document.createElement('p'); names.textContent = list.map(tr).join(', ') + '.';
-      const help = document.createElement('p'); help.textContent = tr(HELP);
-      const code = document.createElement('code'); code.textContent = 'v' + VERSION + ' · ' + failed.join(', ');
-      box.append(title, names, help, code);
-      return box;
-    };
-    const check = () => {
-      if (document.hidden) return;
-      const dmo = window.dmo, now = [];
-      if (!object(dmo)) { if (document.querySelector?.('canvas')) now.push('window.dmo'); }
-      else {
-        const g = { dmo, state: null, scene: null };
-        try { g.state = dmo.store?.getState?.() || null; } catch {}
-        try { g.scene = dmo.game?.scene?.getScene?.('world') || null; } catch {}
-        for (const [id, , test] of PROBES) { let ok = false; try { ok = test(g); } catch {} if (!ok) now.push(id); }
-      }
-      // An object counts as missing once two checks in a row miss it, so one the game is still creating raises nothing.
-      const next = now.filter(id => seen.has(id));
-      seen = new Set(now);
-      // Effects that failed on a map are definite at once.
-      try { for (const map of ATMOS.broken) next.push('effects:' + map); } catch {}
-      if (next.join() === failed.join()) return;
-      failed = next;
-      if (menuRoot && !menuRoot.hidden) renderTab();
-      announce();
-    };
-    setInterval(check, EVERY);
-    return { section, report: () => ({ failed: [...failed], areas: areas() }) };
-  })();
 
   // @development-start
   const NAMES = { null: 'Atmosphere clock', 6.4: 'Morning', 12: 'Noon', 19.3: 'Evening', 23: 'Night' };
@@ -4485,7 +4364,7 @@
   Object.assign(runtime, {
     status: 'ready', settings: SETTINGS, openMenu, closeMenu,
     rebuild: () => ATMOS.rebuild(), getStats: () => ATMOS.built && ATMOS.built.stats,
-    diagnostics: () => ({ ...ATMOS.diagnostics(), compat: compat.report() }),
+    diagnostics: () => ATMOS.diagnostics(),
   });
   // @development-end
   // @public: runtime.status = 'ready';

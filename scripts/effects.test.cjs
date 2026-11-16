@@ -50,16 +50,10 @@ function environment(options = {}) {
     const create = scene.add[key];
     scene.add[key] = (...args) => { const obj = create(...args); obj.scene = scene; return obj; };
   }
-  // The parts of the game the client reads, as the game's login screen already provides them.
-  scene.runAction = () => {}; scene.deps = { content: {} };
-  const state = { screen: 'world', me: {}, dialog: null, target: null, windows: {}, archive: null, forge: null, chat: [],
-    world: options.world || { mapId: 'mock' } };
   const window = {
-    dmo: { game: { scene: { getScene: () => scene } }, store: { getState: () => state },
-      client: { command() {} }, audio: { kill() {} }, audioDirector: { cue() {} } },
+    dmo: { game: { scene: { getScene: () => scene } }, store: { getState: () => ({ world: options.world || { mapId: 'mock' } }) } },
     addEventListener: (type, fn) => handlers.push({ type, fn }),
   };
-  if (options.game) options.game({ window, scene, state });
   const storage = options.storage || new Map(options.fresh ? [] : [['digimmo.client.settings.v1', JSON.stringify(prefs)]]);
   const context = vm.createContext({
     window, document: { readyState: 'loading', body: null, addEventListener: (type, fn) => handlers.push({ type, fn }) },
@@ -81,21 +75,6 @@ function environment(options = {}) {
     toggleAtmosphere() {
       const event = { code: 'F10', altKey: true, preventDefault() {}, stopImmediatePropagation() {} };
       handlers.filter(h => h.type === 'keydown').forEach(h => h.fn(event));
-    },
-    // Runs the ten-second interface check once and returns what it reports.
-    compat() {
-      const checks = timers.filter(t => t.kind === 'interval' && t.delay === 10000);
-      assert.equal(checks.length, 1);
-      checks[0].fn();
-      const report = window.__digimmoTweaks.diagnostics().compat;
-      return { failed: Array.from(report.failed), areas: Array.from(report.areas) };
-    },
-    // A minimal page for the one-line toast, added after startup. Returns a reader for the line shown.
-    page() {
-      const elements = new Map();
-      Object.assign(context.document, { body: { append: el => elements.set(el.id, el) },
-        getElementById: id => elements.get(id) || null, createElement: () => ({ style: {}, textContent: '' }) });
-      return () => elements.get('digimmo-toast')?.textContent || '';
     },
   };
 }
@@ -205,39 +184,4 @@ test('Zero wind strength keeps crowns fixed while normal strength still moves th
   let moved = false;
   for (let t = 0; t <= 30000; t += 83) { sway(t); if (crown.L.x !== 0) moved = true; }
   assert.ok(moved);
-});
-
-test('A complete game interface raises no early warning', () => {
-  const env = environment();
-  env.compat();
-  assert.deepEqual(env.compat(), { failed: [], areas: [] });
-});
-
-test('A missing game interface is confirmed by the second check, names only features in use and clears again', () => {
-  const changed = ({ scene, window }) => { delete scene.runAction; delete window.dmo.client; };
-  const env = environment({ game: changed, settings: { attackMacro: true } });
-  assert.deepEqual(env.compat().failed, [], 'One miss can be an object the game is still creating');
-  assert.deepEqual(env.compat(), { failed: ['scene.runAction', 'client.command'],
-    areas: ['Attack picks a target', 'Slash all', 'Salvage all'] });
-  const unused = environment({ game: changed });
-  unused.compat();
-  assert.deepEqual(unused.compat().areas, ['Slash all', 'Salvage all'], 'A helper that is switched off is not announced');
-  env.scene.runAction = () => {}; env.window.dmo.client = { command() {} };
-  assert.deepEqual(env.compat(), { failed: [], areas: [] });
-});
-
-test('Effects that fail on a map are reported at once', () => {
-  const env = environment({ failAllocation: 2 }); env.build();
-  assert.deepEqual(env.compat(), { failed: ['effects:mock'], areas: ['Atmosphere on this map'] });
-});
-
-test('The early warning shows one brief line per situation and stays quiet after a restart', () => {
-  const changed = ({ window }) => { delete window.dmo.client; };
-  const first = environment({ game: changed }), line = first.page();
-  first.compat(); assert.equal(line(), '');
-  first.compat(); assert.equal(line(), 'Client features paused: Slash all, Salvage all · F10');
-  const restarted = environment({ game: changed, storage: first.storage }), again = restarted.page();
-  restarted.compat(); restarted.compat();
-  assert.deepEqual(restarted.compat().areas, ['Slash all', 'Salvage all']);
-  assert.equal(again(), '', 'F10 still lists it, but the line is not repeated');
 });
